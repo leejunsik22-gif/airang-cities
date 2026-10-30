@@ -1,0 +1,36 @@
+{
+ "note": "대전판. 부산 등 다른 도시를 열 때는 cities 안에 같은 모양으로 한 칸을 더 넣고 app/cities/<도시키>/ 그림 폴더를 만든다. domain 은 임시값(example.invalid)이라 도메인을 정하면 바꿔야 한다.",
+ "cities": {
+  "daejeon": {
+   "name": "대전",
+   "colors": {
+    "city": "#2F6FB5",
+    "ink": "#1F4F86",
+    "deep": "#163A66",
+    "soft": "#E4EEF8"
+   },
+   "domain": "daejeon.example.invalid",
+   "pages": "airang-daejeon",
+   "has404": true,
+   "areas": "둔산·유성·도안·노은",
+   "lat": 36.3504,
+   "lon": 127.3845,
+   "gus": [
+    "동구",
+    "중구",
+    "서구",
+    "유성구",
+    "대덕구"
+   ],
+   "searchEx": "둔산, 노은",
+   "fields": {
+    "start": "2026-10-30",
+    "startVer": "1.0.61"
+   }
+  }
+ },
+ "entry": {
+  "domain": "airang.example.invalid",
+  "pages": "airang-entry"
+ }
+}
