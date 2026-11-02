@@ -287,14 +287,15 @@ const $view = document.getElementById("view");
 let DATA = null;
 let installEvt = null;
 
-function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+const NS = "{{key}}:";   // 2026-11-02: 5개 구가 한 주소(pages.dev) 아래 있어 저장 공간을 구별로 나눔 (유성 아이 정보가 동구에 뜨던 문제)
+function store(k, v) { try { if (v === undefined) return localStorage.getItem(NS + k); localStorage.setItem(NS + k, v); } catch (e) { return null; } }
 // ---------- 아이 정보 옮기기: 아이폰은 홈 화면 앱이 사파리와 저장 공간을 따로 써서, 추가할 때 등록 정보를 같이 실어 보냄 ----------
 const MOVE_KEYS = ["edu.kids", "edu.myEv", "edu.region", "edu.level", "edu.school", "edu.seenEv", "edu.newsSeen", "edu.appVer", "edu.first", "edu.uDay", "edu.uMon", "edu.installHide"];
 function moveIsStandalone() { return (window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone === true; }
 function moveHasData() { try { return (JSON.parse(store("edu.kids") || "[]") || []).length > 0; } catch (e) { return false; } }
 function moveCode() {
   const o = {};
-  try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (MOVE_KEYS.includes(k) || /^edu\.want\.[\w-]+$/.test(k)) o[k] = localStorage.getItem(k); } } catch (e) {}
+  try { for (let i = 0; i < localStorage.length; i++) { const kk = localStorage.key(i); if (!kk.startsWith(NS)) continue; const k = kk.slice(NS.length); if (MOVE_KEYS.includes(k) || /^edu\.want\.[\w-]+$/.test(k)) o[k] = localStorage.getItem(kk); } } catch (e) {}
   let bin = ""; new TextEncoder().encode(JSON.stringify(o)).forEach(b => { bin += String.fromCharCode(b); });
   return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
@@ -1822,7 +1823,7 @@ function viewJobs() {
   const body = list.length ? `<div class="lift card-pad">${list.slice(0, 80).map(j => jobRow(j, jobF.tab === "care")).join("")}</div>`
     : `<div class="lift empty">조건에 맞는 공고가 지금은 없어요. 지역을 넓혀 보세요.</div>`;
   $view.innerHTML = back + seg + guChips + extra + `<p style="font-size:12px;color:var(--muted);margin:2px 0 10px">마감 안 된 공고 ${list.length}건 · 마감 임박 순</p>` + body
-    + `<div class="foot">공고를 누르면 원문에서 자격·서류·접수 방법을 확인할 수 있어요.<br>데이터 · 경기도교육청 구인구직 · 경기육아종합지원센터 인력뱅크 (하루 한 번 갱신${JOBS.updated_at ? " · " + esc(JOBS.updated_at.slice(0, 10)) + " 기준" : ""})</div>`;
+    + `<div class="foot">공고를 누르면 원문에서 자격·서류·접수 방법을 확인할 수 있어요.<br>데이터 · (대전 일자리 출처 확정 전 — 준비 중) (하루 한 번 갱신${JOBS.updated_at ? " · " + esc(JOBS.updated_at.slice(0, 10)) + " 기준" : ""})</div>`;
 }
 
 // ---------- 특목·자사고 (나이스 학교기본정보) ----------
@@ -2061,7 +2062,7 @@ async function adminSaveKey() {
   if (a !== b) { toast("두 번 넣은 비밀번호가 달라요"); return; }
   store(KEY_ADMIN, v); store(KEY_PIN, await pinHash(a)); adminOpen = true; ADMIN = null; toast("이 휴대폰을 관리자로 등록했어요"); render();
 }
-function adminLogout() { try { localStorage.removeItem(KEY_ADMIN); localStorage.removeItem(KEY_PIN); } catch (e) {} ADMIN = null; adminOpen = false; toast("관리자 등록을 해제했어요"); go("my"); }
+function adminLogout() { try { localStorage.removeItem(NS + KEY_ADMIN); localStorage.removeItem(NS + KEY_PIN); } catch (e) {} ADMIN = null; adminOpen = false; toast("관리자 등록을 해제했어요"); go("my"); }
 function viewAdmin() {
   const back = `<button class="back glass" onclick="go('my')" aria-label="뒤로">${icon.back}</button>`;
   const head = `${back}<h1 style="font-size:26px;font-weight:800;margin-top:14px">관리자</h1>`;
