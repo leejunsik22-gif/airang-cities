@@ -1,10 +1,10 @@
 name: weather (도시별 날씨)
 on:
-  schedule:
-    - cron: "40 20 * * *"    # 05:40
-    - cron: "50 22 * * *"    # 07:50
-    - cron: "20 2 * * *"     # 11:20
-    - cron: "20 8 * * *"     # 17:20
+  # schedule: (대표 승인 전 자동 수집 비활성 — 2026-11-02)
+  #   - cron: "40 20 * * *"    # 05:40
+  #   - cron: "50 22 * * *"    # 07:50
+  #   - cron: "20 2 * * *"     # 11:20
+  #   - cron: "20 8 * * *"     # 17:20
   workflow_dispatch:
 permissions:
   contents: write
