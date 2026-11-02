@@ -231,16 +231,14 @@ def main():
             elif div in DIV_HOSP:
                 hosps[nmc_row(it, DIV_HOSP[div])["id"]] = nmc_row(it, DIV_HOSP[div])
         nmc_depts(clinics)
-        for c in clinics.values():   # 이름에 과가 있으면 그 과를 맨 앞에 (치과는 '소아치과'처럼 이름이 겹쳐서 빼고)
-            if c["k"] == "치과의원":
-                c["d"] = ["치과"]
-                continue
-            for dept, hint in DEPT_HINT.items():
-                if re.search(hint, c["n"]):
-                    if dept in c["d"]:
-                        c["d"].remove(dept)
-                    c["d"].insert(0, dept)
-                    break
+        # P0-4(2026-11-03): 이름에 든 진료과(8개 밖의 정신건강의학과·성형외과 등 전부)를 대표 과목 p 로, 나머지는 '신고 과목'
+        import importlib.util, os as _os
+        _spec = importlib.util.spec_from_file_location("fix_depts", _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "tools", "fix_depts.py"))
+        _fd = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(_fd)
+        for c in clinics.values():
+            _fd.fix(c)
+        for h in hosps.values():
+            _fd.fix(h)
         order = {"상급종합병원": 0, "종합병원": 1, "병원": 2, "치과병원": 3}
         result["clinics"] = sorted(clinics.values(), key=lambda r: (r["g"], r["n"]))
         result["hospitals"] = sorted(hosps.values(), key=lambda r: (order.get(r["k"], 9), r["g"], r["n"]))

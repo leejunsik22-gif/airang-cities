@@ -2576,7 +2576,7 @@ function hsRow(x, er) {
   return `<div class="lift" style="padding:14px 16px;margin-bottom:10px">
     <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">${kindTag}${td ? (td.open ? tag(x.k === "약국" ? "지금 영업 중" : "지금 진료 중", "#E6F6EF", "#127A52") : tag(x.k === "약국" ? "영업 시간 아님" : "진료 시간 아님", "#F1F3F8", "#5C6478")) : ""}${km != null ? tag(km < 1 ? Math.round(km * 1000) + "m" : km.toFixed(1) + "km", "#F4F2FF", "#5B4FD6") : ""}</div>
     <div style="font-size:15.5px;font-weight:800;margin-top:6px;line-height:1.4">${esc(x.n)}</div>
-    <div style="font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.5">${esc([(x.d || []).slice(0, 3).join("·"), x.a].filter(Boolean).join(" · "))}${td ? `<br>${esc(td.text)}` : ""}</div>
+    <div style="font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.5">${deptLine(x)}${x.a ? " · " + esc(x.a) : ""}${td ? `<br>${esc(td.text)}` : ""}</div>
     <div style="display:flex;gap:8px;margin-top:10px">${tel ? `<a class="btn ${er ? "btn-3d" : "btn-soft"}" style="flex:1;height:38px;font-size:13px;text-decoration:none" href="tel:${esc(tel)}" onclick="trackEvent('병원-전화${er ? "-응급실" : ""}')">📞 전화</a>` : ""}<a class="btn btn-soft" style="flex:1;height:38px;font-size:13px;text-decoration:none" href="${esc(map)}" target="_blank" rel="noopener" onclick="trackEvent('병원-길찾기')">📍 길찾기</a>${x.u ? `<a class="btn btn-soft" style="flex:1;height:38px;font-size:13px;text-decoration:none" href="${esc(x.u)}" target="_blank" rel="noopener" onclick="trackEvent('병원-홈페이지')">홈페이지 ›</a>` : ""}</div></div>`;
 }
 function homeOpenKids() {   // 홈: 지금 문 연 소아과 바로가기 (밤·주말엔 문구를 바꿔요)
@@ -2585,6 +2585,12 @@ function homeOpenKids() {   // 홈: 지금 문 연 소아과 바로가기 (밤·
   return `<button class="lift" onclick="hsOpenKids()" style="display:flex;align-items:center;gap:12px;width:100%;margin:12px 0 0;padding:12px 14px;border:0;border-radius:16px;background:var(--card,#fff);text-align:left;cursor:pointer;font:inherit;color:inherit">${e3d("🩺", 34)}<span style="flex:1;min-width:0"><b style="display:block;font-size:14.5px">지금 문 연 소아과</b><span style="font-size:12px;color:var(--muted)">${sub}</span></span><span style="font-size:18px;color:var(--muted)">›</span></button>`;
 }
 function hsOpenKids() { hsTab = "clinic"; hsDept = "소아청소년과"; hsOf = "🟢 지금 진료 중"; hsGu = "전체"; hsQ = ""; hsMore = 40; trackEvent("병원-지금소아과"); if (location.hash === "#hosp") viewHosp(); else go("hosp"); }
+// P0-4(2026-11-03): 대표 과목(p, 이름 기준)을 먼저, 국립중앙의료원 '신고 과목'은 따로 구분해 표시 — 정신건강의학과의원이 "내과·소아청소년과"로 보이던 문제
+function deptLine(x) {
+  const p = x.p || "", rest = (x.d || []).filter(d => d !== p).slice(0, 3);
+  if (p) return `<b style="color:var(--ink)">${esc(p)}</b>${rest.length ? ` <span title="국립중앙의료원에 신고된 진료과목 — 전문의 여부는 병원에 확인">· 신고 과목 ${esc(rest.join("·"))}</span>` : ""}`;
+  return rest.length ? `${esc(rest.join("·"))} <span style="font-size:11px">(신고 과목)</span>` : "";
+}
 function viewHosp(keepFocus) {
   const city = (HOSP && HOSP.city) || document.title.replace("아이랑 ", "");
   const sos = `<a href="tel:119" onclick="trackEvent('병원-119')" style="display:flex;align-items:center;gap:10px;margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--coral-ink);color:#fff;text-decoration:none;font-weight:800;font-size:15px;min-height:52px;box-shadow:var(--shadow)">${ico3d("🚑", 34, 28)}<span style="flex:1">위급하면 바로 119에 전화하세요</span><span style="background:rgba(255,255,255,.22);padding:6px 12px;border-radius:10px">📞 119</span></a>`;
