@@ -54,7 +54,7 @@ CITIES = {
 }
 # 시도마다 다른 코드 (안내서 3-1). 다른 시·도를 열 때 한 줄씩 추가한다 (서울·경기는 운영 대상 제외)
 SIDOS = {
-    "대전": {"full": "대전광역시", "neis": "G10", "lib": 25, "kinder": 30, "kopis": "30", "hira": "250000", "air": "대전"},
+    "대전": {"full": "대전광역시", "neis": "G10", "lib": 25, "kinder": 30, "kopis": "30", "hira": "250000", "air": "대전", "tour": 3},   # tour: 한국관광공사 지역코드 (대전 3)
 }
 CITY = os.environ.get("CITY", "유성").strip()
 if CITY not in CITIES:

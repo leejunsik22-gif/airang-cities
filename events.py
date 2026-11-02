@@ -306,6 +306,7 @@ KOPIS_API_HTTP = "http://kopis.or.kr/openApi/restful/pblprfr"
 KOPIS_VIEW = "https://www.kopis.or.kr/por/db/pblprfr/pblprfrView.do?menuId=MNU_00020&mt20Id="
 TOUR_KEY = os.environ.get("TOUR_KEY", "").strip()
 TOUR_API = "https://apis.data.go.kr/B551011/KorService2/searchFestival2"
+TOUR_AREA = city.SIDO.get("tour", 31)   # 관광공사 지역코드: city.py SIDOS["tour"] (없으면 경기 31)
 
 
 def xml_items(raw, tag):
@@ -378,7 +379,7 @@ def tour_festivals(today):
     out, items = [], []
     for page in range(1, 6):
         url = (f"{TOUR_API}?serviceKey={key}&MobileOS=ETC&MobileApp=Airang&_type=json&arrange=A"
-               f"&eventStartDate={(today - timedelta(days=90)).strftime('%Y%m%d')}&areaCode=31&numOfRows=100&pageNo={page}")
+               f"&eventStartDate={(today - timedelta(days=90)).strftime('%Y%m%d')}&areaCode={TOUR_AREA}&numOfRows=100&pageNo={page}")
         try:
             data = json.loads(get(url, tries=2, timeout=40))
         except Exception as e:
