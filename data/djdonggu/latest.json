@@ -1,9 +1,9 @@
 {
   "region": "동구",
-  "updated_at": "2026-11-02 15:44:07",
+  "updated_at": "2026-11-03 06:10:08",
   "period": {
-    "from": "20261102",
-    "to": "20270101"
+    "from": "20261103",
+    "to": "20270102"
   },
   "school_count": 44,
   "public_holidays": [
@@ -568,6 +568,46 @@
       "date": "2027-01-01",
       "name": "겨울방학",
       "holiday": true
+    },
+    {
+      "school": "대전대성여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼성초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전판암초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "학년말 방학",
+      "holiday": true
+    },
+    {
+      "school": "대전판암초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "졸업후 휴업",
+      "holiday": true
+    },
+    {
+      "school": "대전현암초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
     }
   ],
   "schools": [
@@ -671,6 +711,11 @@
         },
         {
           "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
           "name": "겨울방학",
           "holiday": true
         }
@@ -792,6 +837,16 @@
           "date": "2027-01-01",
           "name": "졸업후 휴업",
           "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "학년말 방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "졸업후 휴업",
+          "holiday": true
         }
       ]
     },
@@ -845,6 +900,11 @@
         },
         {
           "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
           "name": "겨울방학",
           "holiday": true
         }
@@ -1198,6 +1258,11 @@
           "date": "2027-01-01",
           "name": "겨울방학",
           "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
         }
       ]
     },
@@ -1218,11 +1283,6 @@
       "gu": "",
       "dong": "대성동",
       "events": [
-        {
-          "date": "2026-11-02",
-          "name": "3학년 기말고사",
-          "holiday": false
-        },
         {
           "date": "2026-11-03",
           "name": "3학년 기말고사",
@@ -1739,11 +1799,6 @@
       "dong": "비룡동",
       "events": [
         {
-          "date": "2026-11-02",
-          "name": "기말고사",
-          "holiday": false
-        },
-        {
           "date": "2026-11-03",
           "name": "기말고사",
           "holiday": false
@@ -1889,18 +1944,13 @@
       "dong": "자양동",
       "events": [
         {
-          "date": "2026-11-02",
-          "name": "3학년고사",
-          "holiday": false
-        },
-        {
           "date": "2026-11-03",
           "name": "3학년고사",
           "holiday": false
         },
         {
           "date": "2026-11-04",
-          "name": "신입생2차합격자발표",
+          "name": "신입생 최종합격자 발표",
           "holiday": false
         },
         {
@@ -1911,11 +1961,6 @@
         {
           "date": "2026-11-06",
           "name": "최종합격자 소집",
-          "holiday": false
-        },
-        {
-          "date": "2026-11-11",
-          "name": "신입생 최종합격자 발표",
           "holiday": false
         },
         {
@@ -2133,11 +2178,6 @@
       "gu": "",
       "dong": "자양동",
       "events": [
-        {
-          "date": "2026-11-02",
-          "name": "수학여행",
-          "holiday": false
-        },
         {
           "date": "2026-11-03",
           "name": "체험학습",
