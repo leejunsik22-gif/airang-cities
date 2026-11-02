@@ -1,0 +1,180 @@
+== collect
+동구 초등학교 23곳
+동구 중학교 12곳
+동구 고등학교 9곳
+  대전가양초등학교: 학교 일정 0건
+  대전가오초등학교: 학교 일정 1건
+  대전대동초등학교: 학교 일정 0건
+  대전대룡초등학교: 학교 일정 0건
+  대전대암초등학교: 학교 일정 0건
+  대전동광초등학교: 학교 일정 1건
+  대전동서초등학교: 학교 일정 0건
+  대전삼성초등학교: 학교 일정 4건
+  대전성남초등학교: 학교 일정 0건
+  대전신흥초등학교: 학교 일정 0건
+  대전용운초등학교: 학교 일정 0건
+  대전용전초등학교: 학교 일정 0건
+  대전은어송초등학교: 학교 일정 0건
+  대전자양초등학교: 학교 일정 1건
+  대전천동초등학교: 학교 일정 0건
+  대전판암초등학교: 학교 일정 8건
+  대전현암초등학교: 학교 일정 9건
+  대전흥룡초등학교: 학교 일정 0건
+  동대전초등학교: 학교 일정 0건
+  동명초등학교: 학교 일정 11건
+  산내초등학교: 학교 일정 0건
+  산흥초등학교: 학교 일정 1건
+  세천초등학교: 학교 일정 0건
+  대전가양중학교: 학교 일정 8건
+  대전가오중학교: 학교 일정 12건
+  대전대성여자중학교: 학교 일정 21건
+  대전용운중학교: 학교 일정 0건
+  대전은어송중학교: 학교 일정 15건
+  동대전중학교: 학교 일정 7건
+  동신중학교: 학교 일정 7건
+  보문중학교: 학교 일정 12건
+  우송중학교: 학교 일정 6건
+  충남중학교: 학교 일정 7건
+  한밭여자중학교: 학교 일정 8건
+  한밭중학교: 학교 일정 8건
+  계룡디지텍고등학교: 학교 일정 6건
+  대전가오고등학교: 학교 일정 2건
+  대전대성여자고등학교: 학교 일정 4건
+  대전동신과학고등학교: 학교 일정 15건
+  대전여자고등학교: 학교 일정 11건
+  동아마이스터고등학교: 학교 일정 17건
+  명석고등학교: 학교 일정 14건
+  보문고등학교: 학교 일정 12건
+  우송고등학교: 학교 일정 7건
+저장 완료: 주요 일정 69건, 공휴일 2건
+== academies
+1쪽: 361건 (전체 361)
+개원 학원·교습소 361곳 저장: {'구 미상': 361}
+동 모름: 3 곳
+수강료 공개: 95 곳
+== kinder
+  basicInfo2.do 30110 다시 시도 1/3: DENIED 유효하지 않은 키
+  basicInfo2.do 30110 다시 시도 2/3: DENIED 유효하지 않은 키
+  basicInfo2.do 30110 다시 시도 3/3: DENIED 유효하지 않은 키
+ 일반현황을 가져오지 못했습니다
+== meals
+학교 44곳 중 44곳 확인 (실패 0), 식단 있는 학교 44곳
+== libs
+  libSrch 다시 시도 1/3: API 활성화 상태가아닙니다.
+  libSrch 다시 시도 2/3: API 활성화 상태가아닙니다.
+  libSrch 다시 시도 3/3: API 활성화 상태가아닙니다.
+Traceback (most recent call last):
+  File "/home/runner/work/airang-cities/airang-cities/libs.py", line 128, in <module>
+    main()
+  File "/home/runner/work/airang-cities/airang-cities/libs.py", line 69, in main
+    resp = lib4.call("libSrch", region=lib4.REGION, dtl_region=code, pageNo=1, pageSize=200)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/airang-cities/airang-cities/lib4.py", line 41, in call
+    raise RuntimeError(f"{name} 실패: {last}")
+RuntimeError: libSrch 실패: API 활성화 상태가아닙니다.
+== books
+[초등 인기 도서]
+  loanItemSrch 다시 시도 1/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 2/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 3/3: API 활성화 상태가아닙니다.
+   실패: loanItemSrch 실패: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 1/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 2/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 3/3: API 활성화 상태가아닙니다.
+  시도 전체도 실패: loanItemSrch 실패: API 활성화 상태가아닙니다.
+  실패: 4개 구 모두 실패
+[청소년 인기 도서]
+  loanItemSrch 다시 시도 1/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 2/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 3/3: API 활성화 상태가아닙니다.
+   실패: loanItemSrch 실패: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 1/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 2/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 3/3: API 활성화 상태가아닙니다.
+  시도 전체도 실패: loanItemSrch 실패: API 활성화 상태가아닙니다.
+  실패: 4개 구 모두 실패
+[동구 대출 베스트]
+  loanItemSrch 다시 시도 1/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 2/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 3/3: API 활성화 상태가아닙니다.
+   실패: loanItemSrch 실패: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 1/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 2/3: API 활성화 상태가아닙니다.
+  loanItemSrch 다시 시도 3/3: API 활성화 상태가아닙니다.
+  시도 전체도 실패: loanItemSrch 실패: API 활성화 상태가아닙니다.
+  실패: 4개 구 모두 실패
+인기 도서를 하나도 가져오지 못했습니다
+== events
+  KOPIS_KEY 없음: 공연예술통합전산망 건너뜀
+  관광공사 응답: {'response': {'header': {'resultCode': '0000', 'resultMsg': 'OK'}, 'body': {'items': '', 'numOfRows': 0, 'pageNo': 1, 'totalCount': 0}}}
+  관광공사 동 축제·행사 0건
+공연·축제 0건, 체험·교육 0건 저장
+== jobs
+경기도가 아니라 채용 정보는 건너뜀
+== sports
+대전동구 : 운동교실 준비 중
+== deals
+  동네 가게 할인 0건
+저장: 대전동구 할인 0건 (지역화폐 0, 백화점 0)
+== elite
+서울: 학교 1416곳 확인
+부산: 학교 672곳 확인
+대구: 학교 484곳 확인
+인천: 학교 584곳 확인
+광주: 학교 336곳 확인
+대전: 학교 329곳 확인
+울산: 학교 255곳 확인
+세종: 학교 109곳 확인
+경기: 학교 2667곳 확인
+강원: 학교 660곳 확인
+충북: 학교 514곳 확인
+충남: 학교 756곳 확인
+전북: 학교 771곳 확인
+전남: 학교 881곳 확인
+경북: 학교 942곳 확인
+경남: 학교 1021곳 확인
+제주: 학교 205곳 확인
+저장: {'영재학교': 8, '과학고': 23, '자사고(전국)': 10, '외고': 30, '국제고': 10, '자사고(광역)': 22}
+고등학교 구분 값: [(('일반고', ''), 1758), (('특성화고', ''), 518), (('자율고', ''), 114), (('특목고', '산업수요 맞춤형 고등학교'), 40), (('특목고', ''), 33), (('특목고', '과학계열'), 23), (('특목고', '예술계열'), 22), (('특목고', '외국어계열'), 22), (('특목고', '체육계열'), 13), (('특목고', '국제계열'), 7), (('특성화고', '예술계열'), 1), (('일반고', '산업수요 맞춤형 고등학교'), 1), (('일반고', '외국어계열'), 1), (('일반고', '과학계열'), 1), (('일반고', '예술계열'), 1), (('특성화고', '산업수요 맞춤형 고등학교'), 1)]
+== weather
+대전동구 격자 nx=68 ny=100
+  단기예보 20261102 1400: 798건
+  단기예보 20261102 0200: 944건
+  날씨: {'sky': '맑음', 'icon': '☀️', 'lo': 7, 'hi': 16, 'pop': 30} 미세먼지: {'pm10': '보통', 'pm25': '보통'}
+저장: output/weather.json
+== benefits
+    (서버 전체 461건, 한 번에 100건)
+  나라 혜택 461건 중 아이·가족 106건
+    (서버 전체 0건, 한 번에 0건)
+  대전동구시 혜택 0건 중 아이·가족 0건
+  저장: 64 KB, 106 건
+== hospitals
+  병·의원 337곳 받음. 종류: {'의원': 161, '한의원': 82, '치과의원': 70, '요양병원': 12, '병원': 4, '보건소': 3, '한방병원': 2, '종합병원': 1, '조산원': 1, '치과병원': 1}
+  칸: ['dutyAddr', 'dutyDiv', 'dutyDivNam', 'dutyEmcls', 'dutyEmclsName', 'dutyEryn', 'dutyInf', 'dutyName', 'dutyTel1', 'dutyTel3', 'dutyTime1c', 'dutyTime1s', 'dutyTime2c', 'dutyTime2s', 'dutyTime3c', 'dutyTime3s', 'dutyTime4c', 'dutyTime4s', 'dutyTime5c', 'dutyTime5s', 'dutyTime6c', 'dutyTime6s', 'dutyTime7c', 'dutyTime7s', 'dutyTime8c', 'dutyTime8s', 'hpid', 'postCdn1', 'postCdn2', 'rnum', 'wgs84Lat', 'wgs84Lon']
+  진료과 내과 D001: 112곳 (이름에 과가 있는 28곳 중 100% 포함)
+  진료과 소아청소년과 D002: 79곳 (이름에 과가 있는 3곳 중 100% 포함)
+  진료과 피부과 D005: 66곳 (이름에 과가 있는 1곳 중 100% 포함)
+  진료과 정형외과 D008: 53곳 (이름에 과가 있는 12곳 중 100% 포함)
+  진료과 산부인과 D011: 8곳 (이름에 과가 있는 5곳 중 100% 포함)
+  진료과 안과 D012: 14곳 (이름에 과가 있는 9곳 중 100% 포함)
+  진료과 이비인후과 D013: 50곳 (이름에 과가 있는 12곳 중 100% 포함)
+  진료과 가정의학과 D022: 43곳 (이름에 과가 있는 11곳 중 91% 포함)
+  의원 234곳, 병원 6곳
+  응급실 2곳
+  약국 123곳 (전화 있는 곳 122)
+  저장: 81 KB
+== 결과 파일
+total 440
+drwxr-xr-x 2 runner runner   4096 Nov  2 06:52 .
+drwxr-xr-x 4 runner runner   4096 Nov  2 06:44 ..
+-rw-r--r-- 1 runner runner 104354 Nov  2 06:52 academies.json
+-rw-r--r-- 1 runner runner  65642 Nov  2 06:52 benefits.json
+-rw-r--r-- 1 runner runner    137 Nov  2 06:52 deals.json
+-rw-r--r-- 1 runner runner  35623 Nov  2 06:52 elite.json
+-rw-r--r-- 1 runner runner    141 Nov  2 06:52 events.json
+-rw-r--r-- 1 runner runner  83218 Nov  2 06:52 hospitals.json
+-rw-r--r-- 1 runner runner     77 Nov  2 06:52 jobs.json
+-rw-r--r-- 1 runner runner  52224 Nov  2 06:52 latest.json
+-rw-r--r-- 1 runner runner  69210 Nov  2 06:52 meals.json
+-rw-r--r-- 1 runner runner    122 Nov  2 06:52 sports.json
+-rw-r--r-- 1 runner runner    223 Nov  2 06:52 weather.json
