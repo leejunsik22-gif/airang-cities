@@ -369,7 +369,7 @@ function icoE(e, px = 24, tint = "navy") { const n = EMOJI_ICON[e]; return n ? i
 const REPO = "leejunsik22-gif/airang-cities";
 const RAW = "https://raw.githubusercontent.com/" + REPO + "/main/data/{{key}}/";
 // 공개 검문 상태(_status.json · tools/gate.py가 만듦): 공식 자료 확인 전인 메뉴는 열지 않는다 (2026-11-02 작업 가지)
-const GATE_FILE = { kinders: "kinder.json", library: "libs.json", books: "books.json", deals: "deals.json", sports: "sports.json", jobs: "jobs.json", culture: "events.json", events: "events.json" };
+const GATE_FILE = { kinders: "kinder.json", library: "libs.json", books: "books.json", deals: "deals.json", sports: "sports.json", jobs: "jobs.json", culture: "events.json", events: "events.json", elite: "elite.json", meals: "meals.json", weather: "weather.json" };
 let GATE = null;
 function loadGate() { return dataFetch("_status.json").then(r => r.ok ? r.json() : null).then(j => { GATE = (j && j.files) || {}; }).catch(() => { GATE = {}; }); }
 function gated(route) { const f = GATE_FILE[(route || "").split("/")[0]]; if (!f || !GATE) return null; const st = GATE[f]; return st && st.published === false ? st : null; }
@@ -923,6 +923,7 @@ function weatherTip(w) {
 }
 function homeToday(ks) {
   const now = new Date(), wd = (now.getDay() + 6) % 7, t = todayYmd();
+  if (gated("weather") && typeof WEATHER !== "undefined") WEATHER = null;   // 보류 자료는 화면에 안 씀
   const rows = [];
   const row = (ic, label, body, act) => `<div style="display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);${act ? "cursor:pointer" : ""}" ${act ? `onclick="${act}"` : ""}>
       <span style="flex:0 0 24px;font-size:17px;line-height:20px;text-align:center">${e3d(ic, 22)}</span>
@@ -977,7 +978,7 @@ function dishList(ds, small, al) { return ds.map(([n, a]) => { const hit = alHit
 function alLegend(al, kidId) { return `<p style="font-size:11.5px;color:var(--muted);line-height:1.6;margin:8px 0 2px">작은 숫자는 알레르기 성분 번호예요. <b>메뉴를 누르면</b> 성분 이름이 보여요.${al && al.length ? ` <span style="color:#B42318;font-weight:700">⚠️ 표시는 우리 아이 알레르기(${al.map(n => ALLERGY[n]).join("·")})가 든 메뉴예요.</span>` : (kidId ? ` <a href="#kid/${kidId}" onclick="event.stopPropagation()" style="color:var(--indigo);font-weight:700">아이 알레르기 등록하기 ›</a>` : "")}</p>`; }
 function dayLabel(ymd) { const t = todayYmd(); if (ymd === t) return "오늘"; const d = new Date(ymd + "T00:00:00"), n = new Date(t + "T00:00:00"); if ((d - n) / 864e5 === 1) return "내일"; return `${d.getMonth() + 1}월 ${d.getDate()}일 ${WD[d.getDay()]}요일`; }
 function homeMeals(ks) {
-  if (!MEALS) return "";
+  if (!MEALS || gated("meals")) return "";   // 공식 원문 확인 전(보류)이면 급식 카드 숨김
   const seen = new Set(), cards = [];
   for (const k of ks) {
     const sc = kidSchool(k); if (!sc || seen.has(sc.code)) continue; seen.add(sc.code);

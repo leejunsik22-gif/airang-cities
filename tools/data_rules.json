@@ -227,6 +227,12 @@
   "_상태설명": {
     "verify_status": "공개 허용 등급(확인 완료·부분 확인=공개 / 미확인·제외=비공개) — 대표·피트가 정함",
     "auto_check": "gate.py 자동 검사 결과(통과·실패·만료) — 매 수집마다",
-    "official_verify": "기관 원문과 표본 대조한 결과(확인 완료·부분 확인·미확인) — 사람이 verified_at에 기록. 자동 검사 통과와 별개"
-  }
+    "official_verify": "기관 원문과 표본 대조한 결과(확인 완료·부분 확인·미확인) — 사람이 verified_at에 기록. 자동 검사 통과와 별개",
+    "공개 조건": "verify_status ∈ publishable AND official_verify ∈ publishable_official AND 자동 검사 통과 AND 유효기간 안. 하나라도 빠지면 공개 보류(공개 폴더에서 제거)."
+  },
+  "publishable_official": [
+    "확인 완료",
+    "부분 확인"
+  ],
+  "publish_requires_official": true
 }

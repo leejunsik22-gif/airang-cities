@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""공개 전 자료 검문(gate) v02후보 — 유효기간(valid_days)·만료 제외, auto_check/official_verify 분리 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
+"""공개 전 자료 검문(gate) v03후보 — 공식 원문 확인(official_verify)이 없으면 자동 검사를 통과해도 공개 보류, 기존 공개본 유지 시에도 공식 상태·유효기간 동시 검사 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
 
   python3 tools/gate.py --city yuseong --in output --out data/yuseong [--today 2026-11-02] [--dry-run]
 
@@ -105,11 +105,20 @@ def main():
                "source_url": rule.get("source_url", ""), "checked_at": a.today, "published": False, "count": None, "reason": "",
                "auto_check": "", "official_verify": rule.get("official_verify", "미확인"), "verified_at": rule.get("verified_at", ""), "verified_by": rule.get("verified_by", ""),
                "valid_days": rule.get("valid_days")}
+        official_ok = (not RULES.get("publish_requires_official", False)) or rule.get("official_verify", "미확인") in set(RULES.get("publishable_official", ["확인 완료", "부분 확인"]))
         if rule["verify_status"] not in pub:
             ent["reason"] = "공개 제외: " + rule.get("note", rule["verify_status"]); ent["auto_check"] = "검사 안 함(비공개 등급)"
             if os.path.exists(dst) and not a.dry_run:
                 os.remove(dst); ent["reason"] += " (기존 공개본 치움)"
             print(f"  ⛔ {fn:16} 제외 — {rule.get('note','')}")
+        elif not official_ok:   # 자동 검사는 하되(기록용) 공식 원문 확인 전엔 공개 보류
+            ok, rs, n = check(src, rule, dst, today) if os.path.exists(src) else (None, [], None)
+            ent["count"] = n; ent["auto_check"] = ("통과" if ok else "실패") if ok is not None else "수집 없음"
+            ent["hold"] = True; had = os.path.exists(dst)
+            if had and not a.dry_run:
+                os.remove(dst)
+            ent["reason"] = f"공개 보류: 공식기관 원문 확인 {rule.get('official_verify','미확인')} (자동 검사 {ent['auto_check']}" + (": " + "; ".join(rs) if rs else "") + ") — 표본 대조 후 official_verify 갱신 필요" + (" (기존 공개본 치움)" if had else "")
+            print(f"  ⏸ {fn:16} 보류 — 원문 {rule.get('official_verify','미확인')} / 자동 {ent['auto_check']}")
         elif not os.path.exists(src):
             if os.path.exists(dst):
                 ex, d = expired(dst, rule, today)
