@@ -211,6 +211,12 @@ a.ev{color:inherit;text-decoration:none}
 // 저장소를 다른 계정·조직으로 옮기면 아래 한 줄만 바꾸면 돼요 (예: "내계정/airang-cities")
 const REPO = "leejunsik22-gif/airang-cities";
 const RAW = "https://raw.githubusercontent.com/" + REPO + "/main/data/{{key}}/";
+// 공개 검문 상태(_status.json · tools/gate.py가 만듦): 공식 자료 확인 전인 메뉴는 열지 않는다 (2026-11-02 작업 가지)
+const GATE_FILE = { kinders: "kinder.json", library: "libs.json", books: "books.json", deals: "deals.json", sports: "sports.json", jobs: "jobs.json", culture: "events.json", events: "events.json" };
+let GATE = null;
+function loadGate() { return dataFetch("_status.json").then(r => r.ok ? r.json() : null).then(j => { GATE = (j && j.files) || {}; }).catch(() => { GATE = {}; }); }
+function gated(route) { const f = GATE_FILE[(route || "").split("/")[0]]; if (!f || !GATE) return null; const st = GATE[f]; return st && st.published === false ? st : null; }
+function gateNote(route) { const st = gated(route); return st ? ` <span class="pill pill-gray" style="margin-left:4px">준비 중</span>` : ""; }
 function dataFetch(name) {
   return fetch(RAW + name, { cache: "no-cache" }).then(r => r.ok ? r : Promise.reject(r.status))   // 앱 서버엔 데이터가 없어서 원본에 바로 묻기
     .catch(() => fetch("./data/" + name, { cache: "no-cache" }));
@@ -885,7 +891,7 @@ function viewMy() {
   $view.innerHTML = `<h1 style="font-size:27px;font-weight:800;margin-bottom:16px">전체 메뉴</h1>
     <div class="mgrid3">${M.map(([r, e, t, l]) => r === "safety"   // 아이 안전: 여성가족부 공식 사이트로 가는 링크만 (정보는 앱에 모으지 않음)
       ? `<a class="mtile" style="text-decoration:none" href="https://www.sexoffender.go.kr" target="_blank" rel="noopener" onclick="trackEvent('안전-성범죄자알림e')">${e3d(e, 68)}<b>${l.replace("<br>", " ")}</b></a>`
-      : `<button class="mtile" onclick="go('${r}')">${MICON[r] ? `<img src="assets/${MICON[r]}.webp" alt="" width="68" height="68" decoding="async">` : e3d(e, 68)}<b>${l.replace("·<br>", "·").replace("<br>", " ")}</b></button>`).join("")}</div>
+      : `<button class="mtile" onclick="go('${r}')"${gated(r) ? ' style="opacity:.55" aria-disabled="true"' : ""}>${MICON[r] ? `<img src="assets/${MICON[r]}.webp" alt="" width="68" height="68" decoding="async">` : e3d(e, 68)}<b>${l.replace("·<br>", "·").replace("<br>", " ")}${gated(r) ? '<br><span style="font-size:10px;color:var(--muted);font-weight:600">준비 중</span>' : ""}</b></button>`).join("")}</div>
     <p style="font-size:11.5px;color:var(--muted);margin:10px 4px 0;line-height:1.6">🛡️ 성범죄자 알림e(여성가족부)는 본인 인증 뒤 우리 동네 공개 대상자를 볼 수 있어요. 공개 정보는 확인하는 데만 쓸 수 있고, 캡처해서 단톡방·카페·SNS에 올리면 처벌받을 수 있어요.</p>
     <section class="section" style="margin-top:0"><div class="sec-head"><h2>우리 아이</h2><span style="font-size:12px;color:var(--muted)">${ks.length}/${MAX_KIDS}명</span></div>
       <div class="lift list">${kidRows || `<div class="empty">아직 등록한 아이가 없어요.</div>`}</div>
@@ -2271,7 +2277,7 @@ function adminChartHtml(A) {
 }
 
 // ---------- 이동 / 동작 ----------
-function go(route) { if (location.hash === "#" + route) render(); else location.hash = route; }
+function go(route) { const st = gated(route); if (st) { toast(`"${st.label || "이 정보"}"은(는) 공식 자료 확인 뒤에 열어요 · 준비 중`); trackEvent("준비중-" + route.split("/")[0]); return; } if (location.hash === "#" + route) render(); else location.hash = route; }
 // ---------- 동네 할인 (지역화폐·백화점 행사·동네 가게) ----------
 let DEALS = null, dlLoading = null, dlCat = "전체";
 function loadDeals() { if (!dlLoading) dlLoading = dataFetch("deals.json").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(j => { DEALS = j; if (location.hash === "#deals") render(); }).catch(() => { DEALS = { items: [], err: 1 }; if (location.hash === "#deals") render(); }); return dlLoading; }
@@ -2760,6 +2766,7 @@ async function loadEvents() {
   if (DATA) render();
 }
 async function load() {
+  await loadGate();   // 검문 상태 먼저(없으면 빈 객체 → 모든 메뉴 평소대로)
   loadSeats(); loadBooks(); loadEvents(); loadMeals(); loadWeather();
   try {
     const res = await dataFetch(DATA_URL);

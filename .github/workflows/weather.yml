@@ -21,7 +21,7 @@ jobs:
           mkdir -p logs; : > logs/weather.txt
           for pair in 대전동구:djdonggu 대전중구:djjunggu 대전서구:djseogu 유성:yuseong 대덕:daedeok; do
             c=${pair%%:*}; d=${pair##*:}; rm -rf output; mkdir -p output
-            CITY=$c python -u weather.py 2>&1 | tee -a logs/weather.txt; [ -f output/weather.json ] && mkdir -p data/$d && cp output/weather.json data/$d/ || echo "::warning::$c 날씨 실패"
+            CITY=$c python -u weather.py 2>&1 | tee -a logs/weather.txt; python3 tools/gate.py --city $d --in output --out data/$d || echo "::warning::$c 날씨 검문 실패"
           done
         env:
           WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
