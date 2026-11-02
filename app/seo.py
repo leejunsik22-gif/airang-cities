@@ -3,7 +3,7 @@
   python3 app/seo.py --out out --data data              # 모든 도시
   python3 app/seo.py --out out --data data --city gangnam
 
-만드는 것 (도시 폴더 안, 주소는 <도시>.daejeon.example.invalid/guide/...)
+만드는 것 (도시 폴더 안, 주소는 BASE/<도시>/guide/...)
   guide/index.html                 도시 안내 (주제별 링크)
   guide/academy/index.html         학원 전체 (과목·동별 개수)
   guide/academy/<과목>.html         과목별 학원 + 교습비(교육청 신고)
@@ -22,6 +22,7 @@ from datetime import datetime, timedelta, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CFG = json.load(open(os.path.join(HERE, "cities.json"), encoding="utf-8"))
+BASE = CFG.get("base", "https://airang-daejeon-all.pages.dev")
 KST = timezone(timedelta(hours=9))
 E = lambda s: html.escape(str(s or ""), quote=True)
 
@@ -56,7 +57,7 @@ def won(n):
 
 def page(c, key, path, title, desc, body, crumbs):
     """공통 틀: 제목·설명·주소 표준·앱으로 가기"""
-    site = f"https://{key}.daejeon.example.invalid"
+    site = f"{BASE}/{key}"
     col = c["colors"]
     nav = " › ".join(f'<a href="{u}">{E(t)}</a>' if u else E(t) for t, u in crumbs)
     now = datetime.now(KST).strftime("%Y-%m-%d")
@@ -291,7 +292,7 @@ def build_city(key, out, data):
           f"{sgg} 학원 교습비 비교, 유치원, 도서관 운영시간, 소아과 진료 시간, 아이와 갈 만한 곳을 한곳에서 보세요.", body, [home])
 
     # ── 사이트맵·robots
-    site = f"https://{key}.daejeon.example.invalid"
+    site = f"{BASE}/{key}"
     from urllib.parse import quote
     urls = [site + "/"] + [site + "/" + quote(p) for p in pages]
     open(os.path.join(root, "sitemap.xml"), "w", encoding="utf-8").write(
@@ -313,13 +314,13 @@ if __name__ == "__main__":
             continue
         n = build_city(k, a.out, a.data); tot += n
     ent = os.path.join(a.out, "entry")
-    if os.path.isdir(ent):   # 입구(airang.daejeon.example.invalid): 사이트맵·robots
+    if os.path.isdir(ent):   # 입구(BASE/entry/): 사이트맵·robots
         today = datetime.now(KST).strftime("%Y-%m-%d")
         # 사이트맵 묶음: 입구 + 모든 도시 사이트맵 (구글 '도메인' 등록이면 다른 하위 주소 사이트맵도 한 번에 받음)
         open(os.path.join(ent, "sitemap.xml"), "w", encoding="utf-8").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-            f"<url><loc>https://airang.daejeon.example.invalid/</loc><lastmod>{today}</lastmod></url>\n</urlset>\n")
+            f"<url><loc>{BASE}/entry/</loc><lastmod>{today}</lastmod></url>\n</urlset>\n")
         open(os.path.join(ent, "sitemap-all.xml"), "w", encoding="utf-8").write('<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-            + "".join(f"<sitemap><loc>https://{k}.daejeon.example.invalid/sitemap.xml</loc><lastmod>{today}</lastmod></sitemap>\n" for k in CFG["cities"])
-            + "<sitemap><loc>https://airang.daejeon.example.invalid/sitemap.xml</loc></sitemap>\n</sitemapindex>\n")
-        open(os.path.join(ent, "robots.txt"), "w", encoding="utf-8").write("User-agent: *\nAllow: /\nSitemap: https://airang.daejeon.example.invalid/sitemap.xml\n")
+            + "".join(f"<sitemap><loc>{BASE}/{k}/sitemap.xml</loc><lastmod>{today}</lastmod></sitemap>\n" for k in CFG["cities"])
+            + f"<sitemap><loc>{BASE}/entry/sitemap.xml</loc></sitemap>\n</sitemapindex>\n")
+        open(os.path.join(ent, "robots.txt"), "w", encoding="utf-8").write(f"User-agent: *\nAllow: /\nSitemap: {BASE}/entry/sitemap.xml\n")
     print(f"검색용 페이지 {tot}개")

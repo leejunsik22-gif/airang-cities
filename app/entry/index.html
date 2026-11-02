@@ -78,7 +78,7 @@ h1 em{font-style:normal;background:linear-gradient(transparent 62%,#FFE08A 62%)}
 </div>
 <script>
 const CITIES = /*CITIES*/[];   // build.py 가 cities.json 으로 채움
-const url = k => `https://${k}.daejeon.example.invalid/`;
+const url = k => `/${k}/`;   // 같은 사이트 안의 /도시키/ (Cloudflare 무료 주소)
 const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
 function pick(k) { store.set("airang.city", k); }
 const TABS = [["대전", "대전"], ["etc", "다른 지역"]];

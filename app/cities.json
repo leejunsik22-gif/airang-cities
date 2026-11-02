@@ -1,5 +1,6 @@
 {
- "note": "대전판(2026-11-02). 안내서 3-5 값. domain 은 임시값(example.invalid) — 대표가 도메인을 정하면 바꾼다. 다른 시·도를 열 때는 같은 모양으로 칸을 추가한다(서울·경기 제외).",
+ "base": "https://airang-daejeon-all.pages.dev",
+ "note": "대전판(2026-11-02). 안내서 3-5 값. 주소는 base + /도시키/ (Cloudflare 무료 주소, 대표 결정 2026-11-02). domain 칸은 나중에 자체 도메인을 살 때 쓰는 자리(example.invalid 면 건너뜀). 다른 시·도를 열 때는 같은 모양으로 칸을 추가한다(서울·경기 제외).",
  "cities": {
   "djdonggu": {
    "name": "대전 동구",
