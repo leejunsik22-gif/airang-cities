@@ -46,11 +46,30 @@ const BI = {
   key: '<circle cx="8" cy="14" r="4"/><path d="M11 11l8-8M16 6l2 2M19 3l2 2"/>',
   lock: '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
   city: '<path d="M3 20V9h6v11M9 20V4h6v16M15 20v-8h6v8"/><path d="M5 12h2M5 15h2M11 8h2M11 11h2M11 14h2M17 15h2"/>',
+  alert: '<path d="M12 4 3 19h18z"/><path d="M12 10v4M12 16.5v.5"/>',
+  moon: '<path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/>',
+  clock: '<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>',
+  mail: '<rect x="3" y="6" width="18" height="12" rx="2"/><path d="m3 8 9 6 9-6"/>',
+  heart: '<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',
+  star: '<path d="m12 4 2.4 5 5.6.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.6-.8z"/>',
+  leaf: '<path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14z"/><path d="M5 19c3-4 6-7 10-9"/>',
 };
 const EMOJI_ICON = { "🏠": "home", "🎟️": "ticket", "🎁": "gift", "🏥": "hospital", "🚑": "ambulance", "🩺": "stethoscope", "💊": "pill", "🛡️": "shield",
   "🏷️": "tag", "💳": "card", "🛍️": "bag", "🏪": "store", "🧒": "child", "📊": "chart", "☀️": "sun", "🌤️": "suncloud", "⛅": "suncloud", "☁️": "cloud", "🌧️": "rain", "🌦️": "rain",
   "📚": "books", "📖": "book", "✏️": "pencil", "🧸": "bear", "📍": "pin", "🍚": "rice", "🏊": "swim", "🧘": "swim", "🏋️": "swim", "💃": "swim", "♨️": "sun", "🧩": "puzzle",
-  "🏫": "school", "🎓": "cap", "💼": "briefcase", "🔍": "search", "📞": "phone", "📅": "calendar", "⭐": "cap" };
+  "🏫": "school", "🎓": "cap", "💼": "briefcase", "🔍": "search", "📞": "phone", "📅": "calendar", "⭐": "star", "⚠️": "alert", "🌙": "moon", "⏰": "clock", "🕐": "clock", "✉️": "mail", "📧": "mail", "❤️": "heart", "💛": "heart", "🌱": "leaf", "🏡": "home", "🆕": "star", "📱": "grid" };
+// 화면 안의 글자 이모지를 브랜드 아이콘으로 바꿔 끼움(버튼·칩·제목·태그·안내줄). 상태 점(🟢 등)·체크(✓)는 그대로.
+const ICONIZE_SEL = "button, a, h1, h2, h3, .pill, .chip, .foot, .note, label, b, strong, .sub";
+function iconize(root) {
+  if (!root || !root.querySelectorAll) return;
+  const re = /^([\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B50}])\uFE0F?\s?/u;
+  root.querySelectorAll(ICONIZE_SEL).forEach(el => {
+    el.childNodes.forEach(n => { if (n.nodeType !== 3) return; const m = n.textContent.match(re); if (!m) return; const name = EMOJI_ICON[m[1]] || EMOJI_ICON[m[1] + "\uFE0F"]; if (!name) return;
+      const span = document.createElement("span"); span.innerHTML = ico(name, 15, "none"); span.className = "bi-inl"; n.textContent = n.textContent.replace(re, ""); el.insertBefore(span, n); });
+  });
+}
+function iconizeStart() { const v = document.getElementById("view") || document.body; iconize(v); if (typeof MutationObserver !== "undefined") new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => n.nodeType === 1 && iconize(n)))).observe(v, { childList: true, subtree: true }); }
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", iconizeStart); else iconizeStart();
 const ROUTE_ICON = { acas: "pencil", kinders: "bear", library: "book", books: "books", schools: "school", premium: "coins", elite: "cap", deals: "tag", hosp: "hospital", sports: "swim", jobs: "briefcase", safety: "shield" };
 // 바탕 색조(브랜드 보조색만): 기본 네이비 바탕, 코랄·세이지·골드는 의미 있을 때만
 const ICON_TINT = { coral: "var(--coral-bg)", sage: "var(--sage-bg)", gold: "var(--gold-bg)", navy: "var(--navy-soft)", none: "transparent" };
