@@ -15,8 +15,10 @@ jobs:
           ENC=$(python3 -c "import os,urllib.parse;k=os.environ['K'];print(k if '%' in k else urllib.parse.quote(k,safe=''))")
           T=$(grep '^TOUR_API' events.py | cut -d'"' -f2)
           {
-          echo "== 관광공사 ($T)"
-          curl -s -m 40 "$T?serviceKey=$ENC&MobileOS=ETC&MobileApp=Airang&_type=json&arrange=A&eventStartDate=20261001&areaCode=31&numOfRows=3&pageNo=1" | head -c 400 | sed "s/$ENC/***/g"; echo
+          echo "== 관광공사 ($T) 대전 지역코드 진단"
+          for q in "areaCode=3&eventStartDate=20260801" "areaCode=3" "areaCode=31&eventStartDate=20260801" "lDongRegnCd=30&eventStartDate=20260801" "eventStartDate=20261001"; do
+            echo "-- $q"; curl -s -m 40 "$T?serviceKey=$ENC&MobileOS=ETC&MobileApp=Airang&_type=json&arrange=A&numOfRows=2&pageNo=1&$q" | head -c 300 | sed "s/$ENC/***/g"; echo
+          done
           echo "== 문화포털 (api.kcisa.kr)"
           CENC=$(python3 -c "import os,urllib.parse;k=os.environ.get('CK','');print(k if '%' in k else urllib.parse.quote(k,safe=''))")
           echo "CULTURE_KEY 길이: ${#CK}"
@@ -24,4 +26,4 @@ jobs:
           } > logs/keytest.txt 2>&1
           cat logs/keytest.txt
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add logs/keytest.txt; git commit -qm "키 시험 기록" && for i in 1 2 3; do git pull --rebase --autostash && git push origin HEAD:main && break; sleep 5; done
+          git add logs/keytest.txt; git commit -qm "키 시험 기록" && for i in 1 2 3; do git pull --rebase --autostash && git push origin HEAD:daejeon-setup && break; sleep 5; done
