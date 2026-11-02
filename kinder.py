@@ -15,14 +15,14 @@ KST = timezone(timedelta(hours=9))
 KEY = os.environ.get("KINDER_KEY", "")
 BASE = "https://e-childschoolinfo.moe.go.kr/api/notice/"
 from city import C, AREA, SIDO as _SIDO
-SIDO = _SIDO["kinder"]   # 유치원알리미 시도 코드 (city.py)
+SIDO = _SIDO["kinder"]   # 시도 코드 (경기 41, 서울 11)
 SGG = C["gus"]   # 구 → 행정구역 코드
 
 
 def call(api, sgg):
     params = {"key": KEY, "sidoCode": SIDO, "sggCode": sgg, "pageCnt": 1000, "currentPage": 1}
     url = BASE + api + "?" + urllib.parse.urlencode(params)
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (airang-daejeon-collector)"})
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (seongnam-edu-collector)"})
     for i in range(3):
         try:
             with urllib.request.urlopen(req, timeout=60) as res:

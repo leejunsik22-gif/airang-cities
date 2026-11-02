@@ -6,13 +6,17 @@
 
 템플릿 문법 (줄 단위)
   {{name}} {{key}} {{c.city}} …           도시 설정 값으로 바뀜 (cities.json)
-  {{#if yongin}} … {{#elif suwon,anyang}} … {{#else}} … {{/if}}
+  {{#if yongin}} … {{#elif suwon,anyang}} … {{#elif seoul}} … {{#else}} … {{/if}}
+                                          (seoul / gyeonggi = 그 시도의 모든 도시)
                                           그 도시일 때만 들어가는 줄 (#if 줄은 한 줄 전체)
 """
 import argparse, json, os, re, shutil, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CFG = json.load(open(os.path.join(HERE, "cities.json"), encoding="utf-8"))
+# 시도: 이름 → (정식 이름, 템플릿 태그, 시군구 끝 글자). 순서 = 다른 도시 둘러보기·입구 탭 순서
+SIDOS = {"대전": ("대전광역시", "daejeon", "구")}   # 다른 시·도를 열 때 추가 (서울·경기 제외)
+SIDO_ORDER = list(SIDOS)
 TEMPLATES = ["index.html", "sw.js", "manifest.webmanifest", "404.html"]
 COND = re.compile(r"^\{\{#(if|elif) ([a-z,]+)\}\}$|^\{\{#else\}\}$|^\{\{/if\}\}$")
 
@@ -30,8 +34,24 @@ def tokens(city):
     tiles = ["t-mint", "t-indigo", "t-coral", "t-sun", "t-lilac"]
     t["f.tileCls"] = "{ " + ", ".join(f'"{x}": "{tiles[i % len(tiles)]}"' for i, x in enumerate(g)) + " }"
     t["f.searchEx"] = c.get("searchEx", "")
-    oc = [f'["{v["name"]}", "https://{v["domain"]}"]' for k, v in CFG["cities"].items()]
-    t["f.otherCities"] = "const OTHER_CITIES = [" + ", ".join(oc[:3]) + ",\n  " + ", ".join(oc[3:]) + "];"
+    # 시도 (경기 / 서울): 서울은 구 하나가 앱 하나 → 시군구 이름이 '강남구'
+    sido = c.get("sido", "경기")
+    t["f.sidoShort"] = sido
+    t["f.sidoFull"] = SIDOS[sido][0]
+    t["f.sgg"] = c.get("sgg", c["name"] + SIDOS[sido][2])
+    # 다른 도시 둘러보기: [이름, 주소, 시도] — 경기도 → 서울, 시도 안에서는 가나다순
+    oc = sorted(CFG["cities"].items(), key=lambda kv: (SIDO_ORDER.index(kv[1].get("sido", "경기")), kv[1]["name"]))
+    oc = [f'["{v["name"]}", "https://{k}.daejeon.example.invalid", "{v.get("sido", "경기")}"]' for k, v in oc]
+    t["f.otherCities"] = "const OTHER_CITIES = [\n  " + ",\n  ".join(", ".join(oc[i:i + 6]) for i in range(0, len(oc), 6)) + "];"
+    return t
+
+
+def tags(city):
+    """{{#if …}} 에 쓸 수 있는 이름: 도시 키 + 시도 묶음 (gyeonggi / seoul / incheon / chungnam)
+    + nojobs (엄마 일자리 자료가 없는 시도 = 경기 밖 전부)"""
+    sido = CFG["cities"][city].get("sido", "경기")
+    t = {city, SIDOS[sido][1]}
+    if sido != "경기": t.add("nojobs")
     return t
 
 
@@ -42,9 +62,9 @@ def render(text, city):
         m = COND.match(ln)
         if m:
             if ln.startswith("{{#if"):
-                hit = city in m.group(2).split(","); stack.append([hit, hit])
+                hit = bool(tags(city) & set(m.group(2).split(","))); stack.append([hit, hit])
             elif ln.startswith("{{#elif"):
-                top = stack[-1]; hit = not top[0] and city in m.group(2).split(","); top[1] = hit; top[0] = top[0] or hit
+                top = stack[-1]; hit = not top[0] and bool(tags(city) & set(m.group(2).split(","))); top[1] = hit; top[0] = top[0] or hit
             elif ln == "{{#else}}":
                 top = stack[-1]; top[1] = not top[0]; top[0] = True
             else:
@@ -62,6 +82,8 @@ def render(text, city):
     return re.sub(r"\{\{([a-z]+(?:\.[A-Za-z0-9_]+)?)\}\}", sub, s)
 
 
+NAVER = json.load(open(os.path.join(HERE, "naver.json"), encoding="utf-8")) if os.path.exists(os.path.join(HERE, "naver.json")) else {}
+
 def build(city, out):
     d = os.path.join(out, city)
     if os.path.exists(d): shutil.rmtree(d)
@@ -71,6 +93,8 @@ def build(city, out):
         if not os.path.exists(src): continue
         if f == "404.html" and not CFG["cities"][city].get("has404"): continue
         txt = render(open(src, encoding="utf-8", newline="").read(), city)
+        if f == "index.html" and NAVER.get(city):                                     # 네이버 서치어드바이저 소유확인 (도시마다 다름 → app/naver.json)
+            txt = txt.replace('<meta charset="utf-8">', f'<meta charset="utf-8">\n<meta name="naver-site-verification" content="{NAVER[city]}" />', 1)
         open(os.path.join(d, f), "w", encoding="utf-8", newline="").write(txt)
     shutil.copytree(os.path.join(HERE, "assets"), os.path.join(d, "assets"))          # 모든 도시 같은 그림
     own = os.path.join(HERE, "cities", city)                                             # 도시 그림·아이콘
@@ -81,14 +105,21 @@ def build(city, out):
 
 
 def build_entry(out):
-    """입구(airang.songgollab.co.kr): 도시 고르기 화면. 도시 카드는 cities.json 에서."""
+    """입구(airang.daejeon.example.invalid): 도시 고르기 화면. 도시 카드는 cities.json 에서."""
     d = os.path.join(out, "entry")
     if os.path.exists(d): shutil.rmtree(d)
     os.makedirs(os.path.join(d, "img"))
-    rows = [[k, c["name"], c["colors"]["city"], c.get("areas", ""), c.get("lat", 0), c.get("lon", 0)] for k, c in CFG["cities"].items()]
+    rows = [[k, c["name"], c["colors"]["city"], c.get("areas", ""), c.get("lat", 0), c.get("lon", 0), c.get("sido", "경기")] for k, c in CFG["cities"].items()]
     src = open(os.path.join(HERE, "entry", "index.html"), encoding="utf-8").read()
     assert "/*CITIES*/[]" in src
     src = src.replace("/*CITIES*/[]", json.dumps(rows, ensure_ascii=False))
+    # 검색용 페이지로 가는 링크 (검색 로봇이 따라가도록 HTML에 바로 적음)
+    g = ""
+    for sd, label in (("대전", "대전"),):
+        cs = sorted([(k, c) for k, c in CFG["cities"].items() if c.get("sido", "경기") == sd], key=lambda kc: kc[1]["name"])
+        if cs:
+            g += f'<p>{label}</p>' + "".join(f'<a href="https://{k}.daejeon.example.invalid/guide/">{c.get("sgg") or c["name"] + SIDOS[sd][2]} 학원·유치원·소아과</a>' for k, c in cs)
+    src = src.replace("<!--GUIDES-->", f'<div class="lift guides"><h3>📍 동네 정보 모아보기</h3>{g}</div>')
     open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(src)
     for f in ("icon-192.png", "icon-512.png"):
         shutil.copy(os.path.join(HERE, "entry", f), d)

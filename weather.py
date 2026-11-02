@@ -17,19 +17,21 @@ from datetime import datetime, timedelta, timezone
 
 KST = timezone(timedelta(hours=9))
 KEY = os.environ.get("WEATHER_KEY", "").strip()
-CITY = os.environ.get("CITY", "대전").strip()
-try:   # 에어코리아 시도명(예: 대전)은 city.py 의 시도 설정에서
-    from city import SIDO as _SIDO
-    SIDO_AIR = _SIDO["air"]
-except (ImportError, SystemExit, KeyError):
-    SIDO_AIR = "대전"
+CITY = os.environ.get("CITY", "용인").strip()
 
 # 시청 위치 (위도, 경도), 에어코리아 측정소 이름 후보, 예보 권역
 PLACES = {
-    "대전": {"lat": 36.3504, "lon": 127.3845, "stations": [], "region": "대전"},   # stations 가 비면 대전 측정소 전체 평균 (air_now)
+    "용인": {"lat": 37.2411, "lon": 127.1776, "stations": ["김량장동", "삼가동", "기흥", "수지", "구성동", "신갈동", "모현읍", "백암면", "고림동", "상현동", "동천동"], "region": "경기남부"},
+    "성남": {"lat": 37.4200, "lon": 127.1265, "stations": ["정자동", "수내동", "운중동", "대왕판교로(백현동)", "단대동", "복정동", "상대원동", "성남대로(모란역)"], "region": "경기남부"},
+    "수원": {"lat": 37.2636, "lon": 127.0286, "stations": ["인계동", "광교동", "신풍동", "고색동", "천천동", "영통동", "호매실동", "우만동"], "region": "경기남부"},
 }
 FCST = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
 AIR_FC = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getMinuDustFrcstDspth"
+try:
+    import city as _cc0
+    AIR_SIDO = _cc0.SIDO["air"]
+except (ImportError, SystemExit):
+    AIR_SIDO = "경기"
 AIR_NOW = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty"
 
 
@@ -169,18 +171,18 @@ def air_forecast(today, region):
 
 def air_now(stations):
     """실시간 측정값 평균으로 등급 (예보가 없을 때)"""
-    js = get_json(AIR_NOW, {"returnType": "json", "numOfRows": 200, "pageNo": 1, "sidoName": SIDO_AIR, "ver": "1.3"})
+    js = get_json(AIR_NOW, {"returnType": "json", "numOfRows": 200, "pageNo": 1, "sidoName": AIR_SIDO, "ver": "1.3"})
     p10, p25 = [], []
     for it in items(js) if js else []:
-        if stations and it.get("stationName") not in stations:   # 측정소 이름 목록이 비면 시도 전체 평균
+        if it.get("stationName") not in stations:
             continue
         for arr, f in ((p10, "pm10Value"), (p25, "pm25Value")):
             try:
                 arr.append(float(it.get(f)))
             except (TypeError, ValueError):
                 pass
-    if js and not p10 and not p25:   # 측정소 이름이 하나도 안 맞으면 시도 측정소 이름을 기록에 남겨 고칠 수 있게
-        print("  측정소 이름 확인 필요.", SIDO_AIR, "측정소:", ", ".join(sorted({it.get("stationName", "") for it in items(js)}))[:1500])
+    if js and not p10 and not p25:   # 측정소 이름이 하나도 안 맞으면 경기 측정소 이름을 기록에 남겨 고칠 수 있게
+        print("  측정소 이름 확인 필요. 경기 측정소:", ", ".join(sorted({it.get("stationName", "") for it in items(js)}))[:1500])
     out = {}
     if p10:
         out["pm10"] = grade_pm10(sum(p10) / len(p10))
@@ -198,7 +200,7 @@ def main():
         try:
             import city as _c
             cc = _c.CITIES.get(CITY)
-            if cc: place = {"lat": cc["lat"], "lon": cc["lon"], "stations": cc["stations"], "region": cc.get("region", SIDO_AIR)}
+            if cc: place = {"lat": cc["lat"], "lon": cc["lon"], "stations": cc["stations"], "region": cc.get("region", "경기남부" if AIR_SIDO == "경기" else AIR_SIDO)}
         except SystemExit:
             pass
     if not place:

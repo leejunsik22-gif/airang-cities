@@ -19,7 +19,7 @@ from datetime import datetime, timedelta, timezone
 
 KST = timezone(timedelta(hours=9))
 BASE = "https://spo.isdc.co.kr"
-UA = "Mozilla/5.0 (seongnam-edu-collector; +https://seongnam.songgollab.co.kr)"
+UA = "Mozilla/5.0 (seongnam-edu-collector; +https://seongnam.daejeon.example.invalid)"
 APPLY = BASE + "/courseRegist.do"
 
 CENTERS = [
@@ -250,7 +250,7 @@ def main():
 
 
 # ---------- 다른 도시 ----------
-UA2 = "Mozilla/5.0 (airang-collector; +https://songgollab.co.kr)"
+UA2 = "Mozilla/5.0 (airang-collector; +https://daejeon.example.invalid)"
 GYS = "https://yeyak.gys.or.kr"
 BEST = "https://www.best.or.kr"
 AUC = "https://www.auc.or.kr"

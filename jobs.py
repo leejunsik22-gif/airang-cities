@@ -5,7 +5,7 @@
 결과는 output/jobs.json 으로 저장한다. 개인 연락처·이메일·담당자 이름은 저장하지 않는다.
 """
 
-from city import C, AREA, GU_RE, gu_of
+from city import C, AREA, GU_RE, gu_of, in_area
 import json
 import os
 import re
@@ -134,7 +134,7 @@ def care_jobs():
         for jo, tds, a in rows:
             g = lambda i: sp(tds[i].all_text())
             area = g(5)
-            if AREA[:-1] not in area:
+            if not in_area(area, AREA[:-1]):
                 continue
             gu = (re.search("(" + GU_RE + ")", area) or [None, ""])[1] or (lambda g: "" if g == "기타" else g)(gu_of(AREA + " " + area))
             out.append({"id": "C" + jo, "type": g(1), "title": sp(a.attrs.get("title") or g(2)), "org": g(3),
@@ -167,6 +167,12 @@ def care_jobs():
 
 def main():
     today = datetime.now(KST).date().isoformat()
+    if C.get("sido", "경기") != "경기":   # 경기도교육청·경기육아종합지원센터 자료라 다른 시도는 아직 없음
+        os.makedirs("output", exist_ok=True)
+        json.dump({"updated_at": datetime.now(KST).strftime("%Y-%m-%d %H:%M:%S"), "source": "", "school": [], "care": []},
+                  open("output/jobs.json", "w", encoding="utf-8"), ensure_ascii=False)
+        print("경기도가 아니라 채용 정보는 건너뜀")
+        return
     school, care = [], []
     try:
         school = goe_jobs()

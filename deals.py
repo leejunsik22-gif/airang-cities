@@ -18,17 +18,24 @@ import urllib.request
 from datetime import date, datetime, timedelta, timezone
 
 KST = timezone(timedelta(hours=9))
-CITY = os.environ.get("CITY", "대전").strip()
+CITY = os.environ.get("CITY", "용인").strip()
 KEY = os.environ.get("KAKAO_KEY", "").strip()
 API = "https://dapi.kakao.com/v2/search/"
 DAYS = 21   # 최근 3주 글만
 
 # 사람이 기사로 확인한 지역화폐 혜택. 바뀌면 여기만 고치면 된다. (as_of: 확인한 날, src: 근거 기사)
 MONEY = {
-    "대전": {"name": "온통대전", "q": "온통대전 인센티브", "facts": []},   # facts: 기사로 확인한 혜택만 직접 적는다 (확인한 날 as_of, 근거 link 포함)
+    # 대전 5구 (안내서 3-4). 지역화폐 이름은 올리기 전 재확인 필요
+    "대전동구": {"name": "대전사랑카드", "q": "대전 동구 대전사랑카드 할인", "facts": []},
+    "대전중구": {"name": "대전사랑카드", "q": "대전 중구 대전사랑카드 할인", "facts": []},
+    "대전서구": {"name": "대전사랑카드", "q": "대전 서구 대전사랑카드 할인", "facts": []},
+    "유성":     {"name": "대전사랑카드", "q": "유성구 대전사랑카드 할인", "facts": []},
+    "대덕":     {"name": "대전사랑카드", "q": "대덕구 대전사랑카드 할인", "facts": []},
 }
 STORES = {
-    "대전": ["신세계백화점 대전 아트앤사이언스", "롯데백화점 대전점", "갤러리아 타임월드"],
+    "대전서구": ["갤러리아 타임월드"],
+    "유성": ["대전신세계 Art & Science", "현대프리미엄아울렛 대전점"],
+    "대전중구": ["롯데백화점 대전점"],
 }
 GOOD = re.compile(r"행사|세일|할인|특가|팝업|이벤트|사은|증정|키즈|어린이|아이|가족|체험|공연|페스티벌|축제|마켓|클래스|오픈")
 BAD = re.compile(r"채용|알바|구인|부동산|분양|매매|전세|주가|증권|실적|영업이익|사고|화재|폭행|경찰|사망|소송|노조|파업|대출|코인"
@@ -135,7 +142,7 @@ def store_items(today):
 
 
 
-LOCAL_URL = ""   # 저장소를 만든 뒤 deals/local.json 의 raw 주소를 넣는다 (비우면 이 저장소 안의 파일만 읽는다)
+LOCAL_URL = "https://raw.githubusercontent.com/leejunsik22-gif/airang-cities/main/deals/local.json"
 
 
 def local_items(today):
@@ -146,8 +153,6 @@ def local_items(today):
         if os.path.exists(here):
             data = json.load(open(here, encoding="utf-8"))
         else:
-            if not LOCAL_URL:
-                return []
             with urllib.request.urlopen(urllib.request.Request(LOCAL_URL, headers={"Cache-Control": "no-cache"}), timeout=20) as r:
                 data = json.loads(r.read().decode("utf-8"))
     except Exception as e:

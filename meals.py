@@ -15,9 +15,8 @@ from datetime import datetime, timedelta, timezone
 KST = timezone(timedelta(hours=9))
 API = "https://open.neis.go.kr/hub/mealServiceDietInfo"
 KEY = os.environ.get("NEIS_KEY", "")
-from city import SIDO
-
-OFFICE = SIDO["neis"]   # 시도교육청 코드 (city.py)
+from city import SIDO as _SIDO
+OFFICE = _SIDO["neis"]
 DAYS = 7
 
 

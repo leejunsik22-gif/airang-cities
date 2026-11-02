@@ -21,10 +21,7 @@ URL = "https://open.neis.go.kr/hub/acaInsTiInfo"
 
 def fetch_page(page):
     params = {"KEY": KEY, "Type": "json", "pIndex": page, "pSize": 1000,
-              "ATPT_OFCDC_SC_CODE": SIDO["neis"]}
-    zone = C.get("aca_zone", AREA)   # 행정구역명 조건. None 이면 보내지 않고 시도교육청 전체를 받는다 (광역시는 교육청 하나가 시 전체)
-    if zone:
-        params["ADMST_ZONE_NM"] = zone
+              "ATPT_OFCDC_SC_CODE": SIDO["neis"], "ADMST_ZONE_NM": C.get("aca_zone", AREA)}
     url = URL + "?" + urllib.parse.urlencode(params)
     for i in range(3):
         try:

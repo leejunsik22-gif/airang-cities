@@ -15,7 +15,7 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 KST = timezone(timedelta(hours=9))
-CITY = os.environ.get("CITY", "대전").strip()
+CITY = os.environ.get("CITY", "용인").strip()
 KEY = os.environ.get("WEATHER_KEY", "").strip()
 NAT = "https://apis.data.go.kr/B554287/NationalWelfareInformationsV001/NationalWelfarelistV001"
 LOC = "https://apis.data.go.kr/B554287/LocalGovernmentWelfareInformations/LcgvWelfarelist"
@@ -119,18 +119,15 @@ def main():
     except Exception as e:
         print("  중앙부처 복지 실패:", e)
     try:
-        import city as _city   # 시도 이름(예: 대전광역시)과 시군구 이름은 city.py 에서
-        q = {"ctpvNm": _city.SIDO["name"]}
-        if _city.C.get("sgg_name"):   # 광역시는 비워 두어 시 전체를 받는다
-            q["sggNm"] = _city.C["sgg_name"]
-        raw = all_pages(LOC, q)
+        import city as _cc
+        raw = all_pages(LOC, {"ctpvNm": _cc.SIDO["full"], "sggNm": _cc.SGG})
         if raw:
             print("  시 혜택 칸:", sorted(raw[0]))
         loc = [row(it, "local") for it in raw]
         kid = [r for r in loc if r["n"] and (for_kids(r) or (KID_WORDS.search(r["n"]) and not SKIP.search(r["n"])))]
         res["items"] = kid + res["items"]
         res["src"]["local"] = len(kid)
-        print(f"  {CITY} 혜택 {len(loc)}건 중 아이·가족 {len(kid)}건")
+        print(f"  {CITY}시 혜택 {len(loc)}건 중 아이·가족 {len(kid)}건")
     except Exception as e:
         print("  지자체 복지(시 혜택) 건너뜀:", e)
     # 서버가 가끔 빈 목록·시간 초과를 돌려줌 → 이번에 못 받은 쪽은 지난번 것을 그대로 둔다
@@ -147,6 +144,20 @@ def main():
             print("  나라 혜택: 지난번 목록 유지")
     except (OSError, ValueError):
         pass
+    if not res["src"]["nat"]:   # 나라 혜택은 모든 도시가 같음 → 다른 도시가 받아 둔 것을 빌려 씀 (가장 최근 것)
+        import glob
+        best = None
+        for f in glob.glob("data/*/benefits.json"):
+            try:
+                d = json.load(open(f, encoding="utf-8"))
+            except (OSError, ValueError):
+                continue
+            if d.get("src", {}).get("nat") is True and (best is None or d.get("updated", "") > best.get("updated", "")):
+                best = d
+        if best:
+            res["items"] += [x for x in best["items"] if x.get("scope") == "nat"]
+            res["src"]["nat"] = "borrow"
+            print("  나라 혜택: 다른 도시 것을 빌려 씀", best.get("city"), best.get("updated"))
     if not res["src"]["nat"] and not res["src"]["local"]:
         raise SystemExit("혜택 정보를 못 받음 — 저장하지 않음")
     os.makedirs("output", exist_ok=True)
