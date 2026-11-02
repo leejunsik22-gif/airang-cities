@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""공개 전 자료 검문(gate) v01후보 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
+"""공개 전 자료 검문(gate) v02후보 — 유효기간(valid_days)·만료 제외, auto_check/official_verify 분리 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
 
   python3 tools/gate.py --city yuseong --in output --out data/yuseong [--today 2026-11-02] [--dry-run]
 
@@ -30,6 +30,21 @@ def count_of(obj, key):
         return None
     v = obj.get(key)
     return len(v) if isinstance(v, (list, dict)) else None
+
+
+def expired(path, rule, today):
+    """직전 공개본이 유효기간(valid_days)을 넘겼는지 — 넘기면 공개 제외(만료)"""
+    vd = rule.get("valid_days")
+    uk = rule.get("updated_key")
+    if not vd or not uk or not os.path.exists(path):
+        return False, None
+    try:
+        d = parse_dt(json.load(open(path, encoding="utf-8")).get(uk, ""))
+    except Exception:
+        return True, None
+    if d is None:
+        return True, None
+    return (today - d).days > vd, d
 
 
 def check(path, rule, prev_path, today):
@@ -87,17 +102,25 @@ def main():
     for fn, rule in RULES["files"].items():
         src, dst = os.path.join(a.inp, fn), os.path.join(a.out, fn)
         ent = {"label": rule["label"], "verify_status": rule["verify_status"], "source_org": rule.get("source_org", ""),
-               "source_url": rule.get("source_url", ""), "checked_at": a.today, "published": False, "count": None, "reason": ""}
+               "source_url": rule.get("source_url", ""), "checked_at": a.today, "published": False, "count": None, "reason": "",
+               "auto_check": "", "official_verify": rule.get("official_verify", "미확인"), "verified_at": rule.get("verified_at", ""), "verified_by": rule.get("verified_by", ""),
+               "valid_days": rule.get("valid_days")}
         if rule["verify_status"] not in pub:
-            ent["reason"] = "공개 제외: " + rule.get("note", rule["verify_status"])
+            ent["reason"] = "공개 제외: " + rule.get("note", rule["verify_status"]); ent["auto_check"] = "검사 안 함(비공개 등급)"
             if os.path.exists(dst) and not a.dry_run:
                 os.remove(dst); ent["reason"] += " (기존 공개본 치움)"
             print(f"  ⛔ {fn:16} 제외 — {rule.get('note','')}")
         elif not os.path.exists(src):
             if os.path.exists(dst):
-                ok, rs, n = check(dst, rule, None, today)
-                ent.update(published=True, count=n, reason="새 수집 없음 — 직전 공개본 유지" + ("" if ok else " (주의: " + "; ".join(rs) + ")"))
-                print(f"  ◻ {fn:16} 새 수집 없음 → 이전본 유지 ({n}건)")
+                ex, d = expired(dst, rule, today)
+                if ex:
+                    if not a.dry_run: os.remove(dst)
+                    ent.update(published=False, auto_check="만료", reason=f"새 수집 없음 + 직전 공개본 만료({d}, 유효 {rule.get('valid_days')}일) → 공개 제외")
+                    print(f"  ⌛ {fn:16} 만료 — 이전본 {d} (유효 {rule.get('valid_days')}일) → 공개 제외")
+                else:
+                    ok, rs, n = check(dst, rule, None, today)
+                    ent.update(published=True, count=n, auto_check="통과(이전본)", reason="새 수집 없음 — 직전 공개본 유지" + ("" if ok else " (주의: " + "; ".join(rs) + ")"))
+                    print(f"  ◻ {fn:16} 새 수집 없음 → 이전본 유지 ({n}건)")
             else:
                 ent["reason"] = "수집 파일 없음·공개본도 없음"
                 print(f"  ◻ {fn:16} 없음")
@@ -107,16 +130,22 @@ def main():
             if ok:
                 if not a.dry_run:
                     shutil.copy(src, dst)
-                ent.update(published=True, reason="검사 통과")
+                ent.update(published=True, auto_check="통과", reason="검사 통과")
                 print(f"  ✅ {fn:16} 공개 ({n}건)")
             else:
                 failed.append(fn)
                 keep = os.path.exists(dst)
-                if keep:   # 공개된 것은 직전본이므로 건수도 직전본 기준
-                    try: ent["count"] = count_of(json.load(open(dst, encoding="utf-8")), rule.get("list"))
-                    except Exception: pass
-                ent.update(published=keep, reason="검사 실패: " + "; ".join(rs) + (" → 직전 공개본 유지" if keep else " → 미공개"))
-                print(f"  ❌ {fn:16} 실패 — {'; '.join(rs)} → {'이전본 유지' if keep else '미공개'}")
+                ex, d = expired(dst, rule, today) if keep else (False, None)
+                if keep and ex:
+                    if not a.dry_run: os.remove(dst)
+                    ent.update(published=False, auto_check="실패+만료", reason="검사 실패: " + "; ".join(rs) + f" → 직전 공개본도 만료({d}, 유효 {rule.get('valid_days')}일) → 공개 제외")
+                    print(f"  ❌⌛ {fn:16} 실패 + 이전본 만료({d}) → 공개 제외")
+                else:
+                    if keep:   # 공개된 것은 직전본이므로 건수도 직전본 기준
+                        try: ent["count"] = count_of(json.load(open(dst, encoding="utf-8")), rule.get("list"))
+                        except Exception: pass
+                    ent.update(published=keep, auto_check="실패", reason="검사 실패: " + "; ".join(rs) + (" → 직전 공개본 유지" if keep else " → 미공개"))
+                    print(f"  ❌ {fn:16} 실패 — {'; '.join(rs)} → {'이전본 유지' if keep else '미공개'}")
         status[fn] = ent
 
     # 규칙에 없는 파일은 공개하지 않는다(알 수 없는 자료)

@@ -117,11 +117,12 @@ input[type=text],input[type=search],.search{min-height:44px;border-radius:var(--
 .fam-pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(250,247,241,0) 45%,var(--ivory) 100%)}
 .fam-tag{position:absolute;right:10px;top:10px;z-index:1;font-size:10.5px;font-weight:700;color:var(--muted);background:rgba(255,255,255,.85);border-radius:8px;padding:3px 8px}
 .fam-body{padding:6px 18px 18px}
-.fam h1{margin:0 0 8px;font-size:26px;line-height:1.3}
+.fam h1{margin:0 0 6px;font-size:25px;line-height:1.3}
+.fam .chips{margin:10px 0 0;gap:6px}.fam .chips > span{font-size:12px;padding:5px 9px}
 .fam h1 em{background:linear-gradient(transparent 62%,var(--gold-bg) 62%)}
 .fam .sub{margin:0}
-.chips{margin:0 0 22px}
-.locate{box-shadow:var(--shadow)!important;background:var(--navy)!important}
+.chips{margin:0}
+.locate{box-shadow:var(--shadow)!important;background:var(--navy)!important;margin-top:18px}
 .note{margin:8px 0 26px}
 .sec{margin:10px 2px 12px}
 .tabs{margin:8px 0 16px}
@@ -148,18 +149,18 @@ a.val{display:inline-flex;align-items:center;min-height:44px}
   <section class="fam lift" aria-label="소개">
     <div class="fam-pic" style="background-image:url(img/hero-yuseong-800.webp)"><span class="fam-tag">AI 삽화 · 실사 사진은 준비 중</span></div>
     <div class="fam-body">
-      <h1>우리 동네를 골라 주세요<br><em>필요한 정보만 한곳에</em></h1>
-      <p class="sub">학교 일정·급식부터 도서관·유치원·학원·병원·혜택까지.<br>무료이고, 가입 없이 바로 써요.</p>
+      <h1>우리 동네를 골라 주세요</h1>
+      <p class="sub">학교·급식 · 도서관 · 학원 · 병원 · 혜택 — 무료·가입 없음</p>
+      <div class="chips" id="chips"></div>
     </div>
   </section>
-  <div class="chips" id="chips"></div>
 
   <div id="again"></div>
-  <button class="locate" onclick="locate()"><span id="loc-ic"></span> 내 위치로 우리 도시 찾기</button>
-  <div class="note">위치는 이 휴대폰 안에서만 써요. 어디에도 보내지 않아요.</div>
-
   <div class="tabs" id="tabs"></div>
   <div id="groups"></div>
+
+  <button class="locate" onclick="locate()"><span id="loc-ic"></span> 내 위치로 우리 구 찾기</button>
+  <div class="note">위치는 이 휴대폰 안에서만 써요. 어디에도 보내지 않아요.</div>
 
   <div class="lift soon">
     <h3><span class="ih"></span> 곧 열려요</h3>
@@ -296,7 +297,7 @@ const q = new URLSearchParams(location.search).get("near");
 const qc = CITIES.find(x => x[0] === q); if (qc) tab = qc[6];
 render(q);
 </script>
-<script>document.getElementById("chips").innerHTML = [["school", "학교·급식"], ["book", "도서관"], ["bear", "유치원"], ["pencil", "학원"], ["hospital", "동네병원"], ["gift", "놓치기 쉬운 혜택"], ["ticket", "주말 행사"]].map(([i, t]) => `<span>${ico(i, 16, "none")} ${t}</span>`).join("");
+<script>document.getElementById("chips").innerHTML = [["school", "학교·급식"], ["pencil", "학원"], ["hospital", "병원"], ["gift", "혜택"]].map(([i, t]) => `<span>${ico(i, 16, "none")} ${t}</span>`).join("");
 document.getElementById("loc-ic").innerHTML = ico("pin", 18, "none", "#fff");
 document.querySelectorAll(".ih").forEach(e => e.innerHTML = ico("city", 16, "none"));</script>
 </body></html>
