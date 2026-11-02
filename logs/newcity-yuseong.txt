@@ -1,27 +1,21 @@
-== benefits
-    (서버 전체 461건, 한 번에 100건)
-  나라 혜택 461건 중 아이·가족 106건
-    (서버 전체 11건, 한 번에 11건)
-  시 혜택 칸: ['bizChrDeptNm', 'ctpvNm', 'inqNum', 'lastModYmd', 'servDgst', 'servDtlLink', 'servId', 'servNm', 'sggNm', 'sprtCycNm', 'srvPvsnNm', 'trgterIndvdlNmArray']
-  유성시 혜택 11건 중 아이·가족 2건
-  저장: 65 KB, 108 건
 == events
-  KOPIS_KEY 없음: 공연예술통합전산망 건너뜀
-  관광공사 응답: {'response': {'header': {'resultCode': '0000', 'resultMsg': 'OK'}, 'body': {'items': '', 'numOfRows': 0, 'pageNo': 1, 'totalCount': 0}}}
-  관광공사 유성 축제·행사 0건
-공연·축제 0건, 체험·교육 0건 저장
+Traceback (most recent call last):
+  File "/home/runner/work/airang-cities/airang-cities/events.py", line 309, in <module>
+    TOUR_AREA = city.SIDO.get("tour", 31)   # 관광공사 지역코드: city.py SIDOS["tour"] (없으면 경기 31)
+                ^^^^
+NameError: name 'city' is not defined
 == 결과 파일
 total 832
-drwxr-xr-x 2 runner runner   4096 Nov  2 06:34 .
-drwxr-xr-x 3 runner runner   4096 Nov  2 06:33 ..
--rw-r--r-- 1 runner runner 336481 Nov  2 06:34 academies.json
--rw-r--r-- 1 runner runner  66804 Nov  2 06:34 benefits.json
--rw-r--r-- 1 runner runner   3904 Nov  2 06:34 deals.json
--rw-r--r-- 1 runner runner  35623 Nov  2 06:34 elite.json
--rw-r--r-- 1 runner runner    141 Nov  2 06:34 events.json
--rw-r--r-- 1 runner runner 123517 Nov  2 06:34 hospitals.json
--rw-r--r-- 1 runner runner     77 Nov  2 06:34 jobs.json
--rw-r--r-- 1 runner runner 125825 Nov  2 06:34 latest.json
--rw-r--r-- 1 runner runner 121093 Nov  2 06:34 meals.json
--rw-r--r-- 1 runner runner    116 Nov  2 06:34 sports.json
--rw-r--r-- 1 runner runner    217 Nov  2 06:34 weather.json
+drwxr-xr-x 2 runner runner   4096 Nov  2 06:35 .
+drwxr-xr-x 3 runner runner   4096 Nov  2 06:35 ..
+-rw-r--r-- 1 runner runner 336481 Nov  2 06:35 academies.json
+-rw-r--r-- 1 runner runner  66804 Nov  2 06:35 benefits.json
+-rw-r--r-- 1 runner runner   3904 Nov  2 06:35 deals.json
+-rw-r--r-- 1 runner runner  35623 Nov  2 06:35 elite.json
+-rw-r--r-- 1 runner runner    141 Nov  2 06:35 events.json
+-rw-r--r-- 1 runner runner 123517 Nov  2 06:35 hospitals.json
+-rw-r--r-- 1 runner runner     77 Nov  2 06:35 jobs.json
+-rw-r--r-- 1 runner runner 125825 Nov  2 06:35 latest.json
+-rw-r--r-- 1 runner runner 121093 Nov  2 06:35 meals.json
+-rw-r--r-- 1 runner runner    116 Nov  2 06:35 sports.json
+-rw-r--r-- 1 runner runner    217 Nov  2 06:35 weather.json
