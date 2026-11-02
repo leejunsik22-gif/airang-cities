@@ -1,21 +1,20 @@
 == events
-Traceback (most recent call last):
-  File "/home/runner/work/airang-cities/airang-cities/events.py", line 309, in <module>
-    TOUR_AREA = city.SIDO.get("tour", 31)   # 관광공사 지역코드: city.py SIDOS["tour"] (없으면 경기 31)
-                ^^^^
-NameError: name 'city' is not defined
+  KOPIS_KEY 없음: 공연예술통합전산망 건너뜀
+  관광공사 응답: {'response': {'header': {'resultCode': '0000', 'resultMsg': 'OK'}, 'body': {'items': '', 'numOfRows': 0, 'pageNo': 1, 'totalCount': 0}}}
+  관광공사 유성 축제·행사 0건
+공연·축제 0건, 체험·교육 0건 저장
 == 결과 파일
 total 832
-drwxr-xr-x 2 runner runner   4096 Nov  2 06:35 .
-drwxr-xr-x 3 runner runner   4096 Nov  2 06:35 ..
--rw-r--r-- 1 runner runner 336481 Nov  2 06:35 academies.json
--rw-r--r-- 1 runner runner  66804 Nov  2 06:35 benefits.json
--rw-r--r-- 1 runner runner   3904 Nov  2 06:35 deals.json
--rw-r--r-- 1 runner runner  35623 Nov  2 06:35 elite.json
--rw-r--r-- 1 runner runner    141 Nov  2 06:35 events.json
--rw-r--r-- 1 runner runner 123517 Nov  2 06:35 hospitals.json
--rw-r--r-- 1 runner runner     77 Nov  2 06:35 jobs.json
--rw-r--r-- 1 runner runner 125825 Nov  2 06:35 latest.json
--rw-r--r-- 1 runner runner 121093 Nov  2 06:35 meals.json
--rw-r--r-- 1 runner runner    116 Nov  2 06:35 sports.json
--rw-r--r-- 1 runner runner    217 Nov  2 06:35 weather.json
+drwxr-xr-x 2 runner runner   4096 Nov  2 06:36 .
+drwxr-xr-x 3 runner runner   4096 Nov  2 06:36 ..
+-rw-r--r-- 1 runner runner 336481 Nov  2 06:36 academies.json
+-rw-r--r-- 1 runner runner  66804 Nov  2 06:36 benefits.json
+-rw-r--r-- 1 runner runner   3904 Nov  2 06:36 deals.json
+-rw-r--r-- 1 runner runner  35623 Nov  2 06:36 elite.json
+-rw-r--r-- 1 runner runner    141 Nov  2 06:36 events.json
+-rw-r--r-- 1 runner runner 123517 Nov  2 06:36 hospitals.json
+-rw-r--r-- 1 runner runner     77 Nov  2 06:36 jobs.json
+-rw-r--r-- 1 runner runner 125825 Nov  2 06:36 latest.json
+-rw-r--r-- 1 runner runner 121093 Nov  2 06:36 meals.json
+-rw-r--r-- 1 runner runner    116 Nov  2 06:36 sports.json
+-rw-r--r-- 1 runner runner    217 Nov  2 06:36 weather.json
