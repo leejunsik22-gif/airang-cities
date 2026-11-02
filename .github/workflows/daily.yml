@@ -1,8 +1,8 @@
 name: daily (도시별 하루 수집)
 # 매일 새벽 5시 30분(한국시간)에 대전 5개 구마다 학교·급식·학원·유치원·도서관·인기도서를 모은다 (2026-11-02 대전판)
 on:
-  # schedule: (대표 승인 전 자동 수집 비활성 — 2026-11-02)
-  #   - cron: "30 20 * * *"
+  schedule:   # 2026-11-02 대표 승인으로 자동 수집 켬
+    - cron: "30 20 * * *"
   workflow_dispatch:
 permissions:
   contents: write

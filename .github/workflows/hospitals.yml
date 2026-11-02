@@ -1,7 +1,7 @@
 name: hospitals (동네 병원 — 의원·병원·응급실)
 on:
-  # schedule: (대표 승인 전 자동 수집 비활성 — 2026-11-02)
-  #   - cron: "50 19 * * 0"   # 매주 월요일 04:50 (한국시간)
+  schedule:   # 2026-11-02 대표 승인으로 자동 수집 켬
+    - cron: "50 19 * * 0"   # 매주 월요일 04:50 (한국시간)
   workflow_dispatch:
 permissions:
   contents: write
