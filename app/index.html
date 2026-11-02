@@ -524,7 +524,7 @@ const icon = {
 };
 
 function footer() {
-  return `<div class="foot">데이터 · ${esc(DATA.source || "나이스 교육정보 개방포털")}<br>업데이트 ${esc(DATA.updated_at)} · 하루 3번 자동 갱신<br>아이랑 {{name}} · 대전 학부모 정보 서비스</div>`;
+  return `<div class="foot">데이터 · ${esc(DATA.source || "나이스 교육정보 개방포털")}<br>업데이트 ${esc(DATA.updated_at)} · 하루 3번 자동 갱신<br>아이랑 {{name}} · by 라그릴스</div>`;
 }
 
 // ---------- 화면: 홈 ----------
@@ -577,7 +577,7 @@ function viewHome() {
 {{/if}}
   $view.innerHTML = `<div style="display:flex;align-items:center;gap:9px;margin:2px 0 14px">
       <img src="icon-192.png?v=59" alt="아이랑 로고" width="32" height="32" style="border-radius:9px;box-shadow:0 2px 8px rgba(30,40,90,.12);flex:0 0 auto">
-      <div style="min-width:0;flex:1;line-height:1.15"><div style="font-size:18px;font-weight:800;letter-spacing:-.3px;white-space:nowrap">아이랑 <span style="color:var(--city-ink)">{{name}}</span></div><div style="font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">대전 학부모 정보 서비스</div></div>
+      <div style="min-width:0;flex:1;line-height:1.15"><div style="font-size:18px;font-weight:800;letter-spacing:-.3px;white-space:nowrap">아이랑 <span style="color:var(--city-ink)">{{name}}</span></div><div style="font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">by 라그릴스</div></div>
       <button class="chip glass" aria-label="지인에게 알려주기" title="지인에게 알려주기" style="flex:0 0 auto;width:34px;height:34px;padding:0;justify-content:center;color:var(--indigo)" onclick="shareApp()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
       <button class="chip glass" style="flex:0 0 auto;font-size:12px;padding:0 12px;height:34px" onclick="go('region')">${icon.pin} ${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()} ▾</button></div>
     ${addrNote}${homeUpdated()}${hero}${homeOpenKids()}${homeToday(ks)}${ks.length ? homeMeals(homeKid === "all" ? ks : ks.filter(k => k.id === homeKid)) : ""}${mine}${notice}${homeEvents()}${homeLibrary()}${homeBooks()}${homeAd()}${footer()}`;
@@ -899,10 +899,8 @@ function viewMy() {
     <section class="section" id="install-guide"><div class="sec-head"><h2>앱처럼 쓰기</h2></div>${installGuide()}</section>
     <section class="section"><div class="sec-head"><h2>정보</h2></div>
       <div class="lift card-pad">
-{{#if yongin}}
-        <div class="row"><span>시범 운영 시작</span><span class="val">2026년 10월 10일</span></div>
-{{#else}}
-{{/if}}
+        <div class="row"><span>시범 운영 시작</span><span class="val">2026년 11월 2일</span></div>
+        <div class="row"><span>개발</span><span class="val">라그릴스</span></div>
         <div class="row"><span>마지막 업데이트</span><span class="val">${esc(DATA.updated_at)}</span></div>
         <div class="row" onclick="adminTap()" style="cursor:default;user-select:none"><span>버전</span><span class="val">${APP_VER} (시범 운영)</span></div>
         <div class="row" onclick="go('news')" style="cursor:pointer"><span>업데이트 소식${newsUnseen() ? ' <span style="display:inline-block;margin-left:4px;padding:1px 6px;border-radius:8px;background:var(--coral, #E5533D);color:#fff;font-size:10px;font-weight:800;vertical-align:2px">NEW</span>' : ""}</span><span class="val" style="color:var(--indigo);font-weight:700">${esc(newsDate(NEWS[0].d))} ›</span></div>
@@ -1929,11 +1927,11 @@ function viewAbout() {
   const li = a => `<ul style="margin:0;padding-left:18px">${a.map(x => `<li style="margin:4px 0">${x}</li>`).join("")}</ul>`;
   $view.innerHTML = `<button class="back glass" onclick="history.back()" aria-label="뒤로">${icon.back}</button>
     <h1 style="font-size:25px;font-weight:800;margin-top:14px">이용 안내</h1>
-    <p style="font-size:13px;color:var(--muted);margin:6px 0 0">2026년 10월 · 시범 운영</p>
+    <p style="font-size:13px;color:var(--muted);margin:6px 0 0">2026년 11월 · 시범 운영</p>
 {{#if yongin}}
     ${sec("이 서비스는", `{{name}}에 사는 학부모에게 꼭 필요한 정보를 한곳에서 볼 수 있으면 좋겠다는 생각으로, {{name}} 시민 한 사람이 직접 만든 <b>학부모 통합 정보 서비스</b>예요.<br>학교 일정, 도서관, 학원, 유치원, 아이와 갈 행사, 일자리 정보를 공공 자료에서 모아 보여 드려요.`)}
 {{#else}}
-    ${sec("이 서비스는", `{{name}}에 사는 학부모에게 꼭 필요한 정보를 한곳에서 볼 수 있으면 좋겠다는 생각으로, 아이랑 대전 운영자가 직접 만든 <b>학부모 통합 정보 서비스</b>예요.<br>학교 일정, 도서관, 학원, 유치원, 아이와 갈 행사, 일자리 정보를 공공 자료에서 모아 보여 드려요.`)}
+    ${sec("이 서비스는", `{{name}}에 사는 학부모에게 꼭 필요한 정보를 한곳에서 볼 수 있으면 좋겠다는 생각으로, 라그릴스가 직접 만든 <b>학부모 통합 정보 서비스</b>예요.<br>학교 일정, 도서관, 학원, 유치원, 아이와 갈 행사, 일자리 정보를 공공 자료에서 모아 보여 드려요.`)}
 {{/if}}
     ${sec("무료로 운영해요", li(["모든 기능을 <b>무료</b>로 제공해요. 회원가입이나 결제가 없어요.", "{{f.sgg}}청, 교육청 등 <b>공공기관이 운영하는 서비스가 아니에요.</b> 개인이 공공 자료를 모아 보여 드리는 서비스예요."]))}
     ${sec("개인정보를 받지 않아요", `이름, 전화번호, 이메일, 주소처럼 <b>개인을 알아볼 수 있는 정보는 받지도, 저장하지도 않아요.</b> 회원가입도 없어요.`)}
