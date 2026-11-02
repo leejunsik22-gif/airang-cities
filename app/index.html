@@ -246,6 +246,7 @@ input[type=text],input[type=search],.search{min-height:44px;border-radius:var(--
 .foot,.note,.sub{color:var(--muted)}
 /* 움직임 줄이기 */
 .fl{animation:none!important}
+.e-flat{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:var(--ivory-2);line-height:1;flex:0 0 auto}
 /* 닫기(×)·공유 등 아이콘 버튼도 44px */
 button[aria-label="닫기"]{min-width:44px!important;min-height:44px!important;display:inline-flex;align-items:center;justify-content:center;padding:0!important}
 button[aria-label="지인에게 알려주기"]{width:44px!important;height:44px!important}
@@ -264,7 +265,7 @@ a.val{display:inline-flex;align-items:center;min-height:44px}
 <nav class="nav glass" aria-label="주요 메뉴">
   <button class="navi" data-tab="home" style="--pill:#E8EBFF"><span class="ic"><img src="assets/nav-home.webp" alt="" width="32" height="32" decoding="async" onerror="this.replaceWith(document.createTextNode('🏠'))"></span>홈</button>
   <button class="navi" data-tab="events" style="--pill:#FFE8EE"><span class="ic"><img src="assets/nav-culture.webp" alt="" width="32" height="32" decoding="async" onerror="this.replaceWith(document.createTextNode('🎪'))"></span>문화생활</button>
-  <button class="navi" data-tab="bene"><span class="ic"><img src="https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/Wrapped%20gift/3D/wrapped_gift_3d.png" alt="" width="32" height="32" decoding="async" onerror="this.replaceWith(document.createTextNode('🎁'))"></span>혜택</button>
+  <button class="navi" data-tab="bene"><span class="ic"><img src="assets/3d/wrapped_gift_3d.png" alt="" width="32" height="32" decoding="async" onerror="var x=document.createElement('span');x.className='e-flat';x.textContent='🎁';x.style.cssText='width:32px;height:32px;font-size:20px';this.replaceWith(x)"></span>혜택</button>
   <button class="navi" data-tab="hosp"><span class="ic"><img src="assets/icon-hospital.webp" alt="" width="32" height="32" decoding="async" onerror="this.replaceWith(document.createTextNode('🏥'))"></span>동네병원</button>
   <button class="navi" data-tab="my" style="--pill:#EFE6FF"><span class="ic"><img src="assets/nav-all.webp" alt="" width="32" height="32" decoding="async" onerror="this.replaceWith(document.createTextNode('🧩'))"></span>전체</button>
 </nav>
@@ -353,6 +354,14 @@ let installEvt = null;
 
 const NS = "{{key}}:";   // 2026-11-02: 5개 구가 한 주소(pages.dev) 아래 있어 저장 공간을 구별로 나눔 (유성 아이 정보가 동구에 뜨던 문제)
 function store(k, v) { try { if (v === undefined) return localStorage.getItem(NS + k); localStorage.setItem(NS + k, v); } catch (e) { return null; } }
+// 예전 저장값(구 구분 없음, 시범 운영 초기 등록분) → 처음 여는 구로 한 번만 복사. 원본 키는 지우지 않는다(되돌리기 가능).
+(function migrateLegacy() { try {
+  if (localStorage.getItem("airang.nsMigrated")) return;   // 이미 어느 구로 옮김
+  const legacy = Object.keys(localStorage).filter(k => k.startsWith("edu.") && !k.includes(":"));
+  if (!legacy.length) return;
+  legacy.forEach(k => { if (localStorage.getItem(NS + k) === null) localStorage.setItem(NS + k, localStorage.getItem(k)); });
+  localStorage.setItem("airang.nsMigrated", NS + new Date().toISOString().slice(0, 10));
+} catch (e) {} })();
 // ---------- 아이 정보 옮기기: 아이폰은 홈 화면 앱이 사파리와 저장 공간을 따로 써서, 추가할 때 등록 정보를 같이 실어 보냄 ----------
 const MOVE_KEYS = ["edu.kids", "edu.myEv", "edu.region", "edu.level", "edu.school", "edu.seenEv", "edu.newsSeen", "edu.appVer", "edu.first", "edu.uDay", "edu.uMon", "edu.installHide"];
 function moveIsStandalone() { return (window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone === true; }
@@ -742,13 +751,14 @@ function viewAdInfo() {
 }
 
 // ---------- 입체 아이콘 (Microsoft Fluent Emoji 3D, MIT) ----------
-const F3D_BASE = "https://cdn.jsdelivr.net/gh/microsoft/fluentui-emoji@main/assets/";
+const F3D_BASE = "assets/3d/";   // 2026-11-02: 외부 CDN(jsdelivr) 의존 제거 — 로컬에 있으면 쓰고, 없으면 글자 이모지로 통일 표시 (MIT Fluent Emoji 파일은 app/assets/3d/README.md 목록대로 받아 넣는다)
 const F3D = { "🛡️": ["Shield", "shield"], "💊": ["Pill", "pill"], "🎁": ["Wrapped gift", "wrapped_gift"], "🧒": ["Child/Default", "", "child_3d_default.png"], "🏥": ["Hospital", "hospital"], "🚑": ["Ambulance", "ambulance"], "🩺": ["Stethoscope", "stethoscope"], "🏷️": ["Label", "label"], "💳": ["Credit card", "credit_card"], "🛍️": ["Shopping bags", "shopping_bags"], "🏪": ["Convenience store", "convenience_store"], "🎪": ["Circus tent", "circus_tent"], "🎓": ["Graduation cap", "graduation_cap"], "💼": ["Briefcase", "briefcase"], "📊": ["Bar chart", "bar_chart"], "🏫": ["School", "school"],
   "📚": ["Books", "books"], "📖": ["Open book", "open_book"], "✏️": ["Pencil", "pencil"], "🧸": ["Teddy bear", "teddy_bear"], "📍": ["Round pushpin", "round_pushpin"],
   "🍚": ["Cooked rice", "cooked_rice"], "☀️": ["Sun", "sun"], "🌤️": ["Sun behind small cloud", "sun_behind_small_cloud"], "☁️": ["Cloud", "cloud"], "🌧️": ["Cloud with rain", "cloud_with_rain"],
   "🏊": ["Person swimming/Default", "", "person_swimming_3d_default.png"], "🧘": ["Person in lotus position/Default", "", "person_in_lotus_position_3d_default.png"],
   "🏋️": ["Person lifting weights/Default", "", "person_lifting_weights_3d_default.png"], "💃": ["Woman dancing/Default", "", "woman_dancing_3d_default.png"], "♨️": ["Hot springs", "hot_springs"], "🧩": ["Puzzle piece", "puzzle_piece"] };
-function e3d(e, px) { const f = F3D[e]; if (!f) return e; return `<img src="${F3D_BASE}${f[0].split("/").map(encodeURIComponent).join("/")}/3D/${f[2] || f[1] + "_3d.png"}" alt="" width="${px}" height="${px}" loading="lazy" decoding="async" style="width:${px}px;height:${px}px" onerror="this.replaceWith(document.createTextNode('${e}'))">`; }
+function e3dFlat(e, px) { return `<span class="e-flat" style="width:${px}px;height:${px}px;font-size:${Math.round(px * .62)}px" aria-hidden="true">${e}</span>`; }
+function e3d(e, px) { const f = F3D[e]; if (!f) return e3dFlat(e, px); const file = f[2] || f[1] + "_3d.png"; return `<img src="${F3D_BASE}${file}" alt="" width="${px}" height="${px}" loading="lazy" decoding="async" style="width:${px}px;height:${px}px" onerror="this.outerHTML=e3dFlat('${e}', ${px})">`; }
 function ico3d(e, box, px) { return `<span class="ic3d" style="width:${box}px;height:${box}px">${e3d(e, px)}</span>`; }
 
 // ---------- 내 일정 추가·수정 화면 ----------
@@ -966,14 +976,14 @@ function otherCities() {
   const mine = "{{f.sidoShort}}";
   const tabs = [["대전", "대전"]].filter(([s]) => OTHER_CITIES.some(([, , x]) => x === s));
   const tab = ([s, label]) => { const n = OTHER_CITIES.filter(([c, , x]) => x === s && c !== me).length; const on = s === mine;
-    return `<button type="button" class="oc-tab" data-s="${s}" onclick="ocTab('${s}')" style="flex:1;height:40px;border:0;border-radius:12px;font:inherit;font-size:14px;font-weight:800;cursor:pointer;background:${on ? "var(--city)" : "var(--city-soft)"};color:${on ? "#fff" : "var(--city-ink)"}">${label} <span style="font-weight:600;opacity:.8">${n}</span></button>`; };
+    return `<button type="button" class="oc-tab" data-s="${s}" onclick="ocTab('${s}')" style="flex:1;height:40px;border:0;border-radius:12px;font:inherit;font-size:14px;font-weight:800;cursor:pointer;background:${on ? "var(--navy)" : "var(--ivory-2)"};color:${on ? "#fff" : "var(--navy)"}">${label} <span style="font-weight:600;opacity:.8">${n}</span></button>`; };
   const group = s => `<div class="oc-list" data-s="${s}" style="display:${s === mine ? "flex" : "none"};flex-wrap:wrap;gap:6px;margin:12px 0 14px">${OTHER_CITIES.filter(([n, , x]) => x === s && n !== me).map(([n, u]) => `<a class="btn btn-soft" style="height:34px;font-size:13px;padding:0 12px" href="${u}" target="_blank" rel="noopener" onclick="trackEvent('도시-${n}')">${n}</a>`).join("")}</div>`;
   return `<section class="section"><div class="sec-head"><h2>다른 도시 둘러보기</h2></div>
     <div class="lift card-pad"><div style="display:flex;gap:8px">${tabs.map(tab).join("")}</div>${tabs.map(([s]) => group(s)).join("")}
     <p style="font-size:12px;color:var(--muted);margin:0;line-height:1.6">다른 도시 정보를 구경할 수 있어요. 아이 정보는 도시마다 따로 저장돼요.</p></div></section>`;
 }
 function ocTab(s) {
-  document.querySelectorAll(".oc-tab").forEach(b => { const on = b.dataset.s === s; b.style.background = on ? "var(--city)" : "var(--city-soft)"; b.style.color = on ? "#fff" : "var(--city-ink)"; });
+  document.querySelectorAll(".oc-tab").forEach(b => { const on = b.dataset.s === s; b.style.background = on ? "var(--navy)" : "var(--ivory-2)"; b.style.color = on ? "#fff" : "var(--navy)"; });
   document.querySelectorAll(".oc-list").forEach(d => d.style.display = d.dataset.s === s ? "flex" : "none");
 }
 const MICON = {"acas": "icon-acas", "kinders": "icon-kindergarten", "library": "icon-library", "books": "icon-bestsellers", "schools": "icon-school-calendar", "premium": "icon-tuition", "elite": "icon-special-schools", "deals": "icon-discount", "hosp": "icon-hospital", "sports": "icon-sports", "jobs": "icon-jobs"};
@@ -999,7 +1009,7 @@ function viewMy() {
   $view.innerHTML = `<h1 style="font-size:27px;font-weight:800;margin-bottom:16px">전체 메뉴</h1>
     <div class="mgrid3">${M.map(([r, e, t, l]) => r === "safety"   // 아이 안전: 여성가족부 공식 사이트로 가는 링크만 (정보는 앱에 모으지 않음)
       ? `<a class="mtile" style="text-decoration:none" href="https://www.sexoffender.go.kr" target="_blank" rel="noopener" onclick="trackEvent('안전-성범죄자알림e')">${e3d(e, 68)}<b>${l.replace("<br>", " ")}</b></a>`
-      : `<button class="mtile" onclick="go('${r}')"${gated(r) ? ' style="opacity:.55" aria-disabled="true"' : ""}>${MICON[r] ? `<img src="assets/${MICON[r]}.webp" alt="" width="68" height="68" decoding="async">` : e3d(e, 68)}<b>${l.replace("·<br>", "·").replace("<br>", " ")}${gated(r) ? '<br><span style="font-size:10px;color:var(--muted);font-weight:600">준비 중</span>' : ""}</b></button>`).join("")}</div>
+      : `<button class="mtile" onclick="go('${r}')"${gated(r) ? ' style="opacity:.6;filter:grayscale(1)" aria-disabled="true"' : ""}>${MICON[r] ? `<img src="assets/${MICON[r]}.webp" alt="" width="68" height="68" decoding="async">` : e3d(e, 68)}<b>${l.replace("·<br>", "·").replace("<br>", " ")}${gated(r) ? '<br><span style="font-size:10px;color:var(--muted);font-weight:600">준비 중</span>' : ""}</b></button>`).join("")}</div>
     <p style="font-size:11.5px;color:var(--muted);margin:10px 4px 0;line-height:1.6">🛡️ 성범죄자 알림e(여성가족부)는 본인 인증 뒤 우리 동네 공개 대상자를 볼 수 있어요. 공개 정보는 확인하는 데만 쓸 수 있고, 캡처해서 단톡방·카페·SNS에 올리면 처벌받을 수 있어요.</p>
     <section class="section" style="margin-top:0"><div class="sec-head"><h2>우리 아이</h2><span style="font-size:12px;color:var(--muted)">${ks.length}/${MAX_KIDS}명</span></div>
       <div class="lift list">${kidRows || `<div class="empty">아직 등록한 아이가 없어요.</div>`}</div>
@@ -1017,7 +1027,7 @@ function viewMy() {
         <div class="row"><span>개발</span><span class="val">라그릴스</span></div>
         <div class="row"><span>마지막 업데이트</span><span class="val">${esc(DATA.updated_at)}</span></div>
         <div class="row" onclick="adminTap()" style="cursor:default;user-select:none"><span>버전</span><span class="val">${APP_VER} (시범 운영)</span></div>
-        <div class="row" onclick="go('news')" style="cursor:pointer"><span>업데이트 소식${newsUnseen() ? ' <span style="display:inline-block;margin-left:4px;padding:1px 6px;border-radius:8px;background:var(--coral, #E5533D);color:#fff;font-size:10px;font-weight:800;vertical-align:2px">NEW</span>' : ""}</span><span class="val" style="color:var(--indigo);font-weight:700">${esc(newsDate(NEWS[0].d))} ›</span></div>
+        <div class="row" onclick="go('news')" style="cursor:pointer"><span>업데이트 소식${newsUnseen() ? ' <span style="display:inline-block;margin-left:4px;padding:1px 6px;border-radius:8px;background:var(--gold-bg);color:var(--gold-ink);font-size:10px;font-weight:800;vertical-align:2px">NEW</span>' : ""}</span><span class="val" style="color:var(--indigo);font-weight:700">${esc(newsDate(NEWS[0].d))} ›</span></div>
         <div class="row"><span>개발자 이메일</span><a class="val" href="mailto:leejunsik22@gmail.com" style="color:var(--indigo);font-weight:700;text-decoration:none">leejunsik22@gmail.com</a></div>
         <div class="row" onclick="go('about')" style="cursor:pointer"><span>이용 안내 · 개인정보</span><span class="val" style="color:var(--indigo);font-weight:700">보기 ›</span></div>
       </div></section>
@@ -2480,7 +2490,7 @@ function homeOpenKids() {   // 홈: 지금 문 연 소아과 바로가기 (밤·
 function hsOpenKids() { hsTab = "clinic"; hsDept = "소아청소년과"; hsOf = "🟢 지금 진료 중"; hsGu = "전체"; hsQ = ""; hsMore = 40; trackEvent("병원-지금소아과"); if (location.hash === "#hosp") viewHosp(); else go("hosp"); }
 function viewHosp(keepFocus) {
   const city = (HOSP && HOSP.city) || document.title.replace("아이랑 ", "");
-  const sos = `<a href="tel:119" onclick="trackEvent('병원-119')" style="display:flex;align-items:center;gap:10px;margin-top:12px;padding:12px 14px;border-radius:14px;background:linear-gradient(135deg,#FF6B5A,#E0402E);color:#fff;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 6px 16px rgba(224,64,46,.28)">${ico3d("🚑", 34, 28)}<span style="flex:1">위급하면 바로 119에 전화하세요</span><span style="background:rgba(255,255,255,.22);padding:6px 12px;border-radius:10px">📞 119</span></a>`;
+  const sos = `<a href="tel:119" onclick="trackEvent('병원-119')" style="display:flex;align-items:center;gap:10px;margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--coral-ink);color:#fff;text-decoration:none;font-weight:800;font-size:15px;min-height:52px;box-shadow:var(--shadow)">${ico3d("🚑", 34, 28)}<span style="flex:1">위급하면 바로 119에 전화하세요</span><span style="background:rgba(255,255,255,.22);padding:6px 12px;border-radius:10px">📞 119</span></a>`;
   const head = `<button class="back glass" onclick="history.back()" aria-label="뒤로">${icon.back}</button>
     <h1 style="font-size:25px;font-weight:800;margin-top:14px">동네 병원</h1>
     <p style="font-size:13px;color:var(--muted);margin-top:4px">${esc(city)}의 의원·병원·약국·응급실을 모았어요. 일주일마다 새로 받아 와요.</p>${sos}`;

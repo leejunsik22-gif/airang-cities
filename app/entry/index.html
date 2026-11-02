@@ -117,7 +117,7 @@ a.val{display:inline-flex;align-items:center;min-height:44px}
 /* 입구 하단 안내 링크 */
 .guides a,.seo-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;border-radius:12px;background:var(--ivory-2);margin:4px 4px 0 0;font-size:13px;color:var(--navy)}
 
-.city .nm span{color:var(--c)}
+.city .nm span{color:var(--ci,var(--c));font-size:18px}
 .soon .list span{color:var(--muted);background:var(--ivory-2)}
 .ask{background:var(--navy-soft)!important;color:var(--navy)!important}
 </style></head><body>
@@ -155,8 +155,8 @@ let nearKey = null;
 function setTab(s) { tab = s; render(nearKey); }
 function render(near) {
   nearKey = near;
-  const card = ([k, n, c, gu]) => `
-    <a class="lift city ${near === k ? "near" : ""}" style="--c:${c}" href="${url(k)}" onclick="pick('${k}')">
+  const card = ([k, n, c, gu, , , , ci]) => `
+    <a class="lift city ${near === k ? "near" : ""}" style="--c:${c};--ci:${ci || c}" href="${url(k)}" onclick="pick('${k}')">
       ${near === k ? `<span class="badge">가까운 곳</span>` : ""}
       <div class="pic" style="background-image:url(img/hero-${k}-800.webp)"></div>
       <img class="ic" src="img/ic-${k}.png" alt="">

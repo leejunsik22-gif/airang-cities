@@ -110,7 +110,7 @@ def build_entry(out):
     d = os.path.join(out, "entry")
     if os.path.exists(d): shutil.rmtree(d)
     os.makedirs(os.path.join(d, "img"))
-    rows = [[k, c["name"], c["colors"]["city"], c.get("areas", ""), c.get("lat", 0), c.get("lon", 0), c.get("sido", "경기")] for k, c in CFG["cities"].items()]
+    rows = [[k, c["name"], c["colors"]["city"], c.get("areas", ""), c.get("lat", 0), c.get("lon", 0), c.get("sido", "경기"), c["colors"].get("ink", c["colors"]["city"])] for k, c in CFG["cities"].items()]
     src = open(os.path.join(HERE, "entry", "index.html"), encoding="utf-8").read()
     assert "/*CITIES*/[]" in src
     src = src.replace("/*CITIES*/[]", json.dumps(rows, ensure_ascii=False))
