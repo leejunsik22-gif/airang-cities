@@ -1,0 +1,60 @@
+== 관광공사 (https://apis.data.go.kr/B551011/KorService2/searchFestival2) 대전 지역코드 진단
+-- areaCode=3&eventStartDate=20260801
+{
+  "OpenAPI_ServiceResponse": {
+    "cmmMsgHeader": {
+      "errMsg": "SERVICE_KEY_IS_NOT_REGISTERED_ERROR",
+      "returnAuthMsg": "등록되지 않은 서비스키",
+      "returnReasonCode": "30"
+    }
+  }
+}
+
+-- areaCode=3
+{
+  "OpenAPI_ServiceResponse": {
+    "cmmMsgHeader": {
+      "errMsg": "SERVICE_KEY_IS_NOT_REGISTERED_ERROR",
+      "returnAuthMsg": "등록되지 않은 서비스키",
+      "returnReasonCode": "30"
+    }
+  }
+}
+
+-- areaCode=31&eventStartDate=20260801
+{
+  "OpenAPI_ServiceResponse": {
+    "cmmMsgHeader": {
+      "errMsg": "SERVICE_KEY_IS_NOT_REGISTERED_ERROR",
+      "returnAuthMsg": "등록되지 않은 서비스키",
+      "returnReasonCode": "30"
+    }
+  }
+}
+
+-- lDongRegnCd=30&eventStartDate=20260801
+{
+  "OpenAPI_ServiceResponse": {
+    "cmmMsgHeader": {
+      "errMsg": "SERVICE_KEY_IS_NOT_REGISTERED_ERROR",
+      "returnAuthMsg": "등록되지 않은 서비스키",
+      "returnReasonCode": "30"
+    }
+  }
+}
+
+-- eventStartDate=20261001
+{
+  "OpenAPI_ServiceResponse": {
+    "cmmMsgHeader": {
+      "errMsg": "SERVICE_KEY_IS_NOT_REGISTERED_ERROR",
+      "returnAuthMsg": "등록되지 않은 서비스키",
+      "returnReasonCode": "30"
+    }
+  }
+}
+
+== 문화포털 (api.kcisa.kr)
+CULTURE_KEY 길이: 0
+sed: -e expression #1, char 0: no previous regular expression
+
