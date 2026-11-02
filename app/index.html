@@ -189,6 +189,70 @@ a.ev{color:inherit;text-decoration:none}
 .topscape:not([hidden]) + .wrap > h1:first-child{margin-top:98px !important}
 .topscape:not([hidden]) + .wrap > .back:first-child + h1,.topscape:not([hidden]) + .wrap > h1:first-child{text-shadow:0 1px 0 #fff,0 0 14px rgba(255,255,255,.95),0 0 4px rgba(255,255,255,.9)}
 @media (max-width:350px){.topscape div{height:150px}.topscape:not([hidden]) + .wrap > .back:first-child + h1{margin-top:40px !important}.topscape:not([hidden]) + .wrap > h1:first-child{margin-top:84px !important}}
+
+/* ───────────────────────────────────────────────────────────────
+   아이랑 브랜드 디자인 시스템 v1후보 (2026-11-02, 작업 가지 work)
+   기본: 따뜻한 아이보리 + 깊은 네이비 / 보조: 절제된 코랄·세이지 / 골드 포인트 최소
+   규칙: 글꼴 Noto Sans KR · 본문 15px/1.55 · 카드 곡률 20 · 버튼 곡률 14 · 터치 44px 이상
+   이 파일은 각 화면의 기존 CSS "뒤에" 붙어 토큰과 공통 요소만 덮어쓴다(원본 CSS는 보존).
+   ─────────────────────────────────────────────────────────────── */
+:root{
+  --ivory:#FAF7F1;--ivory-2:#F2EDE3;--paper:#FFFFFF;
+  --navy:#1F2A44;--navy-ink:#16203A;--navy-soft:#E6E9F1;
+  --coral:#D9654A;--coral-ink:#A33D27;--coral-bg:#FBE9E3;
+  --sage:#5E8C7A;--sage-ink:#2E5A4B;--sage-bg:#E6F0EB;
+  --gold:#B8923E;--gold-ink:#6F5415;--gold-bg:#F7EEDC;
+  --ink:var(--navy-ink);--muted:#5B6274;--line:#E8E3D9;--ground:var(--ivory);
+  --indigo:var(--navy);--indigo-ink:var(--navy-ink);--indigo-bg:var(--navy-soft);
+  --mint-ink:var(--sage-ink);--mint-bg:var(--sage-bg);--sun-ink:var(--gold-ink);--sun-bg:var(--gold-bg);
+  --card:var(--paper);
+  --r-card:20px;--r-btn:14px;--r-chip:12px;
+  --shadow:0 1px 2px rgba(31,42,68,.05),0 10px 24px -16px rgba(31,42,68,.28);
+  --shadow-sm:0 1px 2px rgba(31,42,68,.06);
+}
+html,body{background:var(--ground)!important;color:var(--ink);font-family:'Noto Sans KR',system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.55}
+body{background-image:none!important}
+.bg{background:var(--ground)!important}
+a{color:var(--navy)}
+h1,h2,h3{letter-spacing:-.3px;color:var(--navy-ink)}
+/* 카드 */
+.lift,.card,.pcard{background:var(--paper)!important;border-radius:var(--r-card)!important;box-shadow:var(--shadow)!important;border:1px solid rgba(31,42,68,.06)}
+.glass{background:rgba(255,255,255,.82)!important;border:1px solid rgba(31,42,68,.08)!important;backdrop-filter:blur(14px)}
+/* 버튼·칩: 터치 44px, 입체 효과 제거 */
+.btn,.chip,.oc-tab,.ask,.navi,.seg button,button.btn-soft,button.btn-3d,a.btn{min-height:44px!important;border-radius:var(--r-btn)!important;font-weight:700;letter-spacing:-.2px}
+.btn-3d{background:var(--navy)!important;color:#fff!important;box-shadow:0 6px 14px -8px rgba(31,42,68,.6)!important}
+.btn-soft{background:var(--paper)!important;color:var(--navy)!important;box-shadow:var(--shadow-sm)!important;border:1px solid var(--line)}
+.btn:active,.btn-3d:active,.btn-soft:active{transform:translateY(1px)}
+.chip{background:var(--paper);border:1px solid var(--line)}
+/* 아이콘 타일: 같은 굵기·같은 스타일(단색 + 연한 바탕) */
+.tile,.t-indigo,.t-coral,.t-mint,.t-sun,.t-lilac{background:var(--navy-soft)!important;color:var(--navy)!important;box-shadow:none!important;border-radius:14px!important}
+.t-coral{background:var(--coral-bg)!important;color:var(--coral-ink)!important}
+.t-mint{background:var(--sage-bg)!important;color:var(--sage-ink)!important}
+.t-sun{background:var(--gold-bg)!important;color:var(--gold-ink)!important}
+.t-lilac{background:var(--navy-soft)!important;color:var(--navy)!important}
+.orb-sun{background:radial-gradient(circle at 30% 26%,#fff 0%,#F7EEDC 30%,var(--gold) 100%)!important;box-shadow:none!important}
+/* 히어로·제목 */
+.hero{background:linear-gradient(140deg,var(--navy),#2B3A5C)!important;box-shadow:var(--shadow)!important;border-radius:var(--r-card)!important}
+.sec-head h2{font-size:18px;font-weight:800}
+.sec-head a,.sec-head button{color:var(--navy)}
+/* 배지·태그: 골드는 '확인됨·NEW'에만 */
+.pill-gray{background:var(--ivory-2);color:var(--muted)}
+.pill-coral{background:var(--coral-bg);color:var(--coral-ink)}
+/* 입력창 */
+input[type=text],input[type=search],.search{min-height:44px;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--paper)}
+/* 하단 탭 */
+.navi{min-height:48px!important;border-radius:14px!important}
+/* 글자 대비: 작은 보조 글자는 muted 통일 */
+.foot,.note,.sub{color:var(--muted)}
+/* 움직임 줄이기 */
+.fl{animation:none!important}
+/* 닫기(×)·공유 등 아이콘 버튼도 44px */
+button[aria-label="닫기"]{min-width:44px!important;min-height:44px!important;display:inline-flex;align-items:center;justify-content:center;padding:0!important}
+button[aria-label="지인에게 알려주기"]{width:44px!important;height:44px!important}
+a.val{display:inline-flex;align-items:center;min-height:44px}
+/* 입구 하단 안내 링크 */
+.guides a,.seo-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;border-radius:12px;background:var(--ivory-2);margin:4px 4px 0 0;font-size:13px;color:var(--navy)}
+
 </style>
 <script data-goatcounter="https://{{key}}-edu-app.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}' async src="https://gc.zgo.at/count.js"></script>
 </head>
@@ -587,7 +651,50 @@ function viewHome() {
       <div style="min-width:0;flex:1;line-height:1.15"><div style="font-size:18px;font-weight:800;letter-spacing:-.3px;white-space:nowrap">아이랑 <span style="color:var(--city-ink)">{{name}}</span></div><div style="font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">by 라그릴스</div></div>
       <button class="chip glass" aria-label="지인에게 알려주기" title="지인에게 알려주기" style="flex:0 0 auto;width:34px;height:34px;padding:0;justify-content:center;color:var(--indigo)" onclick="shareApp()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
       <button class="chip glass" style="flex:0 0 auto;font-size:12px;padding:0 12px;height:34px" onclick="go('region')">${icon.pin} ${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()} ▾</button></div>
-    ${addrNote}${homeUpdated()}${hero}${homeOpenKids()}${homeToday(ks)}${ks.length ? homeMeals(homeKid === "all" ? ks : ks.filter(k => k.id === homeKid)) : ""}${mine}${notice}${homeEvents()}${homeLibrary()}${homeBooks()}${homeAd()}${footer()}`;
+    ${addrNote}${homeUpdated()}${hero}${homeSearch()}${homeOpenKids()}${homeWeekend()}${homeToday(ks)}${ks.length ? homeMeals(homeKid === "all" ? ks : ks.filter(k => k.id === homeKid)) : ""}${mine}${notice}${homeEvents()}${homeLibrary()}${homeBooks()}${homeAd()}${footer()}`;
+}
+
+// ---------- 통합 검색 (2026-11-02 디자인 통합: 첫 화면에 검색을 가장 위로) ----------
+function homeSearch() {
+  return `<form class="lift" role="search" style="display:flex;align-items:center;gap:8px;padding:8px 8px 8px 16px;margin-top:14px" onsubmit="event.preventDefault();const q=this.q.value.trim();if(q)go('find/'+encodeURIComponent(q))">
+    <span aria-hidden="true" style="font-size:18px">🔍</span>
+    <input name="q" type="search" placeholder="학원, 소아과, 학교, 혜택 이름으로 찾기" autocomplete="off" style="flex:1;min-width:0;border:0;background:transparent;font-size:15px;min-height:44px;outline:none" aria-label="통합 검색">
+    <button class="btn btn-3d" type="submit" style="padding:0 16px">찾기</button></form>`;
+}
+function homeWeekend() {
+  const st = gated("events");
+  if (st) return `<section class="section"><div class="sec-head"><h2>이번 주말 아이랑</h2></div><div class="lift card-pad" style="color:var(--muted);font-size:14px;line-height:1.6">행사·축제 정보는 <b>공식 자료 확인 뒤</b> 열어요. <span class="pill pill-gray">준비 중</span></div></section>`;
+  return "";   // 행사 자료가 열리면 homeEvents()가 주말 행사를 보여 준다
+}
+const _norm = s => String(s || "").toLowerCase().replace(/\s+/g, "");
+function viewFind(q) {
+  const back = `<button class="back glass" onclick="history.back()" aria-label="뒤로">${icon.back}</button>`;
+  const head = `${back}<h1 style="font-size:24px;font-weight:800;margin-top:14px">찾기</h1>
+    <form role="search" class="lift" style="display:flex;gap:8px;padding:8px 8px 8px 16px;margin-top:12px" onsubmit="event.preventDefault();const v=this.q.value.trim();if(v)go('find/'+encodeURIComponent(v))">
+    <input name="q" type="search" value="${esc(q)}" placeholder="학원, 소아과, 학교, 혜택" style="flex:1;min-width:0;border:0;background:transparent;font-size:15px;min-height:44px;outline:none" aria-label="검색어"><button class="btn btn-3d" type="submit" style="padding:0 16px">찾기</button></form>`;
+  if (!q) { $view.innerHTML = head + `<div class="lift empty" style="margin-top:14px">찾을 이름을 넣어 주세요.</div>`; return; }
+  if (!ACAS || !HOSP || !BENE) { Promise.all([loadAcas().catch(() => 0), loadHosp(), loadBene()]).then(() => { if (location.hash.startsWith("#find")) render(); }); $view.innerHTML = head + `<div class="lift empty" style="margin-top:14px">찾는 중이에요…</div>`; return; }
+  const n = _norm(q), hit = v => _norm(v).includes(n);
+  const row = (icon, t, sub, href, onclick) => `<a class="lift" href="${href}" ${onclick ? `onclick="${onclick}"` : ""} style="display:flex;gap:12px;align-items:center;padding:12px 14px;margin-bottom:8px;color:inherit;text-decoration:none;min-height:56px"><span style="font-size:20px">${icon}</span><div style="min-width:0;flex:1"><div style="font-weight:800;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(t)}</div><div style="font-size:12.5px;color:var(--muted);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(sub)}</div></div><span style="color:var(--muted)">›</span></a>`;
+  const groups = [];
+  const sc = ((DATA && DATA.schools) || []).filter(x => x.code && x.code.trim() && hit(x.name)).slice(0, 8);
+  if (sc.length) groups.push(["학교", sc.map(x => row("🏫", x.name, x.address || "", "#school/" + x.code))]);
+  const ac = ((ACAS && ACAS.academies) || []).filter(x => hit(x.n) || hit(x.dong) || hit(x.r)).slice(0, 10);
+  if (ac.length) groups.push(["학원·교습소", ac.map(x => row("✏️", x.n, [x.dong, x.r].filter(Boolean).join(" · "), "#aca/" + x.id))]);
+  const hs = [...((HOSP && HOSP.clinics) || []), ...((HOSP && HOSP.hospitals) || [])].filter(x => hit(x.n) || hit(x.k) || hit(String(x.d))).slice(0, 10);
+  if (hs.length) groups.push(["병원·의원", hs.map(x => row("🩺", x.n, [x.k, x.a].filter(Boolean).join(" · "), "#hosp", `hsQ='${esc(x.n).replace(/'/g, "")}';hsTab='clinic'`))]);
+  const bn = ((BENE && BENE.items) || []).filter(x => hit(x.n) || hit(x.sum)).slice(0, 8);
+  if (bn.length) groups.push(["혜택", bn.map(x => row("🎁", x.n, x.org || "", "#bene", `bnQ='${esc(x.n).replace(/'/g, "")}'`))]);
+  trackEvent("찾기");
+  $view.innerHTML = head + (groups.length ? groups.map(([t, rows]) => `<section class="section"><div class="sec-head"><h2>${t} <span style="font-size:13px;color:var(--muted);font-weight:700">${rows.length}</span></div></div>${rows.join("")}</section>`).join("")
+    : `<div class="lift empty" style="margin-top:14px">"${esc(q)}"에 맞는 결과가 없어요.<br><span style="font-size:13px;color:var(--muted)">학원·병원·학교·혜택 이름이나 동 이름으로 찾아보세요.</span></div>`)
+    + `<p class="foot" style="margin-top:14px">${sourceLine(["latest.json", "academies.json", "hospitals.json", "benefits.json"])}</p>`;
+}
+// ---------- 출처·확인일 한 줄 (상세·목록 하단 공통, _status.json 기반) ----------
+function sourceLine(files) {
+  if (!GATE) return "";
+  const parts = (Array.isArray(files) ? files : [files]).map(f => GATE[f]).filter(st => st && st.published).map(st => `${esc(st.source_org || "공공 자료")}${st.checked_at ? ` · 확인 ${esc(st.checked_at)}` : ""}`);
+  return parts.length ? `출처 ${[...new Set(parts)].join(" / ")} · 공식 원문을 함께 확인해 주세요.` : "";
 }
 
 // ---------- 광고 칸 (홈 맨 아래, "광고" 표시) ----------
@@ -1477,7 +1584,7 @@ function viewAca(id) {
       <div><div style="font-weight:800">우리 동네 인기 학원 <span class="pill pill-gray" style="margin-left:4px">준비 중</span></div>
       <div style="font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5">같은 학교·동네 아이들이 많이 다니는 학원을 익명 통계로 보여 드릴 예정이에요.</div></div></div></section>
 {{/if}}
-    <div class="foot">데이터 · 나이스 교육정보 개방포털 학원교습소정보<br>교육청에 등록된 정보라 실제와 다를 수 있어요.</div>`;
+    <div class="foot">데이터 · 나이스 교육정보 개방포털 학원교습소정보<br>교육청에 등록된 정보라 실제와 다를 수 있어요.<br>${sourceLine("academies.json")}</div>`;
 }
 function kidResults() {
   const box = document.getElementById("kres"); if (!box) return;
@@ -2423,7 +2530,7 @@ function viewHosp(keepFocus) {
     (shown.map(x => hsRow(x, hsTab === "er")).join("") || `<div class="lift empty">조건에 맞는 곳이 없어요.</div>`) + more +
     `<div class="foot">⚠️ 진료 과목·진료 시간·휴진일은 바뀔 수 있어요. <b>가기 전에 꼭 병원에 전화로 확인해 주세요.</b><br>위급한 상황이면 바로 119에 전화하세요.<br>
       출처: 국립중앙의료원 전국 병·의원 찾기·약국 정보 서비스 (공공데이터포털)${HOSP.updated ? `<br>${esc(HOSP.updated)} 기준` : ""}<br>
-      잘못된 정보는 <a href="mailto:leejunsik22@gmail.com?subject=${encodeURIComponent("[아이랑 " + city + "] 동네 병원 정보 수정 요청")}">메일로 알려 주세요</a>.</div>`;
+      잘못된 정보는 <a href="mailto:leejunsik22@gmail.com?subject=${encodeURIComponent("[아이랑 " + city + "] 동네 병원 정보 수정 요청")}">메일로 알려 주세요</a>.<br>${sourceLine("hospitals.json")}</div>`;
   const inp = document.getElementById("hq");
   if (inp) {
     inp.addEventListener("input", () => { hsQ = inp.value; hsMore = 40; viewHosp(true); });
@@ -2480,7 +2587,7 @@ function viewBene(keepFocus) {
     ${sec(esc(city) + "시 혜택", loc)}${sec("나라 혜택", nat)}${list.length ? "" : `<div class="lift empty" style="margin-top:14px">조건에 맞는 혜택이 없어요.</div>`}${more}
     ${BENE.src && !BENE.src.local ? `<div style="font-size:12px;color:var(--muted);margin:14px 2px 0;line-height:1.6">${esc(city)}시가 따로 주는 혜택(다자녀·출산 지원 등)은 준비 중이에요. 지금은 시청 홈페이지에서 확인해 주세요.</div>` : ""}
     <div class="foot">출처: 한국사회보장정보원 복지서비스 정보 (복지로, 공공데이터포털)${BENE.updated ? `<br>${esc(BENE.updated)} 기준` : ""}<br>
-      잘못된 정보는 <a href="mailto:leejunsik22@gmail.com?subject=${encodeURIComponent("[아이랑 " + city + "] 혜택 정보 수정 요청")}">메일로 알려 주세요</a>.</div>`;
+      잘못된 정보는 <a href="mailto:leejunsik22@gmail.com?subject=${encodeURIComponent("[아이랑 " + city + "] 혜택 정보 수정 요청")}">메일로 알려 주세요</a>.<br>${sourceLine("benefits.json")}</div>`;
   const inp = document.getElementById("bq");
   inp.addEventListener("input", () => { bnQ = inp.value; bnMore = 30; viewBene(true); });
   if (keepFocus) { inp.focus(); inp.setSelectionRange(bnQ.length, bnQ.length); }
@@ -2510,6 +2617,7 @@ function render() {
   else if (r === "premium") viewPremium();
   else if (r.startsWith("aca/")) viewAca(r.slice(4));
   else if (r === "acas") viewAcaList();
+  else if (r.startsWith("find")) viewFind(decodeURIComponent((r.split("/")[1] || "")));
   else if (r === "kinders") viewKinders();
   else if (r.startsWith("kinder/")) viewKinder(decodeURIComponent(r.slice(7)));
   else if (r.startsWith("school/")) viewSchool(r.split("/")[1]);

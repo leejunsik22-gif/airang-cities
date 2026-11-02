@@ -53,6 +53,73 @@ h1 em{font-style:normal;background:linear-gradient(transparent 62%,#FFE08A 62%)}
 .ask{display:block;margin-top:12px;text-align:center;height:42px;line-height:42px;border-radius:12px;background:#F1F2FB;color:var(--navy);font-weight:800;font-size:13.5px;text-decoration:none}
 .foot{font-size:11.5px;color:var(--muted);text-align:center;line-height:1.7;margin-top:22px}
 @media (min-width:700px){.wrap{max-width:880px}.grid{grid-template-columns:repeat(4,minmax(0,1fr))}h1{font-size:34px}}
+
+/* ───────────────────────────────────────────────────────────────
+   아이랑 브랜드 디자인 시스템 v1후보 (2026-11-02, 작업 가지 work)
+   기본: 따뜻한 아이보리 + 깊은 네이비 / 보조: 절제된 코랄·세이지 / 골드 포인트 최소
+   규칙: 글꼴 Noto Sans KR · 본문 15px/1.55 · 카드 곡률 20 · 버튼 곡률 14 · 터치 44px 이상
+   이 파일은 각 화면의 기존 CSS "뒤에" 붙어 토큰과 공통 요소만 덮어쓴다(원본 CSS는 보존).
+   ─────────────────────────────────────────────────────────────── */
+:root{
+  --ivory:#FAF7F1;--ivory-2:#F2EDE3;--paper:#FFFFFF;
+  --navy:#1F2A44;--navy-ink:#16203A;--navy-soft:#E6E9F1;
+  --coral:#D9654A;--coral-ink:#A33D27;--coral-bg:#FBE9E3;
+  --sage:#5E8C7A;--sage-ink:#2E5A4B;--sage-bg:#E6F0EB;
+  --gold:#B8923E;--gold-ink:#6F5415;--gold-bg:#F7EEDC;
+  --ink:var(--navy-ink);--muted:#5B6274;--line:#E8E3D9;--ground:var(--ivory);
+  --indigo:var(--navy);--indigo-ink:var(--navy-ink);--indigo-bg:var(--navy-soft);
+  --mint-ink:var(--sage-ink);--mint-bg:var(--sage-bg);--sun-ink:var(--gold-ink);--sun-bg:var(--gold-bg);
+  --card:var(--paper);
+  --r-card:20px;--r-btn:14px;--r-chip:12px;
+  --shadow:0 1px 2px rgba(31,42,68,.05),0 10px 24px -16px rgba(31,42,68,.28);
+  --shadow-sm:0 1px 2px rgba(31,42,68,.06);
+}
+html,body{background:var(--ground)!important;color:var(--ink);font-family:'Noto Sans KR',system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.55}
+body{background-image:none!important}
+.bg{background:var(--ground)!important}
+a{color:var(--navy)}
+h1,h2,h3{letter-spacing:-.3px;color:var(--navy-ink)}
+/* 카드 */
+.lift,.card,.pcard{background:var(--paper)!important;border-radius:var(--r-card)!important;box-shadow:var(--shadow)!important;border:1px solid rgba(31,42,68,.06)}
+.glass{background:rgba(255,255,255,.82)!important;border:1px solid rgba(31,42,68,.08)!important;backdrop-filter:blur(14px)}
+/* 버튼·칩: 터치 44px, 입체 효과 제거 */
+.btn,.chip,.oc-tab,.ask,.navi,.seg button,button.btn-soft,button.btn-3d,a.btn{min-height:44px!important;border-radius:var(--r-btn)!important;font-weight:700;letter-spacing:-.2px}
+.btn-3d{background:var(--navy)!important;color:#fff!important;box-shadow:0 6px 14px -8px rgba(31,42,68,.6)!important}
+.btn-soft{background:var(--paper)!important;color:var(--navy)!important;box-shadow:var(--shadow-sm)!important;border:1px solid var(--line)}
+.btn:active,.btn-3d:active,.btn-soft:active{transform:translateY(1px)}
+.chip{background:var(--paper);border:1px solid var(--line)}
+/* 아이콘 타일: 같은 굵기·같은 스타일(단색 + 연한 바탕) */
+.tile,.t-indigo,.t-coral,.t-mint,.t-sun,.t-lilac{background:var(--navy-soft)!important;color:var(--navy)!important;box-shadow:none!important;border-radius:14px!important}
+.t-coral{background:var(--coral-bg)!important;color:var(--coral-ink)!important}
+.t-mint{background:var(--sage-bg)!important;color:var(--sage-ink)!important}
+.t-sun{background:var(--gold-bg)!important;color:var(--gold-ink)!important}
+.t-lilac{background:var(--navy-soft)!important;color:var(--navy)!important}
+.orb-sun{background:radial-gradient(circle at 30% 26%,#fff 0%,#F7EEDC 30%,var(--gold) 100%)!important;box-shadow:none!important}
+/* 히어로·제목 */
+.hero{background:linear-gradient(140deg,var(--navy),#2B3A5C)!important;box-shadow:var(--shadow)!important;border-radius:var(--r-card)!important}
+.sec-head h2{font-size:18px;font-weight:800}
+.sec-head a,.sec-head button{color:var(--navy)}
+/* 배지·태그: 골드는 '확인됨·NEW'에만 */
+.pill-gray{background:var(--ivory-2);color:var(--muted)}
+.pill-coral{background:var(--coral-bg);color:var(--coral-ink)}
+/* 입력창 */
+input[type=text],input[type=search],.search{min-height:44px;border-radius:var(--r-btn);border:1px solid var(--line);background:var(--paper)}
+/* 하단 탭 */
+.navi{min-height:48px!important;border-radius:14px!important}
+/* 글자 대비: 작은 보조 글자는 muted 통일 */
+.foot,.note,.sub{color:var(--muted)}
+/* 움직임 줄이기 */
+.fl{animation:none!important}
+/* 닫기(×)·공유 등 아이콘 버튼도 44px */
+button[aria-label="닫기"]{min-width:44px!important;min-height:44px!important;display:inline-flex;align-items:center;justify-content:center;padding:0!important}
+button[aria-label="지인에게 알려주기"]{width:44px!important;height:44px!important}
+a.val{display:inline-flex;align-items:center;min-height:44px}
+/* 입구 하단 안내 링크 */
+.guides a,.seo-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;border-radius:12px;background:var(--ivory-2);margin:4px 4px 0 0;font-size:13px;color:var(--navy)}
+
+.city .nm span{color:var(--c)}
+.soon .list span{color:var(--muted);background:var(--ivory-2)}
+.ask{background:var(--navy-soft)!important;color:var(--navy)!important}
 </style></head><body>
 <div class="wrap">
   <div class="top"><img src="icon-192.png" alt=""><div><b>아이랑 대전</b><small>아이 키우는 집을 위한 동네 정보</small></div></div>
