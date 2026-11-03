@@ -342,6 +342,23 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 @media (max-width:430px){h1{font-size:24px!important}.sheet .hours{grid-template-columns:repeat(4,1fr)}}
 /* 026 본문 안 링크·전화 링크 터치 영역 */
 .foot a,.src-line a,.sheet .kv a,.sub a{display:inline-flex;align-items:center;min-height:44px;padding:0 2px}
+/* 027(2026-11-03 피트 검토 반영): 병원 화면 — 필터 잘림·하단 가림·한글 가독성·확인 중 표시·사진 톤 */
+.chips-wrap{display:flex;flex-wrap:wrap;gap:6px;padding:2px 2px 6px;margin-top:8px}
+.chips-scroll{display:flex;gap:6px;overflow-x:auto;padding:2px 28px 6px 2px;margin-top:10px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 36px),transparent)}
+.chips-scroll::-webkit-scrollbar{display:none}
+.wrap{padding-bottom:calc(136px + env(safe-area-inset-bottom))!important}
+#view .lift{word-break:keep-all;overflow-wrap:anywhere}
+#view .foot{font-size:12.5px;line-height:1.75;text-align:left;word-break:keep-all;overflow-wrap:anywhere;padding:12px 14px;background:var(--paper);border:1px solid var(--line);border-radius:14px;margin-top:20px}
+.navi{font-size:12.5px!important;font-weight:800!important;letter-spacing:-.2px}
+.hs-sub{font-size:13.5px;color:var(--muted);line-height:1.65;margin-top:3px;word-break:keep-all;overflow-wrap:anywhere}
+.hs-addr{display:block;color:var(--ink)}
+.rv-note{margin-top:8px;padding:9px 12px;border-radius:10px;background:#FFF6E5;color:#8A5A00;font-size:13px;line-height:1.6;word-break:keep-all;border:1px solid #F3E2BD}
+.rv-note b{font-size:13.5px}
+.rv-meta{display:block;font-size:12.5px;color:#7A5200;margin-top:2px}
+/* 사진 톤 통일: 5구 삽화를 같은 채도·명도로 맞추고 아래쪽을 아이보리로 부드럽게 */
+.topscape img,.scape-img{filter:saturate(.9) contrast(1.02) brightness(.98)}
+.topscape div::after{background:linear-gradient(180deg,rgba(250,247,241,0) 26%,rgba(250,247,241,.78) 64%,var(--ground) 100%)!important}
+@media (max-width:360px){.navi{font-size:12px!important}}
 </style>
 <script data-goatcounter="https://{{key}}-edu-app.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}' async src="https://gc.zgo.at/count.js"></script>
 </head>
@@ -2714,7 +2731,7 @@ function hsSheet(x) {
     <div style="display:flex;gap:8px;align-items:flex-start"><div style="flex:1;min-width:0"><span class="eyebrow" style="background:var(--navy-soft);color:var(--navy)">${esc(x.k || "의료기관")}</span>${x.rv ? ` <span class="eyebrow">확인 중</span>` : ""}<h2>${esc(x.n)}</h2><div class="sub">${deptLine(x)}</div></div>${fav}<button class="fav-btn" aria-label="닫기" onclick="closeSheet()">✕</button></div>
     <div class="kv"><b>주소</b><span>${esc(x.a || "—")}</span><b>전화</b><span>${tel ? `<a href="tel:${esc(tel)}" style="font-weight:700">${esc(x.t)}</a>` : (x.rv && (x.rv.f || []).includes("t") ? "확인 중" : "—")}</span><b>진료과목</b><span>${(x.d || []).length ? esc((x.d || []).join(", ")) : (x.rv ? "확인 중" : "—")} <span class="sub">(국립중앙의료원 신고 기준)</span></span></div>
     <div class="sec-head" style="margin-top:6px"><h2 style="font-size:15px">진료시간</h2>${x.h && x.h.length ? `<span class="sub">오늘 ${DAYS[today]}요일</span>` : ""}</div>${hours}
-    ${x.rv ? `<div style="margin-top:10px;padding:9px 12px;border-radius:10px;background:#FFF6E5;color:#8A5A00;font-size:12.5px;line-height:1.5">⏳ 공식 자료가 바뀌어 확인하는 중이에요(${esc(x.rv.since || "")}부터). 확인되기 전에는 바뀐 칸을 보여 드리지 않아요.</div>` : ""}
+    ${x.rv ? `<div class="rv-note" role="status">⏳ <b>${esc([...new Set((x.rv.f || []).map(f => ({ h: "진료시간", d: "진료과목", p: "진료과목", k: "종별", t: "전화번호", a: "주소" })[f] || f))].join("·"))} 확인 중</b><span class="rv-meta">확인 시작 ${esc(x.rv.since || "—")}${x.rv.due ? ` · 확인 기한 ${esc(x.rv.due)}` : ""} · 상태: 공식 확인 전 — 바뀐 칸은 보여 드리지 않아요. 기한까지 확인되지 않으면 목록에서 잠시 뺍니다.</span></div>` : ""}
     <div class="acts">${tel ? `<a class="btn btn-3d" href="tel:${esc(tel)}" onclick="trackEvent('병원-전화-상세')">📞 전화</a>` : ""}<a class="btn btn-soft" href="${esc(map)}" target="_blank" rel="noopener" onclick="trackEvent('병원-길찾기-상세')">📍 길찾기</a></div>
     <div class="src-line"><span class="dot"></span><span>출처 ${esc(st.source_org || "국립중앙의료원 병·의원·약국 정보(공공데이터포털)")}${st.checked_at ? ` · 검문 확인 ${esc(st.checked_at)}` : ""}${HOSP && HOSP.updated ? ` · 자료 ${esc(HOSP.updated)}` : ""}<br>진료 과목·시간·휴진은 바뀔 수 있어요. 가기 전에 전화로 확인해 주세요. <a href="mailto:leejunsik22@gmail.com?subject=${encodeURIComponent("[아이랑] 병원 정보 수정 요청: " + (x.n || ""))}">잘못된 정보 알리기</a></span></div>
     </div></div>`;
@@ -2729,12 +2746,12 @@ function hsRow(x, er) {
     : tag(k, k.includes("종합") ? "#E8EEFF" : "#EEF6F3", k.includes("종합") ? "#3B47D6" : "#127A52");
   // 025(2026-11-03): 변경 감지로 공식 확인 중인 칸(rv.f)은 값을 보여 주지 않고 '확인 중' 안내 — 검문(change_guard)이 칸을 비워 둠
   const RVF = { h: "진료시간", d: "진료과목", p: "진료과목", k: "종별", t: "전화번호", a: "주소" };
-  const rvNote = x.rv && x.rv.f && x.rv.f.length ? `<div style="margin-top:6px;padding:7px 10px;border-radius:10px;background:#FFF6E5;color:#8A5A00;font-size:12px;line-height:1.5">⏳ <b>${esc([...new Set(x.rv.f.map(f => RVF[f] || f))].join("·"))} 확인 중</b> — 공식 자료가 바뀌어 확인하는 중이에요. 가기 전에 병원에 전화로 확인해 주세요.</div>` : "";
+  const rvNote = x.rv && x.rv.f && x.rv.f.length ? `<div class="rv-note" role="status">⏳ <b>${esc([...new Set(x.rv.f.map(f => RVF[f] || f))].join("·"))} 확인 중</b><span class="rv-meta">확인 시작 ${esc(x.rv.since || "—")}${x.rv.due ? ` · 확인 기한 ${esc(x.rv.due)}` : ""} · 상태: 공식 확인 전(바뀐 칸은 보여 드리지 않아요)</span><span class="rv-meta">가기 전에 병원에 전화로 확인해 주세요.</span></div>` : "";
   const favB = favBtn({ t: "hosp", id: (x.n || "") + "|" + (x.a || ""), n: x.n, sub: x.p || k, route: "hosp" });
   return `<div class="lift" style="padding:14px 16px;margin-bottom:10px">
     <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">${kindTag}${x.rv ? tag("확인 중", "#FFF6E5", "#8A5A00") : ""}${td ? (td.open ? tag(k === "약국" ? "지금 영업 중" : "지금 진료 중", "#E6F6EF", "#127A52") : tag(k === "약국" ? "영업 시간 아님" : "진료 시간 아님", "#F1F3F8", "#5C6478")) : ""}${km != null ? tag(km < 1 ? Math.round(km * 1000) + "m" : km.toFixed(1) + "km", "#F4F2FF", "#5B4FD6") : ""}</div>
     <div style="display:flex;gap:8px;align-items:flex-start;margin-top:6px"><button style="flex:1;min-width:0;text-align:left;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;min-height:44px" onclick="hsOpenByKey(${esc(JSON.stringify((x.n || "") + "|" + (x.a || "")))})"><div style="font-size:15.5px;font-weight:800;line-height:1.4">${esc(x.n)} <span class="sub" style="font-weight:700;color:var(--navy)">상세 ›</span></div>
-    <div style="font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.5">${deptLine(x)}${x.a ? " · " + esc(x.a) : ""}${td ? `<br>${esc(td.text)}` : ""}</div></button>${favB}</div>${rvNote}
+    <div class="hs-sub">${deptLine(x)}${x.a ? `<span class="hs-addr">${esc(x.a)}</span>` : ""}${td ? `<span style="display:block">${esc(td.text)}</span>` : ""}</div></button>${favB}</div>${rvNote}
     <div style="display:flex;gap:8px;margin-top:10px">${tel ? `<a class="btn ${er ? "btn-3d" : "btn-soft"}" style="flex:1;height:38px;font-size:13px;text-decoration:none" href="tel:${esc(tel)}" onclick="trackEvent('병원-전화${er ? "-응급실" : ""}')">📞 전화</a>` : ""}<a class="btn btn-soft" style="flex:1;height:38px;font-size:13px;text-decoration:none" href="${esc(map)}" target="_blank" rel="noopener" onclick="trackEvent('병원-길찾기')">📍 길찾기</a>${x.u ? `<a class="btn btn-soft" style="flex:1;height:38px;font-size:13px;text-decoration:none" href="${esc(x.u)}" target="_blank" rel="noopener" onclick="trackEvent('병원-홈페이지')">홈페이지 ›</a>` : ""}</div></div>`;
 }
 function homeOpenKids() {   // 홈: 지금 문 연 소아과 바로가기 (밤·주말엔 문구를 바꿔요)
@@ -2760,7 +2777,7 @@ function viewHosp(keepFocus) {
   if (!all.clinic.length && !all.hosp.length && !all.pharm.length && !all.er.length) { $view.innerHTML = head + `<div class="lift empty" style="margin-top:16px">병원 정보를 준비하고 있어요. 곧 볼 수 있어요.</div>`; return; }
   const seg = [["clinic", "의원", "🩺"], ["hosp", "병원", "🏥"], ["pharm", "약국", "💊"], ["er", "응급실", "🚑"]].filter(([k]) => k !== "pharm" || all.pharm.length).map(([k, l, e]) =>
     `<button class="btn ${hsTab === k ? "btn-3d" : "btn-soft"}" style="flex:1;min-width:0;height:44px;font-size:13px;padding:0 4px;gap:3px;white-space:nowrap" onclick="hsSet('tab','${k}')">${e3d(e, 18)} ${l} <span style="opacity:.7;font-size:12px;margin-left:2px">${all[k].length}</span></button>`).join("");
-  const chip = (k, v, on, label) => `<button class="btn ${on ? "btn-3d" : "btn-soft"}" style="height:34px;font-size:12.5px;padding:0 12px;flex:0 0 auto" onclick="hsSet('${k}','${v}')">${esc(label || v)}</button>`;
+  const chip = (k, v, on, label) => `<button class="btn ${on ? "btn-3d" : "btn-soft"}" style="font-size:13px;padding:0 12px;flex:0 0 auto" onclick="hsSet('${k}','${v}')">${esc(label || v)}</button>`;
   let list = all[hsTab];
   const gus = ["전체", ...[...new Set(list.map(x => x.g).filter(Boolean))].sort()];
   if (!gus.includes(hsGu)) hsGu = "전체";
@@ -2768,28 +2785,28 @@ function viewHosp(keepFocus) {
   if (hsTab === "clinic") {
     const ds = ["전체", ...(HOSP.depts || []).filter(d => list.some(x => (x.d || []).includes(d)))];
     if (!ds.includes(hsDept)) hsDept = "전체";
-    depts = `<div style="display:flex;gap:6px;overflow-x:auto;padding:2px 2px 6px;margin-top:10px">${ds.map(d => chip("dept", d, hsDept === d)).join("")}</div>`;
+    depts = `<div class="chips-scroll" aria-label="진료 과목으로 거르기">${ds.map(d => chip("dept", d, hsDept === d)).join("")}</div>`;   // 027: 가로 스크롤 + 오른쪽 흐림(더 있음 표시)
     if (hsDept !== "전체") list = list.filter(x => (x.d || []).includes(hsDept) && (hsDept === "치과") === (x.k || "").startsWith("치과")); if (hsDept !== "전체") { const re = new RegExp(HS_HINT[hsDept] || hsDept); list.sort((a, b) => (re.test(a.n) ? 0 : 1) - (re.test(b.n) ? 0 : 1)); }  // 이름에 그 과가 있는 의원 먼저
   }
   if (hsTab === "clinic" || hsTab === "hosp") {   // 의원·병원: 지금 진료 / 밤 8시 이후 / 일요일·공휴일
     const late = t => t && t.length >= 8 && (+t.slice(4) >= 2000 || +t.slice(4) < +t.slice(0, 4));
     const OF = { "🟢 지금 진료 중": x => (hsToday(x) || {}).open, "🌙 밤 8시 이후": x => x.h && x.h.slice(0, 5).some(late), "📅 일요일·공휴일": x => x.h && (x.h[6] || x.h[7]) };
     if (!OF[hsOf]) hsOf = "전체";
-    depts += `<div style="display:flex;gap:6px;overflow-x:auto;padding:2px 2px 6px;margin-top:4px">${["전체", ...Object.keys(OF)].map(v => chip("of", v, hsOf === v, v === "전체" ? "진료 시간 전체" : v)).join("")}</div>`;
+    depts += `<div class="chips-wrap" aria-label="진료 시간으로 거르기">${["전체", ...Object.keys(OF)].map(v => chip("of", v, hsOf === v, v === "전체" ? "진료 시간 전체" : v)).join("")}</div>`;   // 027: 잘리지 않게 줄바꿈
     if (hsOf !== "전체") list = list.filter(OF[hsOf]);
   }
   if (hsTab === "pharm") {   // 약국: 지금 영업 / 일요일·공휴일 / 밤 9시 이후 (h = [월~일, 공휴일] "09002100")
     const PF = { "지금 영업": x => (hsToday(x) || {}).open, "일요일·공휴일": x => x.h && (x.h[6] || x.h[7]),
       "밤 9시 이후": x => x.h && x.h.slice(0, 5).some(t => t.length >= 8 && (+t.slice(4) >= 2100 || +t.slice(4) < +t.slice(0, 4))) };
     if (!PF[hsPf]) hsPf = "전체";
-    depts = `<div style="display:flex;gap:6px;overflow-x:auto;padding:2px 2px 6px;margin-top:10px">${["전체", ...Object.keys(PF)].map(v => chip("pf", v, hsPf === v)).join("")}</div>`;
+    depts = `<div class="chips-wrap" aria-label="영업 시간으로 거르기">${["전체", ...Object.keys(PF)].map(v => chip("pf", v, hsPf === v)).join("")}</div>`;
     if (hsPf !== "전체") list = list.filter(PF[hsPf]);
   }
   if (hsGu !== "전체") list = list.filter(x => x.g === hsGu);
   const q = hsQ.trim();
   if (q) list = list.filter(x => (x.n + " " + x.a + " " + (x.d || []).join(" ")).includes(q));
   if (hsNear) list = [...list].sort((a, b) => (hsKm(a) ?? 1e9) - (hsKm(b) ?? 1e9));
-  const filters = `${depts}<div style="display:flex;gap:6px;overflow-x:auto;padding:2px 2px 6px;margin-top:4px">${gus.map(g => chip("gu", g, hsGu === g)).join("")}
+  const filters = `${depts}<div class="chips-scroll" style="margin-top:4px" aria-label="동으로 거르기">${gus.map(g => chip("gu", g, hsGu === g)).join("")}
       <button class="btn ${hsNear ? "btn-3d" : "btn-soft"}" style="height:34px;font-size:12.5px;padding:0 12px;flex:0 0 auto" onclick="hsLocate()">📍 가까운 순</button></div>
     ${hsTab !== "er" ? `<label class="search lift" style="margin-top:6px">${icon.search}<input id="hq" placeholder="병원 이름·동네로 찾기" value="${esc(hsQ)}" aria-label="병원 이름 검색"></label>` : ""}`;
   const erNote = hsTab === "er" ? `<div style="margin:10px 0;padding:10px 12px;border-radius:12px;background:#FFF1EE;color:#9A2E1F;font-size:12.5px;line-height:1.6">응급실 빈 병상은 수시로 바뀌어요. 가기 전에 <b>응급실에 전화</b>하거나 <a href="https://www.e-gen.or.kr/" target="_blank" rel="noopener" onclick="trackEvent('병원-응급의료포털')" style="color:#C42B1C;font-weight:800">응급의료포털(실시간 병상) ›</a>에서 확인하세요. 아이가 밤·휴일에 아플 때 문 여는 <b>달빛어린이병원</b>도 응급의료포털에서 찾을 수 있어요.</div>` : "";
