@@ -4,15 +4,15 @@
  "stage": "비공개 후보",
  "_note": "",
  "_sources": {
-  "code": "https://www.code.go.kr/stdcode/regCodeL.do (행정표준코드관리시스템 법정동코드목록조회, 시도=대구27/부산26/제주50/충북43 조회, 2026-11-03 확인)",
-  "hira": "https://opendata.hira.or.kr/op/opc/selectColumnCodeList.do (보건의료빅데이터개방시스템 코드조회 > 지역코드, pageIndex 1~8)",
+  "code": "https://www.code.go.kr/stdcode/regCodeL.do (행정표준코드관리시스템 법정동코드목록조회, 시도=인천28/전남광주통합특별시12/광주29(폐지)/울산31/세종36, 현존·폐지 구분 및 생성일·폐지일 조회, 2026-11-03 확인)",
+  "hira": "https://opendata.hira.or.kr/op/opc/selectColumnCodeList.do (보건의료빅데이터개방시스템 코드조회 > 지역코드 pageIndex 2·6·7, 요양기관기호지역구분코드 pageIndex 7·8, 2026-11-03 조회)",
   "egen": "https://www.data.go.kr/data/15000736/openapi.do (Q0 샘플 서울특별시, Q1 샘플 강남구, Q1 크기 60)",
-  "kma": "https://www.data.go.kr/data/15084084/openapi.do (참고문서 기상청41_단기예보 조회서비스_오픈API활용가이드_2610.zip 내 격자_위경도 엑셀 — 본 세션에서 파일 미열람)",
-  "air": "https://www.airkorea.or.kr/web/stationInfo?pMENU_NO=93 (에어코리아 측정소 정보, 2026-11-03 조회)",
-  "lib": "https://www.data4library.kr/downloadApiManual (정보나루 Open API 매뉴얼 v20260620, 20.코드 > 지역/세부지역 코드)",
-  "kopis": "https://kopis.or.kr/upload/openApi/공연예술통합전산망OpenAPI공통코드.pdf (signgucode=행정표준코드 앞2자리, signgucodesub=앞4자리)",
-  "kinder": "https://e-childschoolinfo.moe.go.kr/openApi/history/basicInfo2.do (샘플 URL sidoCode=27&sggCode=27140=대구 동구; 시도시군구코드.xlsx 제공)",
-  "neis": "https://open.neis.go.kr/hub/schoolInfo?Type=json&pSize=1&ATPT_OFCDC_SC_CODE={코드} (실호출로 ATPT_OFCDC_SC_NM 확인)",
+  "kma": "https://www.data.go.kr/data/15084084/openapi.do (참고문서 기상청41_단기예보 조회서비스_오픈API활용가이드_2610.zip 내 격자_위경도 엑셀 — 본 세션에서 파일 미열람; nx,ny는 기상청 공개 LCC 변환식으로 구청 좌표에서 산출)",
+  "air": "https://www.airkorea.or.kr/web/stationInfo?pMENU_NO=93 (에어코리아 측정소 정보, 2026-11-03 조회; 주소 표기가 이미 '인천 제물포구/서해구/검단구/영종구', '전남광주통합특별시 ○구'로 갱신됨)",
+  "lib": "https://www.data4library.kr/downloadApiManual (정보나루 Open API 매뉴얼 v20260620, 지역/세부지역 코드표 — 2026-07-01 행정구역 변경 미반영: 광주광역시 24, 인천 중구 23010·동구 23020·서구 23080 그대로)",
+  "kopis": "https://kopis.or.kr/upload/openApi/공연예술통합전산망OpenAPI공통코드.pdf (signgucode=행정표준코드 앞2자리, signgucodesub=앞4자리; 2026-07-01 변경 미반영: 광주광역시 29/2911~2920, 인천 2811 중구·2814 동구·2817 '남구'·2826 서구 수록, 제물포·영종·서해·검단구 미수록)",
+  "kinder": "https://e-childschoolinfo.moe.go.kr/openApi/history/basicInfo2.do (샘플 URL sidoCode=27&sggCode=27140=대구 동구; 시도시군구코드.xlsx 제공; 시/도 선택목록에 '전남광주통합특별시' 등재 확인, 엑셀 미열람)",
+  "neis": "https://open.neis.go.kr/hub/schoolInfo?Type=json&pSize=1&ATPT_OFCDC_SC_CODE={코드} (2026-11-03 실호출: E10=인천광역시교육청, F10=전남광주통합특별시교육청(광주), H10=울산광역시교육청, I10=세종특별자치시교육청)",
   "tour": "https://www.data.go.kr/data/15101578/openapi.do (KorService2: areaCode2·ldongCode2) / https://api.visitkorea.or.kr/#/cmsNoticeDetail?no=207 (법정동코드 신규기능 공지) / 15101811 문서: areaCode·sigunguCode \"미사용 기능(삭제예정-법정동 시도코드 대체)\""
  },
  "sido": {
@@ -80,6 +80,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -126,6 +128,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -172,6 +176,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -218,6 +224,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -264,6 +272,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -310,6 +320,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -356,6 +368,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -402,6 +416,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -448,6 +464,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -494,6 +512,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -540,6 +560,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -586,6 +608,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -632,6 +656,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -678,6 +704,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -724,6 +752,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   },
@@ -770,6 +800,8 @@
     "air_station": "확인",
     "tour": "미확인"
    },
+   "code_old": "",
+   "hira_sgg_old": "",
    "_note": "",
    "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"
   }

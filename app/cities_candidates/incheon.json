@@ -1,0 +1,276 @@
+{
+ "_설명": "인천광역시 앱 설정 v01후보 — AIRANG_INCLUDE_CANDIDATES=1 미리보기 빌드에서만 쓰임. 운영 cities.json 과 분리.",
+ "sidos": {
+  "인천": [
+   "인천광역시",
+   "incheon",
+   "구"
+  ]
+ },
+ "cities": {
+  "jemulpo": {
+   "name": "인천 제물포",
+   "sido": "인천",
+   "sgg": "제물포구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#2F6FBA",
+    "ink": "#24568F",
+    "deep": "#183B63",
+    "soft": "#EAF1FA"
+   },
+   "areas": "신포·동인천·송림",
+   "lat": 37.4738,
+   "lon": 126.6213,
+   "searchEx": "신포, 동인천",
+   "domain": "jemulpo.incheon.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "yeongjong": {
+   "name": "인천 영종",
+   "sido": "인천",
+   "sgg": "영종구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#C2410C",
+    "ink": "#9A3412",
+    "deep": "#6B2308",
+    "soft": "#FDEEE4"
+   },
+   "areas": "운서·하늘도시·영종",
+   "lat": 37.495,
+   "lon": 126.544,
+   "searchEx": "운서, 하늘도시",
+   "domain": "yeongjong.incheon.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "michuhol": {
+   "name": "미추홀",
+   "sido": "인천",
+   "sgg": "미추홀구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#5E8C7A",
+    "ink": "#2E5A4B",
+    "deep": "#1E3C32",
+    "soft": "#EBF3EF"
+   },
+   "areas": "주안·용현·학익",
+   "lat": 37.4636,
+   "lon": 126.6503,
+   "searchEx": "주안, 용현",
+   "domain": "michuhol.incheon.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "yeonsu": {
+   "name": "연수",
+   "sido": "인천",
+   "sgg": "연수구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#7048E8",
+    "ink": "#5537B0",
+    "deep": "#3E2881",
+    "soft": "#F1EDFD"
+   },
+   "areas": "송도·연수·동춘",
+   "lat": 37.4102,
+   "lon": 126.6782,
+   "searchEx": "송도, 연수",
+   "domain": "yeonsu.incheon.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "namdong": {
+   "name": "인천 남동",
+   "sido": "인천",
+   "sgg": "남동구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#B8923E",
+    "ink": "#6F5415",
+    "deep": "#4A370E",
+    "soft": "#F8F2E4"
+   },
+   "areas": "구월·논현·만수",
+   "lat": 37.4472,
+   "lon": 126.7313,
+   "searchEx": "구월, 논현",
+   "domain": "namdong.incheon.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "bupyeong": {
+   "name": "부평",
+   "sido": "인천",
+   "sgg": "부평구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#0F8B8D",
+    "ink": "#0A6466",
+    "deep": "#064546",
+    "soft": "#E6F4F4"
+   },
+   "areas": "부평·삼산·부개",
+   "lat": 37.5071,
+   "lon": 126.7219,
+   "searchEx": "부평, 삼산",
+   "domain": "bupyeong.incheon.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "gyeyang": {
+   "name": "계양",
+   "sido": "인천",
+   "sgg": "계양구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#D9654A",
+    "ink": "#A33D27",
+    "deep": "#6E2819",
+    "soft": "#FBEDE9"
+   },
+   "areas": "계산·작전·효성",
+   "lat": 37.5375,
+   "lon": 126.7378,
+   "searchEx": "계산, 작전",
+   "domain": "gyeyang.incheon.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "seohae": {
+   "name": "인천 서해",
+   "sido": "인천",
+   "sgg": "서해구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#1F2A44",
+    "ink": "#16203A",
+    "deep": "#0E1526",
+    "soft": "#ECEEF3"
+   },
+   "areas": "연희·가정·청라",
+   "lat": 37.5455,
+   "lon": 126.676,
+   "searchEx": "연희, 가정",
+   "domain": "seohae.incheon.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "geomdan": {
+   "name": "인천 검단",
+   "sido": "인천",
+   "sgg": "검단구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#2F6FBA",
+    "ink": "#24568F",
+    "deep": "#183B63",
+    "soft": "#EAF1FA"
+   },
+   "areas": "검단·당하·마전",
+   "lat": 37.5953,
+   "lon": 126.6655,
+   "searchEx": "검단, 당하",
+   "domain": "geomdan.incheon.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "ganghwa": {
+   "name": "강화",
+   "sido": "인천",
+   "sgg": "강화군",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#C2410C",
+    "ink": "#9A3412",
+    "deep": "#6B2308",
+    "soft": "#FDEEE4"
+   },
+   "areas": "강화읍·길상",
+   "lat": 37.7466,
+   "lon": 126.488,
+   "searchEx": "강화읍, 길상",
+   "domain": "ganghwa.incheon.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "ongjin": {
+   "name": "옹진",
+   "sido": "인천",
+   "sgg": "옹진군",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#5E8C7A",
+    "ink": "#2E5A4B",
+    "deep": "#1E3C32",
+    "soft": "#EBF3EF"
+   },
+   "areas": "영흥·백령·덕적",
+   "lat": 37.4466,
+   "lon": 126.6368,
+   "searchEx": "영흥, 백령",
+   "domain": "ongjin.incheon.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  }
+ }
+}

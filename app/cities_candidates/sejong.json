@@ -1,0 +1,36 @@
+{
+ "_설명": "세종특별자치시 앱 설정 v01후보 — AIRANG_INCLUDE_CANDIDATES=1 미리보기 빌드에서만 쓰임. 운영 cities.json 과 분리.",
+ "sidos": {
+  "세종": [
+   "세종특별자치시",
+   "sejong",
+   "시"
+  ]
+ },
+ "cities": {
+  "sejong": {
+   "name": "세종",
+   "sido": "세종",
+   "sgg": "세종특별자치시",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#2F6FBA",
+    "ink": "#24568F",
+    "deep": "#183B63",
+    "soft": "#EAF1FA"
+   },
+   "areas": "한솔·도담·새롬·조치원",
+   "lat": 36.48,
+   "lon": 127.289,
+   "searchEx": "한솔, 도담",
+   "domain": "sejong.sejong.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  }
+ }
+}

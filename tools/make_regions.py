@@ -17,6 +17,10 @@ SIDO = {
     "대구": {"full": "대구광역시", "neis": "D10", "lib": "22", "kinder": "27", "kopis": "27", "hira": "230000", "air": "대구", "tour": 4, "tel": "053", "span": 0.5, "tag": "daegu", "suffix": "구"},
     "부산": {"full": "부산광역시", "neis": "C10", "lib": "21", "kinder": "26", "kopis": "26", "hira": "210000", "air": "부산", "tour": 6, "tel": "051", "span": 0.5, "tag": "busan", "suffix": "구"},
     "제주": {"full": "제주특별자치도", "neis": "T10", "lib": "50", "kinder": "50", "kopis": "50", "hira": "390000", "air": "제주", "tour": 39, "tel": "064", "span": 0.6, "tag": "jeju", "suffix": "시"},
+    "인천": {"full": "인천광역시", "neis": "E10", "lib": "23", "kinder": "28", "kopis": "28", "hira": "220000", "air": "인천", "tour": 2, "tel": "032", "span": 0.6, "tag": "incheon", "suffix": "구"},
+    "광주": {"full": "전남광주통합특별시", "neis": "F10", "lib": "24", "kinder": "12", "kopis": "12", "hira": "360000", "air": "광주", "tour": 5, "tel": "062", "span": 0.5, "tag": "gwangju", "suffix": "구"},
+    "울산": {"full": "울산광역시", "neis": "H10", "lib": "26", "kinder": "31", "kopis": "31", "hira": "260000", "air": "울산", "tour": 7, "tel": "052", "span": 0.5, "tag": "ulsan", "suffix": "구"},
+    "세종": {"full": "세종특별자치시", "neis": "I10", "lib": "29", "kinder": "36", "kopis": "36", "hira": "410000", "air": "세종", "tour": 8, "tel": "044", "span": 0.5, "tag": "sejong", "suffix": "시"},
     "충북": {"full": "충청북도", "neis": "M10", "lib": "33", "kinder": "43", "kopis": "43", "hira": "330000", "air": "충북", "tour": 33, "tel": "043", "span": 0.8, "tag": "chungbuk", "suffix": "시"},
 }
 # 구·군: (키, 표시 이름, 지역 이름(area), 시군구 코드(법정동 5자리), 위도, 경도, 생활권 예시, 폴더)
@@ -39,7 +43,25 @@ CITIES = {
             ("흥덕", "청주 흥덕", "청주시 흥덕구", 43113, 36.6410, 127.4319, "복대·가경·오송", "heungdeok"), ("청원", "청주 청원", "청주시 청원구", 43114, 36.6640, 127.4900, "율량·오창·내덕", "cheongwon"),
             ("충주", "충주", "충주시", 43130, 36.9910, 127.9259, "연수·호암·칠금", "chungju")],
 }
-NOTE = {"대구": "군위군은 2023-07 대구 편입(대표 지시 '8 구·군'에는 없음 → 후보에만 넣고 표시, 포함 여부는 대표 결정)",
+# 1차 확장 4개 시·도 구·군 — 023-1 검증표(현행 2026-07-01 체계) 값으로 채움. (키, 표시이름, area, 법정동, lat, lon, 생활권 예시, 폴더)
+CITIES.update({
+    "인천": [("제물포", "인천 제물포", "제물포구", 28125, 37.4738, 126.6213, "신포·동인천·송림", "jemulpo"), ("영종", "인천 영종", "영종구", 28155, 37.4950, 126.5440, "운서·하늘도시·영종", "yeongjong"),
+            ("미추홀", "미추홀", "미추홀구", 28177, 37.4636, 126.6503, "주안·용현·학익", "michuhol"), ("연수", "연수", "연수구", 28185, 37.4102, 126.6782, "송도·연수·동춘", "yeonsu"),
+            ("남동", "인천 남동", "남동구", 28200, 37.4472, 126.7313, "구월·논현·만수", "namdong"), ("부평", "부평", "부평구", 28237, 37.5071, 126.7219, "부평·삼산·부개", "bupyeong"),
+            ("계양", "계양", "계양구", 28245, 37.5375, 126.7378, "계산·작전·효성", "gyeyang"), ("서해", "인천 서해", "서해구", 28275, 37.5455, 126.6760, "연희·가정·청라", "seohae"),
+            ("검단", "인천 검단", "검단구", 28290, 37.5953, 126.6655, "검단·당하·마전", "geomdan"), ("강화", "강화", "강화군", 28710, 37.7466, 126.4880, "강화읍·길상", "ganghwa"), ("옹진", "옹진", "옹진군", 28720, 37.4466, 126.6368, "영흥·백령·덕적", "ongjin")],
+    "광주": [("광주동구", "광주 동구", "동구", 12210, 35.1460, 126.9232, "충장·산수·학동", "gjdonggu"), ("광주서구", "광주 서구", "서구", 12240, 35.1520, 126.8900, "상무·금호·치평", "gjseogu"),
+            ("광주남구", "광주 남구", "남구", 12270, 35.1329, 126.9025, "봉선·진월·주월", "gjnamgu"), ("광주북구", "광주 북구", "북구", 12300, 35.1742, 126.9120, "운암·일곡·첨단", "gjbukgu"),
+            ("광산", "광산", "광산구", 12330, 35.1396, 126.7937, "수완·신창·운남", "gwangsan")],
+    "울산": [("울산중구", "울산 중구", "중구", 31110, 35.5696, 129.3327, "성남·우정·태화", "usjunggu"), ("울산남구", "울산 남구", "남구", 31140, 35.5440, 129.3303, "삼산·옥동·무거", "usnamgu"),
+            ("울산동구", "울산 동구", "동구", 31170, 35.5050, 129.4167, "전하·일산·방어", "usdonggu"), ("울산북구", "울산 북구", "북구", 31200, 35.5826, 129.3613, "송정·호계·화봉", "usbukgu"),
+            ("울주", "울주", "울주군", 31710, 35.5222, 129.2424, "범서·언양·온양", "ulju")],
+    "세종": [("세종", "세종", "세종특별자치시", 36110, 36.4800, 127.2890, "한솔·도담·새롬·조치원", "sejong")],
+})
+NOTE = {"인천": "2026-07-01 구 개편(중구·동구→제물포구·영종구, 서구→서해구·검단구) — 11 구·군. 정보나루·KOPIS·유치원알리미 자료는 신설 4구 미반영(미확인)",
+        "광주": "2026-07-01 광주광역시 폐지 → 전남광주통합특별시(법정동 시도 12) 소속 5구. 심평원 36(전남광주) 신설·24(광주) 병존 → 실호출로 확정 필요. 정보나루·KOPIS·알리미 미반영. 지시서의 '광주광역시'는 변경 전 명칭 — 대표 결정 필요",
+        "세종": "구 없이 시 전체 1단위(동·읍·면). 생활권 분리는 places 정규식으로",
+        "대구": "군위군은 2023-07 대구 편입(대표 지시 '8 구·군'에는 없음 → 후보에만 넣고 표시, 포함 여부는 대표 결정)",
         "충북": "청주 4구 + 충주시. 청주시 구는 법정동 코드 43111~43114(청주시 43110 하위) — NEIS·심평원 등은 '청주시' 단위 코드를 쓰는 API가 있어 수집기별 확인 필요"}
 PALETTE = [("#2F6FBA", "#24568F", "#183B63", "#EAF1FA"), ("#C2410C", "#9A3412", "#6B2308", "#FDEEE4"), ("#5E8C7A", "#2E5A4B", "#1E3C32", "#EBF3EF"), ("#7048E8", "#5537B0", "#3E2881", "#F1EDFD"),
            ("#B8923E", "#6F5415", "#4A370E", "#F8F2E4"), ("#0F8B8D", "#0A6466", "#064546", "#E6F4F4"), ("#D9654A", "#A33D27", "#6E2819", "#FBEDE9"), ("#1F2A44", "#16203A", "#0E1526", "#ECEEF3")]
@@ -52,8 +74,14 @@ def ok(v):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--codes", default=os.path.join(ROOT, "..", "out", "2026-11-03_아이랑대전_022", "022-1_regions_codes.json")); a = ap.parse_args()
     codes = json.load(open(a.codes, encoding="utf-8")) if a.codes and os.path.exists(a.codes) else {"sido": {}, "sgg": []}
+    c2 = os.path.join(ROOT, "..", "out", "2026-11-03_아이랑대전_023", "023-1_regions_codes_1st.json")   # 1차 확장 4개 시·도 검증표
+    if os.path.exists(c2):
+        j2 = json.load(open(c2, encoding="utf-8")); codes.setdefault("sido", {}).update(j2.get("sido", {})); codes.setdefault("sgg", []).extend(j2.get("sgg", []))
+        src2 = (j2.get("meta") or {}).get("sources", {})
+    else:
+        src2 = {}
     sgg_by_code = {str(x["code"]): x for x in codes.get("sgg", [])}
-    src = (codes.get("meta") or {}).get("sources", {})
+    src = dict((codes.get("meta") or {}).get("sources", {})); src.update(src2)
     os.makedirs(os.path.join(ROOT, "regions"), exist_ok=True); os.makedirs(os.path.join(ROOT, "app", "cities_candidates"), exist_ok=True)
     n_ok = n_un = 0
     for sk, S in SIDO.items():
@@ -78,6 +106,7 @@ def main():
                    "domain": f"{d}.{S['tag']}.example.invalid",
                    "_verify": {"code": xv.get("code", "미확인"), "hira_sgg": xv.get("hira_sgguCd", "미확인"), "lib": xv.get("lib_dtl_region", xv.get("lib", "미확인")), "kopis": xv.get("kopis_sub", xv.get("kopis", "미확인")), "kinder_sgg": xv.get("kinder_sggCode", xv.get("kinder", "미확인")),
                                "egen_q1": xv.get("egen_Q1", "미확인"), "grid": xv.get("kma", xv.get("kma_nx", "미확인")), "air_station": xv.get("airkorea_station", xv.get("airkorea", "미확인")), "tour": xv.get("tour_sigunguCode", "미확인")},
+                   "code_old": x.get("code_old") or "", "hira_sgg_old": x.get("hira_sgguCd_old") or "",
                    "_note": x.get("note", ""), "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"}
             n_ok += sum(1 for v in ent["_verify"].values() if ok(v)); n_un += sum(1 for v in ent["_verify"].values() if not ok(v))
             reg["cities"][k] = ent
