@@ -1,0 +1,228 @@
+{
+ "_설명": "대구광역시 앱 설정 v01후보 — AIRANG_INCLUDE_CANDIDATES=1 미리보기 빌드에서만 쓰임. 운영 cities.json 과 분리.",
+ "sidos": {
+  "대구": [
+   "대구광역시",
+   "daegu",
+   "구"
+  ]
+ },
+ "cities": {
+  "dgjunggu": {
+   "name": "대구 중구",
+   "sido": "대구",
+   "sgg": "중구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#2F6FBA",
+    "ink": "#24568F",
+    "deep": "#183B63",
+    "soft": "#EAF1FA"
+   },
+   "areas": "동성로·남산·대신",
+   "lat": 35.8694,
+   "lon": 128.6061,
+   "searchEx": "동성로, 남산",
+   "domain": "dgjunggu.daegu.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "dgdonggu": {
+   "name": "대구 동구",
+   "sido": "대구",
+   "sgg": "동구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#C2410C",
+    "ink": "#9A3412",
+    "deep": "#6B2308",
+    "soft": "#FDEEE4"
+   },
+   "areas": "신천·동대구역·안심",
+   "lat": 35.8866,
+   "lon": 128.6356,
+   "searchEx": "신천, 동대구역",
+   "domain": "dgdonggu.daegu.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "dgseogu": {
+   "name": "대구 서구",
+   "sido": "대구",
+   "sgg": "서구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#5E8C7A",
+    "ink": "#2E5A4B",
+    "deep": "#1E3C32",
+    "soft": "#EBF3EF"
+   },
+   "areas": "평리·내당·비산",
+   "lat": 35.8718,
+   "lon": 128.5592,
+   "searchEx": "평리, 내당",
+   "domain": "dgseogu.daegu.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "dgnamgu": {
+   "name": "대구 남구",
+   "sido": "대구",
+   "sgg": "남구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#7048E8",
+    "ink": "#5537B0",
+    "deep": "#3E2881",
+    "soft": "#F1EDFD"
+   },
+   "areas": "대명·봉덕·앞산",
+   "lat": 35.846,
+   "lon": 128.5976,
+   "searchEx": "대명, 봉덕",
+   "domain": "dgnamgu.daegu.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "dgbukgu": {
+   "name": "대구 북구",
+   "sido": "대구",
+   "sgg": "북구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#B8923E",
+    "ink": "#6F5415",
+    "deep": "#4A370E",
+    "soft": "#F8F2E4"
+   },
+   "areas": "칠곡·침산·복현",
+   "lat": 35.8858,
+   "lon": 128.5829,
+   "searchEx": "칠곡, 침산",
+   "domain": "dgbukgu.daegu.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "suseong": {
+   "name": "수성",
+   "sido": "대구",
+   "sgg": "수성구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#0F8B8D",
+    "ink": "#0A6466",
+    "deep": "#064546",
+    "soft": "#E6F4F4"
+   },
+   "areas": "범어·만촌·시지",
+   "lat": 35.8582,
+   "lon": 128.6307,
+   "searchEx": "범어, 만촌",
+   "domain": "suseong.daegu.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "dalseo": {
+   "name": "달서",
+   "sido": "대구",
+   "sgg": "달서구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#D9654A",
+    "ink": "#A33D27",
+    "deep": "#6E2819",
+    "soft": "#FBEDE9"
+   },
+   "areas": "월성·상인·성서",
+   "lat": 35.8299,
+   "lon": 128.5327,
+   "searchEx": "월성, 상인",
+   "domain": "dalseo.daegu.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "dalseong": {
+   "name": "달성",
+   "sido": "대구",
+   "sgg": "달성군",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#1F2A44",
+    "ink": "#16203A",
+    "deep": "#0E1526",
+    "soft": "#ECEEF3"
+   },
+   "areas": "다사·화원·테크노폴리스",
+   "lat": 35.7747,
+   "lon": 128.4313,
+   "searchEx": "다사, 화원",
+   "domain": "dalseong.daegu.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "gunwi": {
+   "name": "군위",
+   "sido": "대구",
+   "sgg": "군위군",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#2F6FBA",
+    "ink": "#24568F",
+    "deep": "#183B63",
+    "soft": "#EAF1FA"
+   },
+   "areas": "군위읍",
+   "lat": 36.2429,
+   "lon": 128.5729,
+   "searchEx": "군위읍",
+   "domain": "gunwi.daegu.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  }
+ }
+}

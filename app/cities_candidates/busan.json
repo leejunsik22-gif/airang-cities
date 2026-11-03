@@ -1,0 +1,396 @@
+{
+ "_설명": "부산광역시 앱 설정 v01후보 — AIRANG_INCLUDE_CANDIDATES=1 미리보기 빌드에서만 쓰임. 운영 cities.json 과 분리.",
+ "sidos": {
+  "부산": [
+   "부산광역시",
+   "busan",
+   "구"
+  ]
+ },
+ "cities": {
+  "bsjunggu": {
+   "name": "부산 중구",
+   "sido": "부산",
+   "sgg": "중구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#2F6FBA",
+    "ink": "#24568F",
+    "deep": "#183B63",
+    "soft": "#EAF1FA"
+   },
+   "areas": "남포·중앙",
+   "lat": 35.1064,
+   "lon": 129.0323,
+   "searchEx": "남포, 중앙",
+   "domain": "bsjunggu.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "bsseogu": {
+   "name": "부산 서구",
+   "sido": "부산",
+   "sgg": "서구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#C2410C",
+    "ink": "#9A3412",
+    "deep": "#6B2308",
+    "soft": "#FDEEE4"
+   },
+   "areas": "서대신·암남",
+   "lat": 35.0979,
+   "lon": 129.0243,
+   "searchEx": "서대신, 암남",
+   "domain": "bsseogu.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "bsdonggu": {
+   "name": "부산 동구",
+   "sido": "부산",
+   "sgg": "동구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#5E8C7A",
+    "ink": "#2E5A4B",
+    "deep": "#1E3C32",
+    "soft": "#EBF3EF"
+   },
+   "areas": "초량·범일",
+   "lat": 35.1292,
+   "lon": 129.0453,
+   "searchEx": "초량, 범일",
+   "domain": "bsdonggu.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "yeongdo": {
+   "name": "영도",
+   "sido": "부산",
+   "sgg": "영도구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#7048E8",
+    "ink": "#5537B0",
+    "deep": "#3E2881",
+    "soft": "#F1EDFD"
+   },
+   "areas": "동삼·남항",
+   "lat": 35.0912,
+   "lon": 129.0679,
+   "searchEx": "동삼, 남항",
+   "domain": "yeongdo.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "busanjin": {
+   "name": "부산진",
+   "sido": "부산",
+   "sgg": "부산진구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#B8923E",
+    "ink": "#6F5415",
+    "deep": "#4A370E",
+    "soft": "#F8F2E4"
+   },
+   "areas": "서면·양정·개금",
+   "lat": 35.163,
+   "lon": 129.0531,
+   "searchEx": "서면, 양정",
+   "domain": "busanjin.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "dongnae": {
+   "name": "동래",
+   "sido": "부산",
+   "sgg": "동래구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#0F8B8D",
+    "ink": "#0A6466",
+    "deep": "#064546",
+    "soft": "#E6F4F4"
+   },
+   "areas": "온천·사직·명장",
+   "lat": 35.2048,
+   "lon": 129.0837,
+   "searchEx": "온천, 사직",
+   "domain": "dongnae.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "bsnamgu": {
+   "name": "부산 남구",
+   "sido": "부산",
+   "sgg": "남구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#D9654A",
+    "ink": "#A33D27",
+    "deep": "#6E2819",
+    "soft": "#FBEDE9"
+   },
+   "areas": "대연·용호·문현",
+   "lat": 35.1365,
+   "lon": 129.0843,
+   "searchEx": "대연, 용호",
+   "domain": "bsnamgu.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "bsbukgu": {
+   "name": "부산 북구",
+   "sido": "부산",
+   "sgg": "북구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#1F2A44",
+    "ink": "#16203A",
+    "deep": "#0E1526",
+    "soft": "#ECEEF3"
+   },
+   "areas": "화명·덕천·구포",
+   "lat": 35.1972,
+   "lon": 128.9903,
+   "searchEx": "화명, 덕천",
+   "domain": "bsbukgu.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "haeundae": {
+   "name": "해운대",
+   "sido": "부산",
+   "sgg": "해운대구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#2F6FBA",
+    "ink": "#24568F",
+    "deep": "#183B63",
+    "soft": "#EAF1FA"
+   },
+   "areas": "좌동·재송·반여",
+   "lat": 35.1631,
+   "lon": 129.1636,
+   "searchEx": "좌동, 재송",
+   "domain": "haeundae.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "saha": {
+   "name": "사하",
+   "sido": "부산",
+   "sgg": "사하구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#C2410C",
+    "ink": "#9A3412",
+    "deep": "#6B2308",
+    "soft": "#FDEEE4"
+   },
+   "areas": "하단·괴정·다대",
+   "lat": 35.1044,
+   "lon": 128.9747,
+   "searchEx": "하단, 괴정",
+   "domain": "saha.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "geumjeong": {
+   "name": "금정",
+   "sido": "부산",
+   "sgg": "금정구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#5E8C7A",
+    "ink": "#2E5A4B",
+    "deep": "#1E3C32",
+    "soft": "#EBF3EF"
+   },
+   "areas": "구서·장전·부곡",
+   "lat": 35.2429,
+   "lon": 129.0922,
+   "searchEx": "구서, 장전",
+   "domain": "geumjeong.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "bsgangseo": {
+   "name": "부산 강서",
+   "sido": "부산",
+   "sgg": "강서구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#7048E8",
+    "ink": "#5537B0",
+    "deep": "#3E2881",
+    "soft": "#F1EDFD"
+   },
+   "areas": "명지·대저·녹산",
+   "lat": 35.2121,
+   "lon": 128.9806,
+   "searchEx": "명지, 대저",
+   "domain": "bsgangseo.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "yeonje": {
+   "name": "연제",
+   "sido": "부산",
+   "sgg": "연제구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#B8923E",
+    "ink": "#6F5415",
+    "deep": "#4A370E",
+    "soft": "#F8F2E4"
+   },
+   "areas": "연산·거제",
+   "lat": 35.1761,
+   "lon": 129.0796,
+   "searchEx": "연산, 거제",
+   "domain": "yeonje.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "suyeong": {
+   "name": "수영",
+   "sido": "부산",
+   "sgg": "수영구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#0F8B8D",
+    "ink": "#0A6466",
+    "deep": "#064546",
+    "soft": "#E6F4F4"
+   },
+   "areas": "광안·남천·민락",
+   "lat": 35.1455,
+   "lon": 129.1131,
+   "searchEx": "광안, 남천",
+   "domain": "suyeong.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "sasang": {
+   "name": "사상",
+   "sido": "부산",
+   "sgg": "사상구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#D9654A",
+    "ink": "#A33D27",
+    "deep": "#6E2819",
+    "soft": "#FBEDE9"
+   },
+   "areas": "괘법·주례·모라",
+   "lat": 35.1525,
+   "lon": 128.9912,
+   "searchEx": "괘법, 주례",
+   "domain": "sasang.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "gijang": {
+   "name": "기장",
+   "sido": "부산",
+   "sgg": "기장군",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#1F2A44",
+    "ink": "#16203A",
+    "deep": "#0E1526",
+    "soft": "#ECEEF3"
+   },
+   "areas": "정관·기장읍·일광",
+   "lat": 35.2445,
+   "lon": 129.2223,
+   "searchEx": "정관, 기장읍",
+   "domain": "gijang.busan.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  }
+ }
+}

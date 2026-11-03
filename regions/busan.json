@@ -1,0 +1,397 @@
+{
+ "_설명": "부산광역시 지역 설정 v01후보(2026-11-03) — 비공개 후보. 코드 검증 상태는 _verify 참고. 미확인 코드로는 수집을 돌리지 않는다.",
+ "sido_key": "부산",
+ "stage": "비공개 후보",
+ "_note": "",
+ "sido": {
+  "full": "부산광역시",
+  "neis": "C10",
+  "lib": "21",
+  "kinder": "26",
+  "kopis": "26",
+  "hira": "210000",
+  "air": "부산",
+  "tour": 6,
+  "tel": "051",
+  "span": 0.5
+ },
+ "_verify": {
+  "neis": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "lib": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "kinder": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "kopis": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "hira": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "air": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "tour": "미확인(클로드 기억값 — 공식 출처 대조 필요)"
+ },
+ "cities": {
+  "부산중구": {
+   "sido": "부산",
+   "sgg": "중구",
+   "area": "중구",
+   "dir": "bsjunggu",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26110
+   },
+   "lat": 35.1064,
+   "lon": 129.0323,
+   "areas": "남포·중앙",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "중구|남포|중앙",
+   "not_places": "서구|동구|영도구|부산진구|동래구|남구|북구|해운대구|사하구|금정구|강서구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "bsjunggu.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "부산서구": {
+   "sido": "부산",
+   "sgg": "서구",
+   "area": "서구",
+   "dir": "bsseogu",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26140
+   },
+   "lat": 35.0979,
+   "lon": 129.0243,
+   "areas": "서대신·암남",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "서구|서대신|암남",
+   "not_places": "중구|동구|영도구|부산진구|동래구|남구|북구|해운대구|사하구|금정구|강서구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "bsseogu.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "부산동구": {
+   "sido": "부산",
+   "sgg": "동구",
+   "area": "동구",
+   "dir": "bsdonggu",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26170
+   },
+   "lat": 35.1292,
+   "lon": 129.0453,
+   "areas": "초량·범일",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "동구|초량|범일",
+   "not_places": "중구|서구|영도구|부산진구|동래구|남구|북구|해운대구|사하구|금정구|강서구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "bsdonggu.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "영도": {
+   "sido": "부산",
+   "sgg": "영도구",
+   "area": "영도구",
+   "dir": "yeongdo",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26200
+   },
+   "lat": 35.0912,
+   "lon": 129.0679,
+   "areas": "동삼·남항",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "영도구|동삼|남항",
+   "not_places": "중구|서구|동구|부산진구|동래구|남구|북구|해운대구|사하구|금정구|강서구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "yeongdo.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "부산진": {
+   "sido": "부산",
+   "sgg": "부산진구",
+   "area": "부산진구",
+   "dir": "busanjin",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26230
+   },
+   "lat": 35.163,
+   "lon": 129.0531,
+   "areas": "서면·양정·개금",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "부산진구|서면|양정|개금",
+   "not_places": "중구|서구|동구|영도구|동래구|남구|북구|해운대구|사하구|금정구|강서구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "busanjin.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "동래": {
+   "sido": "부산",
+   "sgg": "동래구",
+   "area": "동래구",
+   "dir": "dongnae",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26260
+   },
+   "lat": 35.2048,
+   "lon": 129.0837,
+   "areas": "온천·사직·명장",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "동래구|온천|사직|명장",
+   "not_places": "중구|서구|동구|영도구|부산진구|남구|북구|해운대구|사하구|금정구|강서구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "dongnae.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "부산남구": {
+   "sido": "부산",
+   "sgg": "남구",
+   "area": "남구",
+   "dir": "bsnamgu",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26290
+   },
+   "lat": 35.1365,
+   "lon": 129.0843,
+   "areas": "대연·용호·문현",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "남구|대연|용호|문현",
+   "not_places": "중구|서구|동구|영도구|부산진구|동래구|북구|해운대구|사하구|금정구|강서구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "bsnamgu.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "부산북구": {
+   "sido": "부산",
+   "sgg": "북구",
+   "area": "북구",
+   "dir": "bsbukgu",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26320
+   },
+   "lat": 35.1972,
+   "lon": 128.9903,
+   "areas": "화명·덕천·구포",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "북구|화명|덕천|구포",
+   "not_places": "중구|서구|동구|영도구|부산진구|동래구|남구|해운대구|사하구|금정구|강서구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "bsbukgu.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "해운대": {
+   "sido": "부산",
+   "sgg": "해운대구",
+   "area": "해운대구",
+   "dir": "haeundae",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26350
+   },
+   "lat": 35.1631,
+   "lon": 129.1636,
+   "areas": "좌동·재송·반여",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "해운대구|좌동|재송|반여",
+   "not_places": "중구|서구|동구|영도구|부산진구|동래구|남구|북구|사하구|금정구|강서구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "haeundae.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "사하": {
+   "sido": "부산",
+   "sgg": "사하구",
+   "area": "사하구",
+   "dir": "saha",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26380
+   },
+   "lat": 35.1044,
+   "lon": 128.9747,
+   "areas": "하단·괴정·다대",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "사하구|하단|괴정|다대",
+   "not_places": "중구|서구|동구|영도구|부산진구|동래구|남구|북구|해운대구|금정구|강서구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "saha.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "금정": {
+   "sido": "부산",
+   "sgg": "금정구",
+   "area": "금정구",
+   "dir": "geumjeong",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26410
+   },
+   "lat": 35.2429,
+   "lon": 129.0922,
+   "areas": "구서·장전·부곡",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "금정구|구서|장전|부곡",
+   "not_places": "중구|서구|동구|영도구|부산진구|동래구|남구|북구|해운대구|사하구|강서구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "geumjeong.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "부산강서": {
+   "sido": "부산",
+   "sgg": "강서구",
+   "area": "강서구",
+   "dir": "bsgangseo",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26440
+   },
+   "lat": 35.2121,
+   "lon": 128.9806,
+   "areas": "명지·대저·녹산",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "강서구|명지|대저|녹산",
+   "not_places": "중구|서구|동구|영도구|부산진구|동래구|남구|북구|해운대구|사하구|금정구|연제구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "bsgangseo.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "연제": {
+   "sido": "부산",
+   "sgg": "연제구",
+   "area": "연제구",
+   "dir": "yeonje",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26470
+   },
+   "lat": 35.1761,
+   "lon": 129.0796,
+   "areas": "연산·거제",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "연제구|연산|거제",
+   "not_places": "중구|서구|동구|영도구|부산진구|동래구|남구|북구|해운대구|사하구|금정구|강서구|수영구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "yeonje.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "수영": {
+   "sido": "부산",
+   "sgg": "수영구",
+   "area": "수영구",
+   "dir": "suyeong",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26500
+   },
+   "lat": 35.1455,
+   "lon": 129.1131,
+   "areas": "광안·남천·민락",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "수영구|광안|남천|민락",
+   "not_places": "중구|서구|동구|영도구|부산진구|동래구|남구|북구|해운대구|사하구|금정구|강서구|연제구|사상구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "suyeong.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "사상": {
+   "sido": "부산",
+   "sgg": "사상구",
+   "area": "사상구",
+   "dir": "sasang",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26530
+   },
+   "lat": 35.1525,
+   "lon": 128.9912,
+   "areas": "괘법·주례·모라",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "사상구|괘법|주례|모라",
+   "not_places": "중구|서구|동구|영도구|부산진구|동래구|남구|북구|해운대구|사하구|금정구|강서구|연제구|수영구|기장군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "sasang.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "기장": {
+   "sido": "부산",
+   "sgg": "기장군",
+   "area": "기장군",
+   "dir": "gijang",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 26710
+   },
+   "lat": 35.2445,
+   "lon": 129.2223,
+   "areas": "정관·기장읍·일광",
+   "lib": {
+    "": null
+   },
+   "kopis": "26",
+   "stations": [],
+   "places": "기장군|정관|기장읍|일광",
+   "not_places": "중구|서구|동구|영도구|부산진구|동래구|남구|북구|해운대구|사하구|금정구|강서구|연제구|수영구|사상구",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "gijang.busan.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  }
+ }
+}

@@ -110,6 +110,8 @@ def build(city, out):
         open(os.path.join(d, f), "w", encoding="utf-8", newline="").write(txt)
     shutil.copytree(os.path.join(HERE, "assets"), os.path.join(d, "assets"))          # 모든 도시 같은 그림
     own = os.path.join(HERE, "cities", city)                                             # 도시 그림·아이콘
+    if not os.path.isdir(own):   # 후보 도시(미리보기 빌드): 그림 폴더 없으면 대전 유성 그림을 임시로 빌려 쓰고 경고(운영 빌드에는 후보가 없음)
+        print(f"  (후보) {city}: app/cities/{city} 없음 — 임시 그림(yuseong) 사용"); own = os.path.join(HERE, "cities", "yuseong")
     for f in os.listdir(own):
         dst = os.path.join(d, "assets", f) if f.startswith("hero-") else os.path.join(d, f)
         shutil.copy(os.path.join(own, f), dst)
@@ -137,6 +139,8 @@ def build_entry(out):
         shutil.copy(os.path.join(HERE, "entry", f), d)
     for k in CFG["cities"]:
         own = os.path.join(HERE, "cities", k)
+        if not os.path.isdir(own):   # 후보 도시(미리보기 빌드)는 그림 폴더가 없을 수 있음 → 대표 그림 자리 비움(경고만)
+            print(f"  (후보) {k}: app/cities/{k} 없음 — 입구 그림·아이콘 생략"); continue
         shutil.copy(os.path.join(own, f"hero-{k}-800.webp"), os.path.join(d, "img"))
         shutil.copy(os.path.join(own, "icon-192.png"), os.path.join(d, "img", f"ic-{k}.png"))
     return d

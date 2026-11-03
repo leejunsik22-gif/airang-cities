@@ -1,0 +1,236 @@
+{
+ "_설명": "대구광역시 지역 설정 v01후보(2026-11-03) — 비공개 후보. 코드 검증 상태는 _verify 참고. 미확인 코드로는 수집을 돌리지 않는다.",
+ "sido_key": "대구",
+ "stage": "비공개 후보",
+ "_note": "군위군은 2023-07 대구 편입(대표 지시 '8 구·군'에는 없음 → 후보에만 넣고 표시, 포함 여부는 대표 결정)",
+ "sido": {
+  "full": "대구광역시",
+  "neis": "D10",
+  "lib": "22",
+  "kinder": "27",
+  "kopis": "27",
+  "hira": "230000",
+  "air": "대구",
+  "tour": 4,
+  "tel": "053",
+  "span": 0.5
+ },
+ "_verify": {
+  "neis": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "lib": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "kinder": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "kopis": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "hira": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "air": "미확인(클로드 기억값 — 공식 출처 대조 필요)",
+  "tour": "미확인(클로드 기억값 — 공식 출처 대조 필요)"
+ },
+ "cities": {
+  "대구중구": {
+   "sido": "대구",
+   "sgg": "중구",
+   "area": "중구",
+   "dir": "dgjunggu",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 27110
+   },
+   "lat": 35.8694,
+   "lon": 128.6061,
+   "areas": "동성로·남산·대신",
+   "lib": {
+    "": null
+   },
+   "kopis": "27",
+   "stations": [],
+   "places": "중구|동성로|남산|대신",
+   "not_places": "동구|서구|남구|북구|수성구|달서구|달성군|군위군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "dgjunggu.daegu.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "대구동구": {
+   "sido": "대구",
+   "sgg": "동구",
+   "area": "동구",
+   "dir": "dgdonggu",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 27140
+   },
+   "lat": 35.8866,
+   "lon": 128.6356,
+   "areas": "신천·동대구역·안심",
+   "lib": {
+    "": null
+   },
+   "kopis": "27",
+   "stations": [],
+   "places": "동구|신천|동대구역|안심",
+   "not_places": "중구|서구|남구|북구|수성구|달서구|달성군|군위군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "dgdonggu.daegu.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "대구서구": {
+   "sido": "대구",
+   "sgg": "서구",
+   "area": "서구",
+   "dir": "dgseogu",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 27170
+   },
+   "lat": 35.8718,
+   "lon": 128.5592,
+   "areas": "평리·내당·비산",
+   "lib": {
+    "": null
+   },
+   "kopis": "27",
+   "stations": [],
+   "places": "서구|평리|내당|비산",
+   "not_places": "중구|동구|남구|북구|수성구|달서구|달성군|군위군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "dgseogu.daegu.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "대구남구": {
+   "sido": "대구",
+   "sgg": "남구",
+   "area": "남구",
+   "dir": "dgnamgu",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 27200
+   },
+   "lat": 35.846,
+   "lon": 128.5976,
+   "areas": "대명·봉덕·앞산",
+   "lib": {
+    "": null
+   },
+   "kopis": "27",
+   "stations": [],
+   "places": "남구|대명|봉덕|앞산",
+   "not_places": "중구|동구|서구|북구|수성구|달서구|달성군|군위군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "dgnamgu.daegu.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "대구북구": {
+   "sido": "대구",
+   "sgg": "북구",
+   "area": "북구",
+   "dir": "dgbukgu",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 27230
+   },
+   "lat": 35.8858,
+   "lon": 128.5829,
+   "areas": "칠곡·침산·복현",
+   "lib": {
+    "": null
+   },
+   "kopis": "27",
+   "stations": [],
+   "places": "북구|칠곡|침산|복현",
+   "not_places": "중구|동구|서구|남구|수성구|달서구|달성군|군위군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "dgbukgu.daegu.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "수성": {
+   "sido": "대구",
+   "sgg": "수성구",
+   "area": "수성구",
+   "dir": "suseong",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 27260
+   },
+   "lat": 35.8582,
+   "lon": 128.6307,
+   "areas": "범어·만촌·시지",
+   "lib": {
+    "": null
+   },
+   "kopis": "27",
+   "stations": [],
+   "places": "수성구|범어|만촌|시지",
+   "not_places": "중구|동구|서구|남구|북구|달서구|달성군|군위군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "suseong.daegu.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "달서": {
+   "sido": "대구",
+   "sgg": "달서구",
+   "area": "달서구",
+   "dir": "dalseo",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 27290
+   },
+   "lat": 35.8299,
+   "lon": 128.5327,
+   "areas": "월성·상인·성서",
+   "lib": {
+    "": null
+   },
+   "kopis": "27",
+   "stations": [],
+   "places": "달서구|월성|상인|성서",
+   "not_places": "중구|동구|서구|남구|북구|수성구|달성군|군위군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "dalseo.daegu.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "달성": {
+   "sido": "대구",
+   "sgg": "달성군",
+   "area": "달성군",
+   "dir": "dalseong",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 27710
+   },
+   "lat": 35.7747,
+   "lon": 128.4313,
+   "areas": "다사·화원·테크노폴리스",
+   "lib": {
+    "": null
+   },
+   "kopis": "27",
+   "stations": [],
+   "places": "달성군|다사|화원|테크노폴리스",
+   "not_places": "중구|동구|서구|남구|북구|수성구|달서구|군위군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "dalseong.daegu.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  },
+  "군위": {
+   "sido": "대구",
+   "sgg": "군위군",
+   "area": "군위군",
+   "dir": "gunwi",
+   "stage": "비공개 후보",
+   "gus": {
+    "": 27720
+   },
+   "lat": 36.2429,
+   "lon": 128.5729,
+   "areas": "군위읍",
+   "lib": {
+    "": null
+   },
+   "kopis": "27",
+   "stations": [],
+   "places": "군위군|군위읍",
+   "not_places": "중구|동구|서구|남구|북구|수성구|달서구|달성군",
+   "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요",
+   "domain": "gunwi.daegu.example.invalid",
+   "_verify_sgg": "미확인(클로드 기억값)"
+  }
+ }
+}
