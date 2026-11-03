@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""공개 전 자료 검문(gate) v05후보 — (2026-11-03 오후) --review <폴더>: 공개 보류·검사 실패·제외 파일을 비공개 검토 폴더에 보존(앱은 읽지 않음, 급식·특목·날씨 원문 대조용). v04 — (2026-11-03) 검사일을 한국 시간 기준으로, `_`로 시작하는 보조 파일(_status/_region_check)은 검사 대상에서 제외, 지역 검사(check_region.py) 결과를 상태에 함께 기록. v03 — 공식 원문 확인(official_verify)이 없으면 자동 검사를 통과해도 공개 보류, 기존 공개본 유지 시에도 공식 상태·유효기간 동시 검사 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
+"""공개 전 자료 검문(gate) v06후보 — (2026-11-03 저녁, 024) 변경 감지(change_guard): 직전 공개본과 기록 단위 비교, 의미 변경·삭제는 재검증 전 직전본 값 유지(review/<구>/_reverify.json), 변경 전후를 ops/changes/<구>.json 에 기록. 공개 파일의 갱신일(updated)을 _status 에 기록(감시용). 정책 제외 시·도(서울·경기, tools/safety_policy.json)는 공개 안 함. v05후보 — (2026-11-03 오후) --review <폴더>: 공개 보류·검사 실패·제외 파일을 비공개 검토 폴더에 보존(앱은 읽지 않음, 급식·특목·날씨 원문 대조용). v04 — (2026-11-03) 검사일을 한국 시간 기준으로, `_`로 시작하는 보조 파일(_status/_region_check)은 검사 대상에서 제외, 지역 검사(check_region.py) 결과를 상태에 함께 기록. v03 — 공식 원문 확인(official_verify)이 없으면 자동 검사를 통과해도 공개 보류, 기존 공개본 유지 시에도 공식 상태·유효기간 동시 검사 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
 
   python3 tools/gate.py --city yuseong --in output --out data/yuseong [--today 2026-11-02] [--dry-run] [--only weather.json]
 
@@ -15,6 +15,33 @@ KST = timezone(timedelta(hours=9))
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RULES = json.load(open(os.path.join(HERE, "data_rules.json"), encoding="utf-8"))
+sys.path.insert(0, HERE)
+from change_guard import guard as change_guard  # noqa: E402  (변경 감지·재검증 보류, 024)
+try:
+    POLICY = json.load(open(os.path.join(HERE, "safety_policy.json"), encoding="utf-8"))
+except Exception:
+    POLICY = {"excluded_sido": ["서울", "경기"]}
+
+
+def city_sido(city_dir):
+    """data 폴더 이름(또는 도시 키) → 시·도 키. regions/*.json 에서 찾는다(없으면 '')"""
+    import glob
+    for p in glob.glob(os.path.join(os.path.dirname(HERE), "regions", "*.json")):
+        if os.path.basename(p).startswith("_"):
+            continue
+        try:
+            r = json.load(open(p, encoding="utf-8"))
+        except Exception:
+            continue
+        for k, c in r.get("cities", {}).items():
+            if c.get("dir") == city_dir or k == city_dir:
+                return c.get("sido", r.get("sido_key", ""))
+    return ""
+
+
+def guard_summary(g):
+    c = g["counts"]
+    return f"{g['guard']}: 추가 {c['added']}·단순 {c['simple']}·의미 변경 {c['meaning']}·삭제 {c['removed']}·승인 {c['approved']}·보류 {c['held']}"
 
 
 def parse_dt(s):
@@ -110,7 +137,13 @@ def main():
     ap.add_argument("--strict", action="store_true")
     ap.add_argument("--review", default="", help="보류·실패·제외된 새 수집본을 보존할 비공개 폴더(예: review/yuseong). 앱은 data/ 만 읽는다")
     ap.add_argument("--only", nargs="*", default=None, help="이 파일들만 검문하고 _status.json 의 다른 항목은 그대로 둔다(날씨·병원처럼 일부만 수집하는 작업용)")
+    ap.add_argument("--approvals", default=os.path.join(os.path.dirname(HERE), "approvals", "reverify.json"), help="재검증 승인 기록(대표·피트가 적음)")
+    ap.add_argument("--changes", default=os.path.join(os.path.dirname(HERE), "ops", "changes"), help="변경 기록 폴더(ops/changes/<구>.json). 빈칸이면 기록 안 함")
+    ap.add_argument("--no-guard", action="store_true", help="변경 감지를 끈다(시험용)")
     a = ap.parse_args()
+    excluded = a.city if city_sido(a.city) in set(POLICY.get("excluded_sido", [])) else ""
+    if excluded:
+        print(f"::error::{a.city}: 정책 제외 시·도({city_sido(a.city)}) — 공개하지 않음 (tools/safety_policy.json)")
     today = date.fromisoformat(a.today)
     pub = set(RULES["publishable"])
     status, failed = {}, []
@@ -132,7 +165,12 @@ def main():
                "auto_check": "", "official_verify": rule.get("official_verify", "미확인"), "verified_at": rule.get("verified_at", ""), "verified_by": rule.get("verified_by", ""),
                "valid_days": rule.get("valid_days")}
         official_ok = (not RULES.get("publish_requires_official", False)) or rule.get("official_verify", "미확인") in set(RULES.get("publishable_official", ["확인 완료", "부분 확인"]))
-        if rule["verify_status"] not in pub:
+        if excluded:
+            ent["reason"] = f"공개 제외: 정책 제외 시·도({city_sido(a.city)}) — 서울·경기는 아이랑 대상 아님"; ent["auto_check"] = "검사 안 함(정책 제외)"
+            if os.path.exists(dst) and not a.dry_run:
+                os.remove(dst); ent["reason"] += " (기존 공개본 치움)"
+            print(f"  ⛔ {fn:16} 정책 제외")
+        elif rule["verify_status"] not in pub:
             ent["reason"] = "공개 제외: " + rule.get("note", rule["verify_status"]); ent["auto_check"] = "검사 안 함(비공개 등급)"
             if os.path.exists(dst) and not a.dry_run:
                 os.remove(dst); ent["reason"] += " (기존 공개본 치움)"
@@ -161,6 +199,21 @@ def main():
                 ent["reason"] = "수집 파일 없음·공개본도 없음"
                 print(f"  ◻ {fn:16} 없음")
         else:
+            g = None
+            if os.path.exists(dst) and not a.no_guard:   # 직전 공개본이 있으면 기록 단위 변경 감지 → 의미 변경은 직전본 값으로 되돌려 공개(재검증 대기)
+                g = change_guard(a.city, fn, src, dst, a.today, a.review, a.approvals, a.changes, dry_run=a.dry_run)
+                ent["change_check"] = guard_summary(g); ent["reverify_pending"] = g["counts"]["held"]
+                if g["counts"]["held"]:
+                    print(f"  ⚠ {fn:16} 재검증 보류 {g['counts']['held']}건(직전본 값 유지) — review/_reverify.json")
+            if g and g["file_hold"]:
+                failed.append(fn)
+                keep_review(a, src, fn, "변경 감지 파일 보류: " + g["file_hold_reason"])
+                try: ent["count"] = count_of(json.load(open(dst, encoding="utf-8")), rule.get("list"))
+                except Exception: pass
+                ent.update(published=True, auto_check="보류(의미 변경 과다)", reason="변경 감지 파일 보류: " + g["file_hold_reason"] + " → 직전 공개본 유지")
+                print(f"  ❌ {fn:16} 의미 변경 과다 — {g['file_hold_reason']} → 이전본 유지")
+                status[fn] = ent
+                continue
             ok, rs, n = check(src, rule, dst, today)
             ent["count"] = n
             if ok:
@@ -183,6 +236,12 @@ def main():
                         except Exception: pass
                     ent.update(published=keep, auto_check="실패", reason="검사 실패: " + "; ".join(rs) + (" → 직전 공개본 유지" if keep else " → 미공개"))
                     print(f"  ❌ {fn:16} 실패 — {'; '.join(rs)} → {'이전본 유지' if keep else '미공개'}")
+        if ent.get("published") and rule.get("updated_key") and os.path.exists(dst):   # 감시(monitor)가 만료를 셀 수 있게 공개본의 갱신일 기록
+            try:
+                d = parse_dt(json.load(open(dst, encoding="utf-8")).get(rule["updated_key"], ""))
+                ent["updated"] = d.isoformat() if d else ""
+            except Exception:
+                ent["updated"] = ""
         status[fn] = ent
 
     # 규칙에 없는 파일은 공개하지 않는다(알 수 없는 자료)

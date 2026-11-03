@@ -1,0 +1,8 @@
+{
+ "_설명": "재검증 승인 기록 — review/<구>/_reverify.json 의 보류 항목을 원문(심평원·E-Gen·복지로·나이스)과 대조한 뒤 대표·피트가 여기 적으면 다음 수집부터 새 값이 공개된다. 한 줄 형식: {city(폴더 이름), file, key(_reverify.json 의 key 그대로), approved_at, by, note}. 파일 전체를 한꺼번에 승인하려면 key='*' 와 all_pending_before(이 날짜 전에 처음 발견된 보류 전부)를 쓴다.",
+ "_예시": [
+  {"city": "yuseong", "file": "hospitals.json", "key": "모의의원|모의로 1", "approved_at": "2026-11-04", "by": "대표", "note": "심평원 진료시간 대조(보고서 번호)"},
+  {"city": "yuseong", "file": "benefits.json", "key": "*", "all_pending_before": "2026-11-04", "approved_at": "2026-11-04", "by": "피트", "note": "복지로 원문 전수 대조"}
+ ],
+ "items": []
+}
