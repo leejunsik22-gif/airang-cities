@@ -14,6 +14,8 @@ import json as _json, glob as _glob
 _HERE = os.path.dirname(os.path.abspath(__file__))
 CITIES, SIDOS, STAGE, REGION_FILES = {}, {}, {}, {}
 for _p in sorted(_glob.glob(os.path.join(_HERE, "regions", "*.json"))):
+    if os.path.basename(_p).startswith("_"):   # _plan.json 등 보조 파일은 지역 설정이 아님
+        continue
     _r = _json.load(open(_p, encoding="utf-8"))
     SIDOS[_r["sido_key"]] = _r["sido"]; REGION_FILES[_p] = _r
     for _k, _v in _r["cities"].items():
