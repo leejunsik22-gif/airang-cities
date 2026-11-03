@@ -206,6 +206,9 @@ def main():
                 ent["change_check"] = guard_summary(g); ent["reverify_pending"] = g["counts"]["held"]
                 if g["counts"]["held"]:
                     print(f"  ⚠ {fn:16} 재검증 미해결 {g['counts']['held']}건(확인중 표시 {g['counts'].get('flagged',0)}·비공개 {g['counts'].get('excluded',0)}) — review/_reverify.json")
+                if g.get("outage", {}).get("suspected"):   # 028: 원천 누락 의심 — 사라진 기록을 유지했음을 상태에 남긴다(감시·관리자에서 봄)
+                    ent["source_outage"] = g["outage"]["reason"]
+                    print(f"  ⚠ {fn:16} 원천 누락 의심 — {g['outage']['reason']} (유지 {g['counts'].get('outage_kept',0)}건)")
             if g and g["file_hold"]:
                 failed.append(fn)
                 keep_review(a, src, fn, "변경 감지 파일 보류: " + g["file_hold_reason"])

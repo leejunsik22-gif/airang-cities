@@ -359,12 +359,24 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 .topscape img,.scape-img{filter:saturate(.9) contrast(1.02) brightness(.98)}
 .topscape div::after{background:linear-gradient(180deg,rgba(250,247,241,0) 26%,rgba(250,247,241,.78) 64%,var(--ground) 100%)!important}
 @media (max-width:360px){.navi{font-size:12px!important}}
+/* 028: AI 표기·안전 영역·핵심 메뉴 */
+.scape{position:relative}
+.img-tag{position:absolute;right:10px;top:10px;z-index:1;font-size:11px;font-weight:700;color:var(--navy-ink);background:rgba(255,255,255,.82);border:1px solid rgba(31,42,68,.12);padding:3px 8px;border-radius:8px;pointer-events:none}
+.topscape .img-tag{top:10px;right:10px}
+/* 글과 사진이 겹치지 않는 안전 영역: 상단 그림 위 제목은 아래 44% 구간(덮개 불투명 .78 이상)에만 놓인다 */
+.topscape:not([hidden]) + .wrap > .back:first-child + h1,.topscape:not([hidden]) + .wrap > h1:first-child{position:relative;z-index:1}
+.home-menu{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0 4px}
+.home-menu .hm{display:flex;flex-direction:column;align-items:center;gap:4px;min-height:72px;padding:10px 4px 8px;border:1px solid var(--line);border-radius:16px;background:var(--paper);font:inherit;color:var(--ink);font-size:12.5px;font-weight:700;cursor:pointer;box-shadow:var(--shadow-sm)}
+.home-menu .hm.soon{background:var(--ivory-2);color:var(--muted);box-shadow:none;border-style:dashed}
+.home-menu .hm small{font-size:10.5px;color:var(--gold-ink);font-weight:800}
+@media (max-width:360px){.home-menu{gap:6px}.home-menu .hm{font-size:12px;padding:8px 2px}}
+@media (max-width:375px){.brand-t{font-size:16px!important;letter-spacing:-.5px}.topbar-region{font-size:11px!important;padding:0 8px!important}}
 </style>
 <script data-goatcounter="https://{{key}}-edu-app.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}' async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 <div class="bg"></div>
-<div class="topscape" id="topscape" hidden><div><img src="assets/hero-{{key}}-800.webp" srcset="assets/hero-{{key}}-800.webp 800w, assets/hero-{{key}}.webp 1200w" sizes="(max-width:560px) 100vw, 524px" width="1200" height="500" alt="" decoding="async"></div></div>
+<div class="topscape" id="topscape" hidden><div><img src="assets/hero-{{key}}-800.webp" srcset="assets/hero-{{key}}-800.webp 800w, assets/hero-{{key}}.webp 1200w" sizes="(max-width:560px) 100vw, 524px" width="1200" height="500" alt="" decoding="async"><span class="img-tag">AI 삽화 · 연출</span></div></div>
 <main class="wrap" id="view"><div class="loading">불러오는 중…</div></main>
 
 <nav class="nav glass" aria-label="주요 메뉴">
@@ -813,7 +825,7 @@ function viewHome() {
 {{#else}}
     const cta = one && oneSchool ? `<button class="cta" onclick="go('school/${jsq(oneSchool.code)}')">학교 일정 전체 보기 →</button>` : `<button class="cta" onclick="go('my')">아이 관리 →</button>`;
 {{/if}}
-    hero = `<section class="scape lift"><img class="scape-img" src="assets/hero-{{key}}-800.webp" srcset="assets/hero-{{key}}-800.webp 800w, assets/hero-{{key}}.webp 1200w" sizes="(max-width:560px) 100vw, 524px" width="1200" height="500" alt="" fetchpriority="high" decoding="async"><div class="scape-body"><div class="kidinfo" style="display:flex;gap:12px;align-items:flex-end"><div style="flex:1;min-width:0"><div class="date">${dateStr}</div><h1>${esc(title)}</h1><p class="next">${esc(nextTxt)}</p></div>${next ? `<div class="dday"><b>${ddayText(dday(next.date))}</b><span>${mdw(next.date)}</span></div>` : ""}</div><div style="margin-top:12px">${cta.replace('class="cta"', 'class="btn btn-soft" style="height:40px;font-size:13px;padding:0 14px"')}</div></div></section>`;
+    hero = `<section class="scape lift"><img class="scape-img" src="assets/hero-{{key}}-800.webp" srcset="assets/hero-{{key}}-800.webp 800w, assets/hero-{{key}}.webp 1200w" sizes="(max-width:560px) 100vw, 524px" width="1200" height="500" alt="" fetchpriority="high" decoding="async"><span class="img-tag">AI 삽화 · 연출 — 실제 기관·행사 사진 아님</span><div class="scape-body"><div class="kidinfo" style="display:flex;gap:12px;align-items:flex-end"><div style="flex:1;min-width:0"><div class="date">${dateStr}</div><h1>${esc(title)}</h1><p class="next">${esc(nextTxt)}</p></div>${next ? `<div class="dday"><b>${ddayText(dday(next.date))}</b><span>${mdw(next.date)}</span></div>` : ""}</div><div style="margin-top:12px">${cta.replace('class="cta"', 'class="btn btn-soft" style="height:40px;font-size:13px;padding:0 14px"')}</div></div></section>`;
 {{#if yongin}}
     const chip = (id, label, extra = "") => `<button class="btn ${homeKid === id ? "btn-3d" : "btn-soft"}" style="height:38px;font-size:13px;padding:0 14px;flex:0 0 auto" onclick="pickKid('${id}')">${extra}${esc(label)}</button>`;
 {{#else}}
@@ -829,7 +841,7 @@ function viewHome() {
       <button class="btn btn-soft" style="width:100%;height:42px;margin-top:10px;font-size:13px;color:var(--indigo)" onclick="go('myev/new')">+ 내 일정 추가 (준비물·병원·생일 등)</button>
       ${evs.length > 3 ? `<button onclick="homeAllEv=!homeAllEv;render()" style="width:100%;border:0;background:none;padding:12px 0 4px;font:inherit;font-size:13px;font-weight:700;color:var(--indigo);cursor:pointer">${homeAllEv ? "접기 ▲" : `일정 더보기 (${Math.min(evs.length, 8) - 3}개 더) ▼`}</button>` : ""}</div></section>`;
   } else {
-    hero = `<section class="scape lift"><img class="scape-img" src="assets/hero-{{key}}-800.webp" srcset="assets/hero-{{key}}-800.webp 800w, assets/hero-{{key}}.webp 1200w" sizes="(max-width:560px) 100vw, 524px" width="1200" height="500" alt="" fetchpriority="high" decoding="async"><div class="scape-body"><button class="kidadd" onclick="go('kid/new')">${e3d("🧒", 40)}<span style="min-width:0"><b>우리 아이 추가</b><small>형제자매가 여러 명이어도 한 번에 볼 수 있어요</small></span><span class="plus" aria-hidden="true">+</span></button></div></section>`;
+    hero = `<section class="scape lift"><img class="scape-img" src="assets/hero-{{key}}-800.webp" srcset="assets/hero-{{key}}-800.webp 800w, assets/hero-{{key}}.webp 1200w" sizes="(max-width:560px) 100vw, 524px" width="1200" height="500" alt="" fetchpriority="high" decoding="async"><span class="img-tag">AI 삽화 · 연출 — 실제 기관·행사 사진 아님</span><div class="scape-body"><button class="kidadd" onclick="go('kid/new')">${e3d("🧒", 40)}<span style="min-width:0"><b>우리 아이 추가</b><small>형제자매가 여러 명이어도 한 번에 볼 수 있어요</small></span><span class="plus" aria-hidden="true">+</span></button></div></section>`;
   }
 
   const install = "";
@@ -844,10 +856,10 @@ function viewHome() {
 {{/if}}
   $view.innerHTML = `<div style="display:flex;align-items:center;gap:9px;margin:2px 0 14px">
       <img src="icon-192.png?v=60" alt="아이랑 로고" width="32" height="32" style="border-radius:9px;box-shadow:0 2px 8px rgba(30,40,90,.12);flex:0 0 auto">
-      <div style="min-width:0;flex:1;line-height:1.15"><div style="font-size:18px;font-weight:800;letter-spacing:-.3px;white-space:nowrap">아이랑 <span style="color:var(--city-ink)">{{name}}</span></div><div style="font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">by 라그릴스</div></div>
+      <div style="min-width:0;flex:1;line-height:1.15"><div class="brand-t" style="font-size:18px;font-weight:800;letter-spacing:-.3px;white-space:nowrap">아이랑 <span style="color:var(--city-ink)">{{name}}</span></div><div style="font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">by 라그릴스</div></div>
       <button class="chip glass" aria-label="지인에게 알려주기" title="지인에게 알려주기" style="flex:0 0 auto;width:34px;height:34px;padding:0;justify-content:center;color:var(--indigo)" onclick="shareApp()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
-      <button class="chip glass" style="flex:0 0 auto;font-size:12px;padding:0 12px;height:34px" onclick="go('region')">${icon.pin} ${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()} ▾</button></div>
-    ${addrNote}${homeUpdated()}${hero}${homeSearch()}${homeQuick()}${mine}${homeSaved()}${homeToday(ks)}${ks.length ? homeMeals(homeKid === "all" ? ks : ks.filter(k => k.id === homeKid)) : ""}${homeWeekend()}${notice}${homeEvents()}${homeLibrary()}${homeBooks()}${homeAd()}${footer()}`;
+      <button class="chip glass topbar-region" style="flex:0 0 auto;font-size:12px;padding:0 12px;height:34px" onclick="go('region')">${icon.pin} ${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()} ▾</button></div>
+    ${addrNote}${homeUpdated()}${hero}${homeSearch()}${homeQuick()}${homeMenu()}${mine}${homeSaved()}${homeToday(ks)}${ks.length ? homeMeals(homeKid === "all" ? ks : ks.filter(k => k.id === homeKid)) : ""}${homeWeekend()}${notice}${homeEvents()}${homeLibrary()}${homeBooks()}${homeAd()}${footer()}`;
 }
 
 // ---------- 통합 검색 (2026-11-02 디자인 통합: 첫 화면에 검색을 가장 위로) ----------
@@ -862,6 +874,10 @@ function homeQuick() {   // 026: 핵심 질문 칩 3~4개 (홈5) — 눌러서 �
   const kidsTxt = h >= 19 || h < 8 ? "밤에 여는 소아과" : wk ? "주말에 여는 소아과" : "지금 문 연 소아과";
   const chip = (label, fn, name) => `<button class="q-chip" onclick="${fn}">${ico(name, 16, "none")}${esc(label)}</button>`;
   return `<div class="q-chips" aria-label="자주 찾는 것">${chip(kidsTxt, "hsOpenKids()", "stethoscope")}${chip("우리 동네 학원", "go('acas')", "pencil")}${chip("받을 수 있는 혜택", "go('bene')", "gift")}${chip("학교 일정", "go('schools')", "school")}${chip("약국", "hsTab='pharm';go('hosp')", "pill")}</div>`;
+}
+function homeMenu() {   // 028: 핵심 메뉴 8개를 홈에서 바로 — 준비 중은 흐리게(눌러도 준비 중 틀)
+  const M = [["schools", "school", "학교·급식"], ["acas", "pencil", "학원"], ["hosp", "hospital", "병원"], ["bene", "gift", "혜택"], ["events", "ticket", "행사"], ["library", "book", "도서관"], ["kinders", "bear", "유치원"], ["my", "grid", "전체 메뉴"]];
+  return `<nav class="home-menu" aria-label="핵심 메뉴">${M.map(([r, ic, l]) => { const soon = r !== "my" && gated(r); return `<button class="hm ${soon ? "soon" : ""}" onclick="go('${r}')" ${soon ? 'aria-describedby="hm-soon"' : ""}>${ico(ic, 22, soon ? "none" : "navy")}<span>${l}</span>${soon ? `<small>준비 중</small>` : ""}</button>`; }).join("")}</nav><span id="hm-soon" hidden>공식 자료 확인 뒤 열어요</span>`;
 }
 function homeSaved() {   // 026 저장한 것(즐겨찾기) — 휴대폰 안에만 저장
   const f = favs(); if (!f.length) return "";

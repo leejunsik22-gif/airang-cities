@@ -1,0 +1,43 @@
+name: rollback-data (구별 자료 되돌리기 — 대표 승인 뒤에만)
+# 2026-11-03 v01후보(028): 앱이 읽는 main 의 data/<구>/ 를 지정한 커밋(또는 직전 커밋) 상태로 되돌린다. 코드는 건드리지 않는다.
+on:
+  workflow_dispatch:
+    inputs:
+      dirs:    { description: "되돌릴 폴더 (쉼표) 예: yuseong,daedeok — 빈칸이면 중단", default: "" }
+      to:      { description: "되돌릴 기준 커밋 SHA (빈칸이면 main 의 바로 이전 자료 커밋)", default: "" }
+      confirm: { description: "대표 승인 확인 — 반드시 '승인' 이라고 입력", default: "" }
+      note:    { description: "사유(보고서 번호 등)", default: "" }
+permissions:
+  contents: write
+concurrency: { group: promote-main, cancel-in-progress: false }
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: 승인 확인
+        run: |
+          [ "${{ github.actor }}" = "leejunsik22-gif" ] || { echo "::error::대표 계정만 실행할 수 있습니다"; exit 1; }
+          [ "${{ github.event.inputs.confirm }}" = "승인" ] || { echo "::error::confirm 칸에 '승인' 을 입력해야 합니다"; exit 1; }
+          [ -n "${{ github.event.inputs.dirs }}" ] || { echo "::error::폴더 이름이 없습니다"; exit 1; }
+      - uses: actions/checkout@v4
+        with: { ref: main, fetch-depth: 0 }
+      - name: 되돌리기
+        run: |
+          IFS=, read -ra DS <<< "${{ github.event.inputs.dirs }}"
+          for d in "${DS[@]}"; do
+            TO="${{ github.event.inputs.to }}"; [ -n "$TO" ] || TO=$(git log -2 --format=%H -- data/$d | tail -1)
+            [ -n "$TO" ] || { echo "::error::$d: 되돌릴 커밋이 없습니다"; exit 1; }
+            echo "$d ← $TO ($(git log -1 --format='%ci %s' $TO))"
+            git checkout "$TO" -- data/$d
+          done
+          python3 - <<'PY'
+          import json, datetime, os
+          p = "ops/recovery_log.json"; j = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {"items": []}
+          j.setdefault("items", []).append({"at": (datetime.datetime.utcnow() + datetime.timedelta(hours=9)).strftime("%Y-%m-%d %H:%M"), "what": "자료 되돌리기(rollback-data): ${{ github.event.inputs.dirs }}", "action": "data/<구>/ 를 ${{ github.event.inputs.to || '직전 자료 커밋' }} 로 복원", "by": "${{ github.actor }}", "evidence": "${{ github.event.inputs.note }}"})
+          json.dump(j, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+          PY
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data ops/recovery_log.json; git diff --cached --quiet && { echo "변화 없음"; exit 0; }
+          git commit -m "자료 되돌리기: ${{ github.event.inputs.dirs }} (대표 승인)"
+          git push origin main

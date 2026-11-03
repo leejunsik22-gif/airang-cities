@@ -227,6 +227,18 @@ def main():
                 add("hold", "공개 보류", "P3", f"{c['name']} 원문 미확인 보류: {', '.join(row['hold'])}", "표본 대조 뒤 data_rules.json official_verify 갱신 필요", city=d)
             if row["unverified"]:
                 add("partial_verify", "검증 필요", "P3", f"{c['name']} 공개 중·원문 부분 확인: {', '.join(row['unverified'])}", "자동 검사는 통과, 기관 원문 전수 대조는 미완료", city=d)
+        # 028: 고객 화면 갱신 판정 — 앱 가지(main)의 검문일 vs 기본 가지의 검문일. 자동 수집 성공 ≠ 고객 화면 갱신
+        if default_branch and default_branch != app_branch:
+            st2, sj2 = F.json(f"{RAW}/{CITIES_REPO}/{default_branch}/data/{d}/_status.json")
+            if st2 == 200 and sj2:
+                row["default_checked_at"] = sj2.get("checked_at", "")
+                if row["status_checked_at"] and row["default_checked_at"] > row["status_checked_at"]:
+                    row["customer_stale"] = True
+                    add("customer_stale", "장애", "P1", f"{c['name']} 고객 화면이 최신 수집본이 아님", f"앱이 읽는 {app_branch} 검문 {row['status_checked_at']} < 기본 가지 검문 {row['default_checked_at']} — 자동 수집은 성공했지만 고객 화면은 갱신되지 않음", city=d)
+        if sj and sj.get("files"):
+            for fn, e in sj["files"].items():
+                if e.get("source_outage"):
+                    add("source_outage", "검증 필요", "P2", f"{c['name']} {e.get('label', fn)} 원천 누락 의심(직전 기록 유지)", e["source_outage"], city=d)
         # 재검증 대기(의미 변경) — 기본 가지의 review/<구>/_reverify.json
         st, rv = F.json(f"{RAW}/{CITIES_REPO}/{default_branch or app_branch}/review/{d}/_reverify.json")
         if st == 200 and rv:
@@ -266,10 +278,12 @@ def main():
 
     sev_order = {"P1": 0, "P2": 1, "P3": 2}
     inc.sort(key=lambda i: (["장애", "검증 필요", "공개 보류"].index(i["state"]), sev_order.get(i["severity"], 9), i["city"]))
+    customer_view = {"app_branch": app_branch, "default_branch": default_branch, "fresh": not any(r.get("customer_stale") for r in city_rows.values()), "stale_cities": [r["name"] for r in city_rows.values() if r.get("customer_stale")],
+                     "note": "자동 수집 성공(기본 가지 커밋) ≠ 고객 화면 갱신(앱이 읽는 가지). fresh=false 면 고객은 옛 자료를 보고 있음"}
     summary = {"장애": sum(1 for i in inc if i["state"] == "장애"), "검증 필요": sum(1 for i in inc if i["state"] == "검증 필요"), "공개 보류": sum(1 for i in inc if i["state"] == "공개 보류"), "복구 완료(7일)": len(recovered)}
     out = {"_설명": "운영 감시 집계(tools/monitor.py, 매시간). 상태: 장애=지금 고쳐야 함 / 검증 필요=공개 중이거나 보류 중이지만 사람 확인 필요 / 공개 보류=원문 미확인으로 숨김 / 복구 완료=직전 집계에 있던 문제가 사라짐. 앱은 읽지 않음(관리자만)",
            "checked_at": now_s, "checked_at_utc": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "ok": summary["장애"] == 0, "summary": summary, "incidents": inc, "recovered": recovered[:50], "resolved_now": resolved_now,
-           "cities": city_rows, "runs": runs, "branches": branches, "checks_done": checks, "fetch_errors": F.errors[:20], "http_calls": F.calls, "external_api_calls": 0,
+           "cities": city_rows, "runs": runs, "branches": branches, "customer_view": customer_view, "checks_done": checks, "fetch_errors": F.errors[:20], "http_calls": F.calls, "external_api_calls": 0,
            "preapproval_rules": _rules_state()}
     if not a.dry_run:
         os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)

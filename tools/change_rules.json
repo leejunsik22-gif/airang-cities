@@ -43,7 +43,9 @@
     "p": "",
     "k": "",
     "t": ""
-   }
+   },
+   "removed_outage_min": 5,
+   "removed_outage_ratio": 0.03
   },
   "benefits.json": {
    "label": "혜택",
@@ -76,7 +78,9 @@
    "max_meaning_ratio": 0.3,
    "_근거": "대상(tgt)·생애주기(life)·지원 내용(sum)·주기(cyc)·신청(apply)·연락처(tel)·기관(org)·원문 링크(link)는 복지 조건 — 바뀌면 복지로 원문 대조 전 그 사업은 비공개(조건을 비운 채 보여 주면 오해), 14일 안에 승인 없으면 계속 비공개. 사라진 사업은 즉시 비공개(종료 의심). 새 사업(추가)은 공개하되 변경 기록에 남겨 피트 검수.",
    "on_meaning_change": "exclude",
-   "reconfirm_days": 14
+   "reconfirm_days": 14,
+   "removed_outage_min": 5,
+   "removed_outage_ratio": 0.1
   },
   "latest.json": {
    "label": "학교·학사일정",
@@ -101,7 +105,9 @@
    "max_meaning_ratio": 0.2,
    "_근거": "학사일정(events)은 나이스 공식 자료의 정기 갱신이므로 단순 갱신. 학교 이름·급(level)이 바뀌는 것은 코드 재사용·형식 변화 의심 → 그 학교 비공개(14일). 목록에서 빠진 학교는 폐교·통합으로 보고 그대로 반영.",
    "on_meaning_change": "exclude",
-   "reconfirm_days": 14
+   "reconfirm_days": 14,
+   "removed_outage_min": 3,
+   "removed_outage_ratio": 0.1
   },
   "academies.json": {
    "label": "학원",
@@ -130,7 +136,9 @@
    "max_meaning_ratio": 0.2,
    "_근거": "학원명·분야·주소는 식별 정보(바뀌면 그 학원 비공개, 14일). 과정(c)·수강료(f)·정원(cap)은 나이스 공식 등록값의 정기 갱신 → 단순 갱신(대표가 '수강료 변경도 재검증'으로 바꾸려면 f 를 meaning 으로 옮김). 목록에서 빠진 학원은 폐원으로 보고 그대로 반영.",
    "on_meaning_change": "exclude",
-   "reconfirm_days": 14
+   "reconfirm_days": 14,
+   "removed_outage_min": 10,
+   "removed_outage_ratio": 0.1
   },
   "meals.json": {
    "label": "급식",
@@ -154,6 +162,7 @@
   "비공개(exclude)": "meaning 필드가 바뀜(혜택·학교·학원) 또는 사라진 기록 또는 보류 만료 → 공개 파일에서 제외",
   "원복": "원천이 원래 값으로 돌아오면 표시 해제·자동 공개",
   "승인 반영 / 기각": "approvals/reverify.json result 승인=새 값 공개, 기각=원래 값 그대로 공개(표시 해제). 삭제 승인=폐업 확정",
-  "파일 보류": "의미 변경+삭제 비율이 max_meaning_ratio 를 넘으면 파일 전체를 공개하지 않고 직전본 유지(원천 형식 변화 의심)"
+  "파일 보류": "의미 변경+삭제 비율이 max_meaning_ratio 를 넘으면 파일 전체를 공개하지 않고 직전본 유지(원천 형식 변화 의심)",
+  "유지(원천 누락 의심)": "한 번에 사라진 기록이 removed_outage_min 건 또는 removed_outage_ratio 비율을 넘거나 목록이 통째로 비면 원천 API 장애로 보고 직전 기록을 그대로 유지(폐업 처리 안 함). 기준 이하 소수만 사라졌을 때 폐업 의심 비공개"
  }
 }

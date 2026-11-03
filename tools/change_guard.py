@@ -11,6 +11,8 @@ v02 (025): "기존 값을 무기한 공개하지 않는다"
 - 삭제(원천 목록에서 사라짐 = 폐업·종료 의심): **즉시 공개에서 제외**(복원하지 않음). 대표·피트가 폐업을 확인하면 승인 기록으로 확정, 다시 나타나면 '추가'로 자동 복귀.
 - 단순 갱신(simple 필드만 바뀜)·추가 → 공개(사전 승인 규칙).
 - 의미 변경+삭제가 max_meaning_ratio 를 넘으면 파일째 보류(file_hold) — gate 가 직전본을 유지한다.
+- v03 (028): **원천 누락 vs 실제 종료 구분** — 한 번에 사라진 기록이 removed_outage_min 건 또는 removed_outage_ratio 비율을 넘거나, 목록(list) 하나가 통째로 비면
+  원천 API 장애·누락으로 보고 사라진 기록을 **그대로 유지**(폐업 처리 안 함, 비공개 안 함)하고 '원천 누락 의심'으로 기록한다. 소수(기준 이하)만 사라졌을 때만 폐업 의심 비공개.
 - 승인(approvals/reverify.json): result 승인(기본)=새 값 공개 / 기각=원래 값 그대로 공개(표시 해제). 결과는 ops/changes 에 verify_result 로 보존.
 - 기록: review/<구>/_reverify.json(대기: 전후 값·출처·감지일·기한·사유), ops/changes/<구>.json(적용·보류·해결 전부).
 - 외부 API 호출 없음. 표준 라이브러리만.
@@ -90,7 +92,7 @@ def guard(city, fn, new_path, prev_path, today=None, review_dir="", approvals_pa
     rule = RULES.get("files", {}).get(fn)
     src = DATA_RULES.get(fn, {})
     rep = {"file": fn, "city": city, "checked_at": today, "label": (rule or {}).get("label", fn), "source_org": src.get("source_org", ""), "source_url": src.get("source_url", ""),
-           "guard": "", "counts": {"added": 0, "removed": 0, "meaning": 0, "simple": 0, "unchanged": 0, "approved": 0, "held": 0, "excluded": 0, "flagged": 0, "expired": 0, "reverted": 0},
+           "guard": "", "counts": {"added": 0, "removed": 0, "meaning": 0, "simple": 0, "unchanged": 0, "approved": 0, "held": 0, "excluded": 0, "flagged": 0, "expired": 0, "reverted": 0, "outage_kept": 0},
            "file_hold": False, "file_hold_reason": "", "items": []}
     if not rule or rule.get("no_guard"):
         rep["guard"] = "검사 안 함(규칙 없음)"
@@ -106,6 +108,8 @@ def guard(city, fn, new_path, prev_path, today=None, review_dir="", approvals_pa
     keyf, meaning, simple = rule["key"], rule.get("meaning", []), rule.get("simple", [])
     policy = rule.get("on_meaning_change", "exclude")           # blank | exclude
     rm_policy = rule.get("removed", "exclude")                  # exclude | apply
+    outage_min, outage_ratio = int(rule.get("removed_outage_min", 5)), float(rule.get("removed_outage_ratio", 0.03))
+    rep["outage"] = {"suspected": False, "reason": "", "lists": []}
     recon = int(rule.get("reconfirm_days", 7))
     blank = rule.get("blank_values", {})
     approvals, wild = load_approvals(approvals_path, city, fn)
@@ -173,8 +177,19 @@ def guard(city, fn, new_path, prev_path, today=None, review_dir="", approvals_pa
             else:
                 rep["counts"]["unchanged"] += 1
 
-    # 판정
+    # 원천 누락 의심: 사라진 기록이 기준보다 많거나 목록 하나가 통째로 빔 → 삭제를 '유지'로 바꾼다(폐업 아님으로 간주)
     C = rep["counts"]
+    removed_items = [it for it in items if it["kind"] == "삭제"]
+    wiped = [lst for lst in rule["lists"] if (prev.get(lst) or []) and not (new.get(lst) or [])]
+    n_rm = len(removed_items)
+    if removed_items and (wiped or n_rm > max(outage_min, int(total_prev * outage_ratio))):
+        thr = max(outage_min, int(total_prev * outage_ratio))
+        why = (f"목록이 통째로 빔({', '.join(wiped)})" if wiped else f"사라진 기록 {n_rm}건 > 기준 {thr}건(최소 {outage_min}·{outage_ratio*100:.0f}%)")
+        rep["outage"] = {"suspected": True, "lists": wiped, "reason": why + " — 원천 API 장애·누락 의심, 폐업 처리하지 않고 직전 기록 유지"}
+        for it in removed_items:
+            it["kind"] = "유지"; it["meaning"] = False; it["status"] = "유지(원천 누락 의심 — 폐업 아님으로 간주)"; it["why"] = rep["outage"]["reason"]; it["verify_result"] = "원천 누락 의심 유지"
+        C["outage_kept"] = n_rm
+    # 판정
     for it in items:
         if it.get("status"):
             continue
@@ -250,6 +265,8 @@ def guard(city, fn, new_path, prev_path, today=None, review_dir="", approvals_pa
                         drop.add(kk)
                 elif it["kind"] == "삭제" and it["status"].startswith("비공개"):
                     pass   # 새 수집본에 없으므로 자연히 비공개
+                elif it["kind"] == "유지":
+                    L.append(it["_old"])   # 원천 누락 의심: 직전 기록을 그대로 되살림
             out = []
             for r in L:
                 if not isinstance(r, dict):
@@ -321,6 +338,8 @@ def main():
     print(f"{a.city} {a.file}: {rep['guard']} — 추가 {c['added']} · 단순 {c['simple']} · 의미 변경 {c['meaning']}(확인중 표시 {c['flagged']}·비공개 {c['excluded']}·만료 {c['expired']}) · 삭제 {c['removed']} · 승인 {c['approved']} · 원복 {c['reverted']} · 그대로 {c['unchanged']}")
     if rep["file_hold"]:
         print(f"::warning::{a.city} {a.file} {rep['file_hold_reason']}")
+    if rep.get("outage", {}).get("suspected"):
+        print(f"::warning::{a.city} {a.file} 원천 누락 의심 — {rep['outage']['reason']} (유지 {c.get('outage_kept',0)}건)")
     for it in rep["items"][:20]:
         if it.get("meaning") or it["kind"] == "원복":
             print(f"   {it['status']:40} {it['kind']} {it['list']}/{it['name']} {it.get('fields') or ''}")
