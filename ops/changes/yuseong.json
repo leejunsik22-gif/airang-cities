@@ -1,0 +1,55 @@
+{
+ "_설명": "공식 자료 변경 기록(변경 전후·원문 출처·확인일·영향 지역·검증 결과 verify_result) — change_guard 가 수집 때마다 추가. 앱은 읽지 않음",
+ "city": "yuseong",
+ "updated": "2026-11-03",
+ "runs": [
+  {
+   "checked_at": "2026-11-03",
+   "file": "academies.json",
+   "label": "학원",
+   "source_org": "나이스 교육정보 개방포털",
+   "source_url": "https://open.neis.go.kr",
+   "guard": "적용",
+   "counts": {
+    "added": 0,
+    "removed": 0,
+    "meaning": 0,
+    "simple": 0,
+    "unchanged": 1189,
+    "approved": 0,
+    "held": 0,
+    "excluded": 0,
+    "flagged": 0,
+    "expired": 0,
+    "reverted": 0,
+    "outage_kept": 0
+   },
+   "file_hold_reason": "",
+   "items": []
+  },
+  {
+   "checked_at": "2026-11-03",
+   "file": "latest.json",
+   "label": "학교·학사일정",
+   "source_org": "나이스 교육정보 개방포털",
+   "source_url": "https://open.neis.go.kr",
+   "guard": "적용",
+   "counts": {
+    "added": 0,
+    "removed": 0,
+    "meaning": 0,
+    "simple": 0,
+    "unchanged": 83,
+    "approved": 0,
+    "held": 0,
+    "excluded": 0,
+    "flagged": 0,
+    "expired": 0,
+    "reverted": 0,
+    "outage_kept": 0
+   },
+   "file_hold_reason": "",
+   "items": []
+  }
+ ]
+}

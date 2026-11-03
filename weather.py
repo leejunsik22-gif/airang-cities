@@ -214,15 +214,25 @@ def main():
     bd, bt = latest_base(now)
     latest = forecast(nx, ny, bd, bt)
     print(f"  단기예보 {bd} {bt}: {len(latest)}건")
+    used_base, fallback = (bd, bt), False
     if not latest:   # 최신 발표가 안 오면(발표 직후 서버 혼잡) 한 발표 전 것으로 — 3시간 전 자료라도 '없음'보다 낫고, 그래도 없으면 이전 파일 유지
         bd2, bt2 = latest_base(now - timedelta(hours=3))
         if (bd2, bt2) != (bd, bt):
             latest = forecast(nx, ny, bd2, bt2)
             print(f"  단기예보(한 발표 전) {bd2} {bt2}: {len(latest)}건")
+            used_base, fallback = (bd2, bt2), bool(latest)
+    if latest:   # 대체 자료라도 발표 시각이 7시간 넘게 지났으면 쓰지 않음(발표 간격 3h+여유 15분+한 발표 전 3h = 최대 6.5h; 검문 max_age 1일과 별개로 수집 단계에서 차단)
+        base_dt = datetime.strptime(used_base[0] + used_base[1], "%Y%m%d%H%M").replace(tzinfo=KST)
+        if (now - base_dt).total_seconds() > 7 * 3600:
+            print(f"  발표 {base_dt:%m-%d %H:%M} 자료는 7시간 넘게 지나 사용하지 않음 → 이전 파일 유지")
+            latest = []
     early = []
     if not (bd == today and bt == "0200") and now.hour >= 2:
         early = forecast(nx, ny, today, "0200")  # 오늘 최저·최고 기온이 들어 있는 새벽 발표
         print(f"  단기예보 {today} 0200: {len(early)}건")
+    if not latest:   # 최신·대체 발표가 모두 없으면 새벽 자료만으로 만들지 않는다(오래된 하늘 상태를 '지금'처럼 보일 수 있음)
+        print("날씨를 만들지 못했어요(단기예보 없음). 이전 파일을 그대로 둡니다.")
+        return 2
     w = summarize(today, latest, early)
     if not w:
         print("날씨를 만들지 못했어요. 이전 파일을 그대로 둡니다.")
@@ -234,7 +244,8 @@ def main():
         air = {**air_now(place["stations"]), **air}
     print("  날씨:", w, "미세먼지:", air)
 
-    out = {"city": CITY, "date": ymd, "updated": now.strftime("%Y-%m-%d %H:%M"), "now": w}
+    out = {"city": CITY, "date": ymd, "updated": now.strftime("%Y-%m-%d %H:%M"), "now": w,
+           "base": f"{used_base[0][:4]}-{used_base[0][4:6]}-{used_base[0][6:]} {used_base[1][:2]}:{used_base[1][2:]}", "fallback": fallback}   # 기상청 발표 시각(대체 자료면 fallback=true) — 앱·관리자 표시용
     if air.get("pm10") or air.get("pm25"):
         out["air"] = {"pm10": air.get("pm10", air.get("pm25")), "pm25": air.get("pm25", "")}
     os.makedirs("output", exist_ok=True)

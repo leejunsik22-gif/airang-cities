@@ -181,6 +181,8 @@ def main():
             ent["count"] = n; ent["auto_check"] = ("통과" if ok else "실패") if ok is not None else "수집 없음"
             ent["hold"] = True; had = os.path.exists(dst)
             if had and not a.dry_run:
+                if a.review:   # 기존 공개본은 삭제하지 않고 비공개 검토 폴더에 보존(원문 검증 뒤 복귀용)
+                    os.makedirs(a.review, exist_ok=True); shutil.copy(dst, os.path.join(a.review, "_prev_" + fn))
                 os.remove(dst)
             ent["reason"] = f"공개 보류: 공식기관 원문 확인 {rule.get('official_verify','미확인')} (자동 검사 {ent['auto_check']}" + (": " + "; ".join(rs) if rs else "") + ") — 표본 대조 후 official_verify 갱신 필요" + (" (기존 공개본 치움)" if had else "")
             keep_review(a, src, fn, f"공개 보류(원문 {rule.get('official_verify','미확인')})")
