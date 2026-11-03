@@ -45,37 +45,49 @@ PALETTE = [("#2F6FBA", "#24568F", "#183B63", "#EAF1FA"), ("#C2410C", "#9A3412", 
            ("#B8923E", "#6F5415", "#4A370E", "#F8F2E4"), ("#0F8B8D", "#0A6466", "#064546", "#E6F4F4"), ("#D9654A", "#A33D27", "#6E2819", "#FBEDE9"), ("#1F2A44", "#16203A", "#0E1526", "#ECEEF3")]
 
 
+def ok(v):
+    return str(v or "").startswith("확인")
+
+
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--codes", default=""); a = ap.parse_args()
-    codes = json.load(open(a.codes, encoding="utf-8")) if a.codes and os.path.exists(a.codes) else {}
+    ap = argparse.ArgumentParser(); ap.add_argument("--codes", default=os.path.join(ROOT, "..", "out", "2026-11-03_아이랑대전_022", "022-1_regions_codes.json")); a = ap.parse_args()
+    codes = json.load(open(a.codes, encoding="utf-8")) if a.codes and os.path.exists(a.codes) else {"sido": {}, "sgg": []}
+    sgg_by_code = {str(x["code"]): x for x in codes.get("sgg", [])}
+    src = (codes.get("meta") or {}).get("sources", {})
     os.makedirs(os.path.join(ROOT, "regions"), exist_ok=True); os.makedirs(os.path.join(ROOT, "app", "cities_candidates"), exist_ok=True)
-    report = []
+    n_ok = n_un = 0
     for sk, S in SIDO.items():
         sv = dict(S); verify = {}
-        cs = codes.get("sido", {}).get(sk, {})
-        for f in ("neis", "lib", "kinder", "kopis", "hira", "air", "tour"):
-            if f in cs and cs[f].get("value") not in (None, ""):
-                sv[f] = cs[f]["value"]; verify[f] = f"확인({cs[f].get('source', '출처')})"
+        cs = codes.get("sido", {}).get(sk, {}); cv = cs.get("verified", {})
+        for f, (key, vkey) in {"neis": ("neis", "neis"), "lib": ("lib_region", "lib_region"), "kinder": ("kinder_sidoCode", "kinder"), "kopis": ("kopis_signgucode", "kopis"), "hira": ("hira_sidoCd", "hira_sido"), "tour": ("tour_areaCode", "tour_area")}.items():
+            if cs.get(key) not in (None, "") and ok(cv.get(vkey)):
+                sv[f] = cs[key] if f != "tour" else int(cs[key]); verify[f] = cv[vkey] + " — 022-1 검증표"
             else:
-                verify[f] = "미확인(클로드 기억값 — 공식 출처 대조 필요)"
-        reg = {"_설명": f"{S['full']} 지역 설정 v01후보(2026-11-03) — 비공개 후보. 코드 검증 상태는 _verify 참고. 미확인 코드로는 수집을 돌리지 않는다.",
-               "sido_key": sk, "stage": "비공개 후보", "_note": NOTE.get(sk, ""), "sido": {k: v for k, v in sv.items() if k not in ("tag", "suffix")}, "_verify": verify, "cities": {}}
+                verify[f] = "미확인(검증표에 공식 출처 없음 — 클로드 기억값, 수집 전 확인 필요)"
+        verify["air"] = "확인 — 에어코리아 시도명(측정소는 구·군별 air_station)"
+        reg = {"_설명": f"{S['full']} 지역 설정 v01후보(2026-11-03) — 비공개 후보. 코드 검증 상태는 _verify(시·도)와 각 구·군의 _verify 참고. '미확인' 코드가 남은 수집기는 돌리지 않는다(서울·경기 제외).",
+               "sido_key": sk, "stage": "비공개 후보", "_note": NOTE.get(sk, ""), "_sources": {k: src.get(k, "") for k in ("code", "hira", "egen", "kma", "air", "lib", "kopis", "kinder", "neis", "tour") if src.get(k)},
+               "sido": {k: v for k, v in sv.items() if k not in ("tag", "suffix")}, "_verify": verify, "cities": {}}
         app = {"_설명": f"{S['full']} 앱 설정 v01후보 — AIRANG_INCLUDE_CANDIDATES=1 미리보기 빌드에서만 쓰임. 운영 cities.json 과 분리.", "sidos": {sk: [S["full"], S["tag"], S["suffix"]]}, "cities": {}}
         for i, (k, name, area, sgg_code, lat, lon, areas, d) in enumerate(CITIES[sk]):
-            cc = codes.get("sgg", {}).get(str(sgg_code)) or codes.get("sgg", {}).get(k) or {}
-            code = cc.get("value", sgg_code); v = f"확인({cc.get('source','출처')})" if cc else "미확인(클로드 기억값)"
-            reg["cities"][k] = {"sido": sk, "sgg": area, "area": area, "dir": d, "stage": "비공개 후보", "gus": {"": int(code)}, "lat": lat, "lon": lon, "areas": areas,
-                                "lib": {"": None}, "kopis": sv.get("kopis"), "stations": [], "places": "|".join([area.replace("청주시 ", "")] + areas.split("·")), "not_places": "|".join(o[2] for o in CITIES[sk] if o[2] != area) or "(?!)", "_todo": "lib(정보나루 지역코드 세부)·kopis(구 단위)·stations(날씨 관측소)·places(생활권 정규식) 는 수집 전 보완 필요", "domain": f"{d}.{S['tag']}.example.invalid", "_verify_sgg": v}
+            x = sgg_by_code.get(str(sgg_code), {}); xv = x.get("verified", {})
+            ent = {"sido": sk, "sgg": area, "area": area, "dir": d, "stage": "비공개 후보", "gus": {"": int(x.get("code", sgg_code))}, "lat": lat, "lon": lon, "areas": areas,
+                   "lib": {"": int(x["lib_dtl_region"])} if x.get("lib_dtl_region") else {"": None}, "kopis": str(x.get("kopis_signgucodesub", "")).split("(")[0] or sv.get("kopis"),
+                   "hira_sgg": x.get("hira_sgguCd", ""), "kinder_sgg": x.get("kinder_sggCode", ""), "egen_q1": x.get("egen_Q1", area), "grid": [x.get("kma_nx"), x.get("kma_ny")], "air_station": x.get("airkorea_station", ""),
+                   "tour_ldong": [x.get("tour_lDongRegnCd"), x.get("tour_lDongSignguCd")], "stations": [], "places": "|".join([area.replace("청주시 ", "")] + areas.split("·")), "not_places": "|".join(o[2] for o in CITIES[sk] if o[2] != area) or "(?!)",
+                   "domain": f"{d}.{S['tag']}.example.invalid",
+                   "_verify": {"code": xv.get("code", "미확인"), "hira_sgg": xv.get("hira_sgguCd", "미확인"), "lib": xv.get("lib_dtl_region", xv.get("lib", "미확인")), "kopis": xv.get("kopis_sub", xv.get("kopis", "미확인")), "kinder_sgg": xv.get("kinder_sggCode", xv.get("kinder", "미확인")),
+                               "egen_q1": xv.get("egen_Q1", "미확인"), "grid": xv.get("kma", xv.get("kma_nx", "미확인")), "air_station": xv.get("airkorea_station", xv.get("airkorea", "미확인")), "tour": xv.get("tour_sigunguCode", "미확인")},
+                   "_note": x.get("note", ""), "_todo": "stations(날씨 관측소 동 이름)·places(생활권 정규식) 는 수집 전 보완; 미확인 코드 확인 전 해당 수집기 실행 금지"}
+            n_ok += sum(1 for v in ent["_verify"].values() if ok(v)); n_un += sum(1 for v in ent["_verify"].values() if not ok(v))
+            reg["cities"][k] = ent
             c, ink, deep, soft = PALETTE[i % len(PALETTE)]
             app["cities"][d] = {"name": name, "sido": sk, "sgg": area, "stage": "비공개 후보", "colors": {"city": c, "ink": ink, "deep": deep, "soft": soft}, "areas": areas, "lat": lat, "lon": lon,
-                                "searchEx": areas.split("·")[0] + ", " + areas.split("·")[1] if "·" in areas else areas, "domain": f"{d}.{S['tag']}.example.invalid", "pages": "airang-all", "has404": True, "gus": [],
-                                "fields": {"start": "", "startVer": ""}}
-            report.append((sk, area, code, v))
+                                "searchEx": ", ".join(areas.split("·")[:2]), "domain": f"{d}.{S['tag']}.example.invalid", "pages": "airang-all", "has404": True, "gus": [], "fields": {"start": "", "startVer": ""}}
         json.dump(reg, open(os.path.join(ROOT, "regions", f"{S['tag']}.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
         json.dump(app, open(os.path.join(ROOT, "app", "cities_candidates", f"{S['tag']}.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-        print(f"{sk}: 구·군 {len(CITIES[sk])}곳 → regions/{S['tag']}.json, app/cities_candidates/{S['tag']}.json | 시도 코드 검증: " + ", ".join(f"{k}={'O' if v.startswith('확인') else 'X'}" for k, v in verify.items()))
-    unv = [r for r in report if not r[3].startswith("확인")]
-    print(f"구·군 코드 {len(report)}개 중 미확인 {len(unv)}개")
+        print(f"{sk}: 구·군 {len(CITIES[sk])}곳 → regions/{S['tag']}.json | 시·도 코드: " + ", ".join(f"{k}={'O' if ok(v) else 'X'}" for k, v in verify.items()))
+    print(f"구·군 코드 칸: 확인 {n_ok} / 미확인 {n_un}")
 
 
 if __name__ == "__main__":
