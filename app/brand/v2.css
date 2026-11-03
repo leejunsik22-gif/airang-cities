@@ -1,0 +1,77 @@
+/* ═══════════════════════════════════════════════════════════════
+   아이랑 브랜드 디자인 시스템 v2후보 (2026-11-03, 026 프리미엄 통합) — v1 뒤에 붙는다
+   A 기본 디자인: 딥네이비·고급 아이보리·샴페인 골드 포인트·세이지/절제된 코랄 (012 토큰 유지)
+   B 글씨체: Noto Sans KR 유지(지정 서체 없음) — 제목 800·자간 -0.5px / 본문 15px·줄 1.6 / 보조 12.5~13px
+   C 전체 구성: 007 홈5(고요한 검색)+홈3(우리 아이 맞춤), 상세1(사진 히어로·출처·확인일), 준비 중 틀, 저장(즐겨찾기), 마이
+   규칙: 카드 곡률 20 · 버튼 14 · 칩 12 · 터치 44px · 아이콘 선 1.75 단색 · 골드는 '확인됨·저장·강조'에만
+   ═══════════════════════════════════════════════════════════════ */
+:root{--gold-soft:#EFE3C6;--navy-2:#2B3A5C;--fs-h1:26px;--fs-h2:18px;--fs-body:15px;--fs-sub:12.5px;--shadow-lg:0 2px 4px rgba(31,42,68,.05),0 18px 40px -20px rgba(31,42,68,.35)}
+body{font-size:var(--fs-body);line-height:1.6}
+h1{font-size:var(--fs-h1)!important;font-weight:800;letter-spacing:-.5px;line-height:1.25}
+h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
+.sub,.foot,.note,.ad,.d{font-size:var(--fs-sub)}
+.eyebrow{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.4px;color:var(--gold-ink);background:var(--gold-bg);padding:3px 9px;border-radius:8px}
+.card-pad{padding:16px 18px}
+/* 공통 상단 바(v2): 로고·구 이름·다른 구 */
+.topbar-v2{display:flex;align-items:center;gap:10px;margin:2px 0 14px}
+.topbar-v2 .brand{font-size:19px;font-weight:800;letter-spacing:-.4px;white-space:nowrap}
+.topbar-v2 .by{font-size:11px;color:var(--muted)}
+/* 검색 카드(홈5): 크고 조용하게 */
+.search-v2{display:flex;align-items:center;gap:8px;padding:8px 8px 8px 16px;border:1px solid var(--line);background:var(--paper);border-radius:var(--r-card);box-shadow:var(--shadow-lg)}
+.search-v2 input{flex:1;min-width:0;border:0;background:transparent;font-size:16px;min-height:48px;outline:none;color:var(--ink)}
+.search-v2 input::placeholder{color:#6B7285}
+.q-chips{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 2px;scrollbar-width:none}
+.q-chips::-webkit-scrollbar{display:none}
+.q-chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:var(--r-chip);background:var(--ivory-2);color:var(--navy);border:1px solid transparent;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer}
+.q-chip:active{background:var(--navy-soft)}
+/* 섹션 머리 */
+.sec-head{display:flex;align-items:baseline;gap:10px;margin:0 0 10px}
+.sec-head .more{margin-left:auto;font-size:13px;font-weight:700;color:var(--navy);background:none;border:0;min-height:44px;padding:0 6px;cursor:pointer}
+/* 준비 중 틀 */
+.soon-frame{border:1px dashed var(--gold);background:linear-gradient(180deg,#FFFDF8,var(--paper));border-radius:var(--r-card);padding:22px 20px;text-align:center}
+.soon-frame .ic{margin:0 auto 10px}
+.soon-frame h2{margin:0 0 6px}
+.soon-frame p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+.soon-frame .src{margin-top:12px;font-size:12.5px;color:var(--muted)}
+.soon-frame .actions{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+/* 저장(즐겨찾기) */
+.fav-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--muted);cursor:pointer;flex:0 0 auto;font:inherit}
+.fav-btn.on{background:var(--gold-bg);border-color:var(--gold-soft);color:var(--gold-ink)}
+.fav-row{display:flex;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.fav-row:last-child{border-bottom:0}
+.fav-row .t{flex:1;min-width:0}
+.fav-row .t b{display:block;font-size:15px}
+.fav-row .t span{display:block;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* 출처·확인일 줄 */
+.src-line{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:10px}
+.src-line .dot{width:8px;height:8px;border-radius:50%;background:var(--sage);margin-top:6px;flex:0 0 auto}
+/* 상세 시트(상세1) */
+.sheet-bg{position:fixed;inset:0;background:rgba(22,32,58,.45);z-index:40;display:flex;align-items:flex-end;justify-content:center}
+.sheet{width:min(560px,100%);max-height:88vh;overflow:auto;background:var(--paper);border-radius:24px 24px 0 0;padding:14px 18px calc(18px + env(safe-area-inset-bottom));box-shadow:var(--shadow-lg)}
+.sheet .grip{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 12px}
+.sheet h2{font-size:20px;margin:4px 0 2px}
+.sheet .kv{display:grid;grid-template-columns:84px 1fr;gap:6px 10px;font-size:14px;margin:12px 0}
+.sheet .kv b{color:var(--muted);font-weight:700}
+.sheet .hours{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.sheet .hours div{background:var(--ivory-2);border-radius:10px;padding:8px 6px;text-align:center;font-size:12.5px}
+.sheet .hours div b{display:block;font-size:12px;color:var(--muted)}
+.sheet .hours div.today{background:var(--navy-soft);color:var(--navy)}
+.sheet .acts{display:flex;gap:8px;margin-top:14px}
+.sheet .acts .btn{flex:1;min-height:48px;text-decoration:none;justify-content:center}
+/* 하단 탭 v2 */
+.nav{background:rgba(255,255,255,.96)!important;border:1px solid var(--line)!important;border-radius:24px!important;height:72px!important;box-shadow:var(--shadow-lg)!important;backdrop-filter:blur(12px)}
+.navi{height:70px!important;font-size:11.5px!important;color:var(--muted)!important}
+.navi .ic{width:40px;height:30px;border-radius:12px;display:flex;align-items:center;justify-content:center;transition:none}
+.navi.on{color:var(--navy-ink)!important}
+.navi.on .ic{background:var(--navy-soft)!important;box-shadow:none!important;transform:none!important}
+/* 입구·구 카드 */
+.gu-card{border:1px solid var(--line);background:var(--paper);border-radius:var(--r-card);overflow:hidden}
+/* 접근성: 초점 */
+:focus-visible{outline:3px solid rgba(184,146,62,.6);outline-offset:2px}
+/* 관리자 공통(같은 벌) */
+.pnav.on{position:relative}
+.pnav.on::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:2px;background:var(--gold)}
+.psep{font-size:11px;letter-spacing:.4px;color:#9AA3B8;margin:14px 10px 4px;text-transform:uppercase}
+.ptbl th{font-size:12px;color:var(--muted);font-weight:700}
+.pcard .k{font-size:12.5px;color:var(--muted)}
+@media (max-width:430px){h1{font-size:24px!important}.sheet .hours{grid-template-columns:repeat(4,1fr)}}

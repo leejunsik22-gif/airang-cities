@@ -263,7 +263,85 @@ button[aria-label="지인에게 알려주기"]{width:44px!important;height:44px!
 a.val{display:inline-flex;align-items:center;min-height:44px}
 /* 입구 하단 안내 링크 */
 .guides a,.seo-links a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;border-radius:12px;background:var(--ivory-2);margin:4px 4px 0 0;font-size:13px;color:var(--navy)}
-
+/* ═══════════════════════════════════════════════════════════════
+   아이랑 브랜드 디자인 시스템 v2후보 (2026-11-03, 026 프리미엄 통합) — v1 뒤에 붙는다
+   A 기본 디자인: 딥네이비·고급 아이보리·샴페인 골드 포인트·세이지/절제된 코랄 (012 토큰 유지)
+   B 글씨체: Noto Sans KR 유지(지정 서체 없음) — 제목 800·자간 -0.5px / 본문 15px·줄 1.6 / 보조 12.5~13px
+   C 전체 구성: 007 홈5(고요한 검색)+홈3(우리 아이 맞춤), 상세1(사진 히어로·출처·확인일), 준비 중 틀, 저장(즐겨찾기), 마이
+   규칙: 카드 곡률 20 · 버튼 14 · 칩 12 · 터치 44px · 아이콘 선 1.75 단색 · 골드는 '확인됨·저장·강조'에만
+   ═══════════════════════════════════════════════════════════════ */
+:root{--gold-soft:#EFE3C6;--navy-2:#2B3A5C;--fs-h1:26px;--fs-h2:18px;--fs-body:15px;--fs-sub:12.5px;--shadow-lg:0 2px 4px rgba(31,42,68,.05),0 18px 40px -20px rgba(31,42,68,.35)}
+body{font-size:var(--fs-body);line-height:1.6}
+h1{font-size:var(--fs-h1)!important;font-weight:800;letter-spacing:-.5px;line-height:1.25}
+h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
+.sub,.foot,.note,.ad,.d{font-size:var(--fs-sub)}
+.eyebrow{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.4px;color:var(--gold-ink);background:var(--gold-bg);padding:3px 9px;border-radius:8px}
+.card-pad{padding:16px 18px}
+/* 공통 상단 바(v2): 로고·구 이름·다른 구 */
+.topbar-v2{display:flex;align-items:center;gap:10px;margin:2px 0 14px}
+.topbar-v2 .brand{font-size:19px;font-weight:800;letter-spacing:-.4px;white-space:nowrap}
+.topbar-v2 .by{font-size:11px;color:var(--muted)}
+/* 검색 카드(홈5): 크고 조용하게 */
+.search-v2{display:flex;align-items:center;gap:8px;padding:8px 8px 8px 16px;border:1px solid var(--line);background:var(--paper);border-radius:var(--r-card);box-shadow:var(--shadow-lg)}
+.search-v2 input{flex:1;min-width:0;border:0;background:transparent;font-size:16px;min-height:48px;outline:none;color:var(--ink)}
+.search-v2 input::placeholder{color:#6B7285}
+.q-chips{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 2px;scrollbar-width:none}
+.q-chips::-webkit-scrollbar{display:none}
+.q-chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:var(--r-chip);background:var(--ivory-2);color:var(--navy);border:1px solid transparent;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer}
+.q-chip:active{background:var(--navy-soft)}
+/* 섹션 머리 */
+.sec-head{display:flex;align-items:baseline;gap:10px;margin:0 0 10px}
+.sec-head .more{margin-left:auto;font-size:13px;font-weight:700;color:var(--navy);background:none;border:0;min-height:44px;padding:0 6px;cursor:pointer}
+/* 준비 중 틀 */
+.soon-frame{border:1px dashed var(--gold);background:linear-gradient(180deg,#FFFDF8,var(--paper));border-radius:var(--r-card);padding:22px 20px;text-align:center}
+.soon-frame .ic{margin:0 auto 10px}
+.soon-frame h2{margin:0 0 6px}
+.soon-frame p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+.soon-frame .src{margin-top:12px;font-size:12.5px;color:var(--muted)}
+.soon-frame .actions{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+/* 저장(즐겨찾기) */
+.fav-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--muted);cursor:pointer;flex:0 0 auto;font:inherit}
+.fav-btn.on{background:var(--gold-bg);border-color:var(--gold-soft);color:var(--gold-ink)}
+.fav-row{display:flex;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.fav-row:last-child{border-bottom:0}
+.fav-row .t{flex:1;min-width:0}
+.fav-row .t b{display:block;font-size:15px}
+.fav-row .t span{display:block;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* 출처·확인일 줄 */
+.src-line{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:10px}
+.src-line .dot{width:8px;height:8px;border-radius:50%;background:var(--sage);margin-top:6px;flex:0 0 auto}
+/* 상세 시트(상세1) */
+.sheet-bg{position:fixed;inset:0;background:rgba(22,32,58,.45);z-index:40;display:flex;align-items:flex-end;justify-content:center}
+.sheet{width:min(560px,100%);max-height:88vh;overflow:auto;background:var(--paper);border-radius:24px 24px 0 0;padding:14px 18px calc(18px + env(safe-area-inset-bottom));box-shadow:var(--shadow-lg)}
+.sheet .grip{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 12px}
+.sheet h2{font-size:20px;margin:4px 0 2px}
+.sheet .kv{display:grid;grid-template-columns:84px 1fr;gap:6px 10px;font-size:14px;margin:12px 0}
+.sheet .kv b{color:var(--muted);font-weight:700}
+.sheet .hours{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.sheet .hours div{background:var(--ivory-2);border-radius:10px;padding:8px 6px;text-align:center;font-size:12.5px}
+.sheet .hours div b{display:block;font-size:12px;color:var(--muted)}
+.sheet .hours div.today{background:var(--navy-soft);color:var(--navy)}
+.sheet .acts{display:flex;gap:8px;margin-top:14px}
+.sheet .acts .btn{flex:1;min-height:48px;text-decoration:none;justify-content:center}
+/* 하단 탭 v2 */
+.nav{background:rgba(255,255,255,.96)!important;border:1px solid var(--line)!important;border-radius:24px!important;height:72px!important;box-shadow:var(--shadow-lg)!important;backdrop-filter:blur(12px)}
+.navi{height:70px!important;font-size:11.5px!important;color:var(--muted)!important}
+.navi .ic{width:40px;height:30px;border-radius:12px;display:flex;align-items:center;justify-content:center;transition:none}
+.navi.on{color:var(--navy-ink)!important}
+.navi.on .ic{background:var(--navy-soft)!important;box-shadow:none!important;transform:none!important}
+/* 입구·구 카드 */
+.gu-card{border:1px solid var(--line);background:var(--paper);border-radius:var(--r-card);overflow:hidden}
+/* 접근성: 초점 */
+:focus-visible{outline:3px solid rgba(184,146,62,.6);outline-offset:2px}
+/* 관리자 공통(같은 벌) */
+.pnav.on{position:relative}
+.pnav.on::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:2px;background:var(--gold)}
+.psep{font-size:11px;letter-spacing:.4px;color:#9AA3B8;margin:14px 10px 4px;text-transform:uppercase}
+.ptbl th{font-size:12px;color:var(--muted);font-weight:700}
+.pcard .k{font-size:12.5px;color:var(--muted)}
+@media (max-width:430px){h1{font-size:24px!important}.sheet .hours{grid-template-columns:repeat(4,1fr)}}
+/* 026 본문 안 링크·전화 링크 터치 영역 */
+.foot a,.src-line a,.sheet .kv a,.sub a{display:inline-flex;align-items:center;min-height:44px;padding:0 2px}
 </style>
 <script data-goatcounter="https://{{key}}-edu-app.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}' async src="https://gc.zgo.at/count.js"></script>
 </head>
@@ -274,10 +352,10 @@ a.val{display:inline-flex;align-items:center;min-height:44px}
 
 <nav class="nav glass" aria-label="주요 메뉴">
   <button class="navi" data-tab="home"><span class="ic">{{icon:home}}</span>홈</button>
-  <button class="navi" data-tab="events"><span class="ic">{{icon:ticket}}</span>문화생활</button>
-  <button class="navi" data-tab="bene"><span class="ic">{{icon:gift}}</span>혜택</button>
   <button class="navi" data-tab="hosp"><span class="ic">{{icon:hospital}}</span>동네병원</button>
-  <button class="navi" data-tab="my"><span class="ic">{{icon:grid}}</span>전체</button>
+  <button class="navi" data-tab="bene"><span class="ic">{{icon:gift}}</span>혜택</button>
+  <button class="navi" data-tab="saved"><span class="ic">{{icon:star}}</span>저장</button>
+  <button class="navi" data-tab="my"><span class="ic">{{icon:grid}}</span>마이</button>
 </nav>
 <div class="toast" id="toast" role="status"></div>
 
@@ -752,15 +830,26 @@ function viewHome() {
       <div style="min-width:0;flex:1;line-height:1.15"><div style="font-size:18px;font-weight:800;letter-spacing:-.3px;white-space:nowrap">아이랑 <span style="color:var(--city-ink)">{{name}}</span></div><div style="font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">by 라그릴스</div></div>
       <button class="chip glass" aria-label="지인에게 알려주기" title="지인에게 알려주기" style="flex:0 0 auto;width:34px;height:34px;padding:0;justify-content:center;color:var(--indigo)" onclick="shareApp()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
       <button class="chip glass" style="flex:0 0 auto;font-size:12px;padding:0 12px;height:34px" onclick="go('region')">${icon.pin} ${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()} ▾</button></div>
-    ${addrNote}${homeUpdated()}${hero}${homeSearch()}${homeOpenKids()}${homeWeekend()}${homeToday(ks)}${ks.length ? homeMeals(homeKid === "all" ? ks : ks.filter(k => k.id === homeKid)) : ""}${mine}${notice}${homeEvents()}${homeLibrary()}${homeBooks()}${homeAd()}${footer()}`;
+    ${addrNote}${homeUpdated()}${hero}${homeSearch()}${homeQuick()}${mine}${homeSaved()}${homeToday(ks)}${ks.length ? homeMeals(homeKid === "all" ? ks : ks.filter(k => k.id === homeKid)) : ""}${homeWeekend()}${notice}${homeEvents()}${homeLibrary()}${homeBooks()}${homeAd()}${footer()}`;
 }
 
 // ---------- 통합 검색 (2026-11-02 디자인 통합: 첫 화면에 검색을 가장 위로) ----------
-function homeSearch() {
-  return `<form class="lift" role="search" style="display:flex;align-items:center;gap:8px;padding:8px 8px 8px 16px;margin-top:14px" onsubmit="event.preventDefault();const q=this.q.value.trim();if(q)go('find/'+encodeURIComponent(q))">
-    <span aria-hidden="true" style="font-size:18px">🔍</span>
-    <input name="q" type="search" placeholder="학원, 소아과, 학교, 혜택 이름으로 찾기" autocomplete="off" style="flex:1;min-width:0;border:0;background:transparent;font-size:15px;min-height:44px;outline:none" aria-label="통합 검색">
+function homeSearch() {   // 026 홈5(고요한 검색): 그림 바로 아래, 크고 조용하게
+  return `<form class="search-v2" role="search" style="margin-top:14px" onsubmit="event.preventDefault();const q=this.q.value.trim();if(q)go('find/'+encodeURIComponent(q))">
+    ${ico("search", 20, "none")}
+    <input name="q" type="search" placeholder="소아과, 학원, 학교, 혜택 이름이나 동 이름" autocomplete="off" aria-label="통합 검색">
     <button class="btn btn-3d" type="submit" style="padding:0 16px">찾기</button></form>`;
+}
+function homeQuick() {   // 026: 핵심 질문 칩 3~4개 (홈5) — 눌러서 바로 그 조건으로
+  const n = new Date(), h = n.getHours(), wk = n.getDay() === 0 || n.getDay() === 6;
+  const kidsTxt = h >= 19 || h < 8 ? "밤에 여는 소아과" : wk ? "주말에 여는 소아과" : "지금 문 연 소아과";
+  const chip = (label, fn, name) => `<button class="q-chip" onclick="${fn}">${ico(name, 16, "none")}${esc(label)}</button>`;
+  return `<div class="q-chips" aria-label="자주 찾는 것">${chip(kidsTxt, "hsOpenKids()", "stethoscope")}${chip("우리 동네 학원", "go('acas')", "pencil")}${chip("받을 수 있는 혜택", "go('bene')", "gift")}${chip("학교 일정", "go('schools')", "school")}${chip("약국", "hsTab='pharm';go('hosp')", "pill")}</div>`;
+}
+function homeSaved() {   // 026 저장한 것(즐겨찾기) — 휴대폰 안에만 저장
+  const f = favs(); if (!f.length) return "";
+  return `<section class="section"><div class="sec-head"><h2>저장한 것</h2><button class="more" onclick="go('saved')">전체 ${f.length} ›</button></div>
+    <div class="lift">${f.slice(0, 4).map(favRowHtml).join("")}</div></section>`;
 }
 function homeWeekend() {
   const st = gated("events");
@@ -1034,7 +1123,8 @@ function viewSchools(q = "") {
       <span style="font-size:13px;color:var(--muted)">${q ? "{{f.sgg}} 전체에서 검색" : esc(regionLabel())} · ${level()} ${list.length}곳</span>
       <button class="btn btn-soft" style="height:36px;font-size:12px;padding:0 12px" onclick="go('region')">지역 변경</button></div>
     <label class="search lift">${icon.search}<input id="q" placeholder="학교 이름 검색" value="${esc(q)}" aria-label="학교 이름 검색"></label>
-    <div class="lift list" style="margin-top:16px">${rows || `<div class="empty">검색 결과가 없어요.</div>`}</div>${footer()}`;
+    <div class="lift list" style="margin-top:16px">${rows || `<div class="empty">검색 결과가 없어요.</div>`}</div>
+    <p class="foot">${sourceLine("latest.json") || "출처 나이스 교육정보 개방포털 · 학교 가정통신문을 함께 확인해 주세요."}</p>${footer()}`;
   const inp = document.getElementById("q");
   inp.addEventListener("input", () => { const v = inp.value; viewSchools(v); const n = document.getElementById("q"); n.focus(); n.setSelectionRange(v.length, v.length); });
 }
@@ -1047,7 +1137,7 @@ function viewSchool(code) {
   const list = schoolEvents(s);
   $view.innerHTML = `<button class="back glass" onclick="history.back()" aria-label="뒤로">${icon.back}</button>
     <div class="lift" style="padding:20px;margin-top:14px">
-      <h1 style="font-size:23px;font-weight:800">${esc(s.name)}</h1>
+      <div style="display:flex;gap:8px;align-items:flex-start"><h1 style="font-size:23px;font-weight:800;flex:1">${esc(s.name)}</h1>${favBtn({ t: "school", id: s.code, n: s.name, sub: levelShort(s), route: "school/" + s.code })}</div>
       <p style="margin:6px 0 16px;font-size:13px;color:var(--muted)">${levelShort(s)} · ${esc(s.address)}</p>
       ${here.length ? `<div style="margin-bottom:12px">${here.map(kidPill).join("")}<span style="font-size:13px;color:var(--muted)">의 학교예요</span></div>` : ""}
 {{#if yongin}}
@@ -1058,7 +1148,7 @@ function viewSchool(code) {
     </div>
     <section class="section"><div class="sec-head"><h2>다가오는 일정</h2></div>
       <div class="lift card-pad">${list.map(g => evRow(g)).join("")}
-      ${(s.events || []).length ? "" : `<div class="empty">이 학교는 아직 나이스에 학사일정을 등록하지 않았어요. 등록되면 하루 3번 자동으로 반영돼요.</div>`}</div></section>${schoolMealsSection(s.code)}${footer()}`;
+      ${(s.events || []).length ? "" : `<div class="empty">이 학교는 아직 나이스에 학사일정을 등록하지 않았어요. 등록되면 하루 3번 자동으로 반영돼요.</div>`}</div></section>${schoolMealsSection(s.code)}<p class="foot">${sourceLine("latest.json")}</p>${footer()}`;
 }
 
 // ---------- 화면: 마이 ----------
@@ -1099,7 +1189,10 @@ function viewMy() {
 {{#else}}
     ["schools", "🏫", "t-lilac", "학교<br>일정"], ["elite", "🎓", "t-indigo", "특목·<br>자사고", 1], ["deals", "🏷️", "t-coral", "동네<br>할인"], ["sports", "🏊", "t-mint", "운동<br>교실"], ["jobs", "💼", "t-coral", "엄마<br>일자리"], ["safety", "🛡️", "t-lilac", "성범죄자<br>알림e"]];
 {{/if}}
-  $view.innerHTML = `<h1 style="font-size:27px;font-weight:800;margin-bottom:16px">전체 메뉴</h1>
+  const fv = favs();
+  $view.innerHTML = `<h1 style="margin-bottom:6px">마이</h1><p class="sub" style="margin:0 0 14px">우리 아이·저장한 것·전체 메뉴·설정. 모든 정보는 이 휴대폰 안에만 있어요.</p>
+    <div class="lift" style="display:flex;gap:12px;align-items:center;padding:12px 14px;margin-bottom:14px;cursor:pointer" onclick="go('saved')">${ico("star", 22, "sun")}<div style="flex:1;min-width:0"><b>저장한 것</b><div class="sub">${fv.length ? `${fv.length}개 · ${esc(fv.slice(0, 2).map(f => f.n).join(", "))}${fv.length > 2 ? " 외" : ""}` : "병원·학원·학교·혜택 카드의 ☆로 저장"}</div></div><span style="color:var(--muted)">›</span></div>
+    <h2 style="margin:0 0 10px">전체 메뉴</h2>
     ${(() => {
       const tile = ([r, e, t, l]) => r === "safety"   // 아이 안전: 여성가족부 공식 사이트로 가는 링크만 (정보는 앱에 모으지 않음)
         ? `<a class="mtile" style="text-decoration:none" href="https://www.sexoffender.go.kr" target="_blank" rel="noopener" onclick="trackEvent('안전-성범죄자알림e')">${ico("shield", 34, "sage")}<b>${l.replace("<br>", " ")}</b></a>`
@@ -1679,7 +1772,7 @@ function viewAca(id) {
   const map = "https://map.naver.com/p/search/" + encodeURIComponent(a.n + " " + (a.dong || a.gu || "{{name}}"));
   $view.innerHTML = `${back}
     <div style="display:flex;gap:14px;align-items:center;margin-top:14px"><span class="tile t-coral" style="width:54px;height:54px;font-size:22px;font-weight:800">${esc(a.n[0])}</span>
-      <div style="min-width:0"><h1 style="font-size:23px;font-weight:800;line-height:1.3">${esc(a.n)}</h1><p style="font-size:13px;color:var(--muted);margin-top:4px">${esc(a.t)} · ${esc(a.gu)} ${esc(a.dong)}</p></div></div>
+      <div style="min-width:0;flex:1"><h1 style="font-size:23px;font-weight:800;line-height:1.3">${esc(a.n)}</h1><p style="font-size:13px;color:var(--muted);margin-top:4px">${esc(a.t)} · ${esc(a.gu)} ${esc(a.dong)}</p></div>${favBtn({ t: "aca", id: a.id, n: a.n, sub: a.r || a.t || "", route: "aca/" + a.id })}</div>
     <div class="lift card-pad" style="margin-top:18px">
       ${row("분야", esc(a.r))}${row("교습 과정", esc((a.c || []).join(", ")))}${row("정원", a.cap ? a.cap + "명" : "")}${row("주소", esc(a.a))}${row("전화", a.tel ? `<a href="tel:${esc(a.tel)}">${esc(a.tel)}</a>` : "")}
     </div>
@@ -2492,7 +2585,7 @@ function adminChartHtml(A) {
 }
 
 // ---------- 이동 / 동작 ----------
-function go(route) { const st = gated(route); if (st) { toast(`"${st.label || "이 정보"}"은(는) 공식 자료 확인 뒤에 열어요 · 준비 중`); trackEvent("준비중-" + route.split("/")[0]); return; } if (location.hash === "#" + route) render(); else location.hash = route; }
+function go(route) { const st = gated(route); if (st) trackEvent("준비중-" + route.split("/")[0]); if (location.hash === "#" + route) render(); else location.hash = route; }
 // ---------- 동네 할인 (지역화폐·백화점 행사·동네 가게) ----------
 let DEALS = null, dlLoading = null, dlCat = "전체";
 function loadDeals() { if (!dlLoading) dlLoading = dataFetch("deals.json").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(j => { DEALS = j; if (location.hash === "#deals") render(); }).catch(() => { DEALS = { items: [], err: 1 }; if (location.hash === "#deals") render(); }); return dlLoading; }
@@ -2567,6 +2660,66 @@ function hsToday(x) {
   const a = +s.slice(0, 4), b = +s.slice(4, 8), t = now.getHours() * 100 + now.getMinutes(), f = v => String(v).padStart(4, "0").replace(/(\d\d)(\d\d)/, "$1:$2");
   return { open: b > a ? t >= a && t < b : t >= a || t < b, text: `오늘 ${f(a)}~${f(b)}` };
 }
+// ───── 026 저장(즐겨찾기): 휴대폰 안 localStorage, 가입·서버 없음 ─────
+function favs() { try { const v = JSON.parse(store("edu.favs") || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+function favKey(t, id) { return t + ":" + id; }
+function isFav(t, id) { return favs().some(f => f.k === favKey(t, id)); }
+function toggleFav(f) {   // f = {t(종류), id, n(이름), sub(한 줄), route}
+  let list = favs(); const k = favKey(f.t, f.id); const on = list.some(x => x.k === k);
+  list = on ? list.filter(x => x.k !== k) : [{ k, t: f.t, id: f.id, n: f.n, sub: f.sub || "", route: f.route || "", at: new Date().toISOString().slice(0, 10) }, ...list].slice(0, 100);
+  store("edu.favs", JSON.stringify(list)); toast(on ? "저장을 지웠어요" : "저장했어요 · 저장 탭에서 볼 수 있어요"); trackEvent(on ? "저장-해제" : "저장-추가");
+  document.querySelectorAll(`[data-fav="${k}"]`).forEach(b => { b.classList.toggle("on", !on); b.setAttribute("aria-pressed", String(!on)); });
+  if (location.hash === "#saved" || location.hash === "#home" || location.hash === "" || location.hash === "#my") render();
+}
+function favBtn(f) { const k = favKey(f.t, f.id), on = isFav(f.t, f.id); return `<button class="fav-btn ${on ? "on" : ""}" data-fav="${esc(k)}" aria-pressed="${on}" aria-label="${on ? "저장 지우기" : "저장"}" title="저장" onclick="event.stopPropagation();toggleFav(${esc(JSON.stringify(f))})">${ico("star", 20, "none")}</button>`; }
+const FAV_T = { hosp: "병원·약국", aca: "학원", school: "학교", bene: "혜택" };
+function favRowHtml(f) {
+  const open = f.t === "hosp" ? `hsOpenByKey(${esc(JSON.stringify(f.id))})` : f.route ? `go(${esc(JSON.stringify(f.route))})` : "";
+  return `<div class="fav-row"><span class="tile t-sun" style="width:38px;height:38px;flex:0 0 auto">${ico(f.t === "hosp" ? "hospital" : f.t === "aca" ? "pencil" : f.t === "school" ? "school" : "gift", 18, "none")}</span>
+    <button class="t" style="background:none;border:0;text-align:left;font:inherit;color:inherit;cursor:pointer;min-height:44px;padding:0" onclick="${open}"><b>${esc(f.n)}</b><span>${esc(FAV_T[f.t] || f.t)}${f.sub ? " · " + esc(f.sub) : ""}</span></button>${favBtn({ t: f.t, id: f.id, n: f.n, sub: f.sub, route: f.route })}</div>`;
+}
+function viewSaved() {
+  const f = favs();
+  const groups = ["hosp", "aca", "school", "bene"].map(t => [t, f.filter(x => x.t === t)]).filter(([, l]) => l.length);
+  $view.innerHTML = `<h1 style="margin-top:14px">저장한 것</h1><p class="sub" style="margin:4px 0 14px">병원·학원·학교·혜택을 ☆로 저장하면 여기 모여요. 이 휴대폰 안에만 저장되고 어디에도 보내지 않아요.</p>
+    ${groups.length ? groups.map(([t, l]) => `<section class="section"><div class="sec-head"><h2>${FAV_T[t]} ${l.length}</h2></div><div class="lift">${l.map(favRowHtml).join("")}</div></section>`).join("")
+      : `<div class="soon-frame"><div class="ic">${ico("star", 28, "sun")}</div><h2>아직 저장한 것이 없어요</h2><p>병원·학원·혜택 카드의 ☆ 버튼을 누르면 여기 모여요.</p><div class="actions"><button class="btn btn-3d" onclick="go('hosp')">동네 병원 보기</button><button class="btn btn-soft" onclick="go('bene')">혜택 보기</button></div></div>`}
+    ${footer()}`;
+}
+// ───── 026 준비 중 틀: 공식 자료 확인 전 메뉴(검문 _status.json published=false) ─────
+const SOON_INFO = { kinders: ["유치원·어린이집", "유치원알리미 공식 자료 승인(키 발급) 뒤 열어요.", "유치원알리미(교육부)"], library: ["도서관", "도서관 정보나루 승인 뒤 열어요.", "도서관 정보나루"], books: ["인기 도서", "도서관 정보나루 승인 뒤 열어요.", "도서관 정보나루"],
+  events: ["행사·체험", "한국관광공사·공연예술통합전산망 공식 자료 확인 뒤 열어요.", "한국관광공사 · KOPIS"], culture: ["문화생활", "공식 자료 확인 뒤 열어요.", "한국관광공사 · KOPIS"], elite: ["특목·자사고", "나이스 원문 대조 뒤 열어요.", "나이스 교육정보 개방포털"],
+  meals: ["급식", "나이스 원문 대조 뒤 열어요.", "나이스 교육정보 개방포털"], weather: ["날씨·미세먼지", "기상청·환경공단 원문 대조 뒤 열어요.", "기상청 · 한국환경공단"], deals: ["동네 할인", "비공식 검색 자료라 공개하지 않아요.", "—"], sports: ["운동 교실", "대전 수집기 연결 뒤 열어요.", "—"], jobs: ["일자리", "대전은 제공하지 않아요.", "—"] };
+function viewSoon(r) {
+  const key = (r || "").split("/")[0], st = gated(r) || {}, info = SOON_INFO[key] || [st.label || "이 정보", "공식 자료 확인 뒤 열어요.", st.source_org || "—"];
+  $view.innerHTML = `<button class="back glass" onclick="history.back()" aria-label="뒤로">${icon.back}</button>
+    <h1 style="margin-top:14px">${esc(info[0])}</h1>
+    <div class="soon-frame" style="margin-top:14px"><div class="ic">${ico(ROUTE_ICON[key] || "grid", 30, "sun")}</div><span class="eyebrow">준비 중</span><h2 style="margin-top:8px">공식 자료를 확인하는 중이에요</h2><p>${esc(info[1])}<br>확인되지 않은 정보는 보여 드리지 않아요.</p>
+      <div class="src">출처(예정) ${esc(st.source_org || info[2])}${st.checked_at ? ` · 검문 ${esc(st.checked_at)}` : ""}</div>
+      <div class="actions"><button class="btn btn-3d" onclick="go('home')">홈으로</button><button class="btn btn-soft" onclick="go('hosp')">동네 병원</button><button class="btn btn-soft" onclick="go('bene')">혜택</button></div></div>${footer()}`;
+}
+// ───── 026 병원 상세 시트(007 상세1): 전체 진료시간·신고 과목·출처·확인일·저장 ─────
+function closeSheet() { const el = document.getElementById("sheet"); if (el) el.remove(); }
+function hsOpenByKey(key) { const [n, a] = String(key).split("|"); const go2 = () => { const all = [...(HOSP.clinics || []), ...(HOSP.hospitals || []), ...(HOSP.er || []), ...(HOSP.pharm || [])]; const x = all.find(r => r.n === n && (r.a || "") === (a || "")); if (x) hsSheet(x); else toast("지금 목록에 없는 곳이에요(폐업·변경 확인 중일 수 있어요)"); }; if (HOSP) go2(); else loadHosp().then(go2); }
+function hsDetail(list, i) { const x = ((HOSP || {})[list] || [])[i]; if (x) hsSheet(x); }
+function hsSheet(x) {
+  closeSheet();
+  const DAYS = ["월", "화", "수", "목", "금", "토", "일", "공휴일"], today = (new Date().getDay() + 6) % 7;
+  const f = v => String(v).padStart(4, "0").replace(/(\d\d)(\d\d)/, "$1:$2");
+  const hours = x.h && x.h.length ? `<div class="hours">${DAYS.map((d, i) => { const t = x.h[i] || ""; return `<div class="${i === today ? "today" : ""}"><b>${d}</b>${t.length >= 8 ? `${f(t.slice(0, 4))}<br>~${f(t.slice(4, 8))}` : "휴진"}</div>`; }).join("")}</div>` : `<p class="sub">진료시간 ${x.rv ? "확인 중 — 병원에 전화로 확인해 주세요" : "정보 없음"}</p>`;
+  const tel = (x.t || "").replace(/[^\d-]/g, ""), map = "https://map.naver.com/p/search/" + encodeURIComponent((x.n || "") + " " + (x.a || "").split(" ").slice(0, 2).join(" "));
+  const st = GATE && GATE["hospitals.json"] || {};
+  const fav = favBtn({ t: "hosp", id: (x.n || "") + "|" + (x.a || ""), n: x.n, sub: x.p || x.k || "", route: "hosp" });
+  const html = `<div class="sheet-bg" id="sheet" onclick="if(event.target===this)closeSheet()"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(x.n)} 상세"><div class="grip"></div>
+    <div style="display:flex;gap:8px;align-items:flex-start"><div style="flex:1;min-width:0"><span class="eyebrow" style="background:var(--navy-soft);color:var(--navy)">${esc(x.k || "의료기관")}</span>${x.rv ? ` <span class="eyebrow">확인 중</span>` : ""}<h2>${esc(x.n)}</h2><div class="sub">${deptLine(x)}</div></div>${fav}<button class="fav-btn" aria-label="닫기" onclick="closeSheet()">✕</button></div>
+    <div class="kv"><b>주소</b><span>${esc(x.a || "—")}</span><b>전화</b><span>${tel ? `<a href="tel:${esc(tel)}" style="font-weight:700">${esc(x.t)}</a>` : (x.rv && (x.rv.f || []).includes("t") ? "확인 중" : "—")}</span><b>진료과목</b><span>${(x.d || []).length ? esc((x.d || []).join(", ")) : (x.rv ? "확인 중" : "—")} <span class="sub">(국립중앙의료원 신고 기준)</span></span></div>
+    <div class="sec-head" style="margin-top:6px"><h2 style="font-size:15px">진료시간</h2>${x.h && x.h.length ? `<span class="sub">오늘 ${DAYS[today]}요일</span>` : ""}</div>${hours}
+    ${x.rv ? `<div style="margin-top:10px;padding:9px 12px;border-radius:10px;background:#FFF6E5;color:#8A5A00;font-size:12.5px;line-height:1.5">⏳ 공식 자료가 바뀌어 확인하는 중이에요(${esc(x.rv.since || "")}부터). 확인되기 전에는 바뀐 칸을 보여 드리지 않아요.</div>` : ""}
+    <div class="acts">${tel ? `<a class="btn btn-3d" href="tel:${esc(tel)}" onclick="trackEvent('병원-전화-상세')">📞 전화</a>` : ""}<a class="btn btn-soft" href="${esc(map)}" target="_blank" rel="noopener" onclick="trackEvent('병원-길찾기-상세')">📍 길찾기</a></div>
+    <div class="src-line"><span class="dot"></span><span>출처 ${esc(st.source_org || "국립중앙의료원 병·의원·약국 정보(공공데이터포털)")}${st.checked_at ? ` · 검문 확인 ${esc(st.checked_at)}` : ""}${HOSP && HOSP.updated ? ` · 자료 ${esc(HOSP.updated)}` : ""}<br>진료 과목·시간·휴진은 바뀔 수 있어요. 가기 전에 전화로 확인해 주세요. <a href="mailto:leejunsik22@gmail.com?subject=${encodeURIComponent("[아이랑] 병원 정보 수정 요청: " + (x.n || ""))}">잘못된 정보 알리기</a></span></div>
+    </div></div>`;
+  document.body.insertAdjacentHTML("beforeend", html); trackEvent("병원-상세");
+}
 function hsRow(x, er) {
   const tag = (t, bg, c) => `<span style="display:inline-block;font-size:11px;font-weight:800;padding:3px 8px;border-radius:8px;background:${bg};color:${c}">${esc(t)}</span>`;
   const td = hsToday(x), km = hsKm(x), tel = (x.t || "").replace(/[^\d-]/g, "");
@@ -2577,10 +2730,11 @@ function hsRow(x, er) {
   // 025(2026-11-03): 변경 감지로 공식 확인 중인 칸(rv.f)은 값을 보여 주지 않고 '확인 중' 안내 — 검문(change_guard)이 칸을 비워 둠
   const RVF = { h: "진료시간", d: "진료과목", p: "진료과목", k: "종별", t: "전화번호", a: "주소" };
   const rvNote = x.rv && x.rv.f && x.rv.f.length ? `<div style="margin-top:6px;padding:7px 10px;border-radius:10px;background:#FFF6E5;color:#8A5A00;font-size:12px;line-height:1.5">⏳ <b>${esc([...new Set(x.rv.f.map(f => RVF[f] || f))].join("·"))} 확인 중</b> — 공식 자료가 바뀌어 확인하는 중이에요. 가기 전에 병원에 전화로 확인해 주세요.</div>` : "";
+  const favB = favBtn({ t: "hosp", id: (x.n || "") + "|" + (x.a || ""), n: x.n, sub: x.p || k, route: "hosp" });
   return `<div class="lift" style="padding:14px 16px;margin-bottom:10px">
     <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">${kindTag}${x.rv ? tag("확인 중", "#FFF6E5", "#8A5A00") : ""}${td ? (td.open ? tag(k === "약국" ? "지금 영업 중" : "지금 진료 중", "#E6F6EF", "#127A52") : tag(k === "약국" ? "영업 시간 아님" : "진료 시간 아님", "#F1F3F8", "#5C6478")) : ""}${km != null ? tag(km < 1 ? Math.round(km * 1000) + "m" : km.toFixed(1) + "km", "#F4F2FF", "#5B4FD6") : ""}</div>
-    <div style="font-size:15.5px;font-weight:800;margin-top:6px;line-height:1.4">${esc(x.n)}</div>
-    <div style="font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.5">${deptLine(x)}${x.a ? " · " + esc(x.a) : ""}${td ? `<br>${esc(td.text)}` : ""}</div>${rvNote}
+    <div style="display:flex;gap:8px;align-items:flex-start;margin-top:6px"><button style="flex:1;min-width:0;text-align:left;background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;min-height:44px" onclick="hsOpenByKey(${esc(JSON.stringify((x.n || "") + "|" + (x.a || "")))})"><div style="font-size:15.5px;font-weight:800;line-height:1.4">${esc(x.n)} <span class="sub" style="font-weight:700;color:var(--navy)">상세 ›</span></div>
+    <div style="font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.5">${deptLine(x)}${x.a ? " · " + esc(x.a) : ""}${td ? `<br>${esc(td.text)}` : ""}</div></button>${favB}</div>${rvNote}
     <div style="display:flex;gap:8px;margin-top:10px">${tel ? `<a class="btn ${er ? "btn-3d" : "btn-soft"}" style="flex:1;height:38px;font-size:13px;text-decoration:none" href="tel:${esc(tel)}" onclick="trackEvent('병원-전화${er ? "-응급실" : ""}')">📞 전화</a>` : ""}<a class="btn btn-soft" style="flex:1;height:38px;font-size:13px;text-decoration:none" href="${esc(map)}" target="_blank" rel="noopener" onclick="trackEvent('병원-길찾기')">📍 길찾기</a>${x.u ? `<a class="btn btn-soft" style="flex:1;height:38px;font-size:13px;text-decoration:none" href="${esc(x.u)}" target="_blank" rel="noopener" onclick="trackEvent('병원-홈페이지')">홈페이지 ›</a>` : ""}</div></div>`;
 }
 function homeOpenKids() {   // 홈: 지금 문 연 소아과 바로가기 (밤·주말엔 문구를 바꿔요)
@@ -2669,7 +2823,7 @@ function bnCard(x) {
   const who = [...x.life, ...x.tgt].filter((v, i, a) => a.indexOf(v) === i).slice(0, 5);
   const tel = (x.tel || "").replace(/[^\d-]/g, "");
   return `<div class="lift" style="padding:14px 16px;margin-bottom:10px">
-    <div style="display:flex;gap:6px;flex-wrap:wrap">${x.scope === "local" ? tag("우리 구", "var(--city-soft)", "var(--city-ink)") : x.scope === "sido" ? tag("{{f.sidoShort}}시", "#EDF3F0", "#2E5A4B") : tag("나라", "#EEF0F6", "#3A4256")}${x.online ? tag("온라인 신청", "#E6F6EF", "#127A52") : ""}${x.kind ? tag(x.kind, "#F4F2FF", "#5B4FD6") : ""}${x.cyc ? tag(x.cyc, "#F1F3F8", "#5C6478") : ""}</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center"><div style="flex:1;display:flex;gap:6px;flex-wrap:wrap">${x.scope === "local" ? tag("우리 구", "var(--city-soft)", "var(--city-ink)") : x.scope === "sido" ? tag("{{f.sidoShort}}시", "#EDF3F0", "#2E5A4B") : tag("나라", "#EEF0F6", "#3A4256")}${x.online ? tag("온라인 신청", "#E6F6EF", "#127A52") : ""}${x.kind ? tag(x.kind, "#F4F2FF", "#5B4FD6") : ""}${x.cyc ? tag(x.cyc, "#F1F3F8", "#5C6478") : ""}</div>${favBtn({ t: "bene", id: x.id || x.n, n: x.n, sub: x.org || "", route: "bene" })}</div>
     <div style="font-size:15.5px;font-weight:800;margin-top:7px;line-height:1.4">${esc(x.n)}</div>
     ${x.org ? `<div style="font-size:12px;color:var(--muted);margin-top:2px">${esc(x.org)}</div>` : ""}
     ${x.sum ? `<div style="font-size:13px;margin-top:7px;line-height:1.55">${esc(x.sum)}</div>` : ""}
@@ -2712,7 +2866,8 @@ function viewBene(keepFocus) {
 function render() {
   if (!DATA) return;
   const r = (location.hash || "#home").slice(1);
-  const tab = r.startsWith("school") ? "home" : r === "events" ? "events" : r === "bene" ? "bene" : r === "hosp" ? "hosp" : r === "home" || r === "" ? "home" : r.startsWith("myev/") ? "home" : "my";
+  const tab = r.startsWith("school") ? "home" : r === "saved" ? "saved" : r === "bene" ? "bene" : r === "hosp" ? "hosp" : r === "home" || r === "" ? "home" : r.startsWith("myev/") ? "home" : "my";
+  closeSheet();
   document.querySelectorAll(".navi").forEach(b => b.classList.toggle("on", b.dataset.tab === tab));
 {{#if yongin}}
   if (r !== "admin") { adminOpen = false; ADMIN = null; adminMonths = null; }
@@ -2721,6 +2876,8 @@ function render() {
 {{/if}}
   if (r !== "events") evVisit = false;
   if (r.startsWith("kid/")) { const p = r.split("/"); if (p[1] === "new") viewKid("", p[2] || ""); else viewKid(p[1]); }
+  else if (gated(r)) viewSoon(r);   // 026: 공식 자료 확인 전 메뉴는 '준비 중' 틀로(빈 화면·오류 문구 대신)
+  else if (r === "saved") viewSaved();
   else if (r === "region") viewRegion();
 {{#if yongin}}
   else if (r === "admin") viewAdmin();
