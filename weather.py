@@ -40,13 +40,13 @@ def key_param():
     return KEY if "%" in KEY else urllib.parse.quote(KEY, safe="")
 
 
-def get_json(url, params, tries=3):
+def get_json(url, params, tries=4):   # 2026-11-03: 기상청 응답 지연(11/03 12:07 5구 전부 timed out) → 짧게 여러 번, 간격은 늘려서
     full = url + "?serviceKey=" + key_param() + "&" + urllib.parse.urlencode(params)
     last = ""
     for i in range(tries):
         try:
             req = urllib.request.Request(full, headers={"User-Agent": "Mozilla/5.0 (edu-collector weather)"})
-            with urllib.request.urlopen(req, timeout=30) as res:
+            with urllib.request.urlopen(req, timeout=20) as res:
                 raw = res.read().decode("utf-8", errors="replace")
             try:
                 return json.loads(raw)
@@ -54,7 +54,7 @@ def get_json(url, params, tries=3):
                 last = raw[:200].replace(KEY, "***")
         except Exception as e:
             last = str(e).replace(KEY, "***")
-        time.sleep(3 * (i + 1))
+        time.sleep(5 * (i + 1))   # 5·10·15초
     print("  응답 오류:", last)
     return None
 
@@ -214,6 +214,11 @@ def main():
     bd, bt = latest_base(now)
     latest = forecast(nx, ny, bd, bt)
     print(f"  단기예보 {bd} {bt}: {len(latest)}건")
+    if not latest:   # 최신 발표가 안 오면(발표 직후 서버 혼잡) 한 발표 전 것으로 — 3시간 전 자료라도 '없음'보다 낫고, 그래도 없으면 이전 파일 유지
+        bd2, bt2 = latest_base(now - timedelta(hours=3))
+        if (bd2, bt2) != (bd, bt):
+            latest = forecast(nx, ny, bd2, bt2)
+            print(f"  단기예보(한 발표 전) {bd2} {bt2}: {len(latest)}건")
     early = []
     if not (bd == today and bt == "0200") and now.hour >= 2:
         early = forecast(nx, ny, today, "0200")  # 오늘 최저·최고 기온이 들어 있는 새벽 발표
@@ -221,7 +226,7 @@ def main():
     w = summarize(today, latest, early)
     if not w:
         print("날씨를 만들지 못했어요. 이전 파일을 그대로 둡니다.")
-        return 0
+        return 2   # 수집 실패를 작업 기록에 남기기 위한 코드(워크플로가 ::error 로 표시) — 공개 자료는 검문이 직전본 유지
 
     ymd = now.strftime("%Y-%m-%d")
     air = air_forecast(ymd, place["region"])
