@@ -14,9 +14,20 @@ import argparse, json, os, re, shutil, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CFG = json.load(open(os.path.join(HERE, "cities.json"), encoding="utf-8"))
+# 2026-11-03: 비공개 후보 도시(app/cities_candidates/*.json)는 AIRANG_INCLUDE_CANDIDATES=1 일 때만 빌드에 넣는다(미리보기용). 기본 빌드 = 운영 도시(대전 5구)만.
+CANDIDATE_SIDOS = {}
+if os.environ.get("AIRANG_INCLUDE_CANDIDATES") == "1":
+    import glob as _glob
+    for _p in sorted(_glob.glob(os.path.join(HERE, "cities_candidates", "*.json"))):
+        _c = json.load(open(_p, encoding="utf-8"))
+        for _k, _v in _c.get("cities", {}).items():
+            assert _k not in CFG["cities"], f"후보 도시 키가 운영 도시와 겹침: {_k}"
+            _v.setdefault("stage", "비공개 후보"); CFG["cities"][_k] = _v
+        CANDIDATE_SIDOS.update({k: tuple(v) for k, v in _c.get("sidos", {}).items()})
 BASE = CFG.get("base", "https://airang-daejeon-all.pages.dev")   # 도시 주소 = BASE/도시키/
 # 시도: 이름 → (정식 이름, 템플릿 태그, 시군구 끝 글자). 순서 = 다른 도시 둘러보기·입구 탭 순서
 SIDOS = {"대전": ("대전광역시", "daejeon", "구")}   # 다른 시·도를 열 때 추가 (서울·경기 제외)
+SIDOS.update(CANDIDATE_SIDOS)   # 후보 시·도(미리보기 빌드에서만)
 SIDO_ORDER = list(SIDOS)
 TEMPLATES = ["index.html", "sw.js", "manifest.webmanifest", "404.html"]
 COND = re.compile(r"^\{\{#(if|elif) ([a-z,]+)\}\}$|^\{\{#else\}\}$|^\{\{/if\}\}$")
@@ -116,7 +127,7 @@ def build_entry(out):
     src = src.replace("/*CITIES*/[]", json.dumps(rows, ensure_ascii=False))
     # 검색용 페이지로 가는 링크 (검색 로봇이 따라가도록 HTML에 바로 적음)
     g = ""
-    for sd, label in (("대전", "대전"),):
+    for sd, label in ((k, k) for k in SIDO_ORDER):
         cs = sorted([(k, c) for k, c in CFG["cities"].items() if c.get("sido", "경기") == sd], key=lambda kc: kc[1]["name"])
         if cs:
             g += f'<p>{label}</p>' + "".join(f'<a href="{BASE}/{k}/guide/">{c.get("sgg") or c["name"] + SIDOS[sd][2]} 학원·유치원·소아과</a>' for k, c in cs)

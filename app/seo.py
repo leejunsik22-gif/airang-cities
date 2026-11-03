@@ -22,6 +22,16 @@ from datetime import datetime, timedelta, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CFG = json.load(open(os.path.join(HERE, "cities.json"), encoding="utf-8"))
+# 2026-11-03: 비공개 후보 도시(app/cities_candidates/*.json)는 AIRANG_INCLUDE_CANDIDATES=1 일 때만 빌드에 넣는다(미리보기용). 기본 빌드 = 운영 도시(대전 5구)만.
+CANDIDATE_SIDOS = {}
+if os.environ.get("AIRANG_INCLUDE_CANDIDATES") == "1":
+    import glob as _glob
+    for _p in sorted(_glob.glob(os.path.join(HERE, "cities_candidates", "*.json"))):
+        _c = json.load(open(_p, encoding="utf-8"))
+        for _k, _v in _c.get("cities", {}).items():
+            assert _k not in CFG["cities"], f"후보 도시 키가 운영 도시와 겹침: {_k}"
+            _v.setdefault("stage", "비공개 후보"); CFG["cities"][_k] = _v
+        CANDIDATE_SIDOS.update({k: tuple(v) for k, v in _c.get("sidos", {}).items()})
 BASE = CFG.get("base", "https://airang-daejeon-all.pages.dev")
 KST = timezone(timedelta(hours=9))
 E = lambda s: html.escape(str(s or ""), quote=True)

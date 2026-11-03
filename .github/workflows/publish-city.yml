@@ -1,0 +1,58 @@
+name: publish-city (새 도시 공개 반영 — 대표 승인 뒤에만)
+# 2026-11-03 v01후보: staging/<폴더>/ 의 임시 수집본을 검문(gate)에 통과시켜 공개 폴더 data/<폴더>/ 로 올린다.
+# 조건: ① 실행한 계정이 대표(leejunsik22-gif) ② confirm 칸에 "승인" ③ staging/<폴더>/_precheck.json 존재 ④ 검문 통과분만 공개(원문 미확인 자료는 자동 보류)
+# 이 워크플로는 앱 빌드·배포를 하지 않는다. 앱에 새 도시를 보이게 하려면 app/cities.json 반영 + airang-stats cf-apps 는 별도 승인.
+on:
+  workflow_dispatch:
+    inputs:
+      dirs:    { description: "공개할 폴더 이름 (쉼표로, staging/ 에 있는 것)", default: "" }
+      confirm: { description: "대표 승인 확인 — 반드시 '승인' 이라고 입력", default: "" }
+      note:    { description: "승인 메모(공식 원문 대조 보고서 번호 등)", default: "" }
+permissions:
+  contents: write
+concurrency: { group: "publish-city", cancel-in-progress: false }
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: 승인 확인
+        run: |
+          [ "${{ github.actor }}" = "leejunsik22-gif" ] || { echo "::error::대표 계정(leejunsik22-gif)만 공개 반영을 실행할 수 있습니다 (실행: ${{ github.actor }})"; exit 1; }
+          [ "${{ github.event.inputs.confirm }}" = "승인" ] || { echo "::error::confirm 칸에 '승인' 을 입력해야 합니다"; exit 1; }
+          [ -n "${{ github.event.inputs.dirs }}" ] || { echo "::error::폴더 이름이 없습니다"; exit 1; }
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: 검문 뒤 공개 폴더로
+        run: |
+          set -o pipefail
+          IFS=, read -ra DS <<< "${{ github.event.inputs.dirs }}"
+          mkdir -p logs
+          for d in "${DS[@]}"; do
+            [ -f staging/$d/_precheck.json ] || { echo "::error::staging/$d/_precheck.json 이 없습니다 — newcity 임시 수집부터"; exit 1; }
+            rm -rf output; mkdir -p output
+            find staging/$d -maxdepth 1 -name '*.json' ! -name '_*' -exec cp {} output/ \;
+            k=$(python3 -c "import json;print(json.load(open('staging/$d/_precheck.json'))['city'])")
+            echo "== $k ($d) 지역 섞임 재검사" | tee logs/publish-$d.txt
+            CITY=$k python3 tools/check_region.py --dir output --quarantine --report output/_region_check.json 2>&1 | tee -a logs/publish-$d.txt
+            echo "== 검문(gate) → data/$d" | tee -a logs/publish-$d.txt
+            python3 tools/gate.py --city $d --in output --out data/$d 2>&1 | tee -a logs/publish-$d.txt
+            python3 - "$d" "${{ github.actor }}" "${{ github.event.inputs.note }}" <<'PY'
+          import json, sys
+          from datetime import datetime, timedelta, timezone
+          d, who, note = sys.argv[1], sys.argv[2], sys.argv[3]
+          p = f"staging/{d}/_precheck.json"; o = json.load(open(p, encoding="utf-8"))
+          o.update(stage="공개 반영됨", approved_by=who, approved_at=datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d %H:%M KST"), approve_note=note)
+          json.dump(o, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+          s = json.load(open(f"data/{d}/_status.json", encoding="utf-8")); s["approved_by"] = who; s["approved_at"] = o["approved_at"]; s["approve_note"] = note
+          json.dump(s, open(f"data/{d}/_status.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+          PY
+          done
+      - name: 저장
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data staging logs; git diff --cached --quiet && { echo "변경 없음"; exit 0; }
+          git commit -m "새 도시 공개 반영(대표 승인 ${{ github.actor }}): ${{ github.event.inputs.dirs }} — ${{ github.event.inputs.note }}"
+          ok=0; for k in 1 2 3 4 5; do git pull --rebase --autostash && git push && ok=1 && break; sleep $((k*7)); done
+          [ "$ok" = 1 ] || { echo "::error::올리기(push) 실패"; exit 1; }
