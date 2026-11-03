@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""공개 전 자료 검문(gate) v06후보 — (2026-11-03 저녁, 024) 변경 감지(change_guard): 직전 공개본과 기록 단위 비교, 의미 변경·삭제는 재검증 전 직전본 값 유지(review/<구>/_reverify.json), 변경 전후를 ops/changes/<구>.json 에 기록. 공개 파일의 갱신일(updated)을 _status 에 기록(감시용). 정책 제외 시·도(서울·경기, tools/safety_policy.json)는 공개 안 함. v05후보 — (2026-11-03 오후) --review <폴더>: 공개 보류·검사 실패·제외 파일을 비공개 검토 폴더에 보존(앱은 읽지 않음, 급식·특목·날씨 원문 대조용). v04 — (2026-11-03) 검사일을 한국 시간 기준으로, `_`로 시작하는 보조 파일(_status/_region_check)은 검사 대상에서 제외, 지역 검사(check_region.py) 결과를 상태에 함께 기록. v03 — 공식 원문 확인(official_verify)이 없으면 자동 검사를 통과해도 공개 보류, 기존 공개본 유지 시에도 공식 상태·유효기간 동시 검사 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
+"""공개 전 자료 검문(gate) v06후보 — (2026-11-03, 024·025) 변경 감지(change_guard v02): 직전 공개본과 기록 단위 비교, 의미 변경은 바뀐 칸을 비우고 '확인 중' 표시(병원) 또는 비공개(혜택·학교·학원), 사라진 기록은 즉시 비공개, 기한(reconfirm_days) 안에 확인 없으면 비공개(review/<구>/_reverify.json), 변경 전후를 ops/changes/<구>.json 에 기록. 공개 파일의 갱신일(updated)을 _status 에 기록(감시용). 정책 제외 시·도(서울·경기, tools/safety_policy.json)는 공개 안 함. v05후보 — (2026-11-03 오후) --review <폴더>: 공개 보류·검사 실패·제외 파일을 비공개 검토 폴더에 보존(앱은 읽지 않음, 급식·특목·날씨 원문 대조용). v04 — (2026-11-03) 검사일을 한국 시간 기준으로, `_`로 시작하는 보조 파일(_status/_region_check)은 검사 대상에서 제외, 지역 검사(check_region.py) 결과를 상태에 함께 기록. v03 — 공식 원문 확인(official_verify)이 없으면 자동 검사를 통과해도 공개 보류, 기존 공개본 유지 시에도 공식 상태·유효기간 동시 검사 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
 
   python3 tools/gate.py --city yuseong --in output --out data/yuseong [--today 2026-11-02] [--dry-run] [--only weather.json]
 
@@ -41,7 +41,8 @@ def city_sido(city_dir):
 
 def guard_summary(g):
     c = g["counts"]
-    return f"{g['guard']}: 추가 {c['added']}·단순 {c['simple']}·의미 변경 {c['meaning']}·삭제 {c['removed']}·승인 {c['approved']}·보류 {c['held']}"
+    return (f"{g['guard']}: 추가 {c['added']}·단순 {c['simple']}·의미 변경 {c['meaning']}(확인중 {c.get('flagged',0)}·비공개 {c.get('excluded',0)}·만료 {c.get('expired',0)})"
+            f"·삭제 {c['removed']}·승인 {c['approved']}·원복 {c.get('reverted',0)}·미해결 {c['held']}")
 
 
 def parse_dt(s):
@@ -204,7 +205,7 @@ def main():
                 g = change_guard(a.city, fn, src, dst, a.today, a.review, a.approvals, a.changes, dry_run=a.dry_run)
                 ent["change_check"] = guard_summary(g); ent["reverify_pending"] = g["counts"]["held"]
                 if g["counts"]["held"]:
-                    print(f"  ⚠ {fn:16} 재검증 보류 {g['counts']['held']}건(직전본 값 유지) — review/_reverify.json")
+                    print(f"  ⚠ {fn:16} 재검증 미해결 {g['counts']['held']}건(확인중 표시 {g['counts'].get('flagged',0)}·비공개 {g['counts'].get('excluded',0)}) — review/_reverify.json")
             if g and g["file_hold"]:
                 failed.append(fn)
                 keep_review(a, src, fn, "변경 감지 파일 보류: " + g["file_hold_reason"])
