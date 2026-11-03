@@ -44,8 +44,8 @@ jobs:
           if [ "$(date +%d)" = "01" ] || [ ! -f output/elite.json ]; then python -u elite.py || true; fi   # 매달 1일 + 아직 없는 도시는 바로
       - name: 저장
         run: |
-          python3 tools/gate.py --city ${{ matrix.d }} --in output --out data/${{ matrix.d }}   # 검문: 미확인·만료·형식 오류는 공개 안 함(직전본 유지)
+          python3 tools/gate.py --city ${{ matrix.d }} --in output --out data/${{ matrix.d }} --review review/${{ matrix.d }}   # 검문(보류로 내려가는 기존 공개본은 review/ 보존, 2026-11-04 A안): 미확인·만료·형식 오류는 공개 안 함(직전본 유지)
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/${{ matrix.d }} logs/daily-${{ matrix.d }}.txt 2>/dev/null || git add data/${{ matrix.d }}; git diff --cached --quiet && exit 0
+          git add data/${{ matrix.d }}; [ -d review/${{ matrix.d }} ] && git add review/${{ matrix.d }}; [ -f logs/daily-${{ matrix.d }}.txt ] && git add logs/daily-${{ matrix.d }}.txt; git diff --cached --quiet && exit 0
           git commit -m "${{ matrix.city }} 하루 수집"
           for i in 1 2 3 4 5 6; do git pull --rebase --autostash && git push && break; sleep $((i*7)); done

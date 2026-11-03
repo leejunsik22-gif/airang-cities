@@ -369,7 +369,7 @@ function icoE(e, px = 24, tint = "navy") { const n = EMOJI_ICON[e]; return n ? i
 const REPO = "leejunsik22-gif/airang-cities";
 const RAW = "https://raw.githubusercontent.com/" + REPO + "/main/data/{{key}}/";
 // 공개 검문 상태(_status.json · tools/gate.py가 만듦): 공식 자료 확인 전인 메뉴는 열지 않는다 (2026-11-02 작업 가지)
-const GATE_FILE = { kinders: "kinder.json", library: "libs.json", books: "books.json", deals: "deals.json", sports: "sports.json", jobs: "jobs.json", culture: "events.json", events: "events.json", elite: "elite.json", meals: "meals.json", weather: "weather.json" };
+const GATE_FILE = { hosp: "hospitals.json", bene: "benefits.json", schools: "latest.json", acas: "academies.json", kinders: "kinder.json", library: "libs.json", books: "books.json", deals: "deals.json", sports: "sports.json", jobs: "jobs.json", culture: "events.json", events: "events.json", elite: "elite.json", meals: "meals.json", weather: "weather.json" };
 let GATE = null;
 function loadGate() { return dataFetch("_status.json").then(r => r.ok ? r.json() : null).then(j => { GATE = (j && j.files) || {}; }).catch(() => { GATE = {}; }); }
 function gated(route) { const f = GATE_FILE[(route || "").split("/")[0]]; if (!f || !GATE) return null; const st = GATE[f]; return st && st.published === false ? st : null; }
@@ -774,6 +774,9 @@ function viewFind(q) {
     <form role="search" class="lift" style="display:flex;gap:8px;padding:8px 8px 8px 16px;margin-top:12px" onsubmit="event.preventDefault();const v=this.q.value.trim();if(v)go('find/'+encodeURIComponent(v))">
     <input name="q" type="search" value="${esc(q)}" placeholder="학원, 소아과, 학교, 혜택" style="flex:1;min-width:0;border:0;background:transparent;font-size:15px;min-height:44px;outline:none" aria-label="검색어"><button class="btn btn-3d" type="submit" style="padding:0 16px">찾기</button></form>`;
   if (!q) { $view.innerHTML = head + `<div class="lift empty" style="margin-top:14px">찾을 이름을 넣어 주세요.</div>`; return; }
+  if (gated("hosp") && !HOSP) HOSP = { clinics: [], hospitals: [], er: [], held: 1 };   // 2026-11-04 A안: 보류 자료는 통합 검색에서도 요청·표시하지 않음
+  if (gated("bene") && !BENE) BENE = { items: [], held: 1 };
+  if (gated("acas") && !ACAS) ACAS = { academies: [], held: 1 };
   if (!ACAS || !HOSP || !BENE) { Promise.all([loadAcas().catch(() => 0), loadHosp(), loadBene()]).then(() => { if (location.hash.startsWith("#find")) render(); }); $view.innerHTML = head + `<div class="lift empty" style="margin-top:14px">찾는 중이에요…</div>`; return; }
   const n = _norm(q), hit = v => _norm(v).includes(n);
   const row = (icon, t, sub, href, onclick) => `<a class="lift" href="${href}" ${onclick ? `onclick="${onclick}"` : ""} style="display:flex;gap:12px;align-items:center;padding:12px 14px;margin-bottom:8px;color:inherit;text-decoration:none;min-height:56px"><span style="font-size:20px">${icon}</span><div style="min-width:0;flex:1"><div style="font-weight:800;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(t)}</div><div style="font-size:12.5px;color:var(--muted);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(sub)}</div></div><span style="color:var(--muted)">›</span></a>`;
@@ -2492,7 +2495,16 @@ function adminChartHtml(A) {
 }
 
 // ---------- 이동 / 동작 ----------
-function go(route) { const st = gated(route); if (st) { toast(`"${st.label || "이 정보"}"은(는) 공식 자료 확인 뒤에 열어요 · 준비 중`); trackEvent("준비중-" + route.split("/")[0]); return; } if (location.hash === "#" + route) render(); else location.hash = route; }
+const SOON_INFO = { hosp: ["동네 병원", "건강보험심사평가원·응급의료포털 원문 대조 뒤 열어요.", "국립중앙의료원 · 건강보험심사평가원"], bene: ["혜택", "복지로·구청 원문 대조 뒤 열어요.", "복지로(보건복지부) · 구청"], schools: ["학교·학사일정", "나이스 원문 대조 뒤 열어요.", "나이스 교육정보 개방포털"], acas: ["학원", "나이스 원문 대조 뒤 열어요.", "나이스 교육정보 개방포털"] };
+function viewSoon(r) {   // 2026-11-04 A안: 보류 자료 '준비 중' 화면 — 자료 요청 없음
+  const key = (r || "").split("/")[0], st = gated(r) || {}, info = SOON_INFO[key] || [st.label || "이 정보", "공식 자료 확인 뒤 열어요.", st.source_org || "—"];
+  trackEvent("준비중-" + key);
+  $view.innerHTML = `<div class="lift" style="padding:22px 18px;margin-top:8px;text-align:center"><div style="font-size:12.5px;color:var(--muted);font-weight:700">준비 중</div><h1 style="font-size:20px;margin:6px 0 10px">${esc(info[0])}</h1>
+    <p style="font-size:14px;line-height:1.7;color:var(--ink)">공식 자료를 확인하는 중이에요.<br>${esc(info[1])}<br><span style="color:var(--muted);font-size:12.5px">확인되지 않은 정보는 보여 드리지 않아요.</span></p>
+    <p style="font-size:12px;color:var(--muted);margin:10px 0 0">출처 ${esc(info[2])}${st.checked_at ? ` · 검문 ${esc(st.checked_at)}` : ""}</p>
+    <div style="display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap"><button class="btn btn-3d" onclick="go('home')">홈으로</button><button class="btn btn-soft" onclick="go('schools')">학교 일정</button><button class="btn btn-soft" onclick="go('acas')">학원</button></div></div>${footer()}`;
+}
+function go(route) { const st = gated(route); if (st) trackEvent("준비중-" + route.split("/")[0]); if (location.hash === "#" + route) render(); else location.hash = route; }   // 2026-11-04 A안: 보류 메뉴도 '준비 중' 화면으로 이동
 // ---------- 동네 할인 (지역화폐·백화점 행사·동네 가게) ----------
 let DEALS = null, dlLoading = null, dlCat = "전체";
 function loadDeals() { if (!dlLoading) dlLoading = dataFetch("deals.json").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(j => { DEALS = j; if (location.hash === "#deals") render(); }).catch(() => { DEALS = { items: [], err: 1 }; if (location.hash === "#deals") render(); }); return dlLoading; }
@@ -2549,7 +2561,7 @@ function viewDeals() {
 // ---------- 화면: 동네 병원 (의원 / 병원 / 응급실) ----------
 const HS_HINT = { "소아청소년과": "소아", "이비인후과": "이비인후", "내과": "내과", "피부과": "피부", "안과": "안과", "가정의학과": "가정의학|가정의원", "산부인과": "산부인|여성", "정형외과": "정형", "치과": "치과" };
 let HOSP = null, hsLoading = null, hsTab = "clinic", hsDept = "전체", hsGu = "전체", hsQ = "", hsNear = null, hsMore = 40, hsPf = "전체", hsOf = "전체";
-function loadHosp() { if (!hsLoading) hsLoading = dataFetch("hospitals.json").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(j => { HOSP = j; if (location.hash === "#hosp") render(); }).catch(() => { HOSP = { clinics: [], hospitals: [], er: [], err: 1 }; if (location.hash === "#hosp") render(); }); return hsLoading; }
+function loadHosp() { if (!hsLoading) hsLoading = (GATE ? Promise.resolve() : loadGate()).then(() => gated("hosp") ? Promise.reject("held") : dataFetch("hospitals.json")).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(j => { HOSP = j; if (location.hash === "#hosp") render(); }).catch(() => { HOSP = { clinics: [], hospitals: [], er: [], err: 1 }; if (location.hash === "#hosp") render(); }); return hsLoading; }
 function hsSet(k, v) { if (k === "tab") { hsTab = v; hsMore = 40; } if (k === "dept") { hsDept = v; hsMore = 40; } if (k === "gu") { hsGu = v; hsMore = 40; } if (k === "pf") { hsPf = v; hsMore = 40; } if (k === "of") { hsOf = v; hsMore = 40; } if (k === "more") hsMore += 40; viewHosp(); }
 function hsKm(x) { if (!hsNear || x.y == null) return null; const R = 6371, r = Math.PI / 180, dy = (x.y - hsNear.y) * r, dx = (x.x - hsNear.x) * r * Math.cos(hsNear.y * r); return R * Math.sqrt(dx * dx + dy * dy); }
 function hsLocate() {
@@ -2653,7 +2665,7 @@ function viewHosp(keepFocus) {
 // ---------- 화면: 놓치기 쉬운 혜택 (복지로 · 나라 혜택 + 우리 시 혜택) ----------
 let BENE = null, bnLoading = null, bnCat = "전체", bnQ = "", bnMore = 30;
 const BN_CAT = [["우리 아이 맞춤", "kid"], ["임신·출산", "임신"], ["영유아", "영유아"], ["아동", "아동"], ["청소년", "청소년"], ["다자녀", "다자녀"], ["한부모", "한부모"]];
-function loadBene() { if (!bnLoading) bnLoading = dataFetch("benefits.json").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(j => { BENE = j; if (location.hash === "#bene") render(); }).catch(() => { BENE = { items: [], err: 1 }; if (location.hash === "#bene") render(); }); return bnLoading; }
+function loadBene() { if (!bnLoading) bnLoading = (GATE ? Promise.resolve() : loadGate()).then(() => gated("bene") ? Promise.reject("held") : dataFetch("benefits.json")).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(j => { BENE = j; if (location.hash === "#bene") render(); }).catch(() => { BENE = { items: [], err: 1 }; if (location.hash === "#bene") render(); }); return bnLoading; }
 function bnSet(k, v) { if (k === "cat") { bnCat = v; bnMore = 30; } if (k === "more") bnMore += 30; viewBene(); }
 function bnKidLife() {  // 등록한 아이 학교로 생애주기 (휴대폰 안에서만 계산)
   const st = new Set();
@@ -2716,7 +2728,8 @@ function render() {
   if (r !== "admin") { adminOpen = false; ADMIN = null; ADMIN_SESS = null; adminMonths = null; adminViaTap = false; }
 {{/if}}
   if (r !== "events") evVisit = false;
-  if (r.startsWith("kid/")) { const p = r.split("/"); if (p[1] === "new") viewKid("", p[2] || ""); else viewKid(p[1]); }
+  if (gated(r)) viewSoon(r);   // 2026-11-04 A안: 공식 원문 확인 전(보류) 자료의 화면은 '준비 중'으로
+  else if (r.startsWith("kid/")) { const p = r.split("/"); if (p[1] === "new") viewKid("", p[2] || ""); else viewKid(p[1]); }
   else if (r === "region") viewRegion();
 {{#if yongin}}
   else if (r === "admin") viewAdmin();

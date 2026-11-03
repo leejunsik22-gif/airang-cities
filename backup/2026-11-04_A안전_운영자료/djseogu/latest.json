@@ -1,0 +1,6913 @@
+{
+  "region": "서구",
+  "updated_at": "2026-11-02 15:44:16",
+  "period": {
+    "from": "20261102",
+    "to": "20270101"
+  },
+  "school_count": 88,
+  "public_holidays": [
+    {
+      "date": "2026-11-02",
+      "name": "개교기념일"
+    },
+    {
+      "date": "2026-12-25",
+      "name": "성탄절"
+    },
+    {
+      "date": "2027-01-01",
+      "name": "신정"
+    }
+  ],
+  "highlights": [
+    {
+      "school": "대전도마초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-11-02",
+      "name": "동료장학공개수업(3,4학년)",
+      "holiday": false
+    },
+    {
+      "school": "대전삼육중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-03",
+      "name": "창의적 체험교육",
+      "holiday": false
+    },
+    {
+      "school": "기성초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-11-06",
+      "name": "한마음운동회",
+      "holiday": false
+    },
+    {
+      "school": "동방여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-12",
+      "name": "현장체험학습",
+      "holiday": false
+    },
+    {
+      "school": "동방여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-13",
+      "name": "현장체험학습",
+      "holiday": false
+    },
+    {
+      "school": "대전대신중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-17",
+      "name": "졸업여행",
+      "holiday": false
+    },
+    {
+      "school": "대전대신중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-18",
+      "name": "졸업여행",
+      "holiday": false
+    },
+    {
+      "school": "대전문정중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-18",
+      "name": "현장체험학습",
+      "holiday": false
+    },
+    {
+      "school": "갈마중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "현장체험학습",
+      "holiday": false
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "진로체험학습",
+      "holiday": false
+    },
+    {
+      "school": "대전관저고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "수능시험일",
+      "holiday": true
+    },
+    {
+      "school": "대전괴정고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "대전괴정고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대학수학능력시험",
+      "holiday": true
+    },
+    {
+      "school": "대전괴정중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "수능재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대입수능",
+      "holiday": true
+    },
+    {
+      "school": "대전대신고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "수능모의고사",
+      "holiday": true
+    },
+    {
+      "school": "대전대신중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대입수능",
+      "holiday": true
+    },
+    {
+      "school": "대전둔산여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대학수학능력시험",
+      "holiday": true
+    },
+    {
+      "school": "대전둔산중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "수능 재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "수능시험",
+      "holiday": true
+    },
+    {
+      "school": "대전만년고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대학수학능력시험",
+      "holiday": true
+    },
+    {
+      "school": "대전복수고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대학수학능력평가일",
+      "holiday": true
+    },
+    {
+      "school": "대전외국어고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대학수학능력시험",
+      "holiday": true
+    },
+    {
+      "school": "동방고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대학수학능력시험",
+      "holiday": true
+    },
+    {
+      "school": "서대전고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "수능시험 휴업일",
+      "holiday": true
+    },
+    {
+      "school": "서대전여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대학수학능력시험",
+      "holiday": true
+    },
+    {
+      "school": "서일고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대학수학능력시험",
+      "holiday": true
+    },
+    {
+      "school": "충남고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "한밭고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대학수학능력시험",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-20",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "대전둔산여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-20",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "대전외국어고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-20",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "충남고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-20",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "한밭고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-20",
+      "name": "재량휴업",
+      "holiday": true
+    },
+    {
+      "school": "서대전여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-04",
+      "name": "현장체험학습(3학년)",
+      "holiday": false
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-05",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-06",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-07",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대전만년고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-07",
+      "name": "문화체험의 날",
+      "holiday": false
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-08",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-09",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-10",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-10",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-10",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-11",
+      "name": "방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-11",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-11",
+      "name": "학교축제",
+      "holiday": false
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-11",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-11",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전대신고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-11",
+      "name": "개교기념일",
+      "holiday": true
+    },
+    {
+      "school": "대전대신중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-11",
+      "name": "개교기념일",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-11",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-11",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-12",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-12",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-12",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-12",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-12",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-13",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-13",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-13",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-13",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-13",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-14",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-14",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-14",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-14",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-14",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-14",
+      "name": "방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-14",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-14",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-15",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-15",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-15",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-15",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-15",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-15",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-15",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-16",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-16",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-16",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-16",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-16",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-16",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-16",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-17",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-17",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-17",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-17",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-17",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-17",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-17",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대전갈마초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "신나는 어울림 한마당",
+      "holiday": false
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대전대신고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "재량휴무일",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-18",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-19",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-19",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-19",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-19",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-19",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-19",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-19",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-19",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-20",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-20",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-20",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-20",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-20",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-20",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-20",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-20",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "동방고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "졸업협의회",
+      "holiday": false
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-22",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전도마초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "학예발표회",
+      "holiday": false
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전샘머리초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "푸른솔 축제",
+      "holiday": false
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전괴정고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "학교축제",
+      "holiday": false
+    },
+    {
+      "school": "대전구봉고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "학교축제(예술제)",
+      "holiday": false
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전도마초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "학예발표회",
+      "holiday": false
+    },
+    {
+      "school": "대전둔산여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "솔뫼축제",
+      "holiday": false
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전서중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "축제",
+      "holiday": false
+    },
+    {
+      "school": "대전외국어고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "신입생입학전형일",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전신계중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "충남고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전신계중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "충남고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전신계중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "충남고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전도솔초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전도안초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전신계중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "충남고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전도솔초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전도안중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "축제",
+      "holiday": false
+    },
+    {
+      "school": "대전도안초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔산중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "둔지미한마당 발표회",
+      "holiday": false
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전수미초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전신계중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "서대전고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "서원 축제",
+      "holiday": false
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "충남고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "기성중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "졸업,진급 사정회",
+      "holiday": false
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전금동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전느리울중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "꿈·끼 한마당",
+      "holiday": false
+    },
+    {
+      "school": "대전도솔초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전도안초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전수미초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전신계중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전신계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "충남고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "가수원중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "가수원어울림한마당",
+      "holiday": false
+    },
+    {
+      "school": "갈마중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "기성중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "축제",
+      "holiday": false
+    },
+    {
+      "school": "대전갑천중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전관저고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전괴정고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전금동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전느리울초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대전도솔초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전도안초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔산여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전만년고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전복수고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전선유초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대전수미초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전신계중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전신계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전외국어고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울 방학식",
+      "holiday": false
+    },
+    {
+      "school": "대전원앙초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대전월평초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "서대전여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "1,2학년 겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "충남고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "한밭고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "한밭초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "졸업식(6학년)",
+      "holiday": false
+    },
+    {
+      "school": "갈마중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전갑천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "학년말방학",
+      "holiday": true
+    },
+    {
+      "school": "대전관저고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전구봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전금동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전남선중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전내동초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전대신고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전도솔초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전도안초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔산여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔원고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전둔천초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전만년고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "동계방학",
+      "holiday": true
+    },
+    {
+      "school": "대전복수고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전봉우중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전삼육초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전선암초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전선유초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전신계중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전신계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전외국어고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울 방학",
+      "holiday": true
+    },
+    {
+      "school": "대전원앙초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대전정림중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "서일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "충남고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "한밭고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    }
+  ],
+  "schools": [
+    {
+      "code": "7451057",
+      "name": "가수원초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 벌곡로 1359",
+      "gu": "",
+      "dong": "가수원동",
+      "events": []
+    },
+    {
+      "code": "7451060",
+      "name": "기성초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 기성초교길 42",
+      "gu": "",
+      "dong": "매노동",
+      "events": [
+        {
+          "date": "2026-11-06",
+          "name": "한마음운동회",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451061",
+      "name": "기성초등학교길헌분교장",
+      "level": "초등학교",
+      "address": "대전광역시 서구 당고개길 48",
+      "gu": "",
+      "dong": "평촌동",
+      "events": []
+    },
+    {
+      "code": "7451065",
+      "name": "대전가장초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 가장로 150",
+      "gu": "",
+      "dong": "가장동",
+      "events": []
+    },
+    {
+      "code": "7451066",
+      "name": "대전갈마초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 월평동로 2",
+      "gu": "",
+      "dong": "갈마동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-18",
+          "name": "신나는 어울림 한마당",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "전교임원선거",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451067",
+      "name": "대전갑천초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 월평동로 61",
+      "gu": "",
+      "dong": "월평동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-24",
+          "name": "전교임원선출",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-05",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-06",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-07",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-07",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-09",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-10",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-11",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-12",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-13",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-14",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-15",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-16",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-17",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-18",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-19",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-20",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-21",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-22",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-23",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "학년말방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "학년말방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451068",
+      "name": "대전관저초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 관저동로 161",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-12-18",
+          "name": "전교임원선거",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451071",
+      "name": "대전구봉초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 관저로 75",
+      "gu": "",
+      "dong": "",
+      "events": [
+        {
+          "date": "2026-11-02",
+          "name": "장애이해 교육주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-03",
+          "name": "장애이해 교육주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-04",
+          "name": "장애이해 교육주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-05",
+          "name": "장애이해 교육주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-06",
+          "name": "장애이해 교육주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-09",
+          "name": "꿈·끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "꿈·끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "꿈·끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "구봉오색빛깔예술제",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "꿈·끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-13",
+          "name": "꿈·끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-25",
+          "name": "전교임원선거",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-12",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-13",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-14",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-15",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-16",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-17",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-18",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-19",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-20",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-21",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-22",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-23",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451072",
+      "name": "대전금동초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 관저로 45",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-12",
+          "name": "대학수학능력시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451073",
+      "name": "대전내동초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 동서대로1063번길 13",
+      "gu": "",
+      "dong": "내동",
+      "events": [
+        {
+          "date": "2026-12-18",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-18",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-19",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-20",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-21",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-22",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-23",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451075",
+      "name": "대전느리울초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 관저로 196",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-17",
+          "name": "전교임원선거",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "종업식",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451077",
+      "name": "대전도마초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 배재로172번길 23",
+      "gu": "",
+      "dong": "도마동",
+      "events": [
+        {
+          "date": "2026-11-02",
+          "name": "동료장학공개수업(3,4학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-20",
+          "name": "정보통신윤리 교육주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "학예발표회",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "학예발표회",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451309",
+      "name": "대전도솔초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 원도안로 80",
+      "gu": "",
+      "dong": "가수원동",
+      "events": [
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451258",
+      "name": "대전도안초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 원도안로 200",
+      "gu": "",
+      "dong": "도안동",
+      "events": [
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451080",
+      "name": "대전둔산초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 둔산로74번길 20",
+      "gu": "",
+      "dong": "둔산동",
+      "events": [
+        {
+          "date": "2026-11-12",
+          "name": "대학수학능력시험",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451081",
+      "name": "대전둔원초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 대덕대로 112-10",
+      "gu": "",
+      "dong": "갈마동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대입수능일",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451082",
+      "name": "대전둔천초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 만년로 3",
+      "gu": "",
+      "dong": "만년동",
+      "events": [
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451083",
+      "name": "대전만년초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 만년남로 14",
+      "gu": "",
+      "dong": "만년동",
+      "events": []
+    },
+    {
+      "code": "7451084",
+      "name": "대전문정초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 문정로 180",
+      "gu": "",
+      "dong": "둔산동",
+      "events": []
+    },
+    {
+      "code": "7451087",
+      "name": "대전백운초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 계룡로576번길 56",
+      "gu": "",
+      "dong": "괴정동",
+      "events": []
+    },
+    {
+      "code": "7451088",
+      "name": "대전변동초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 유등로 373",
+      "gu": "",
+      "dong": "변동",
+      "events": [
+        {
+          "date": "2026-11-04",
+          "name": "책가방 없는 날",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451089",
+      "name": "대전복수초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 복수중로34번길 29",
+      "gu": "",
+      "dong": "복수동",
+      "events": []
+    },
+    {
+      "code": "7451090",
+      "name": "대전봉산초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 신갈마로141번길 45",
+      "gu": "",
+      "dong": "갈마동",
+      "events": []
+    },
+    {
+      "code": "7451091",
+      "name": "대전삼육초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 도림1길 15",
+      "gu": "",
+      "dong": "도마동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "타자인증대회주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-09",
+          "name": "정보활용능력대회주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "타자인증대회주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "정보활용능력대회주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "타자인증대회주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "정보활용능력대회주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "타자인증대회주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "정보활용능력대회주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-13",
+          "name": "타자인증대회주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-13",
+          "name": "정보활용능력대회주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "정기연주회",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-23",
+          "name": "기악발표주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-24",
+          "name": "기악발표주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-25",
+          "name": "기악발표주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-26",
+          "name": "기악발표주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-27",
+          "name": "기악발표주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-18",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-19",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-20",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-21",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-22",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-23",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451092",
+      "name": "대전삼천초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 둔산북로 232-33",
+      "gu": "",
+      "dong": "둔산동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451095",
+      "name": "대전샘머리초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 유등로 879",
+      "gu": "",
+      "dong": "둔산동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-30",
+          "name": "꿈끼 탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-01",
+          "name": "꿈끼 탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-02",
+          "name": "꿈끼 탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-03",
+          "name": "꿈끼 탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-04",
+          "name": "꿈끼 탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "26학년도 전교임원선거",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "푸른솔 축제",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451096",
+      "name": "대전서부초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 동서대로 968",
+      "gu": "",
+      "dong": "변동",
+      "events": []
+    },
+    {
+      "code": "7451097",
+      "name": "대전서원초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 문정로 279",
+      "gu": "",
+      "dong": "둔산동",
+      "events": []
+    },
+    {
+      "code": "7451098",
+      "name": "대전선암초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 관저중로 61",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451327",
+      "name": "대전선유초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 관저남로 60",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-12-31",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451099",
+      "name": "대전성룡초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 갈마역로 125",
+      "gu": "",
+      "dong": "월평동",
+      "events": []
+    },
+    {
+      "code": "7451100",
+      "name": "대전성천초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 갈마역로 139",
+      "gu": "",
+      "dong": "월평동",
+      "events": []
+    },
+    {
+      "code": "7451103",
+      "name": "대전수미초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 괴곡길 42",
+      "gu": "",
+      "dong": "괴곡동",
+      "events": [
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451105",
+      "name": "대전신계초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 복수동로 26",
+      "gu": "",
+      "dong": "복수동",
+      "events": [
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451108",
+      "name": "대전원앙초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 관저북로 97",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대입수능일",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451109",
+      "name": "대전월평초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 월평서로 22",
+      "gu": "",
+      "dong": "월평동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험일",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "꿈끼 탐색 주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "꿈끼 탐색 주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "꿈끼 탐색 주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-17",
+          "name": "꿈끼 탐색 주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-18",
+          "name": "꿈끼 탐색 주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "종업식",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451110",
+      "name": "대전유천초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 제비네6길 69",
+      "gu": "",
+      "dong": "도마동",
+      "events": []
+    },
+    {
+      "code": "7451114",
+      "name": "대전정림초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 정림로 32",
+      "gu": "",
+      "dong": "정림동",
+      "events": []
+    },
+    {
+      "code": "7451116",
+      "name": "대전탄방초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 탄방로 15",
+      "gu": "",
+      "dong": "탄방동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "탄탄책사랑주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "탄탄책사랑주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "탄탄책사랑주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "탄탄책사랑주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-13",
+          "name": "탄탄책사랑주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "꿈끼주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "꿈끼주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "꿈끼주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-17",
+          "name": "꿈끼주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-18",
+          "name": "꿈끼주간",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451353",
+      "name": "대전탄방초등학교용문분교장",
+      "level": "초등학교",
+      "address": "대전광역시 서구 도솔로 500",
+      "gu": "",
+      "dong": "용문동",
+      "events": []
+    },
+    {
+      "code": "7451340",
+      "name": "대전호수초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 도안동로 182-20",
+      "gu": "",
+      "dong": "도안동",
+      "events": []
+    },
+    {
+      "code": "7451125",
+      "name": "한밭초등학교",
+      "level": "초등학교",
+      "address": "대전광역시 서구 문정로 221",
+      "gu": "",
+      "dong": "둔산동",
+      "events": [
+        {
+          "date": "2026-12-31",
+          "name": "졸업식(6학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "종업식",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451009",
+      "name": "가수원중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 가수원로 26",
+      "gu": "",
+      "dong": "가수원동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-21",
+          "name": "꿈 끼 탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "가수원어울림한마당",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451010",
+      "name": "갈마중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 계룡로326번길 138",
+      "gu": "",
+      "dong": "갈마동",
+      "events": [
+        {
+          "date": "2026-11-16",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-17",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "현장체험학습",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "갈마도솔제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451011",
+      "name": "기성중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 장안로 54",
+      "gu": "",
+      "dong": "흑석동",
+      "events": [
+        {
+          "date": "2026-11-11",
+          "name": "기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-13",
+          "name": "기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-30",
+          "name": "졸업,진급 사정회",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "축제",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451013",
+      "name": "대전갑천중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 월평동로 80",
+      "gu": "",
+      "dong": "월평동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "진로체험학습",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-15",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-16",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-17",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-18",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-21",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-22",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-23",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451014",
+      "name": "대전관저중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 관저동로 143",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "기말고사 1,2",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "기말고사 1,2",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-17",
+          "name": "기말고사 1,2",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451016",
+      "name": "대전괴정중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 가장로 15",
+      "gu": "",
+      "dong": "괴정동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "수능재량휴업일",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451017",
+      "name": "대전구봉중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 관저서로 86",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "2학기 기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "2학기 기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "2학기 기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-30",
+          "name": "2학기 기말고사(1, 2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-01",
+          "name": "2학기 기말고사(1, 2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "학교축제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-18",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-18",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-21",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-22",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-23",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451018",
+      "name": "대전남선중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 월평북로 41",
+      "gu": "",
+      "dong": "월평동",
+      "events": [
+        {
+          "date": "2026-12-11",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-12",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-13",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-14",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-15",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-16",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-17",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-18",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-19",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-20",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-21",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-22",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-23",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451019",
+      "name": "대전내동중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 배재로 263",
+      "gu": "",
+      "dong": "변동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-23",
+          "name": "학생회 회장,부회장 선출",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "2학기 기말고사",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451021",
+      "name": "대전느리울중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 관저중로64번길 84",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-16",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-17",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-18",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-17",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-21",
+          "name": "꿈·끼 탐색 주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "꿈·끼 탐색 주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "꿈·끼 탐색 주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "꿈·끼 탐색 주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-28",
+          "name": "꿈·끼 탐색 주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-29",
+          "name": "꿈·끼 탐색 주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-30",
+          "name": "꿈·끼 한마당",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451022",
+      "name": "대전대신중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 오량1길 98",
+      "gu": "",
+      "dong": "복수동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "2학기기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "2학기기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "2학기기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "2학기기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-17",
+          "name": "졸업여행",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-18",
+          "name": "졸업여행",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대입수능",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-07",
+          "name": "2학기기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "2학기기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "2학기기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "2학기기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "개교기념일",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451023",
+      "name": "대전도마중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 도솔2길 22",
+      "gu": "",
+      "dong": "도마동",
+      "events": [
+        {
+          "date": "2026-11-06",
+          "name": "자율활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "3학년기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "3학년기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "3학년기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-13",
+          "name": "봉사활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-13",
+          "name": "동아리활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-20",
+          "name": "동아리활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-27",
+          "name": "동아리활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-04",
+          "name": "동아리활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "동아리활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-17",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-18",
+          "name": "동아리활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "진로활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "자율활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "진로활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "자율활동",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451265",
+      "name": "대전도안중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 원도안로 160",
+      "gu": "",
+      "dong": "도안동",
+      "events": [
+        {
+          "date": "2026-11-16",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-17",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-18",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-29",
+          "name": "축제",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451026",
+      "name": "대전둔산중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 갈마역로25번길 70",
+      "gu": "",
+      "dong": "갈마동",
+      "events": [
+        {
+          "date": "2026-11-11",
+          "name": "2학기 3학년기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "2학기 3학년기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-13",
+          "name": "2학기 3학년기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "수능 재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-14",
+          "name": "2학기 기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "2학기 기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "2학기 기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-29",
+          "name": "둔지미한마당 발표회",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451027",
+      "name": "대전둔원중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 괴정로11번길 73",
+      "gu": "",
+      "dong": "갈마동",
+      "events": [
+        {
+          "date": "2026-11-10",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "수능일",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "지치울제",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451028",
+      "name": "대전만년중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 만년남로 17",
+      "gu": "",
+      "dong": "만년동",
+      "events": []
+    },
+    {
+      "code": "7451029",
+      "name": "대전문정중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 둔산북로 232-11",
+      "gu": "",
+      "dong": "둔산동",
+      "events": [
+        {
+          "date": "2026-11-10",
+          "name": "중간고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "중간고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "중간고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-18",
+          "name": "현장체험학습",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451031",
+      "name": "대전버드내중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 유등로 285",
+      "gu": "",
+      "dong": "도마동",
+      "events": []
+    },
+    {
+      "code": "7451032",
+      "name": "대전변동중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 도산로181번길 39",
+      "gu": "",
+      "dong": "변동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "기말고사",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451033",
+      "name": "대전봉산중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 배재로262번길 60",
+      "gu": "",
+      "dong": "변동",
+      "events": [
+        {
+          "date": "2026-11-10",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451034",
+      "name": "대전봉우중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 관저로 102",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-10",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-04",
+          "name": "봉우제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-12",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-13",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-14",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-15",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-16",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-17",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-18",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-19",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-20",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-21",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-22",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-23",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451035",
+      "name": "대전삼육중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 도림1길 15",
+      "gu": "",
+      "dong": "도마동",
+      "events": [
+        {
+          "date": "2026-11-03",
+          "name": "창의적 체험교육",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-03",
+          "name": "장애인식개선교육",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-09",
+          "name": "2차 정기시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "2차 정기시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "2차 정기시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "2차 정기시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-17",
+          "name": "학교폭력예방교육",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451036",
+      "name": "대전삼천중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 문정로 271",
+      "gu": "",
+      "dong": "둔산동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "1,2학년 중간고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "3학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "1,2학년 중간고사",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451037",
+      "name": "대전서중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 동서대로997번길 57",
+      "gu": "",
+      "dong": "괴정동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "기말고사(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-16",
+          "name": "꿈끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-17",
+          "name": "꿈끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-18",
+          "name": "꿈끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "꿈끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-20",
+          "name": "꿈끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-21",
+          "name": "꿈끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "꿈끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "꿈끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "축제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "꿈끼탐색주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "학생회장선거",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7451039",
+      "name": "대전신계중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 복수동로 40-30",
+      "gu": "",
+      "dong": "복수동",
+      "events": [
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451042",
+      "name": "대전월평중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 월평동로 21",
+      "gu": "",
+      "dong": "월평동",
+      "events": []
+    },
+    {
+      "code": "7451046",
+      "name": "대전정림중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 괴곡길 70",
+      "gu": "",
+      "dong": "괴곡동",
+      "events": [
+        {
+          "date": "2026-12-10",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-11",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-12",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-13",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-14",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-15",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-16",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-17",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-18",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-19",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-20",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-21",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-22",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-23",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울휴가",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7451050",
+      "name": "대전탄방중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 문정로 181",
+      "gu": "",
+      "dong": "둔산동",
+      "events": []
+    },
+    {
+      "code": "7451052",
+      "name": "동방여자중학교",
+      "level": "중학교",
+      "address": "대전광역시 서구 복수중로 27",
+      "gu": "",
+      "dong": "복수동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "현장체험학습",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-13",
+          "name": "현장체험학습",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-07",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "동치미제",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7430033",
+      "name": "대전관저고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 관저북로 94",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "수능시험일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-07",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "문화예술제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7430237",
+      "name": "대전괴정고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 가장로 15",
+      "gu": "",
+      "dong": "괴정동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-09",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "학교축제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학식",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7430150",
+      "name": "대전구봉고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 관저서로 36",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대입수능",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-20",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-07",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "학교축제(예술제)",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7430048",
+      "name": "대전대신고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 오량1길 98",
+      "gu": "",
+      "dong": "복수동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "수능모의고사",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-11",
+          "name": "개교기념일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-18",
+          "name": "재량휴무일",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7430034",
+      "name": "대전둔산여자고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 갈마역로 33",
+      "gu": "",
+      "dong": "갈마동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-20",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-10",
+          "name": "1.2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "1.2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "1.2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "1.2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "솔뫼축제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7430142",
+      "name": "대전둔원고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 대덕대로 101",
+      "gu": "",
+      "dong": "갈마동",
+      "events": [
+        {
+          "date": "2026-11-09",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-11",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-13",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "수능시험",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-04",
+          "name": "한마음예술제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-16",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-17",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-18",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-19",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-20",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-21",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-22",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-23",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7430035",
+      "name": "대전만년고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 만년로 6",
+      "gu": "",
+      "dong": "만년동",
+      "events": [
+        {
+          "date": "2026-11-18",
+          "name": "수능예비소집",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-07",
+          "name": "문화체험의 날",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-07",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "동아리예술제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "방학식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-01",
+          "name": "동계방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7430253",
+      "name": "대전복수고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 혜천로 66",
+      "gu": "",
+      "dong": "복수동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력평가일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7430037",
+      "name": "대전외국어고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 신갈마로 19",
+      "gu": "",
+      "dong": "내동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-20",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-01",
+          "name": "기말고사(1, 2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-02",
+          "name": "기말고사(1, 2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-03",
+          "name": "기말고사(1, 2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-04",
+          "name": "기말고사(1, 2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "1, 2학년 학부모 대상 진로진학설명회",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-21",
+          "name": "English Majors’ Week",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "English Majors’ Week",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "신입생입학전형일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "1, 2학년 학생 대상 진로진학설명회",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울 방학식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울 방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7430242",
+      "name": "대전제일고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 배재로46번길 77",
+      "gu": "",
+      "dong": "도마동",
+      "events": []
+    },
+    {
+      "code": "7430244",
+      "name": "동방고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 계백로 1106",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-03",
+          "name": "수학여행",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-04",
+          "name": "수학여행",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-04",
+          "name": "수련활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-05",
+          "name": "수학여행",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-05",
+          "name": "수련활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-06",
+          "name": "수학여행",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-06",
+          "name": "수련활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-10",
+          "name": "학생채플",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-14",
+          "name": "사랑나누기, 오누이 활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-23",
+          "name": "중학교 학생 및 학부모 대상 학교설명회",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-24",
+          "name": "교직원 채플 및 회의",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-28",
+          "name": "사랑나누기, 오누이 종결식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-01",
+          "name": "학생채플",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-04",
+          "name": "학교체육소위원회회의",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "교직원 채플 및 회의",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "건강체력교실 종료",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "1,2학년 기초학력 수업 종료",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-17",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-18",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "졸업협의회",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "진급협의회",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "학생회대의원회",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "체육과 교과데이",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "2학기 공동교육과정 종료",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "1,2학년 기초학력 향상도 검사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "학생성가합창제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-28",
+          "name": "최소 성취수준 미도달 학생 보충지도",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-28",
+          "name": "체육과 교과데이",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-30",
+          "name": "늘푸름제",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7430059",
+      "name": "서대전고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 월평동로 60",
+      "gu": "",
+      "dong": "월평동",
+      "events": [
+        {
+          "date": "2026-11-18",
+          "name": "수능예비소집",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "수능시험 휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-14",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-17",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-18",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "교과융합프로젝트활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "교과융합프로젝트활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "교과융합프로젝트활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-28",
+          "name": "동아리 페스티벌",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-29",
+          "name": "서원 축제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "교과융합프로젝트활동",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7430060",
+      "name": "서대전여자고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 배재로197번길 20",
+      "gu": "",
+      "dong": "도마동",
+      "events": [
+        {
+          "date": "2026-11-04",
+          "name": "정기고사유의사항 연수",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-06",
+          "name": "동아리활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-09",
+          "name": "봉사활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-09",
+          "name": "사이버중독예방교육",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-13",
+          "name": "모범학생표창",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-16",
+          "name": "헌혈홍보행사주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-17",
+          "name": "헌혈홍보행사주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-18",
+          "name": "헌혈홍보행사주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-20",
+          "name": "헌혈홍보행사주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-23",
+          "name": "헌혈",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-23",
+          "name": "헌혈홍보행사주간",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-24",
+          "name": "성폭력예방교육",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-25",
+          "name": "학생회장선거공고",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-27",
+          "name": "동아리활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-04",
+          "name": "현장체험학습(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-07",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "1,2학년 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "봉사활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "노동인권교육",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-18",
+          "name": "동아리활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-21",
+          "name": "송원제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "송원제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "학생회장 후보 합동유세",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "학생주도활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "학생회장 선거일",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "학생주도활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-28",
+          "name": "학생주도활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-29",
+          "name": "학생주도활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-30",
+          "name": "학생주도활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "봉사활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "1,2학년 겨울방학식",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7430061",
+      "name": "서일고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 계백로828번길 30",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "재량휴업일",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7430062",
+      "name": "서일여자고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 구봉산북로 22",
+      "gu": "",
+      "dong": "관저동",
+      "events": [
+        {
+          "date": "2026-11-18",
+          "name": "수능예비소집일",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-23",
+          "name": "2학기 기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-24",
+          "name": "2학기 기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-25",
+          "name": "2학기 기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-26",
+          "name": "2학기 기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-27",
+          "name": "2학기 기말고사(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "동아리 전시회",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "동아리 전시회",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "구봉제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-21",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-23",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7430043",
+      "name": "충남고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 문정로 171",
+      "gu": "",
+      "dong": "둔산동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-20",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7430045",
+      "name": "한밭고등학교",
+      "level": "고등학교",
+      "address": "대전광역시 서구 신갈마로141번길 58",
+      "gu": "",
+      "dong": "갈마동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-20",
+          "name": "재량휴업",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    }
+  ],
+  "source": "나이스 교육정보 개방포털 (학교기본정보, 학사일정)"
+}

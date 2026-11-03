@@ -1,5 +1,5 @@
 {
-  "_설명": "공개 전 자료 검문(gate) 규칙 v01후보 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용. verify_status 가 publishable 에 없는 파일은 공개(data/<구키>/)에 올리지 않는다. | v02(2026-11-02): 파일별 유효기간(valid_days) — 직전 공개본을 유지하더라도 갱신일이 valid_days를 넘기면 공개 제외(만료). 자동 검사(auto_check)와 기관 원문 검증(official_verify)을 별도 상태로 기록.",
+  "_설명": "공개 전 자료 검문(gate) 규칙 v01후보 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용. verify_status 가 publishable 에 없는 파일은 공개(data/<구키>/)에 올리지 않는다. | v02(2026-11-02): 파일별 유효기간(valid_days) — 직전 공개본을 유지하더라도 갱신일이 valid_days를 넘기면 공개 제외(만료). 자동 검사(auto_check)와 기관 원문 검증(official_verify)을 별도 상태로 기록. | v03(2026-11-04, 대표 승인 A안): 공식기관 원문 확인 '완료' 전 공개 금지 — publishable_official 에서 '부분 확인' 제외. 병원·혜택 보류(준비 중), 기존 공개본은 review/<구>/_prev_ 로 보존.",
   "publishable": [
     "확인 완료",
     "부분 확인"
@@ -228,11 +228,10 @@
     "verify_status": "공개 허용 등급(확인 완료·부분 확인=공개 / 미확인·제외=비공개) — 대표·피트가 정함",
     "auto_check": "gate.py 자동 검사 결과(통과·실패·만료) — 매 수집마다",
     "official_verify": "기관 원문과 표본 대조한 결과(확인 완료·부분 확인·미확인) — 사람이 verified_at에 기록. 자동 검사 통과와 별개",
-    "공개 조건": "verify_status ∈ publishable AND official_verify ∈ publishable_official AND 자동 검사 통과 AND 유효기간 안. 하나라도 빠지면 공개 보류(공개 폴더에서 제거)."
+    "공개 조건": "verify_status ∈ publishable AND official_verify == 확인 완료 AND 자동 검사 통과 AND 유효기간 안. 하나라도 빠지면 공개 보류(공개 폴더에서 제거, 직전 공개본은 review/<구>/_prev_<파일> 로 보존)."
   },
   "publishable_official": [
-    "확인 완료",
-    "부분 확인"
+    "확인 완료"
   ],
   "publish_requires_official": true
 }
