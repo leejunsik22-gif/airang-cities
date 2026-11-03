@@ -47,12 +47,17 @@ jobs:
           json.dump(o, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
           s = json.load(open(f"data/{d}/_status.json", encoding="utf-8")); s["approved_by"] = who; s["approved_at"] = o["approved_at"]; s["approve_note"] = note
           json.dump(s, open(f"data/{d}/_status.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+          lp = "approvals/log.json"
+          try: L = json.load(open(lp, encoding="utf-8"))
+          except Exception: L = {"items": []}
+          L.setdefault("items", []).append({"at": o["approved_at"], "kind": "새 도시 공개 반영", "city": o.get("city"), "dir": d, "by": who, "note": note, "published": sum(1 for v in s.get("files", {}).values() if v.get("published"))})
+          json.dump(L, open(lp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
           PY
           done
       - name: 저장
         run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data staging logs; git diff --cached --quiet && { echo "변경 없음"; exit 0; }
+          git add data staging logs approvals; git diff --cached --quiet && { echo "변경 없음"; exit 0; }
           git commit -m "새 도시 공개 반영(대표 승인 ${{ github.actor }}): ${{ github.event.inputs.dirs }} — ${{ github.event.inputs.note }}"
           ok=0; for k in 1 2 3 4 5; do git pull --rebase --autostash && git push && ok=1 && break; sleep $((k*7)); done
           [ "$ok" = 1 ] || { echo "::error::올리기(push) 실패"; exit 1; }

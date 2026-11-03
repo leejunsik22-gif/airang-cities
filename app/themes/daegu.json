@@ -1,0 +1,48 @@
+{
+ "_설명": "대구 지역 테마 v01후보 — 피트 디자인 방향(AIRANG-20261103-020 §4) 기준 자리. 색·문구·그림은 피트 시안 승인 뒤 채움. 빈 colors = 기본(cities.json) 유지.",
+ "sido": "대구",
+ "motif": "도시공원·문화·활기",
+ "status": "후보(시안 전)",
+ "seasons": {
+  "spring": {
+   "colors": {},
+   "tagline": "",
+   "hero": "hero-{key}-spring",
+   "image_license": "",
+   "image_source": "",
+   "made_at": "",
+   "version": "",
+   "approved_version": ""
+  },
+  "summer": {
+   "colors": {},
+   "tagline": "",
+   "hero": "hero-{key}-summer",
+   "image_license": "",
+   "image_source": "",
+   "made_at": "",
+   "version": "",
+   "approved_version": ""
+  },
+  "autumn": {
+   "colors": {},
+   "tagline": "",
+   "hero": "hero-{key}-autumn",
+   "image_license": "",
+   "image_source": "",
+   "made_at": "",
+   "version": "",
+   "approved_version": ""
+  },
+  "winter": {
+   "colors": {},
+   "tagline": "",
+   "hero": "hero-{key}-winter",
+   "image_license": "",
+   "image_source": "",
+   "made_at": "",
+   "version": "",
+   "approved_version": ""
+  }
+ }
+}
