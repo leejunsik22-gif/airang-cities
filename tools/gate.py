@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""공개 전 자료 검문(gate) v03후보 — 공식 원문 확인(official_verify)이 없으면 자동 검사를 통과해도 공개 보류, 기존 공개본 유지 시에도 공식 상태·유효기간 동시 검사 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
+"""공개 전 자료 검문(gate) v04후보 — (2026-11-03) 검사일을 한국 시간 기준으로, `_`로 시작하는 보조 파일(_status/_region_check)은 검사 대상에서 제외, 지역 검사(check_region.py) 결과를 상태에 함께 기록. v03 — 공식 원문 확인(official_verify)이 없으면 자동 검사를 통과해도 공개 보류, 기존 공개본 유지 시에도 공식 상태·유효기간 동시 검사 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
 
-  python3 tools/gate.py --city yuseong --in output --out data/yuseong [--today 2026-11-02] [--dry-run]
+  python3 tools/gate.py --city yuseong --in output --out data/yuseong [--today 2026-11-02] [--dry-run] [--only weather.json]
 
 규칙: tools/data_rules.json
 - verify_status 가 publishable(확인 완료·부분 확인)이 아닌 파일 → 공개 폴더에 올리지 않고, 이미 있으면 치운다(제외).
@@ -10,7 +10,8 @@
 - 결과: <out>/_status.json (파일별 상태·출처·확인일·건수·사유), 종료 코드 0(이전본 유지로 운영 지속). --strict 면 실패 시 1.
 """
 import argparse, json, os, shutil, sys
-from datetime import datetime, date
+from datetime import datetime, date, timedelta, timezone
+KST = timezone(timedelta(hours=9))
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RULES = json.load(open(os.path.join(HERE, "data_rules.json"), encoding="utf-8"))
@@ -89,9 +90,10 @@ def main():
     ap.add_argument("--city", required=True)
     ap.add_argument("--in", dest="inp", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--today", default=date.today().isoformat())
+    ap.add_argument("--today", default=datetime.now(KST).date().isoformat())   # 한국 날짜
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--only", nargs="*", default=None, help="이 파일들만 검문하고 _status.json 의 다른 항목은 그대로 둔다(날씨·병원처럼 일부만 수집하는 작업용)")
     a = ap.parse_args()
     today = date.fromisoformat(a.today)
     pub = set(RULES["publishable"])
@@ -99,7 +101,15 @@ def main():
     if not a.dry_run:
         os.makedirs(a.out, exist_ok=True)
 
+    prev_status = {}
+    if a.only is not None:   # 일부만 검문 → 기존 상태 파일을 읽어 두고 그 위에 덧쓴다
+        try:
+            prev_status = json.load(open(os.path.join(a.out, "_status.json"), encoding="utf-8")).get("files", {})
+        except Exception:
+            prev_status = {}
     for fn, rule in RULES["files"].items():
+        if a.only is not None and fn not in a.only:
+            continue
         src, dst = os.path.join(a.inp, fn), os.path.join(a.out, fn)
         ent = {"label": rule["label"], "verify_status": rule["verify_status"], "source_org": rule.get("source_org", ""),
                "source_url": rule.get("source_url", ""), "checked_at": a.today, "published": False, "count": None, "reason": "",
@@ -159,9 +169,25 @@ def main():
 
     # 규칙에 없는 파일은 공개하지 않는다(알 수 없는 자료)
     for fn in sorted(os.listdir(a.inp)):
-        if fn.endswith(".json") and fn not in RULES["files"]:
+        if a.only is not None and fn not in a.only:
+            continue
+        if fn.endswith(".json") and fn not in RULES["files"] and not fn.startswith("_"):
             print(f"  ⛔ {fn:16} 규칙 없음 — 공개하지 않음")
             status[fn] = {"label": fn, "verify_status": "제외", "published": False, "reason": "규칙에 없는 파일", "checked_at": a.today}
+    rc = os.path.join(a.inp, "_region_check.json")   # check_region.py 결과가 있으면 파일별로 붙인다
+    region = {}
+    if os.path.exists(rc):
+        try:
+            region = json.load(open(rc, encoding="utf-8")).get("files", {})
+        except Exception:
+            region = {}
+    for fn, r in region.items():
+        if fn in status:
+            status[fn]["region_check"] = r.get("result", "")
+            if r.get("result") == "실패":
+                status[fn]["reason"] = (status[fn].get("reason", "") + f" | 지역 섞임 의심: {r.get('reason','')} → 새 수집본 격리").strip(" |")
+    if prev_status:
+        merged = dict(prev_status); merged.update(status); status = merged
     if not a.dry_run:
         json.dump({"city": a.city, "checked_at": a.today, "files": status}, open(os.path.join(a.out, "_status.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     pubn = sum(1 for v in status.values() if v.get("published"))
