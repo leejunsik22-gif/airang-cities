@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""공개 전 자료 검문(gate) v04후보 — (2026-11-03) 검사일을 한국 시간 기준으로, `_`로 시작하는 보조 파일(_status/_region_check)은 검사 대상에서 제외, 지역 검사(check_region.py) 결과를 상태에 함께 기록. v03 — 공식 원문 확인(official_verify)이 없으면 자동 검사를 통과해도 공개 보류, 기존 공개본 유지 시에도 공식 상태·유효기간 동시 검사 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
+"""공개 전 자료 검문(gate) v05후보 — (2026-11-03 오후) --review <폴더>: 공개 보류·검사 실패·제외 파일을 비공개 검토 폴더에 보존(앱은 읽지 않음, 급식·특목·날씨 원문 대조용). v04 — (2026-11-03) 검사일을 한국 시간 기준으로, `_`로 시작하는 보조 파일(_status/_region_check)은 검사 대상에서 제외, 지역 검사(check_region.py) 결과를 상태에 함께 기록. v03 — 공식 원문 확인(official_verify)이 없으면 자동 검사를 통과해도 공개 보류, 기존 공개본 유지 시에도 공식 상태·유효기간 동시 검사 — 006 안전 구조(검사→승인→공개)를 수집 파일 단위로 적용.
 
   python3 tools/gate.py --city yuseong --in output --out data/yuseong [--today 2026-11-02] [--dry-run] [--only weather.json]
 
@@ -85,6 +85,21 @@ def check(path, rule, prev_path, today):
     return not reasons, reasons, n
 
 
+def keep_review(a, src, fn, why):
+    """공개하지 않은 새 수집본을 비공개 검토 폴더에 복사(원문 대조·디버깅용)"""
+    if not a.review or a.dry_run or not os.path.exists(src):
+        return
+    os.makedirs(a.review, exist_ok=True)
+    shutil.copy(src, os.path.join(a.review, fn))
+    meta = os.path.join(a.review, "_review.json")
+    try:
+        m = json.load(open(meta, encoding="utf-8"))
+    except Exception:
+        m = {"_설명": "비공개 검토 폴더 — gate가 공개하지 않은 새 수집본. 고객 화면에 나가지 않음. 원문 대조 뒤 data_rules 상태를 갱신하면 다음 수집부터 공개됨"}
+    m[fn] = {"kept_at": a.today, "why": why}
+    json.dump(m, open(meta, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--city", required=True)
@@ -93,6 +108,7 @@ def main():
     ap.add_argument("--today", default=datetime.now(KST).date().isoformat())   # 한국 날짜
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--review", default="", help="보류·실패·제외된 새 수집본을 보존할 비공개 폴더(예: review/yuseong). 앱은 data/ 만 읽는다")
     ap.add_argument("--only", nargs="*", default=None, help="이 파일들만 검문하고 _status.json 의 다른 항목은 그대로 둔다(날씨·병원처럼 일부만 수집하는 작업용)")
     a = ap.parse_args()
     today = date.fromisoformat(a.today)
@@ -128,6 +144,7 @@ def main():
             if had and not a.dry_run:
                 os.remove(dst)
             ent["reason"] = f"공개 보류: 공식기관 원문 확인 {rule.get('official_verify','미확인')} (자동 검사 {ent['auto_check']}" + (": " + "; ".join(rs) if rs else "") + ") — 표본 대조 후 official_verify 갱신 필요" + (" (기존 공개본 치움)" if had else "")
+            keep_review(a, src, fn, f"공개 보류(원문 {rule.get('official_verify','미확인')})")
             print(f"  ⏸ {fn:16} 보류 — 원문 {rule.get('official_verify','미확인')} / 자동 {ent['auto_check']}")
         elif not os.path.exists(src):
             if os.path.exists(dst):
@@ -153,6 +170,7 @@ def main():
                 print(f"  ✅ {fn:16} 공개 ({n}건)")
             else:
                 failed.append(fn)
+                keep_review(a, src, fn, "자동 검사 실패: " + "; ".join(rs))
                 keep = os.path.exists(dst)
                 ex, d = expired(dst, rule, today) if keep else (False, None)
                 if keep and ex:

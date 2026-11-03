@@ -12,10 +12,10 @@ import re
 # ── 지역 설정은 regions/*.json(시·도마다 한 파일)에서 읽는다 (2026-11-03 공통 모듈화). 대전 값은 regions/daejeon.json 에 그대로 보존.
 import json as _json, glob as _glob
 _HERE = os.path.dirname(os.path.abspath(__file__))
-CITIES, SIDOS, STAGE = {}, {}, {}
+CITIES, SIDOS, STAGE, REGION_FILES = {}, {}, {}, {}
 for _p in sorted(_glob.glob(os.path.join(_HERE, "regions", "*.json"))):
     _r = _json.load(open(_p, encoding="utf-8"))
-    SIDOS[_r["sido_key"]] = _r["sido"]
+    SIDOS[_r["sido_key"]] = _r["sido"]; REGION_FILES[_p] = _r
     for _k, _v in _r["cities"].items():
         _v.setdefault("sido", _r["sido_key"]); _v.setdefault("stage", _r.get("stage", "후보"))
         CITIES[_k] = _v; STAGE[_k] = _v["stage"]
