@@ -121,9 +121,19 @@ def main():
     try:
         import city as _cc
         raw = all_pages(LOC, {"ctpvNm": _cc.SIDO["full"], "sggNm": _cc.SGG})
+        if not raw:   # 2026-11-03: 동구·대덕 0건(021 누락) — 서버가 간헐적으로 빈 목록을 주므로 한 번 더, 그다음 시 단위(대전광역시 사업)도 따로 받는다
+            time.sleep(3); raw = all_pages(LOC, {"ctpvNm": _cc.SIDO["full"], "sggNm": _cc.SGG})
+            print(f"  구 혜택 재시도: {len(raw)}건")
         if raw:
             print("  시 혜택 칸:", sorted(raw[0]))
         loc = [row(it, "local") for it in raw]
+        try:   # 시·도 단위 사업(구 이름 없이) — 구 사업과 구분해 scope=sido 로 표시
+            sido_raw = all_pages(LOC, {"ctpvNm": _cc.SIDO["full"]})
+            sido_only = [it for it in sido_raw if not (it.get("sggNm") or "").strip() or (it.get("sggNm") or "").strip() == _cc.SIDO["full"]]
+            loc += [row(it, "sido") for it in sido_only]
+            print(f"  {_cc.SIDO['full']} 단위 혜택 {len(sido_only)}건(전체 {len(sido_raw)}건 중)")
+        except Exception as e:
+            print("  시·도 단위 혜택 건너뜀:", e)
         kid = [r for r in loc if r["n"] and (for_kids(r) or (KID_WORDS.search(r["n"]) and not SKIP.search(r["n"])))]
         res["items"] = kid + res["items"]
         res["src"]["local"] = len(kid)

@@ -2665,7 +2665,7 @@ function bnCard(x) {
   const who = [...x.life, ...x.tgt].filter((v, i, a) => a.indexOf(v) === i).slice(0, 5);
   const tel = (x.tel || "").replace(/[^\d-]/g, "");
   return `<div class="lift" style="padding:14px 16px;margin-bottom:10px">
-    <div style="display:flex;gap:6px;flex-wrap:wrap">${x.scope === "local" ? tag("우리 시", "var(--city-soft)", "var(--city-ink)") : tag("나라", "#EEF0F6", "#3A4256")}${x.online ? tag("온라인 신청", "#E6F6EF", "#127A52") : ""}${x.kind ? tag(x.kind, "#F4F2FF", "#5B4FD6") : ""}${x.cyc ? tag(x.cyc, "#F1F3F8", "#5C6478") : ""}</div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap">${x.scope === "local" ? tag("우리 구", "var(--city-soft)", "var(--city-ink)") : x.scope === "sido" ? tag("{{f.sidoShort}}시", "#EDF3F0", "#2E5A4B") : tag("나라", "#EEF0F6", "#3A4256")}${x.online ? tag("온라인 신청", "#E6F6EF", "#127A52") : ""}${x.kind ? tag(x.kind, "#F4F2FF", "#5B4FD6") : ""}${x.cyc ? tag(x.cyc, "#F1F3F8", "#5C6478") : ""}</div>
     <div style="font-size:15.5px;font-weight:800;margin-top:7px;line-height:1.4">${esc(x.n)}</div>
     ${x.org ? `<div style="font-size:12px;color:var(--muted);margin-top:2px">${esc(x.org)}</div>` : ""}
     ${x.sum ? `<div style="font-size:13px;margin-top:7px;line-height:1.55">${esc(x.sum)}</div>` : ""}
@@ -2691,13 +2691,13 @@ function viewBene(keepFocus) {
   const q = bnQ.trim();
   if (q) list = list.filter(x => (x.n + " " + x.sum + " " + x.org).includes(q));
   const chip = l => `<button class="btn ${bnCat === l ? "btn-3d" : "btn-soft"}" style="height:34px;font-size:12.5px;padding:0 12px;flex:0 0 auto" onclick="bnSet('cat','${l}')">${esc(l)}</button>`;
-  const loc = list.filter(x => x.scope === "local"), nat = list.filter(x => x.scope !== "local");
+  const loc = list.filter(x => x.scope === "local"), sido = list.filter(x => x.scope === "sido"), nat = list.filter(x => x.scope !== "local" && x.scope !== "sido");   // 2026-11-03 시·도 단위 사업 분리
   const sec = (title, arr) => arr.length ? `<div style="font-size:16px;font-weight:800;margin:16px 2px 10px">${title} <span style="font-size:12.5px;color:var(--muted);font-weight:600">${arr.length}개</span></div>${arr.slice(0, bnMore).map(bnCard).join("")}` : "";
-  const more = Math.max(loc.length, nat.length) > bnMore ? `<button class="btn btn-soft" style="width:100%;height:46px;font-size:14px" onclick="bnSet('more')">더 보기</button>` : "";
+  const more = Math.max(loc.length, sido.length, nat.length) > bnMore ? `<button class="btn btn-soft" style="width:100%;height:46px;font-size:14px" onclick="bnSet('more')">더 보기</button>` : "";
   $view.innerHTML = head + `<div style="display:flex;gap:6px;overflow-x:auto;padding:2px 2px 6px;margin-top:14px">${cats.map(chip).join("")}</div>
     <label class="search lift" style="margin-top:6px">${icon.search}<input id="bq" placeholder="혜택 이름으로 찾기 (예: 첫만남, 돌봄)" value="${esc(bnQ)}" aria-label="혜택 검색"></label>
     ${bnCat === "우리 아이 맞춤" ? `<div style="font-size:11.5px;color:var(--muted);margin:8px 2px 0">등록한 아이 학교로 골랐어요. 아이 정보는 이 휴대폰 안에서만 써요.</div>` : ""}
-    ${sec(esc(city) + "시 혜택", loc)}${sec("나라 혜택", nat)}${list.length ? "" : `<div class="lift empty" style="margin-top:14px">조건에 맞는 혜택이 없어요.</div>`}${more}
+    ${sec("{{f.sgg}} 혜택", loc)}${sec("{{f.sidoFull}} 혜택", sido)}${sec("나라 혜택", nat)}${list.length ? "" : `<div class="lift empty" style="margin-top:14px">조건에 맞는 혜택이 없어요.</div>`}${more}
     ${BENE.src && !BENE.src.local ? `<div style="font-size:12px;color:var(--muted);margin:14px 2px 0;line-height:1.6">${esc(city)}시가 따로 주는 혜택(다자녀·출산 지원 등)은 준비 중이에요. 지금은 시청 홈페이지에서 확인해 주세요.</div>` : ""}
     <div class="foot">출처: 한국사회보장정보원 복지서비스 정보 (복지로, 공공데이터포털)${BENE.updated ? `<br>${esc(BENE.updated)} 기준` : ""}<br>
       잘못된 정보는 <a href="mailto:leejunsik22@gmail.com?subject=${encodeURIComponent("[아이랑 " + city + "] 혜택 정보 수정 요청")}">메일로 알려 주세요</a>.<br>${sourceLine("benefits.json")}</div>`;

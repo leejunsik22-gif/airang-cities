@@ -65,7 +65,7 @@ def geo_judge(rec, M):
 CHECKS = {
     "latest.json": [("schools", lambda r, M: text_judge(r.get("address", ""), M))],
     "academies.json": [("academies", lambda r, M: text_judge(r.get("a", ""), M))],
-    "benefits.json": [("items", lambda r, M: "ok" if r.get("scope") == "nat" else text_judge(r.get("org", ""), M))],
+    "benefits.json": [("items", lambda r, M: "ok" if r.get("scope") == "nat" else text_judge(r.get("org", ""), M, need_sgg=False) if r.get("scope") == "sido" else text_judge(r.get("org", ""), M))],
     "hospitals.json": [(k, geo_judge) for k in ("clinics", "hospitals", "er", "pharm")],
     "meals.json": [("schools", lambda r, M: text_judge(r.get("address", r.get("a", "")), M) if (r.get("address") or r.get("a")) else "ok")],
 }
