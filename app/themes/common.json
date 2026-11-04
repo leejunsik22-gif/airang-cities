@@ -1,0 +1,37 @@
+{
+ "_설명": "아이랑 공통 브랜드(피트 디자인 시스템 기준, 2026-11-02 brand css와 동일값). 지역·계절 테마는 이 값을 바탕으로 colors 일부만 덮어쓴다.",
+ "ivory": "#FAF7F1",
+ "navy": "#1F2A44",
+ "navy_deep": "#16203A",
+ "coral": "#D9654A",
+ "coral_deep": "#A33D27",
+ "sage": "#5E8C7A",
+ "sage_deep": "#2E5A4B",
+ "gold": "#B8923E",
+ "gold_deep": "#6F5415",
+ "radius": [
+  20,
+  14
+ ],
+ "min_tap": 44,
+ "font": "Noto Sans KR(OFL)",
+ "seasons": {
+  "spring": {
+   "label": "봄",
+   "theme": "새 학기·꽃·가족 나들이"
+  },
+  "summer": {
+   "label": "여름",
+   "theme": "방학·물놀이·실내 활동"
+  },
+  "autumn": {
+   "label": "가을",
+   "theme": "독서·공원·지역 문화"
+  },
+  "winter": {
+   "label": "겨울",
+   "theme": "실내 체험·건강·따뜻한 가족생활"
+  }
+ },
+ "rule": "공식 생활정보(의료·교육·복지)의 일일 갱신과 계절 디자인 교체는 별개. 시즌 교체는 applied.json 승인 기록 뒤 빌드·배포(대표 승인)로만 반영"
+}

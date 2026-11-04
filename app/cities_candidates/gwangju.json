@@ -1,0 +1,132 @@
+{
+ "_설명": "전남광주통합특별시 앱 설정 v01후보 — AIRANG_INCLUDE_CANDIDATES=1 미리보기 빌드에서만 쓰임. 운영 cities.json 과 분리.",
+ "sidos": {
+  "광주": [
+   "전남광주통합특별시",
+   "gwangju",
+   "구"
+  ]
+ },
+ "cities": {
+  "gjdonggu": {
+   "name": "광주 동구",
+   "sido": "광주",
+   "sgg": "동구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#2F6FBA",
+    "ink": "#24568F",
+    "deep": "#183B63",
+    "soft": "#EAF1FA"
+   },
+   "areas": "충장·산수·학동",
+   "lat": 35.146,
+   "lon": 126.9232,
+   "searchEx": "충장, 산수",
+   "domain": "gjdonggu.gwangju.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "gjseogu": {
+   "name": "광주 서구",
+   "sido": "광주",
+   "sgg": "서구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#C2410C",
+    "ink": "#9A3412",
+    "deep": "#6B2308",
+    "soft": "#FDEEE4"
+   },
+   "areas": "상무·금호·치평",
+   "lat": 35.152,
+   "lon": 126.89,
+   "searchEx": "상무, 금호",
+   "domain": "gjseogu.gwangju.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "gjnamgu": {
+   "name": "광주 남구",
+   "sido": "광주",
+   "sgg": "남구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#5E8C7A",
+    "ink": "#2E5A4B",
+    "deep": "#1E3C32",
+    "soft": "#EBF3EF"
+   },
+   "areas": "봉선·진월·주월",
+   "lat": 35.1329,
+   "lon": 126.9025,
+   "searchEx": "봉선, 진월",
+   "domain": "gjnamgu.gwangju.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "gjbukgu": {
+   "name": "광주 북구",
+   "sido": "광주",
+   "sgg": "북구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#7048E8",
+    "ink": "#5537B0",
+    "deep": "#3E2881",
+    "soft": "#F1EDFD"
+   },
+   "areas": "운암·일곡·첨단",
+   "lat": 35.1742,
+   "lon": 126.912,
+   "searchEx": "운암, 일곡",
+   "domain": "gjbukgu.gwangju.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "gwangsan": {
+   "name": "광산",
+   "sido": "광주",
+   "sgg": "광산구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#B8923E",
+    "ink": "#6F5415",
+    "deep": "#4A370E",
+    "soft": "#F8F2E4"
+   },
+   "areas": "수완·신창·운남",
+   "lat": 35.1396,
+   "lon": 126.7937,
+   "searchEx": "수완, 신창",
+   "domain": "gwangsan.gwangju.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  }
+ }
+}

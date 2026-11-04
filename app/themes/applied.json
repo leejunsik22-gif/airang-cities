@@ -1,0 +1,35 @@
+{
+ "_설명": "시즌 적용 상태(운영). season 빈칸 = 기본 디자인(현재 운영본). 값을 바꾸는 것 = 디자인 교체이므로 대표 승인 기록(approved_by/at) 없이는 빌드가 무시한다.",
+ "cities": {
+  "djdonggu": {
+   "season": "",
+   "theme_version": "",
+   "approved_by": "",
+   "approved_at": ""
+  },
+  "djjunggu": {
+   "season": "",
+   "theme_version": "",
+   "approved_by": "",
+   "approved_at": ""
+  },
+  "djseogu": {
+   "season": "",
+   "theme_version": "",
+   "approved_by": "",
+   "approved_at": ""
+  },
+  "yuseong": {
+   "season": "",
+   "theme_version": "",
+   "approved_by": "",
+   "approved_at": ""
+  },
+  "daedeok": {
+   "season": "",
+   "theme_version": "",
+   "approved_by": "",
+   "approved_at": ""
+  }
+ }
+}

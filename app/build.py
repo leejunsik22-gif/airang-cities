@@ -14,11 +14,41 @@ import argparse, json, os, re, shutil, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CFG = json.load(open(os.path.join(HERE, "cities.json"), encoding="utf-8"))
+# 2026-11-03: 비공개 후보 도시(app/cities_candidates/*.json)는 AIRANG_INCLUDE_CANDIDATES=1 일 때만 빌드에 넣는다(미리보기용). 기본 빌드 = 운영 도시(대전 5구)만.
+CANDIDATE_SIDOS = {}
+if os.environ.get("AIRANG_INCLUDE_CANDIDATES") == "1":
+    import glob as _glob
+    for _p in sorted(_glob.glob(os.path.join(HERE, "cities_candidates", "*.json"))):
+        _c = json.load(open(_p, encoding="utf-8"))
+        for _k, _v in _c.get("cities", {}).items():
+            assert _k not in CFG["cities"], f"후보 도시 키가 운영 도시와 겹침: {_k}"
+            _v.setdefault("stage", "비공개 후보"); CFG["cities"][_k] = _v
+        CANDIDATE_SIDOS.update({k: tuple(v) for k, v in _c.get("sidos", {}).items()})
 BASE = CFG.get("base", "https://airang-daejeon-all.pages.dev")   # 도시 주소 = BASE/도시키/
 # 시도: 이름 → (정식 이름, 템플릿 태그, 시군구 끝 글자). 순서 = 다른 도시 둘러보기·입구 탭 순서
 SIDOS = {"대전": ("대전광역시", "daejeon", "구")}   # 다른 시·도를 열 때 추가 (서울·경기 제외)
+SIDOS.update(CANDIDATE_SIDOS)   # 후보 시·도(미리보기 빌드에서만)
 SIDO_ORDER = list(SIDOS)
 TEMPLATES = ["index.html", "sw.js", "manifest.webmanifest", "404.html"]
+# 2026-11-03 테마·사계절(app/themes): applied.json 의 승인된 시즌만 적용. AIRANG_SEASON 환경변수 = 승인 없는 로컬 미리보기.
+THEMES_DIR = os.path.join(HERE, "themes")
+def _load_json(p, default):
+    try: return json.load(open(p, encoding="utf-8"))
+    except Exception: return default
+APPLIED = _load_json(os.path.join(THEMES_DIR, "applied.json"), {}).get("cities", {})
+def season_of(city):
+    """(시즌, 테마dict, 출처) — 미리보기 env > 승인된 applied > 없음"""
+    sd = CFG["cities"][city].get("sido", "대전"); tag = SIDOS.get(sd, (None, sd))[1]
+    th = _load_json(os.path.join(THEMES_DIR, f"{tag}.json"), {})
+    env = os.environ.get("AIRANG_SEASON", "").strip()
+    if env:
+        return env, th.get("seasons", {}).get(env, {}), "미리보기(승인 아님)"
+    ap = APPLIED.get(city, {})
+    if ap.get("season"):
+        if ap.get("approved_by") and ap.get("approved_at"):
+            return ap["season"], th.get("seasons", {}).get(ap["season"], {}), f"승인 {ap['approved_by']} {ap['approved_at']}"
+        print(f"  ⚠ {city}: applied.json 에 season={ap['season']} 이 있지만 승인 기록이 없어 무시(기본 디자인)")
+    return "", {}, ""
 COND = re.compile(r"^\{\{#(if|elif) ([a-z,]+)\}\}$|^\{\{#else\}\}$|^\{\{/if\}\}$")
 
 
@@ -27,6 +57,10 @@ def tokens(city):
     t = {"key": city, "name": c["name"]}
     for k, v in c.get("colors", {}).items():
         t["c." + k] = v
+    season, th, why = season_of(city)
+    for k, v in (th.get("colors") or {}).items():   # 시즌 테마 색(있을 때만) — 공식 정보와 무관한 디자인 값
+        t["c." + k] = v
+    t["f.season"] = season; t["f.seasonWhy"] = why
     for k, v in c.get("fields", {}).items():
         t["f." + k] = v
     # 도시마다 다른 값 (cities.json 에서 만들어 냄)
@@ -96,12 +130,24 @@ def build(city, out):
         txt = render(open(src, encoding="utf-8", newline="").read(), city)
         if f == "index.html" and NAVER.get(city):                                     # 네이버 서치어드바이저 소유확인 (도시마다 다름 → app/naver.json)
             txt = txt.replace('<meta charset="utf-8">', f'<meta charset="utf-8">\n<meta name="naver-site-verification" content="{NAVER[city]}" />', 1)
+        if f == "index.html" and tokens(city).get("f.season"):
+            txt = txt.replace('<meta charset="utf-8">', f'<meta charset="utf-8">\n<meta name="airang-theme" content="{tokens(city)["f.season"]} · {tokens(city)["f.seasonWhy"]}">', 1)
         open(os.path.join(d, f), "w", encoding="utf-8", newline="").write(txt)
     shutil.copytree(os.path.join(HERE, "assets"), os.path.join(d, "assets"))          # 모든 도시 같은 그림
     own = os.path.join(HERE, "cities", city)                                             # 도시 그림·아이콘
+    if not os.path.isdir(own):   # 후보 도시(미리보기 빌드): 그림 폴더 없으면 대전 유성 그림을 임시로 빌려 쓰고 경고(운영 빌드에는 후보가 없음)
+        print(f"  (후보) {city}: app/cities/{city} 없음 — 임시 그림(yuseong) 사용"); own = os.path.join(HERE, "cities", "yuseong")
     for f in os.listdir(own):
         dst = os.path.join(d, "assets", f) if f.startswith("hero-") else os.path.join(d, f)
         shutil.copy(os.path.join(own, f), dst)
+    season = tokens(city).get("f.season")
+    if season:   # 시즌 그림이 있으면 기본 그림 자리에 덮어쓴다(출력물에서만 — 원본 보존)
+        for suf in ("-800", ""):
+            sp = os.path.join(own, f"hero-{city}-{season}{suf}.webp")
+            if os.path.exists(sp):
+                shutil.copy(sp, os.path.join(d, "assets", f"hero-{city}{suf}.webp")); print(f"  시즌 그림 적용: {os.path.basename(sp)}")
+            else:
+                print(f"  (시즌 {season}) 그림 없음 → 기본 그림 유지: hero-{city}-{season}{suf}.webp")
     return d
 
 
@@ -116,7 +162,7 @@ def build_entry(out):
     src = src.replace("/*CITIES*/[]", json.dumps(rows, ensure_ascii=False))
     # 검색용 페이지로 가는 링크 (검색 로봇이 따라가도록 HTML에 바로 적음)
     g = ""
-    for sd, label in (("대전", "대전"),):
+    for sd, label in ((k, k) for k in SIDO_ORDER):
         cs = sorted([(k, c) for k, c in CFG["cities"].items() if c.get("sido", "경기") == sd], key=lambda kc: kc[1]["name"])
         if cs:
             g += f'<p>{label}</p>' + "".join(f'<a href="{BASE}/{k}/guide/">{c.get("sgg") or c["name"] + SIDOS[sd][2]} 학원·유치원·소아과</a>' for k, c in cs)
@@ -126,6 +172,8 @@ def build_entry(out):
         shutil.copy(os.path.join(HERE, "entry", f), d)
     for k in CFG["cities"]:
         own = os.path.join(HERE, "cities", k)
+        if not os.path.isdir(own):   # 후보 도시(미리보기 빌드)는 그림 폴더가 없을 수 있음 → 대표 그림 자리 비움(경고만)
+            print(f"  (후보) {k}: app/cities/{k} 없음 — 입구 그림·아이콘 생략"); continue
         shutil.copy(os.path.join(own, f"hero-{k}-800.webp"), os.path.join(d, "img"))
         shutil.copy(os.path.join(own, "icon-192.png"), os.path.join(d, "img", f"ic-{k}.png"))
     return d

@@ -1,0 +1,60 @@
+{
+ "_설명": "제주특별자치도 앱 설정 v01후보 — AIRANG_INCLUDE_CANDIDATES=1 미리보기 빌드에서만 쓰임. 운영 cities.json 과 분리.",
+ "sidos": {
+  "제주": [
+   "제주특별자치도",
+   "jeju",
+   "시"
+  ]
+ },
+ "cities": {
+  "jejusi": {
+   "name": "제주시",
+   "sido": "제주",
+   "sgg": "제주시",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#2F6FBA",
+    "ink": "#24568F",
+    "deep": "#183B63",
+    "soft": "#EAF1FA"
+   },
+   "areas": "노형·연동·아라",
+   "lat": 33.4996,
+   "lon": 126.5312,
+   "searchEx": "노형, 연동",
+   "domain": "jejusi.jeju.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "seogwipo": {
+   "name": "서귀포",
+   "sido": "제주",
+   "sgg": "서귀포시",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#C2410C",
+    "ink": "#9A3412",
+    "deep": "#6B2308",
+    "soft": "#FDEEE4"
+   },
+   "areas": "중문·동홍·대정",
+   "lat": 33.2541,
+   "lon": 126.56,
+   "searchEx": "중문, 동홍",
+   "domain": "seogwipo.jeju.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  }
+ }
+}

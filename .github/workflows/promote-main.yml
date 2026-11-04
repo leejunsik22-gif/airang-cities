@@ -1,0 +1,63 @@
+name: promote-main (검문 통과 자료를 앱 가지 main 에 반영 — 대표 승인 뒤에만)
+# 2026-11-03 v01후보(028): 기본 가지(자동 수집이 쌓이는 곳)의 data/ · review/ · ops/ 만 main(앱이 읽는 가지)으로 옮긴다. 코드(app/·tools/·워크플로)는 옮기지 않는다.
+# 조건: ① 대표 계정(leejunsik22-gif) ② confirm 에 '승인' ③ 모든 운영 구의 _status.json 이 읽히고 공개 파일이 JSON 으로 열림 ④ 반영 기록을 approvals/log.json 에 남김
+# 롤백: rollback-data 워크플로(구별로 직전 커밋의 data/<구>/ 복원). 이 워크플로는 schedule 이 없다 — 자동 반영은 대표가 따로 켜기 전까지 없음.
+on:
+  workflow_dispatch:
+    inputs:
+      confirm: { description: "대표 승인 확인 — 반드시 '승인' 이라고 입력", default: "" }
+      note:    { description: "메모(보고서 번호 등)", default: "" }
+permissions:
+  contents: write
+concurrency: { group: promote-main, cancel-in-progress: false }
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: 승인 확인
+        run: |
+          [ "${{ github.actor }}" = "leejunsik22-gif" ] || { echo "::error::대표 계정만 실행할 수 있습니다 (실행: ${{ github.actor }})"; exit 1; }
+          [ "${{ github.event.inputs.confirm }}" = "승인" ] || { echo "::error::confirm 칸에 '승인' 을 입력해야 합니다"; exit 1; }
+      - uses: actions/checkout@v4
+        with: { ref: main, fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: 기본 가지의 자료만 가져오기
+        run: |
+          DEF=$(git remote show origin | sed -n 's/.*HEAD branch: //p'); echo "기본 가지: $DEF"
+          [ "$DEF" != "main" ] || { echo "기본 가지가 이미 main — 옮길 것 없음"; exit 0; }
+          # main 에만 남아 있는 옛 파일(예: 검문 전 deals.json)이 섞이지 않도록 data/ 는 기본 가지와 똑같이 맞춘다(거울 복사)
+          git rm -r -q data; git checkout origin/$DEF -- data
+          for x in review ops; do git ls-tree -d origin/$DEF $x >/dev/null 2>&1 && [ -n "$(git ls-tree origin/$DEF $x)" ] && { git rm -r -q --ignore-unmatch $x; git checkout origin/$DEF -- $x; } || true; done
+          python3 - <<'PY'
+          import json, glob, os, sys
+          bad = []
+          for p in sorted(glob.glob("regions/*.json")):
+              if os.path.basename(p).startswith("_"): continue
+              r = json.load(open(p, encoding="utf-8"))
+              for k, c in r.get("cities", {}).items():
+                  if c.get("stage", r.get("stage")) != "운영" or not c.get("dir"): continue
+                  d = c["dir"]; sp = f"data/{d}/_status.json"
+                  if not os.path.exists(sp): bad.append(f"{d}: _status.json 없음"); continue
+                  st = json.load(open(sp, encoding="utf-8"))
+                  for fn, e in st.get("files", {}).items():
+                      fp = f"data/{d}/{fn}"
+                      if e.get("published") and not os.path.exists(fp): bad.append(f"{d}/{fn}: 공개 표시인데 파일 없음")
+                      if os.path.exists(fp) and fn.endswith(".json"):
+                          try: json.load(open(fp, encoding="utf-8"))
+                          except Exception as ex: bad.append(f"{d}/{fn}: JSON 오류 {ex}")
+                      if not e.get("published") and os.path.exists(fp) and not fn.startswith("_"): bad.append(f"{d}/{fn}: 비공개 표시인데 파일 있음")
+          if bad: print("::error::반영 중단 — " + "; ".join(bad)); sys.exit(1)
+          print("검문 결과와 파일이 일치함")
+          PY
+          python3 - <<'PY'
+          import json, datetime, os
+          p = "approvals/log.json"; j = json.load(open(p, encoding="utf-8")) if os.path.exists(p) else {"items": []}
+          j.setdefault("items", []).append({"at": (datetime.datetime.utcnow() + datetime.timedelta(hours=9)).strftime("%Y-%m-%d %H:%M"), "kind": "main 반영(promote-main)", "city": "대전 5구", "dir": "data/*", "by": "${{ github.actor }}", "note": "${{ github.event.inputs.note }}"})
+          json.dump(j, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+          PY
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data review ops approvals/log.json; git diff --cached --quiet && { echo "변화 없음"; exit 0; }
+          git commit -m "검문 통과 자료 main 반영 (대표 승인, $DEF → main)"
+          git push origin main

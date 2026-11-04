@@ -1,0 +1,23 @@
+{
+ "_설명": "운영 안전 기준 v01후보 (2026-11-03, 024) — 모든 운영 지역(stage=운영)에 대전과 같은 기준을 적용한다. 새 시·도를 열어도 이 파일을 바꾸지 않는 한 같은 기준이 자동 적용된다. 서울·경기는 아이랑 대상이 아니므로 어떤 단계에서도 공개하지 않는다.",
+ "excluded_sido": ["서울", "경기"],
+ "excluded_reason": "대표 결정(2026-11-03): 서울·경기 제외. gate.py 가 data/ 공개를 거부하고, make_regions.py 는 설정을 만들지 않으며, monitor.py 는 운영 목록에 있으면 '정책 위반' 장애로 센다.",
+ "apply_to_every_operating_city": {
+  "공개 전 검문": "tools/gate.py — verify_status·official_verify·자동 검사·유효기간(data_rules.json)",
+  "지역 섞임 검사": "tools/check_region.py — 다른 시·도 1건이라도 있으면 파일 격리",
+  "변경 감지·재검증": "tools/change_guard.py — 의미 변경·삭제는 직전본 유지(change_rules.json)",
+  "미확인 코드 차단": "tools/allowed_scripts.py — 후보 도시의 미확인 코드 수집기 실행 금지",
+  "감시": "tools/monitor.py — 매시간 장애·검증 필요·공개 보류 집계(ops/monitor.json)",
+  "새 도시 공개": "publish-city 워크플로 — 대표 계정 + '승인' 입력 뒤에만"
+ },
+ "expected_cadence_hours": {
+  "_설명": "monitor.py 가 '작업 누락'을 판단하는 최대 간격(시간). 일정 지연(GitHub 혼잡)을 감안해 여유를 둠",
+  "daily": 26,
+  "weather": 8,
+  "hospitals": 192,
+  "cf-apps": 7
+ },
+ "site_base": "https://airang-daejeon-all.pages.dev",
+ "app_data_branch": "main",
+ "_주의": "app_data_branch 는 앱(app/index.html RAW)이 읽는 가지. 저장소 기본 가지와 다르면 monitor 가 '브랜치 지연' 장애로 센다(021 발견)."
+}

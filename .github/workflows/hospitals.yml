@@ -3,6 +3,8 @@ on:
   schedule:   # 2026-11-02 대표 승인으로 자동 수집 켬
     - cron: "50 19 * * 0"   # 매주 월요일 04:50 (한국시간)
   workflow_dispatch:
+    inputs:
+      only: { description: "이 폴더만 (쉼표, 빈칸=전부) 예: djdonggu,daedeok", default: "" }
 permissions:
   contents: write
 concurrency: { group: hospitals, cancel-in-progress: false }
@@ -23,21 +25,30 @@ jobs:
       CITY: ${{ matrix.city }}
       WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
     steps:
+      - name: 대상 확인
+        id: pick
+        run: |
+          O="${{ github.event.inputs.only }}"; if [ -n "$O" ] && ! echo ",$O," | grep -q ",${{ matrix.d }},"; then echo "skip=1" >> $GITHUB_OUTPUT; echo "${{ matrix.d }} 건너뜀(only=$O)"; else echo "skip=0" >> $GITHUB_OUTPUT; fi
       - uses: actions/checkout@v4
+        if: steps.pick.outputs.skip == '0'
       - uses: actions/setup-python@v5
+        if: steps.pick.outputs.skip == '0'
         with: { python-version: "3.12" }
-      - run: |
+      - if: steps.pick.outputs.skip == '0'
+        run: |
           mkdir -p output logs
           cp data/${{ matrix.d }}/hospitals.json output/ 2>/dev/null || true   # 실패하면 지난번 것을 그대로 쓰게
           cp data/${{ matrix.d }}/benefits.json output/ 2>/dev/null || true
           set -o pipefail
           python -u benefits.py 2>&1 | tee logs/benefits-${{ matrix.d }}.txt || true
           python -u hospitals.py 2>&1 | tee logs/hospitals-${{ matrix.d }}.txt
-      - if: always()
+      - if: always() && steps.pick.outputs.skip == '0'
         run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add logs/hospitals-${{ matrix.d }}.txt logs/benefits-${{ matrix.d }}.txt
-          python3 tools/gate.py --city ${{ matrix.d }} --in output --out data/${{ matrix.d }} --review review/${{ matrix.d }} && git add -A data/${{ matrix.d }} && { [ -d review/${{ matrix.d }} ] && git add review/${{ matrix.d }} || true; }   # 검문 통과분만 공개
+          python3 tools/check_region.py --dir output --quarantine --report output/_region_check.json   # 지역 섞임 검사(2026-11-03)
+          python3 tools/gate.py --city ${{ matrix.d }} --in output --out data/${{ matrix.d }} --only hospitals.json benefits.json --review review/${{ matrix.d }} && git add -A data/${{ matrix.d }} && { [ -d review/${{ matrix.d }} ] && git add review/${{ matrix.d }} || true; } && { [ -f ops/changes/${{ matrix.d }}.json ] && git add ops/changes/${{ matrix.d }}.json || true; }   # 변경 감지 기록(024)   # 검문 통과분만 공개(병원·혜택 항목만 갱신)
           git diff --cached --quiet && exit 0
           git commit -m "${{ matrix.city }} 동네 병원·혜택"
-          for i in 1 2 3 4 5; do git pull --rebase --autostash && git push && break; sleep $((i*5)); done
+          ok=0; for i in 1 2 3 4 5; do git pull --rebase --autostash && git push && ok=1 && break; sleep $((i*5)); done
+          [ "$ok" = 1 ] || { echo "::error::${{ matrix.city }} 올리기(push) 실패"; exit 1; }

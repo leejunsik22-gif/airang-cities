@@ -1,0 +1,132 @@
+{
+ "_설명": "충청북도 앱 설정 v01후보 — AIRANG_INCLUDE_CANDIDATES=1 미리보기 빌드에서만 쓰임. 운영 cities.json 과 분리.",
+ "sidos": {
+  "충북": [
+   "충청북도",
+   "chungbuk",
+   "시"
+  ]
+ },
+ "cities": {
+  "sangdang": {
+   "name": "청주 상당",
+   "sido": "충북",
+   "sgg": "청주시 상당구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#2F6FBA",
+    "ink": "#24568F",
+    "deep": "#183B63",
+    "soft": "#EAF1FA"
+   },
+   "areas": "용암·금천·방서",
+   "lat": 36.6349,
+   "lon": 127.489,
+   "searchEx": "용암, 금천",
+   "domain": "sangdang.chungbuk.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "seowon": {
+   "name": "청주 서원",
+   "sido": "충북",
+   "sgg": "청주시 서원구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#C2410C",
+    "ink": "#9A3412",
+    "deep": "#6B2308",
+    "soft": "#FDEEE4"
+   },
+   "areas": "산남·분평·수곡",
+   "lat": 36.6375,
+   "lon": 127.4699,
+   "searchEx": "산남, 분평",
+   "domain": "seowon.chungbuk.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "heungdeok": {
+   "name": "청주 흥덕",
+   "sido": "충북",
+   "sgg": "청주시 흥덕구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#5E8C7A",
+    "ink": "#2E5A4B",
+    "deep": "#1E3C32",
+    "soft": "#EBF3EF"
+   },
+   "areas": "복대·가경·오송",
+   "lat": 36.641,
+   "lon": 127.4319,
+   "searchEx": "복대, 가경",
+   "domain": "heungdeok.chungbuk.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "cheongwon": {
+   "name": "청주 청원",
+   "sido": "충북",
+   "sgg": "청주시 청원구",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#7048E8",
+    "ink": "#5537B0",
+    "deep": "#3E2881",
+    "soft": "#F1EDFD"
+   },
+   "areas": "율량·오창·내덕",
+   "lat": 36.664,
+   "lon": 127.49,
+   "searchEx": "율량, 오창",
+   "domain": "cheongwon.chungbuk.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  },
+  "chungju": {
+   "name": "충주",
+   "sido": "충북",
+   "sgg": "충주시",
+   "stage": "비공개 후보",
+   "colors": {
+    "city": "#B8923E",
+    "ink": "#6F5415",
+    "deep": "#4A370E",
+    "soft": "#F8F2E4"
+   },
+   "areas": "연수·호암·칠금",
+   "lat": 36.991,
+   "lon": 127.9259,
+   "searchEx": "연수, 호암",
+   "domain": "chungju.chungbuk.example.invalid",
+   "pages": "airang-all",
+   "has404": true,
+   "gus": [],
+   "fields": {
+    "start": "",
+    "startVer": ""
+   }
+  }
+ }
+}

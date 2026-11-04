@@ -1,0 +1,40 @@
+{
+ "_설명": "외부 API 호출 예산표 v01후보 (2026-11-03, 024) — 수집기 코드에서 도출한 '실행당 요청 수'와 일정(daily 1회·weather 4회·hospitals/benefits 주 1회)으로 계산한 하루·주간 호출 수. 공식 한도(limit_official)는 코드에 없고 포털 마이페이지에서 대표가 확인해야 하므로 '미확인'으로 둔다(지어내지 않음). monitor.py 는 외부 API를 0회 호출한다.",
+ "basis": "대전 5구 규모(학교 308·학원 3,844·병의원 약 2,300) · 키 정상 가정 · 2026-11-03 work 가지 코드 기준",
+ "keys": {
+  "NEIS_KEY": {"org": "나이스 교육정보 개방포털", "per_day": 638, "per_week": 4470, "monthly_extra": "elite 105(매달 1일)", "limit_official": "미확인(포털 마이페이지 확인)", "heavy": ["collect 학교일정 323/일(학교마다 60일 일정 매일 전부)", "meals 급식 308/일(7일 식단 매일)"], "waste": "schoolInfo 대전 전체 목록을 5구가 각각(15회/일, 필요 3회) · elite 전국 21회를 5구가 각각(월 105회, 필요 21회)"},
+  "WEATHER_KEY": {"org": "공공데이터포털(기상청·환경공단·국립중앙의료원·복지로·도서관 표준·관광공사 대체키)", "per_day": 90, "per_week": 730, "limit_official": "미확인 — API마다 별도 한도일 가능성(개발계정 기본값은 포털에서 확인)", "heavy": ["weather 80/일(5구×4회×4)"], "waste": "기상청 격자가 2개뿐(동·중·대덕 68,100 / 서·유성 67,101)이고 미세먼지 예보는 대전 단위 → 실행당 6회(하루 24회)로 줄일 수 있음"},
+  "LIB_KEY": {"org": "도서관 정보나루", "per_day": 25, "per_week": 175, "limit_official": "미확인(daily.yml 주석 '하루 요청 한도' 수치 없음)", "note": "현재 키 비활성('API 활성화 상태가 아닙니다') → 실패 재시도로 하루 약 105회 낭비. 승인 전까지 libs·books 를 실행 목록에서 빼는 것이 맞음"},
+  "KINDER_KEY": {"org": "유치원알리미", "per_day": 15, "per_week": 105, "limit_official": "미확인", "note": "현재 키 무효(DENIED) → 승인 전까지 실행 제외 권장"},
+  "KAKAO_KEY": {"org": "카카오 검색", "per_day": 22, "per_week": 154, "limit_official": "미확인", "note": "deals(비공식·공개 금지) — 공개 안 하는 자료를 매일 수집 중. 중단 여부 대표 결정"},
+  "KOPIS_KEY": {"org": "공연예술통합전산망", "per_day": 0, "per_week": 0, "limit_official": "미확인", "note": "키 미등록(0회). 등록 시 하루 5~10회"},
+  "CULTURE_KEY": {"org": "문화포털", "per_day": 0, "per_week": 0, "limit_official": "미확인", "note": "키 없음. 넣으면 구마다 전국 최대 40쪽 — 5구 중복 주의"}
+ },
+ "per_collector": {
+  "collect": {"host": "open.neis.go.kr hub/schoolInfo·SchoolSchedule", "per_run_formula": "3 + 학교수", "dongu": 47, "cache": "없음(매일 전체)"},
+  "academies": {"host": "open.neis.go.kr hub/acaInsTiInfo", "per_run_formula": "ceil(학원/1000)", "dongu": 1},
+  "meals": {"host": "open.neis.go.kr hub/mealServiceDietInfo", "per_run_formula": "학교수", "dongu": 44},
+  "elite": {"host": "open.neis.go.kr hub/schoolInfo 전국 17개 교육청", "per_run_formula": "≈21", "when": "매달 1일 또는 elite.json 없을 때"},
+  "kinder": {"host": "e-childschoolinfo.moe.go.kr", "per_run_formula": "구×3", "dongu": 3, "state": "키 무효"},
+  "libs": {"host": "data4library.kr libSrch + data.go.kr 도서관 표준", "per_run_formula": "2 + 1", "dongu": 3, "state": "키 비활성"},
+  "books": {"host": "data4library.kr loanItemSrch", "per_run_formula": "3~6", "dongu": 3, "state": "키 비활성"},
+  "events": {"host": "apis.data.go.kr B551011 searchFestival2 (+KOPIS·문화포털)", "per_run_formula": "1 (+1~40)", "dongu": 1},
+  "deals": {"host": "dapi.kakao.com search", "per_run_formula": "2 + 점포×3", "dongu": 2},
+  "weather": {"host": "apis.data.go.kr 1360000 getVilageFcst ×2 + B552584 미세먼지 ×2", "per_run_formula": "4~5", "runs_per_day": 4},
+  "hospitals": {"host": "apis.data.go.kr B552657 병의원·응급·약국", "per_run_formula": "ceil(병의원/500) + 8 + 1 + ceil(약국/500)", "dongu": 11, "when": "주 1회(월)"},
+  "benefits": {"host": "apis.data.go.kr B554287 복지 나라·지자체", "per_run_formula": "5 + 1~2 + 1~2", "dongu": 8, "when": "주 1회(월)"},
+  "jobs": {"per_run_formula": "0(경기 전용)"}, "sports": {"per_run_formula": "0(성남 등 전용)"}
+ },
+ "free_tier_notes": {
+  "GitHub Actions": "공개 저장소는 분 제한 없음(비공개면 월 2,000분). monitor 매시간 ≈1분 → 월 ≈720분. daily 5구×6~8분 ≈ 월 1,100분 — 저장소가 비공개로 바뀌면 한도 초과 가능",
+  "Cloudflare Pages": "무료 플랜 빌드 월 500회 — cf-apps는 앱이 바뀐 경우에만 올림(해시 비교) + 6시간마다 확인",
+  "GitHub API(감시)": "GITHUB_TOKEN 사용 시 저장소당 1,000회/시간 — monitor 는 시간당 ≈21회"
+ },
+ "no_repeat_rules": [
+  "monitor.py 는 공공 API를 호출하지 않는다(저장소·배포·사이트만).",
+  "change_guard 는 이미 받은 수집본끼리 비교한다(추가 호출 0).",
+  "키가 무효·미승인인 수집기(kinder·libs·books)는 승인 전까지 실행 목록에서 빼면 하루 ≈135회 낭비를 없앨 수 있음(대표 결정).",
+  "날씨는 격자 2개·미세먼지 1회로 묶으면 하루 80→24회(코드 수정 필요, 승인 대상).",
+  "학교 일정·급식은 매일 전체 재조회 대신 주 2~3회로 줄여도 자료 신선도에 문제 없음(valid_days 14/10) — 승인 대상."
+ ]
+}

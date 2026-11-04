@@ -9,53 +9,20 @@
 import os
 import re
 
-CITIES = {
-    # ── 대전광역시 5개 구 (2026-11-02, 아이랑_대전_시작_안내서 3-3 값 그대로. '확인 필요' 값은 첫 수집 로그로 검증)
-    "대전동구": {
-        "sido": "대전", "sgg": "동구",
-        "area": "동구", "gus": {"": 30110}, "lib": {"": 25010}, "signgu": "", "kopis": "3011",
-        "lat": 36.3120, "lon": 127.4548, "stations": ["성남동", "대성동"], "region": "대전",
-        "places": r"대전역|대전 동구|판암|가양|용운|대동|자양|신흥동|산내|대청호|소제동",
-        "not_places": r"대전 중구|대전 서구|유성|대덕구|세종|청주",
-        "domain": "djdonggu", "lib_home": "",
-    },
-    "대전중구": {
-        "sido": "대전", "sgg": "중구",
-        "area": "중구", "gus": {"": 30140}, "lib": {"": 25020}, "signgu": "", "kopis": "3014",
-        "lat": 36.3255, "lon": 127.4214, "stations": ["문창동", "문화동"], "region": "대전",
-        "places": r"대전 중구|은행동|대흥동|선화동|문화동|태평동|유천동|산성동|오월드|보문산|뿌리공원|중앙시장|으능정이",
-        "not_places": r"대전 동구|대전 서구|유성|대덕구|서울|인천|부산",
-        "domain": "djjunggu", "lib_home": "",
-    },
-    "대전서구": {
-        "sido": "대전", "sgg": "서구",
-        "area": "서구", "gus": {"": 30170}, "lib": {"": 25030}, "signgu": "", "kopis": "3017",
-        "lat": 36.3555, "lon": 127.3838, "stations": ["둔산동", "월평동", "정림동"], "region": "대전",
-        "places": r"대전 서구|둔산|탄방|월평|갈마|관저|도마|가수원|정림|복수동|용문동|만년동|대전시청|한밭수목원|예술의전당",
-        "not_places": r"대전 동구|대전 중구|유성|대덕구|인천|부산|광주",
-        "domain": "djseogu", "lib_home": "",
-    },
-    "유성": {
-        "sido": "대전", "sgg": "유성구",
-        "area": "유성구", "gus": {"": 30200}, "lib": {"": 25040}, "signgu": "", "kopis": "3020",
-        "lat": 36.3624, "lon": 127.3563, "stations": ["노은동", "구성동", "상대동"], "region": "대전",
-        "places": r"유성|봉명|노은|지족|관평|전민|도룡|신성동|어은|구즉|엑스포|국립중앙과학관|카이스트|KAIST|대덕연구단지|상대동|학하",
-        "not_places": r"대전 동구|대전 중구|대전 서구|대덕구|세종",
-        "domain": "yuseong", "lib_home": "",
-    },
-    "대덕": {
-        "sido": "대전", "sgg": "대덕구",
-        "area": "대덕구", "gus": {"": 30230}, "lib": {"": 25050}, "signgu": "", "kopis": "3023",
-        "lat": 36.3466, "lon": 127.4156, "stations": ["읍내동", "문평동"], "region": "대전",
-        "places": r"대덕구|송촌|법동|중리동|비래|오정동|신탄진|목상|덕암|대청댐|계족산|동춘당",
-        "not_places": r"대전 동구|대전 중구|대전 서구|유성|대덕연구단지|세종|청주",
-        "domain": "daedeok", "lib_home": "",
-    },
-}
-# 시도마다 다른 코드 (안내서 3-1). 다른 시·도를 열 때 한 줄씩 추가한다 (서울·경기는 운영 대상 제외)
-SIDOS = {
-    "대전": {"full": "대전광역시", "neis": "G10", "lib": 25, "kinder": 30, "kopis": "30", "hira": "250000", "air": "대전", "tour": 3},   # tour: 한국관광공사 지역코드 (대전 3)
-}
+# ── 지역 설정은 regions/*.json(시·도마다 한 파일)에서 읽는다 (2026-11-03 공통 모듈화). 대전 값은 regions/daejeon.json 에 그대로 보존.
+import json as _json, glob as _glob
+_HERE = os.path.dirname(os.path.abspath(__file__))
+CITIES, SIDOS, STAGE, REGION_FILES = {}, {}, {}, {}
+for _p in sorted(_glob.glob(os.path.join(_HERE, "regions", "*.json"))):
+    if os.path.basename(_p).startswith("_"):   # _plan.json 등 보조 파일은 지역 설정이 아님
+        continue
+    _r = _json.load(open(_p, encoding="utf-8"))
+    SIDOS[_r["sido_key"]] = _r["sido"]; REGION_FILES[_p] = _r
+    for _k, _v in _r["cities"].items():
+        _v.setdefault("sido", _r["sido_key"]); _v.setdefault("stage", _r.get("stage", "후보"))
+        CITIES[_k] = _v; STAGE[_k] = _v["stage"]
+if not CITIES:
+    raise SystemExit("regions/*.json 이 없습니다")
 CITY = os.environ.get("CITY", "유성").strip()
 if CITY not in CITIES:
     raise SystemExit(f"모르는 도시: {CITY} (city.py 에 추가해 주세요)")
