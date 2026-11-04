@@ -158,7 +158,8 @@ def row(it, kind):
     y, x = pt(it)
     addr = it.get("addr", "")
     r = {"n": it.get("yadmNm", "").strip(), "k": kind, "g": gu_of(addr), "a": short_addr(addr),
-         "t": (it.get("telno") or "").strip(), "y": y, "x": x}
+         "t": (it.get("telno") or "").strip(), "y": y, "x": x,
+         "id": (it.get("ykiho") or "").strip()}   # 2026-11-05(039 피트 1차 검토 3항): 심평원 요양기호 — 같은 이름 의원이 여러 구에 있어 원문 대조에 공식 식별정보가 필요
     u = (it.get("hospUrl") or "").strip()
     if re.match(r"^https?://", u):
         r["u"] = u
