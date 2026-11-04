@@ -876,7 +876,7 @@ const icon = {
 };
 
 function footer() {
-  return `<div class="foot">데이터 · ${esc(DATA.source || "나이스 교육정보 개방포털")}<br>업데이트 ${esc(DATA.updated_at)} · 매일 새벽 자동 갱신(학사일정)<br>아이랑 {{name}} · by 라그릴스</div>`;
+  return `<div class="foot">데이터 · ${esc(DATA.source || "나이스 교육정보 개방포털")}<br>업데이트 ${esc(DATA.updated_at)} · 매일 새벽 자동 갱신(학사일정)<br>아이랑 {{name}}</div>`;
 }
 
 // ---------- v3(2026-11-04) 상단 사진·장면 ----------
@@ -886,7 +886,7 @@ function sceneSrc(route) { const s = SCENE[(route || "").split("/")[0]]; return 
 function topBarV3() {
   return `<div class="top3">
       <img src="icon-192.png?v=60" alt="아이랑 로고" width="34" height="34" style="border-radius:10px;box-shadow:0 2px 8px rgba(120,80,40,.18);flex:0 0 auto">
-      <div style="min-width:0;flex:1;line-height:1.15"><div class="brand-t" style="font-size:18px;font-weight:800;letter-spacing:-.3px;white-space:nowrap;color:var(--navy)">아이랑 <span style="color:var(--orange-ink)">{{name}}</span></div><div style="font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">by 라그릴스</div></div>
+      <div style="min-width:0;flex:1;line-height:1.15"><div class="brand-t" style="font-size:18px;font-weight:800;letter-spacing:-.3px;white-space:nowrap;color:var(--navy)">아이랑 <span style="color:var(--orange-ink)">{{name}}</span></div><div style="font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">아이 키우는 집의 동네 정보</div></div>
       <button class="chip glass" aria-label="지인에게 알려주기" title="지인에게 알려주기" style="flex:0 0 auto;width:44px;height:44px;padding:0;justify-content:center;color:var(--navy)" onclick="shareApp()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
       <button class="chip glass topbar-region" style="flex:0 0 auto;font-size:12px;padding:0 12px;height:44px;color:var(--navy)" onclick="go('region')">${icon.pin} ${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()} ▾</button></div>`;
 }
@@ -1339,7 +1339,7 @@ function viewMy() {
     <section class="section"><div class="sec-head"><h2>정보</h2></div>
       <div class="lift card-pad">
         <div class="row"><span>시범 운영 시작</span><span class="val">2026년 11월 2일</span></div>
-        <div class="row"><span>개발</span><span class="val">라그릴스</span></div>
+        <div class="row"><span>개발</span><span class="val">아이랑 팀</span></div>
         <div class="row"><span>마지막 업데이트</span><span class="val">${esc(DATA.updated_at)}</span></div>
         <div class="row" onclick="adminTap()" style="cursor:default;user-select:none"><span>버전</span><span class="val">${APP_VER} (시범 운영)</span></div>
         <div class="row" onclick="go('news')" style="cursor:pointer"><span>업데이트 소식${newsUnseen() ? ' <span style="display:inline-block;margin-left:4px;padding:1px 6px;border-radius:8px;background:var(--gold-bg);color:var(--gold-ink);font-size:10px;font-weight:800;vertical-align:2px">NEW</span>' : ""}</span><span class="val" style="color:var(--indigo);font-weight:700">${esc(newsDate(NEWS[0].d))} ›</span></div>
@@ -2370,7 +2370,7 @@ function viewAbout() {
 {{#if yongin}}
     ${sec("이 서비스는", `{{name}}에 사는 학부모에게 꼭 필요한 정보를 한곳에서 볼 수 있으면 좋겠다는 생각으로, {{name}} 시민 한 사람이 직접 만든 <b>학부모 통합 정보 서비스</b>예요.<br>학교 일정, 도서관, 학원, 유치원, 아이와 갈 행사, 일자리 정보를 공공 자료에서 모아 보여 드려요.`)}
 {{#else}}
-    ${sec("이 서비스는", `{{name}}에 사는 학부모에게 꼭 필요한 정보를 한곳에서 볼 수 있으면 좋겠다는 생각으로, 라그릴스가 직접 만든 <b>학부모 통합 정보 서비스</b>예요.<br>학교 일정, 도서관, 학원, 유치원, 아이와 갈 행사, 일자리 정보를 공공 자료에서 모아 보여 드려요.`)}
+    ${sec("이 서비스는", `{{name}}에 사는 학부모에게 꼭 필요한 정보를 한곳에서 볼 수 있으면 좋겠다는 생각으로, 아이랑 팀이 직접 만든 <b>학부모 통합 정보 서비스</b>예요.<br>학교 일정, 도서관, 학원, 유치원, 아이와 갈 행사, 일자리 정보를 공공 자료에서 모아 보여 드려요.`)}
 {{/if}}
     ${sec("무료로 운영해요", li(["모든 기능을 <b>무료</b>로 제공해요. 회원가입이나 결제가 없어요.", "{{f.sgg}}청, 교육청 등 <b>공공기관이 운영하는 서비스가 아니에요.</b> 개인이 공공 자료를 모아 보여 드리는 서비스예요."]))}
     ${sec("개인정보를 받지 않아요", `이름, 전화번호, 이메일, 주소처럼 <b>개인을 알아볼 수 있는 정보는 받지도, 저장하지도 않아요.</b> 회원가입도 없어요.`)}
