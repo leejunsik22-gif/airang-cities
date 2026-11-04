@@ -1049,7 +1049,7 @@ function viewAdInfo() {
     <section class="section"><div class="sec-head"><h2>가게 정보</h2></div><div class="lift card-pad">
       ${row("주소", esc(AD.addr))}${row("운영", esc(AD.open))}${row("전화", `<a href="tel:${AD.tel}" onclick="adOpen('tel')" style="color:var(--indigo);font-weight:700;text-decoration:none">${AD.tel}</a>`)}
       ${row("길찾기", `<a href="https://map.naver.com/p/search/${encodeURIComponent(AD.name)}" target="_blank" rel="noopener" onclick="adOpen('map')" style="color:var(--indigo);font-weight:700;text-decoration:none">네이버 지도 ›</a>`)}
-      ${row("홈페이지", `<a href="${AD.site}" target="_blank" rel="noopener sponsored" onclick="adOpen('site')" style="color:var(--indigo);font-weight:700;text-decoration:none">lagrills.co.kr ›</a>`)}</div></section>
+      ${row("홈페이지", `<a href="${AD.site}" target="_blank" rel="noopener sponsored" onclick="adOpen('site')" style="color:var(--indigo);font-weight:700;text-decoration:none">${esc(String(AD.site || "").replace(/^https?:\/\//, ""))} ›</a>`)}</div></section>
     <section class="section"><div class="sec-head"><h2>이용 안내</h2></div><div class="lift card-pad">${li(AD.notes)}</div></section>
     <div class="foot">광고 · 가게에서 안내한 정보를 옮겼어요. 가시기 전에 가게에 한 번 더 확인해 주세요.</div>`;
 }
