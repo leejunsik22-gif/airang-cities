@@ -15,18 +15,29 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with: { ref: main }   # 2026-11-05 수집 가지 고정: 기본 가지가 무엇이든 운영 가지 main 에서 모으고 main 에 올린다(앱이 읽는 곳)
+      - name: 운영 가지 확인 (main 이 아니면 중단 — 다른 가지에 수집본이 쌓이는 일 방지)
+        run: |
+          b=$(git rev-parse --abbrev-ref HEAD); [ "$b" = main ] || { echo "::error::수집은 운영 가지 main 에서만 ($b)"; exit 1; }
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: |
-          mkdir -p logs; : > logs/weather.txt
+          set -o pipefail
+          mkdir -p logs; : > logs/weather.txt; FAILED=""
           for pair in 대전동구:djdonggu 대전중구:djjunggu 대전서구:djseogu 유성:yuseong 대덕:daedeok; do
             c=${pair%%:*}; d=${pair##*:}; rm -rf output; mkdir -p output
-            CITY=$c python -u weather.py 2>&1 | tee -a logs/weather.txt; python3 tools/gate.py --city $d --in output --out data/$d || echo "::warning::$c 날씨 검문 실패"
+            CITY=$c python -u weather.py 2>&1 | tee -a logs/weather.txt || { echo "::warning::$c 날씨 수집 실패(기상청 응답 없음) — 직전 공개본 유지"; FAILED="$FAILED $c"; }
+            python3 tools/gate.py --city $d --in output --out data/$d --only weather.json --review review/$d || echo "::warning::$c 날씨 검문 실패"   # 날씨 항목만 갱신(다른 자료 상태는 보존, 2026-11-03)
           done
+          echo "FAILED=$FAILED" >> $GITHUB_ENV
         env:
           WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
       - run: |
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data logs; git diff --cached --quiet && exit 0
+          git add data logs; [ -d review ] && git add review; git diff --cached --quiet && exit 0
           git commit -m "날씨 업데이트"
-          for i in 1 2 3 4 5; do git pull --rebase --autostash && git push && break; sleep $((i*5)); done
+          ok=0; for i in 1 2 3 4 5; do git pull --rebase --autostash origin main && git push origin HEAD:main && ok=1 && break; sleep $((i*5)); done
+          [ "$ok" = 1 ] || { echo "::error::날씨 올리기(push) 실패"; exit 1; }
+      - if: always()
+        run: |
+          [ -z "$FAILED" ] || { echo "::error::날씨 수집 실패 구:$FAILED — 운영 오류로 기록(공개 자료는 직전본 유지)"; exit 1; }

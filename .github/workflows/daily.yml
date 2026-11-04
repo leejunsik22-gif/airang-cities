@@ -1,5 +1,7 @@
 name: daily (도시별 하루 수집)
 # 매일 새벽 5시 30분(한국시간)에 대전 5개 구마다 학교·급식·학원·유치원·도서관·인기도서를 모은다 (2026-11-02 대전판)
+# 2026-11-03 보강: 지역 섞임 검사(check_region) → 검문(gate) 순서, 올리기(push) 실패 시 작업 실패로 표시, _status.json 은 수집 입력에 섭지 않음
+# 2026-11-03 저녁(024): 검문 v06 — 직전 공개본과 기록 단위 변경 감지(의미 변경·삭제는 재검증 전 직전본 값 유지, review/<구>/_reverify.json), 변경 전후 기록 ops/changes/<구>.json 도 함께 올림
 on:
   schedule:   # 2026-11-02 대표 승인으로 자동 수집 켬
     - cron: "30 20 * * *"
@@ -33,19 +35,26 @@ jobs:
       WEATHER_KEY: ${{ secrets.WEATHER_KEY }}   # 공공데이터포털 (도서관 표준데이터)
     steps:
       - uses: actions/checkout@v4
+        with: { ref: main }   # 2026-11-05 수집 가지 고정: 기본 가지가 무엇이든 운영 가지 main 에서 모으고 main 에 올린다(앱이 읽는 곳)
+      - name: 운영 가지 확인 (main 이 아니면 중단 — 다른 가지에 수집본이 쌓이는 일 방지)
+        run: |
+          b=$(git rev-parse --abbrev-ref HEAD); [ "$b" = main ] || { echo "::error::수집은 운영 가지 main 에서만 ($b)"; exit 1; }
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - name: 수집
         run: |
-          mkdir -p output && cp data/${{ matrix.d }}/*.json output/ 2>/dev/null || true   # 실패한 수집기는 이전 파일 유지
+          set -o pipefail
+          mkdir -p output && find data/${{ matrix.d }} -maxdepth 1 -name '*.json' ! -name '_*' -exec cp {} output/ \;   # 실패한 수집기는 이전 파일 유지(_status 등 보조 파일 제외)
           mkdir -p logs; for s in collect academies kinder meals libs books events jobs sports deals; do
             echo "::group::$s"; f=$(python3 -c "import city;print(city.SCRIPTS.get('$s','$s'))"); timeout 1500 python -u $f.py 2>&1 | tee -a logs/daily-${{ matrix.d }}.txt || echo "::warning::${{ matrix.city }} $s 실패 (이전 파일 유지)"; echo "::endgroup::"
           done
           if [ "$(date +%d)" = "01" ] || [ ! -f output/elite.json ]; then python -u elite.py || true; fi   # 매달 1일 + 아직 없는 도시는 바로
       - name: 저장
         run: |
-          python3 tools/gate.py --city ${{ matrix.d }} --in output --out data/${{ matrix.d }}   # 검문: 미확인·만료·형식 오류는 공개 안 함(직전본 유지)
+          python3 tools/check_region.py --dir output --quarantine --report output/_region_check.json   # 지역 섞임 검사: 다른 시·도 자료가 섞인 파일은 격리(직전본 유지)
+          python3 tools/gate.py --city ${{ matrix.d }} --in output --out data/${{ matrix.d }} --review review/${{ matrix.d }}   # 검문(보류분은 비공개 review/ 보존): 미확인·만료·형식 오류는 공개 안 함(직전본 유지)
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/${{ matrix.d }} logs/daily-${{ matrix.d }}.txt 2>/dev/null || git add data/${{ matrix.d }}; git diff --cached --quiet && exit 0
+          git add data/${{ matrix.d }}; [ -d review/${{ matrix.d }} ] && git add review/${{ matrix.d }}; [ -f ops/changes/${{ matrix.d }}.json ] && git add ops/changes/${{ matrix.d }}.json; [ -f logs/daily-${{ matrix.d }}.txt ] && git add logs/daily-${{ matrix.d }}.txt; git diff --cached --quiet && exit 0
           git commit -m "${{ matrix.city }} 하루 수집"
-          for i in 1 2 3 4 5 6; do git pull --rebase --autostash && git push && break; sleep $((i*7)); done
+          ok=0; for i in 1 2 3 4 5 6; do git pull --rebase --autostash origin main && git push origin HEAD:main && ok=1 && break; sleep $((i*7)); done
+          [ "$ok" = 1 ] || { echo "::error::${{ matrix.city }} 올리기(push) 실패 — 수집본이 저장소에 반영되지 않음"; exit 1; }
