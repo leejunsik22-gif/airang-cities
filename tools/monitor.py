@@ -240,7 +240,7 @@ def main():
                 if e.get("source_outage"):
                     add("source_outage", "검증 필요", "P2", f"{c['name']} {e.get('label', fn)} 원천 누락 의심(직전 기록 유지)", e["source_outage"], city=d)
         # 재검증 대기(의미 변경) — 기본 가지의 review/<구>/_reverify.json
-        st, rv = F.json(f"{RAW}/{CITIES_REPO}/{default_branch or app_branch}/review/{d}/_reverify.json")
+        st, rv = F.json(f"{RAW}/{CITIES_REPO}/{app_branch}/review/{d}/_reverify.json")   # 2026-11-05: 수집·검문이 main 에 쌓이므로 재검증 대기도 main 에서 읽는다
         if st == 200 and rv:
             pend = rv.get("pending", []) or []
             row["reverify"] = max(row["reverify"], len(pend)); row["file_hold"] = rv.get("file_hold") or {}
