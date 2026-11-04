@@ -3276,6 +3276,7 @@ async function loadEvents() {
   if (DATA) render();
 }
 async function load() {
+  try { localStorage.setItem("airang.city", "{{key}}"); } catch (e) {}   // 037: 입구(/)의 '지난번에 본 도시 바로 가기'가 직접 들어온 경우도 기억하도록(같은 주소라 저장소 공유)
   await loadGate();   // 검문 상태 먼저(없으면 빈 객체 → 모든 메뉴 평소대로)
   loadSeats(); loadBooks(); loadEvents(); loadMeals(); loadWeather();
   try {
