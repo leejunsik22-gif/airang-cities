@@ -13,7 +13,7 @@
  "expected_cadence_hours": {
   "_설명": "monitor.py 가 '작업 누락'을 판단하는 최대 간격(시간). 일정 지연(GitHub 혼잡)을 감안해 여유를 둠",
   "daily": 26,
-  "weather": 8,
+  "weather": 13,
   "hospitals": 192,
   "cf-apps": 7
  },
