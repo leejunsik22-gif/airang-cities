@@ -1271,7 +1271,7 @@ function viewSchool(code) {
     </div>
     <section class="section"><div class="sec-head"><h2>다가오는 일정</h2></div>
       <div class="lift card-pad">${list.map(g => evRow(g)).join("")}
-      ${(s.events || []).length ? "" : `<div class="empty">이 학교는 아직 나이스에 학사일정을 등록하지 않았어요. 등록되면 하루 3번 자동으로 반영돼요.</div>`}</div></section>${schoolMealsSection(s.code)}<p class="foot">${sourceLine("latest.json")}</p>${footer()}`;
+      ${(s.events || []).length ? "" : `<div class="empty">이 학교는 아직 나이스에 학사일정을 등록하지 않았어요. 등록되면 매일 새벽 자동으로 반영돼요.</div>`}</div></section>${schoolMealsSection(s.code)}<p class="foot">${sourceLine("latest.json")}</p>${footer()}`;
 }
 
 // ---------- 화면: 마이 ----------
