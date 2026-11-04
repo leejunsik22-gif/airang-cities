@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>09 캐릭터 · 손잡고 걷는 가족</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap">
+<style>
+body{margin:0;font-family:'Noto Sans KR',sans-serif}
+a{color:#B8641E}a:hover{color:#1F2A44}
+</style>
+</helmet>
+<div style="width: 560px; height: 320px; box-sizing: border-box; background: #FBF6EF; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px">
+  <svg role="img" aria-label="손잡고 걷는 어른 둘과 아이 하나, 머리 위 작은 해" width="260" height="150" viewBox="0 0 260 150" fill="none">
+    <circle cx="214" cy="30" r="18" fill="{{accent}}"></circle>
+    <path d="M214 4 V-2 M236 30 H242 M230 14 L234 10 M230 46 L234 50" stroke="{{accent}}" stroke-width="4" stroke-linecap="round"></path>
+    <circle cx="60" cy="40" r="20" fill="#1F2A44"></circle>
+    <path d="M36 142 V96 C36 76 46 66 60 66 C74 66 84 76 84 96 V142" fill="#1F2A44"></path>
+    <circle cx="130" cy="74" r="15" fill="#F6D9B8"></circle>
+    <path d="M114 72 C114 58 122 52 130 52 C138 52 146 58 146 72 C138 70 134 66 131 60 C126 68 120 72 114 72 Z" fill="#1F2A44"></path>
+    <path d="M114 142 V106 C114 94 121 90 130 90 C139 90 146 94 146 106 V142" fill="{{accent}}"></path>
+    <circle cx="200" cy="40" r="20" fill="#1F2A44"></circle>
+    <path d="M176 142 V96 C176 76 186 66 200 66 C214 66 224 76 224 96 V142" fill="#1F2A44"></path>
+    <path d="M84 100 C96 100 104 96 114 100" stroke="#1F2A44" stroke-width="8" stroke-linecap="round"></path>
+    <path d="M146 100 C156 96 164 100 176 100" stroke="#1F2A44" stroke-width="8" stroke-linecap="round"></path>
+    <circle cx="126" cy="76" r="2.5" fill="#1F2A44"></circle>
+    <circle cx="136" cy="76" r="2.5" fill="#1F2A44"></circle>
+    <path d="M126 82 C128 85 134 85 136 82" stroke="#1F2A44" stroke-width="2.5" stroke-linecap="round"></path>
+  </svg>
+  <div style="font-size: 64px; font-weight: 900; letter-spacing: -3px; line-height: 1; color: #1F2A44">아이랑</div>
+  <div style="font-size: 13px; font-weight: 700; letter-spacing: 5px; color: #6E645B; margin-top: 6px">가족이 더 행복한 동네</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#D9822B","options":["#D9822B","#C9A86A","#2E8B57"]},"$preview":{"width":560,"height":320}}'>
+class Component extends DCLogic {
+  renderVals() { return { accent: this.props.accent ?? '#D9822B' }; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>10 캐릭터 · 아이랑 곰돌이 뱃지</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@700&display=swap">
+<style>
+body{margin:0;font-family:'Noto Sans KR',sans-serif}
+a{color:#B8641E}a:hover{color:#1F2A44}
+</style>
+</helmet>
+<div style="width: 560px; height: 320px; box-sizing: border-box; background: #1F2A44; display: flex; align-items: center; justify-content: center; gap: 26px">
+  <div style="width: 200px; height: 200px; border-radius: 100px; background: #FBF6EF; display: flex; align-items: center; justify-content: center; border: 4px solid {{gold}}">
+    <svg role="img" aria-label="둥근 귀가 달린 작은 곰 얼굴 마스코트, 목에 주황 스카프" width="150" height="150" viewBox="0 0 150 150" fill="none">
+      <circle cx="36" cy="40" r="20" fill="#C8936A"></circle>
+      <circle cx="114" cy="40" r="20" fill="#C8936A"></circle>
+      <circle cx="36" cy="40" r="9" fill="#F2C9A6"></circle>
+      <circle cx="114" cy="40" r="9" fill="#F2C9A6"></circle>
+      <circle cx="75" cy="80" r="52" fill="#C8936A"></circle>
+      <ellipse cx="75" cy="96" rx="24" ry="18" fill="#F2C9A6"></ellipse>
+      <circle cx="56" cy="74" r="6" fill="#1F2A44"></circle>
+      <circle cx="94" cy="74" r="6" fill="#1F2A44"></circle>
+      <path d="M68 90 C71 86 79 86 82 90 C79 95 71 95 68 90 Z" fill="#1F2A44"></path>
+      <path d="M75 94 V100 M68 104 C71 108 79 108 82 104" stroke="#1F2A44" stroke-width="3" stroke-linecap="round"></path>
+      <path d="M36 128 C48 118 102 118 114 128 L110 140 C100 134 50 134 40 140 Z" fill="{{accent}}"></path>
+    </svg>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <div style="font-family: 'Jua', sans-serif; font-size: 66px; line-height: 1; color: #FBF6EF">아이랑</div>
+    <div style="font-size: 13px; font-weight: 700; letter-spacing: 5px; color: {{gold}}">우리 동네 육아 친구</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#D9822B","options":["#D9822B","#B8641E","#2E8B57"]},"gold":{"editor":"color","default":"#C9A86A","options":["#C9A86A","#FBF6EF","#D9822B"]},"$preview":{"width":560,"height":320}}'>
+class Component extends DCLogic {
+  renderVals() { return { accent: this.props.accent ?? '#D9822B', gold: this.props.gold ?? '#C9A86A' }; }
+}
+</script>
+</body>
+</html>

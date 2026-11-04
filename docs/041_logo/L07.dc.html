@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>07 캐릭터 · 엄마와 아이</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@700&display=swap">
+<style>
+body{margin:0;font-family:'Noto Sans KR',sans-serif}
+a{color:#B8641E}a:hover{color:#1F2A44}
+</style>
+</helmet>
+<div style="width: 560px; height: 320px; box-sizing: border-box; background: #FBF6EF; display: flex; align-items: center; justify-content: center; gap: 22px">
+  <svg role="img" aria-label="엄마와 아이가 볼을 맞대고 웃는 둥근 캐릭터" width="190" height="170" viewBox="0 0 190 170" fill="none">
+    <circle cx="70" cy="78" r="56" fill="#F6D9B8"></circle>
+    <path d="M14 70 C14 30 40 14 72 14 C104 14 126 36 124 66 C100 66 86 56 76 40 C64 58 40 68 14 70 Z" fill="#1F2A44"></path>
+    <circle cx="52" cy="84" r="5" fill="#1F2A44"></circle>
+    <circle cx="86" cy="84" r="5" fill="#1F2A44"></circle>
+    <path d="M56 104 C62 112 78 112 84 104" stroke="#1F2A44" stroke-width="5" stroke-linecap="round"></path>
+    <circle cx="40" cy="100" r="7" fill="{{accent}}" opacity="0.55"></circle>
+    <circle cx="140" cy="112" r="40" fill="#F6D9B8"></circle>
+    <path d="M100 108 C100 80 118 66 140 66 C160 66 176 80 178 102 C160 100 150 92 142 80 C134 94 118 104 100 108 Z" fill="#1F2A44"></path>
+    <circle cx="128" cy="116" r="4" fill="#1F2A44"></circle>
+    <circle cx="152" cy="116" r="4" fill="#1F2A44"></circle>
+    <path d="M130 130 C134 136 146 136 150 130" stroke="#1F2A44" stroke-width="4" stroke-linecap="round"></path>
+    <circle cx="164" cy="126" r="6" fill="{{accent}}" opacity="0.55"></circle>
+    <path d="M150 58 C150 50 160 48 164 54 C168 48 178 50 178 58 C178 66 164 74 164 74 C164 74 150 66 150 58 Z" fill="{{accent}}"></path>
+  </svg>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <div style="font-family: 'Jua', sans-serif; font-size: 66px; line-height: 1; color: #1F2A44; letter-spacing: -1px">아이<span style="color: {{accent}}">랑</span></div>
+    <div style="font-size: 13px; font-weight: 700; letter-spacing: 4px; color: #6E645B">아이 키우는 집의 동네 정보</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#D9822B","options":["#D9822B","#B8641E","#E07A8B","#2E8B57"]},"$preview":{"width":560,"height":320}}'>
+class Component extends DCLogic {
+  renderVals() { return { accent: this.props.accent ?? '#D9822B' }; }
+}
+</script>
+</body>
+</html>

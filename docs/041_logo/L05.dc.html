@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>05 네이비 스탬프</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700;900&family=Noto+Sans+KR:wght@500&display=swap">
+<style>
+body{margin:0;font-family:'Noto Sans KR',sans-serif}
+a{color:#C9A86A}a:hover{color:#FBF6EF}
+</style>
+</helmet>
+<div style="width: 560px; height: 320px; box-sizing: border-box; background: #1F2A44; display: flex; align-items: center; justify-content: center; gap: 28px">
+  <div style="width: 150px; height: 190px; box-sizing: border-box; border: 2px solid {{gold}}; border-radius: 6px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 10px">
+    <div style="font-family: 'Noto Serif KR', serif; font-size: 64px; font-weight: 900; line-height: 1.05; color: #FBF6EF">아이</div>
+    <div style="width: 54px; height: 2px; background: {{gold}}; margin: 8px 0"></div>
+    <div style="font-family: 'Noto Serif KR', serif; font-size: 64px; font-weight: 900; line-height: 1.05; color: {{gold}}">랑</div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <div style="font-family: 'Noto Serif KR', serif; font-size: 44px; font-weight: 900; line-height: 1; color: #FBF6EF">아이랑</div>
+    <div style="font-size: 13px; font-weight: 500; letter-spacing: 6px; color: {{gold}}">PREMIUM LOCAL GUIDE</div>
+    <div style="font-size: 13px; font-weight: 500; letter-spacing: 2px; color: #C9CFDD">아이 키우는 집의 믿을 수 있는 동네 정보</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"gold":{"editor":"color","default":"#C9A86A","options":["#C9A86A","#D9822B","#FBF6EF"]},"$preview":{"width":560,"height":320}}'>
+class Component extends DCLogic {
+  renderVals() { return { gold: this.props.gold ?? '#C9A86A' }; }
+}
+</script>
+</body>
+</html>

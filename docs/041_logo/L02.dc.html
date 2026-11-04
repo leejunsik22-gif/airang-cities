@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>02 손잡은 둘</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700;900&display=swap">
+<style>
+body{margin:0;font-family:'Noto Sans KR',sans-serif}
+a{color:#B8641E}a:hover{color:#1F2A44}
+</style>
+</helmet>
+<div style="width: 560px; height: 320px; box-sizing: border-box; background: #FFFFFF; display: flex; align-items: center; justify-content: center; gap: 26px">
+  <svg role="img" aria-label="큰 사람과 작은 사람이 손을 잡은 모양" width="120" height="120" viewBox="0 0 120 120" fill="none">
+    <circle cx="40" cy="30" r="16" fill="#1F2A44"></circle>
+    <circle cx="84" cy="46" r="12" fill="{{accent}}"></circle>
+    <path d="M14 108 C14 72 30 58 40 58 C50 58 58 66 62 78" stroke="#1F2A44" stroke-width="12" stroke-linecap="round"></path>
+    <path d="M106 108 C106 84 96 70 84 70 C76 70 70 76 66 84" stroke="{{accent}}" stroke-width="10" stroke-linecap="round"></path>
+    <circle cx="64" cy="82" r="7" fill="#C9A86A"></circle>
+  </svg>
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <div style="font-size: 76px; font-weight: 900; letter-spacing: -3px; line-height: 1; color: #1F2A44">아이랑</div>
+    <div style="font-size: 14px; font-weight: 700; letter-spacing: 5px; color: {{accent}}; padding-left: 4px">함께 자라는 우리 동네</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#D9822B","options":["#D9822B","#B8641E","#2E8B57","#C9A86A"]},"$preview":{"width":560,"height":320}}'>
+class Component extends DCLogic {
+  renderVals() { return { accent: this.props.accent ?? '#D9822B' }; }
+}
+</script>
+</body>
+</html>
