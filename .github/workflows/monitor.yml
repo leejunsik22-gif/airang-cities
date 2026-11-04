@@ -1,0 +1,55 @@
+name: monitor (운영 감시 — 매시간)
+# 2026-11-03 v01후보(024): 장애 / 검증 필요 / 공개 보류 / 복구 완료를 ops/monitor.json 한 파일로 집계한다.
+# - 외부 공공 API는 호출하지 않는다(GitHub·배포 사이트·raw 파일만 읽음) → 공공데이터 한도와 무관.
+# - 결과가 달라졌을 때(또는 6시간마다 한 번)만 커밋해 이력을 더럽히지 않는다.
+# - 일정(schedule)은 기본 가지에서만 돈다. 대표 승인으로 work→기본 가지 반영 전에는 수동 실행(workflow_dispatch)만 가능.
+on:
+  schedule:
+    - cron: "15 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency: { group: monitor, cancel-in-progress: false }
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      GITHUB_TOKEN: ${{ github.token }}   # 작업 기록 조회(비로그인 60회/시간 한도 회피)
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main }   # 2026-11-05 대표 승인: 감시는 운영 가지 main 을 읽고 ops/ 두 파일만 main 에 기록(기본 가지가 무엇이든)
+      - name: 운영 가지 확인 (main 이 아니면 중단)
+        run: |
+          b=$(git rev-parse --abbrev-ref HEAD); [ "$b" = main ] || { echo "::error::감시는 운영 가지 main 에서만 ($b)"; exit 1; }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: 감시
+        run: |
+          cp ops/monitor.json /tmp/prev.json 2>/dev/null || echo '{}' > /tmp/prev.json
+          python3 tools/monitor.py 2>&1 | tee /tmp/monitor.txt
+          { echo "## 운영 감시 $(date -u +'%Y-%m-%d %H:%M UTC')"; echo; echo '```'; cat /tmp/monitor.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - name: 달라졌을 때만 저장
+        run: |
+          python3 - <<'PY'
+          import json, sys, datetime
+          try: p = json.load(open('/tmp/prev.json', encoding='utf-8'))
+          except Exception: p = {}
+          c = json.load(open('ops/monitor.json', encoding='utf-8'))
+          key = lambda m: sorted((i['id'], i['state'], i['severity']) for i in m.get('incidents', []))
+          changed = key(p) != key(c) or bool(c.get('resolved_now')) or p.get('summary') != c.get('summary')
+          try:
+            prev_at = datetime.datetime.strptime(p.get('checked_at_utc', ''), '%Y-%m-%dT%H:%M:%SZ')
+            heartbeat = (datetime.datetime.utcnow() - prev_at).total_seconds() > 6 * 3600
+          except Exception:
+            heartbeat = True
+          print('changed' if changed else ('heartbeat' if heartbeat else 'same'))
+          open('/tmp/decision', 'w').write('commit' if (changed or heartbeat) else 'skip')
+          PY
+          if [ "$(cat /tmp/decision)" = "skip" ]; then git checkout -- ops/monitor.json ops/incidents_log.json 2>/dev/null || true; echo "변화 없음 — 저장 안 함"; exit 0; fi
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ops/monitor.json ops/incidents_log.json; git diff --cached --quiet && exit 0
+          git commit -m "감시 집계 $(date -u +'%m-%d %H:%M')Z"
+          ok=0; for i in 1 2 3 4; do git pull --rebase --autostash origin main && git push origin HEAD:main && ok=1 && break; sleep $((i*5)); done
+          [ "$ok" = 1 ] || { echo "::warning::감시 집계 올리기(push) 실패 — 다음 시간에 다시"; exit 0; }
