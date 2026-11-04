@@ -30,6 +30,12 @@ jobs:
           # main 에만 남아 있는 옛 파일(예: 검문 전 deals.json)이 섞이지 않도록 data/ 는 기본 가지와 똑같이 맞춘다(거울 복사)
           git rm -r -q data; git checkout origin/$DEF -- data
           for x in review ops; do git ls-tree -d origin/$DEF $x >/dev/null 2>&1 && [ -n "$(git ls-tree origin/$DEF $x)" ] && { git rm -r -q --ignore-unmatch $x; git checkout origin/$DEF -- $x; } || true; done
+          # 2026-11-05 v02(036 P0-5·A안 보호): 기본 가지가 아직 옛 검문 규칙이어도, main 의 검문(tools/gate.py + data_rules.json = A안)을 옮겨온 자료에 다시 돌려
+          #   원문 확인 '완료'가 아닌 파일(병원·혜택 등)은 공개 폴더에서 내리고 review/<구>/_prev_ 에 보존한다. → 자료 반영이 A안을 우회할 수 없음.
+          for d in $(python3 -c "import city;print(' '.join(c['dir'] for k,c in city.CITIES.items() if city.STAGE.get(k)=='운영' and c.get('dir')))" 2>/dev/null || echo "djdonggu djjunggu djseogu yuseong daedeok"); do
+            [ -d data/$d ] || continue; rm -rf _in; mkdir -p _in; find data/$d -maxdepth 1 -name '*.json' ! -name '_*' -exec cp {} _in/ \;
+            python3 tools/gate.py --city $d --in _in --out data/$d --review review/$d || { echo "::error::$d 검문(A안) 실패 — 반영 중단"; exit 1; }
+          done; rm -rf _in
           python3 - <<'PY'
           import json, glob, os, sys
           bad = []
