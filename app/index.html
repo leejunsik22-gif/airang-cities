@@ -440,6 +440,7 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
   .topscape:not([hidden]) + .wrap > h1:first-child{margin-top:184px!important}
 }
 @media (max-width:360px){.home-menu{gap:8px}.home-menu .hm{font-size:13px;min-height:96px}.hero-v3 .t3 h1{font-size:23px!important}}
+@media (max-width:400px){.hero-v3 .ph{object-position:center 12%;height:clamp(300px,86vw,380px)}}   /* 좁은 폰: 얼굴이 상단 바 아래 가리지 않게 사진을 아래로 */
 /* 터치 44px 보강: 소식 카드 글 영역·검색 입력칸 */
 #view [onclick]{min-height:44px}#view .row[onclick]{display:flex;align-items:center}
 #view input[type=search],#view label.search input{min-height:44px}
@@ -891,7 +892,7 @@ function topBarV3() {
 }
 function heroV3(inner) {
   return `<section class="scape hero-v3"><picture><source media="(min-width:700px)" srcset="assets/scenes/home-w.webp"><img class="ph" src="assets/scenes/home-m.webp" width="800" height="615" alt="" fetchpriority="high" decoding="async"></picture>
-    <span class="img-tag" style="top:64px;right:14px">AI 생성 이미지 · 실제 기관·인물 아님</span>${topBarV3()}<div class="t3"><div class="in">${inner}</div></div></section>`;
+    ${topBarV3()}<div class="t3"><div class="in"><div style="text-align:right;margin:-30px 0 2px"><span class="img-tag" style="position:static;display:inline-block">AI 생성 이미지 · 실제 기관·인물 아님</span></div>${inner}</div></div></section>`;
 }
 
 // ---------- 화면: 홈 ----------
