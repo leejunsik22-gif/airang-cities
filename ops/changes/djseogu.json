@@ -1,8 +1,7235 @@
 {
  "_설명": "공식 자료 변경 기록(변경 전후·원문 출처·확인일·영향 지역·검증 결과 verify_result) — change_guard 가 수집 때마다 추가. 앱은 읽지 않음",
  "city": "djseogu",
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "runs": [
+  {
+   "checked_at": "2026-11-06",
+   "file": "academies.json",
+   "label": "학원",
+   "source_org": "나이스 교육정보 개방포털",
+   "source_url": "https://open.neis.go.kr",
+   "guard": "적용",
+   "counts": {
+    "added": 0,
+    "removed": 0,
+    "meaning": 0,
+    "simple": 0,
+    "unchanged": 1505,
+    "approved": 0,
+    "held": 0,
+    "excluded": 0,
+    "flagged": 0,
+    "expired": 0,
+    "reverted": 0,
+    "outage_kept": 0
+   },
+   "file_hold_reason": "",
+   "items": []
+  },
+  {
+   "checked_at": "2026-11-06",
+   "file": "latest.json",
+   "label": "학교·학사일정",
+   "source_org": "나이스 교육정보 개방포털",
+   "source_url": "https://open.neis.go.kr",
+   "guard": "적용",
+   "counts": {
+    "added": 0,
+    "removed": 0,
+    "meaning": 0,
+    "simple": 42,
+    "unchanged": 46,
+    "approved": 0,
+    "held": 0,
+    "excluded": 0,
+    "flagged": 0,
+    "expired": 0,
+    "reverted": 0,
+    "outage_kept": 0
+   },
+   "file_hold_reason": "",
+   "items": [
+    {
+     "list": "schools",
+     "key": "7451067",
+     "name": "대전갑천초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-24",
+        "name": "전교임원선출",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-05",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-06",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-07",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-07",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-09",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-10",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-11",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-12",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-13",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-14",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "학년말방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-24",
+        "name": "전교임원선출",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-05",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-06",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-07",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-07",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-09",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-10",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-11",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-12",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-13",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-14",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "학년말방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "학년말방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451071",
+     "name": "대전구봉초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-05",
+        "name": "장애이해 교육주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-06",
+        "name": "장애이해 교육주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-09",
+        "name": "꿈·끼탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "꿈·끼탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "꿈·끼탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "구봉오색빛깔예술제",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-12",
+        "name": "꿈·끼탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-13",
+        "name": "꿈·끼탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-25",
+        "name": "전교임원선거",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-12",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-13",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-14",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-06",
+        "name": "장애이해 교육주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-09",
+        "name": "꿈·끼탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "꿈·끼탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "꿈·끼탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "구봉오색빛깔예술제",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-12",
+        "name": "꿈·끼탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-13",
+        "name": "꿈·끼탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-25",
+        "name": "전교임원선거",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-12",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-13",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-14",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451072",
+     "name": "대전금동초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-12",
+        "name": "대학수학능력시험",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-12",
+        "name": "대학수학능력시험",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451073",
+     "name": "대전내동초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-12-18",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-12-18",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451075",
+     "name": "대전느리울초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-17",
+        "name": "전교임원선거",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-17",
+        "name": "전교임원선거",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451309",
+     "name": "대전도솔초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451258",
+     "name": "대전도안초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451082",
+     "name": "대전둔천초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451091",
+     "name": "대전삼육초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "타자인증대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-09",
+        "name": "정보활용능력대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "타자인증대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "정보활용능력대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "타자인증대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "정보활용능력대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-12",
+        "name": "타자인증대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-12",
+        "name": "정보활용능력대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-13",
+        "name": "타자인증대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-13",
+        "name": "정보활용능력대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "정기연주회",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-23",
+        "name": "기악발표주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-24",
+        "name": "기악발표주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-25",
+        "name": "기악발표주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-26",
+        "name": "기악발표주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-27",
+        "name": "기악발표주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "타자인증대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-09",
+        "name": "정보활용능력대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "타자인증대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "정보활용능력대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "타자인증대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "정보활용능력대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-12",
+        "name": "타자인증대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-12",
+        "name": "정보활용능력대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-13",
+        "name": "타자인증대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-13",
+        "name": "정보활용능력대회주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "정기연주회",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-23",
+        "name": "기악발표주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-24",
+        "name": "기악발표주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-25",
+        "name": "기악발표주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-26",
+        "name": "기악발표주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-27",
+        "name": "기악발표주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451095",
+     "name": "대전샘머리초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-30",
+        "name": "꿈끼 탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-01",
+        "name": "꿈끼 탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-02",
+        "name": "꿈끼 탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-03",
+        "name": "꿈끼 탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-04",
+        "name": "꿈끼 탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "26학년도 전교임원선거",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-23",
+        "name": "푸른솔 축제",
+        "holiday": false
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-30",
+        "name": "꿈끼 탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-01",
+        "name": "꿈끼 탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-02",
+        "name": "꿈끼 탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-03",
+        "name": "꿈끼 탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-04",
+        "name": "꿈끼 탐색주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "26학년도 전교임원선거",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-23",
+        "name": "푸른솔 축제",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-05",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-05",
+        "name": "졸업식",
+        "holiday": false
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451098",
+     "name": "대전선암초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451327",
+     "name": "대전선유초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-12-31",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-12-31",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451103",
+     "name": "대전수미초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451105",
+     "name": "대전신계초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451108",
+     "name": "대전원앙초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대입수능일",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대입수능일",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451125",
+     "name": "한밭초등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-12-31",
+        "name": "졸업식(6학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-12-31",
+        "name": "졸업식(6학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451010",
+     "name": "갈마중학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-16",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-17",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "현장체험학습",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "갈마도솔제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-16",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-17",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "현장체험학습",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "갈마도솔제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451013",
+     "name": "대전갑천중학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "진로체험학습",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "진로체험학습",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451014",
+     "name": "대전관저중학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "기말고사 1,2",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-16",
+        "name": "기말고사 1,2",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-17",
+        "name": "기말고사 1,2",
+        "holiday": false
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "기말고사 1,2",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-16",
+        "name": "기말고사 1,2",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-17",
+        "name": "기말고사 1,2",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-05",
+        "name": "관저누리마루축제1,2,3",
+        "holiday": false
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451017",
+     "name": "대전구봉중학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "2학기 기말고사(3학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "2학기 기말고사(3학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "2학기 기말고사(3학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-30",
+        "name": "2학기 기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-01",
+        "name": "2학기 기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "학교축제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "2학기 기말고사(3학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "2학기 기말고사(3학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "2학기 기말고사(3학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-30",
+        "name": "2학기 기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-01",
+        "name": "2학기 기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "학교축제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451018",
+     "name": "대전남선중학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-12-11",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-12",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-13",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-14",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-12-11",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-12",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-13",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-14",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451019",
+     "name": "대전내동중학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-23",
+        "name": "학생회 회장,부회장 선출",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "2학기 기말고사",
+        "holiday": false
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-23",
+        "name": "학생회 회장,부회장 선출",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-05",
+        "name": "안골축제",
+        "holiday": false
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451265",
+     "name": "대전도안중학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-16",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-17",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-18",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-16",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-29",
+        "name": "축제",
+        "holiday": false
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-16",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-17",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-18",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-16",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-29",
+        "name": "축제",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-05",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-05",
+        "name": "종업식",
+        "holiday": false
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451034",
+     "name": "대전봉우중학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-10",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-12",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-04",
+        "name": "봉우제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-12",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-13",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-14",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-10",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-12",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-04",
+        "name": "봉우제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-12",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-13",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-14",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451036",
+     "name": "대전삼천중학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "1,2학년 중간고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "1,2학년 중간고사",
+        "holiday": false
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "1,2학년 중간고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "3학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "1,2학년 중간고사",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-05",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451039",
+     "name": "대전신계중학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7451046",
+     "name": "대전정림중학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-12-10",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-11",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-12",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-13",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-14",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울휴가",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-12-10",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-11",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-12",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-13",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-14",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울휴가",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울휴가",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430033",
+     "name": "대전관저고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "수능시험일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-07",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "문화예술제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "수능시험일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-07",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "문화예술제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430237",
+     "name": "대전괴정고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-09",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학교축제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-09",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학교축제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430150",
+     "name": "대전구봉고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대입수능",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-07",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학교축제(예술제)",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울휴가식",
+        "holiday": false
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대입수능",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-07",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학교축제(예술제)",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울휴가식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울휴가일",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430048",
+     "name": "대전대신고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "수능모의고사",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-11",
+        "name": "개교기념일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "재량휴무일",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "수능모의고사",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-11",
+        "name": "개교기념일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "재량휴무일",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430034",
+     "name": "대전둔산여자고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-10",
+        "name": "1.2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "1.2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "1.2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "1.2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "솔뫼축제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-10",
+        "name": "1.2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "1.2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "1.2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "1.2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "솔뫼축제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430142",
+     "name": "대전둔원고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-12",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-13",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "수능시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-04",
+        "name": "한마음예술제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-09",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-11",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-12",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-13",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "수능시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-04",
+        "name": "한마음예술제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "졸업식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-16",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-17",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-18",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-19",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-20",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430035",
+     "name": "대전만년고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-18",
+        "name": "수능예비소집",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-07",
+        "name": "문화체험의 날",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-07",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "동아리예술제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "동계방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "동계방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "동계방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "동계방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-18",
+        "name": "수능예비소집",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-07",
+        "name": "문화체험의 날",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-07",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "동아리예술제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "동계방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "동계방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "동계방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "동계방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "동계방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430253",
+     "name": "대전복수고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력평가일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력평가일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430037",
+     "name": "대전외국어고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-01",
+        "name": "기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-02",
+        "name": "기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-03",
+        "name": "기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-04",
+        "name": "기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "1, 2학년 학부모 대상 진로진학설명회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-21",
+        "name": "English Majors’ Week",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "English Majors’ Week",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "신입생입학전형일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "1, 2학년 학생 대상 진로진학설명회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울 방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울 방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울 방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울 방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울 방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-01",
+        "name": "기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-02",
+        "name": "기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-03",
+        "name": "기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-04",
+        "name": "기말고사(1, 2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "1, 2학년 학부모 대상 진로진학설명회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-21",
+        "name": "English Majors’ Week",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "English Majors’ Week",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "신입생입학전형일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "1, 2학년 학생 대상 진로진학설명회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울 방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울 방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울 방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울 방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울 방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울 방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "3학년 등교",
+        "holiday": false
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430244",
+     "name": "동방고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-05",
+        "name": "수학여행",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-05",
+        "name": "수련활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-06",
+        "name": "수학여행",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-06",
+        "name": "수련활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "학생채플",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-14",
+        "name": "사랑나누기, 오누이 활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-23",
+        "name": "중학교 학생 및 학부모 대상 학교설명회",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-24",
+        "name": "교직원 채플 및 회의",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-28",
+        "name": "사랑나누기, 오누이 종결식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-01",
+        "name": "학생채플",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-04",
+        "name": "학교체육소위원회회의",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "교직원 채플 및 회의",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "건강체력교실 종료",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "1,2학년 기초학력 수업 종료",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-16",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-17",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "졸업협의회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "진급협의회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "학생회대의원회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "체육과 교과데이",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-23",
+        "name": "2학기 공동교육과정 종료",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-23",
+        "name": "1,2학년 기초학력 향상도 검사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학생성가합창제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-28",
+        "name": "최소 성취수준 미도달 학생 보충지도",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-28",
+        "name": "체육과 교과데이",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-30",
+        "name": "늘푸름제",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "종업식",
+        "holiday": false
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-06",
+        "name": "수학여행",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-06",
+        "name": "수련활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-10",
+        "name": "학생채플",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-14",
+        "name": "사랑나누기, 오누이 활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-23",
+        "name": "중학교 학생 및 학부모 대상 학교설명회",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-24",
+        "name": "교직원 채플 및 회의",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-28",
+        "name": "사랑나누기, 오누이 종결식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-01",
+        "name": "학생채플",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-04",
+        "name": "학교체육소위원회회의",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "교직원 채플 및 회의",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "건강체력교실 종료",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "1,2학년 기초학력 수업 종료",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-15",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-16",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-17",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "2학기 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "졸업협의회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "진급협의회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "학생회대의원회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "체육과 교과데이",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-23",
+        "name": "2학기 공동교육과정 종료",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-23",
+        "name": "1,2학년 기초학력 향상도 검사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학생성가합창제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-28",
+        "name": "최소 성취수준 미도달 학생 보충지도",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-28",
+        "name": "체육과 교과데이",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-30",
+        "name": "늘푸름제",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "종업식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-05",
+        "name": "졸업예배",
+        "holiday": false
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430060",
+     "name": "서대전여자고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-06",
+        "name": "동아리활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-09",
+        "name": "봉사활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-09",
+        "name": "사이버중독예방교육",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-13",
+        "name": "모범학생표창",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-16",
+        "name": "헌혈홍보행사주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-17",
+        "name": "헌혈홍보행사주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-18",
+        "name": "헌혈홍보행사주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "헌혈홍보행사주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-23",
+        "name": "헌혈",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-23",
+        "name": "헌혈홍보행사주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-24",
+        "name": "성폭력예방교육",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-25",
+        "name": "학생회장선거공고",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-27",
+        "name": "동아리활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-04",
+        "name": "현장체험학습(3학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-07",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "봉사활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "노동인권교육",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "동아리활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-21",
+        "name": "송원제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "송원제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-23",
+        "name": "학생회장 후보 합동유세",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-23",
+        "name": "학생주도활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학생회장 선거일",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학생주도활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-28",
+        "name": "학생주도활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-29",
+        "name": "학생주도활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-30",
+        "name": "학생주도활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "봉사활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "1,2학년 겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "3학년 등교일",
+        "holiday": false
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-06",
+        "name": "동아리활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-09",
+        "name": "봉사활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-09",
+        "name": "사이버중독예방교육",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-13",
+        "name": "모범학생표창",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-16",
+        "name": "헌혈홍보행사주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-17",
+        "name": "헌혈홍보행사주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-18",
+        "name": "헌혈홍보행사주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "헌혈홍보행사주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-23",
+        "name": "헌혈",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-23",
+        "name": "헌혈홍보행사주간",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-24",
+        "name": "성폭력예방교육",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-25",
+        "name": "학생회장선거공고",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-27",
+        "name": "동아리활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-04",
+        "name": "현장체험학습(3학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-07",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-10",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "1,2학년 기말고사",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "봉사활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-14",
+        "name": "노동인권교육",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-18",
+        "name": "동아리활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-21",
+        "name": "송원제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "송원제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-23",
+        "name": "학생회장 후보 합동유세",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-23",
+        "name": "학생주도활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학생회장 선거일",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-24",
+        "name": "학생주도활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-28",
+        "name": "학생주도활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-29",
+        "name": "학생주도활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-30",
+        "name": "학생주도활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "봉사활동",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-31",
+        "name": "1,2학년 겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "3학년 등교일",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "3학년 등교일",
+        "holiday": false
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430061",
+     "name": "서일고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학식",
+        "holiday": false
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "3학년 등교일",
+        "holiday": false
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430062",
+     "name": "서일여자고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-18",
+        "name": "수능예비소집일",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-23",
+        "name": "2학기 기말고사(1,2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-24",
+        "name": "2학기 기말고사(1,2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-25",
+        "name": "2학기 기말고사(1,2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-26",
+        "name": "2학기 기말고사(1,2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-27",
+        "name": "2학기 기말고사(1,2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "동아리 전시회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "동아리 전시회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "구봉제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-18",
+        "name": "수능예비소집일",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-23",
+        "name": "2학기 기말고사(1,2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-24",
+        "name": "2학기 기말고사(1,2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-25",
+        "name": "2학기 기말고사(1,2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-26",
+        "name": "2학기 기말고사(1,2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-11-27",
+        "name": "2학기 기말고사(1,2학년)",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-08",
+        "name": "동아리 전시회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-09",
+        "name": "동아리 전시회",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-11",
+        "name": "구봉제",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-21",
+        "name": "겨울방학식",
+        "holiday": false
+       },
+       {
+        "date": "2026-12-22",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-23",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-24",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430043",
+     "name": "충남고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "재량휴업일",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-25",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-26",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-27",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-28",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-29",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-30",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    },
+    {
+     "list": "schools",
+     "key": "7430045",
+     "name": "한밭고등학교",
+     "kind": "변경",
+     "fields": [
+      "events"
+     ],
+     "before": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "재량휴업",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "after": {
+      "events": [
+       {
+        "date": "2026-11-19",
+        "name": "대학수학능력시험",
+        "holiday": true
+       },
+       {
+        "date": "2026-11-20",
+        "name": "재량휴업",
+        "holiday": true
+       },
+       {
+        "date": "2026-12-31",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-01",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-02",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-03",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-04",
+        "name": "겨울방학",
+        "holiday": true
+       },
+       {
+        "date": "2027-01-05",
+        "name": "겨울방학",
+        "holiday": true
+       }
+      ]
+     },
+     "meaning": false,
+     "status": "적용(단순 갱신)",
+     "file": "latest.json",
+     "city": "djseogu",
+     "checked_at": "2026-11-06",
+     "source_org": "나이스 교육정보 개방포털",
+     "source_url": "https://open.neis.go.kr"
+    }
+   ]
+  },
   {
    "checked_at": "2026-11-05",
    "file": "academies.json",
