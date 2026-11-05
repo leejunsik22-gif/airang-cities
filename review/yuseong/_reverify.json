@@ -1,7 +1,7 @@
 {
  "_설명": "재검증 대기 — 의미가 바뀌거나 사라진 기록(변경 전후·출처·감지일·기한·사유). 앱은 읽지 않음. 원문 대조 뒤 approvals/reverify.json 에 승인(result 승인/기각)을 넣으면 다음 수집부터 반영",
  "city": "yuseong",
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "pending": [],
  "file_hold": {}
 }
