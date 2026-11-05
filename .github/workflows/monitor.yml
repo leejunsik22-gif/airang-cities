@@ -19,6 +19,10 @@ jobs:
       GITHUB_TOKEN: ${{ github.token }}   # 작업 기록 조회(비로그인 60회/시간 한도 회피)
     steps:
       - uses: actions/checkout@v4
+        with: { ref: main }   # 2026-11-05 대표 승인: 감시는 운영 가지 main 을 읽고 ops/ 두 파일만 main 에 기록(기본 가지가 무엇이든)
+      - name: 운영 가지 확인 (main 이 아니면 중단)
+        run: |
+          b=$(git rev-parse --abbrev-ref HEAD); [ "$b" = main ] || { echo "::error::감시는 운영 가지 main 에서만 ($b)"; exit 1; }
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - name: 감시
@@ -47,5 +51,5 @@ jobs:
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ops/monitor.json ops/incidents_log.json; git diff --cached --quiet && exit 0
           git commit -m "감시 집계 $(date -u +'%m-%d %H:%M')Z"
-          ok=0; for i in 1 2 3 4; do git pull --rebase --autostash && git push && ok=1 && break; sleep $((i*5)); done
+          ok=0; for i in 1 2 3 4; do git pull --rebase --autostash origin main && git push origin HEAD:main && ok=1 && break; sleep $((i*5)); done
           [ "$ok" = 1 ] || { echo "::warning::감시 집계 올리기(push) 실패 — 다음 시간에 다시"; exit 0; }

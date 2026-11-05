@@ -24,7 +24,7 @@ def main():
     a = ap.parse_args()
     bad, ok = [], []
     wf = os.path.join(a.cities, ".github", "workflows")
-    for name in ["daily", "weather", "hospitals"]:
+    for name in ["daily", "weather", "hospitals", "monitor"]:
         p = os.path.join(wf, name + ".yml")
         if not os.path.exists(p): bad.append(f"C1 {name}.yml 없음"); continue
         s = read(p)
