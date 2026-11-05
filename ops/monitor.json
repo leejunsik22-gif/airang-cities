@@ -1,7 +1,7 @@
 {
  "_설명": "운영 감시 집계(tools/monitor.py, 매시간). 상태: 장애=지금 고쳐야 함 / 검증 필요=공개 중이거나 보류 중이지만 사람 확인 필요 / 공개 보류=원문 미확인으로 숨김 / 복구 완료=직전 집계에 있던 문제가 사라짐. 앱은 읽지 않음(관리자만)",
- "checked_at": "2026-11-05 03:59",
- "checked_at_utc": "2026-11-04T18:59:16Z",
+ "checked_at": "2026-11-05 10:07",
+ "checked_at_utc": "2026-11-05T01:07:43Z",
  "ok": false,
  "summary": {
   "장애": 1,
@@ -20,7 +20,7 @@
    "detail": "최근 실행 목록에 없음 — 일정이 꺼져 있거나 기본 가지에 워크플로가 없음(예상 간격 192시간)",
    "url": "https://github.com/leejunsik22-gif/airang-cities/actions",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 03:59"
+   "last_seen": "2026-11-05 10:07"
   },
   {
    "id": "hold:daedeok",
@@ -32,7 +32,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 03:59"
+   "last_seen": "2026-11-05 10:07"
   },
   {
    "id": "hold:djdonggu",
@@ -44,7 +44,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 03:59"
+   "last_seen": "2026-11-05 10:07"
   },
   {
    "id": "hold:djjunggu",
@@ -56,7 +56,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 03:59"
+   "last_seen": "2026-11-05 10:07"
   },
   {
    "id": "hold:djseogu",
@@ -68,7 +68,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 03:59"
+   "last_seen": "2026-11-05 10:07"
   },
   {
    "id": "hold:yuseong",
@@ -80,7 +80,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 03:59"
+   "last_seen": "2026-11-05 10:07"
   }
  ],
  "recovered": [],
@@ -208,25 +208,25 @@
   }
  },
  "runs": {
-  "daily": {
-   "last_at": "2026-11-04T15:52:24Z",
+  "weather": {
+   "last_at": "2026-11-04T23:26:49Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/41862189499",
-   "last_success_at": "2026-11-04T15:52:24Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/41933772468",
+   "last_success_at": "2026-11-04T23:26:49Z",
    "overdue": false
   },
-  "weather": {
-   "last_at": "2026-11-04T09:17:11Z",
+  "daily": {
+   "last_at": "2026-11-04T21:16:29Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/41806214223",
-   "last_success_at": "2026-11-04T09:17:11Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/41914538238",
+   "last_success_at": "2026-11-04T21:16:29Z",
    "overdue": false
   },
   "cf-apps": {
-   "last_at": "2026-11-04T18:54:38Z",
+   "last_at": "2026-11-05T00:58:56Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/41891755058",
-   "last_success_at": "2026-11-04T18:54:38Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/41945295714",
+   "last_success_at": "2026-11-05T00:58:56Z",
    "overdue": false
   }
  },
@@ -235,7 +235,7 @@
   "app_branch": "main",
   "lag": false,
   "default_head_at": "2026-11-04T17:22:53Z",
-  "app_head_at": "2026-11-04T17:55:34Z"
+  "app_head_at": "2026-11-04T23:27:22Z"
  },
  "customer_view": {
   "app_branch": "main",
