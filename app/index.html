@@ -463,6 +463,13 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 .sec-head h2{font-size:19px}
 .btn-3d{border-radius:16px!important}
 @media (max-width:360px){.hero-v3 .t3 h1{font-size:26px!important}.doodle-leaf{display:none}}
+/* 2026-11-05 오픈 전 화면 오류 보완(디자인·사진·기능 변경 없음)
+   ① 상단 로고·이름: 사진(머리카락·노을) 위 대비 부족 → 반투명 흰 받침(오른쪽 버튼과 같은 재질)
+   ② PC·태블릿: 떠 있는 하단 메뉴 좌우로 콘텐츠가 비쳐 겹쳐 보임 → 화면 폭 전체 바닥 받침(메뉴 뒤에만) */
+.brand3{display:flex;align-items:center;gap:8px;min-width:0;flex:0 1 auto;margin-right:auto;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(234,223,210,.9);border-radius:18px;padding:3px 12px 3px 5px;box-shadow:0 2px 10px -4px rgba(120,80,40,.25)}
+.hero-v3 .top3 .brand3 .brand-t{text-shadow:none}
+@media (max-width:374px){.brand3{padding:3px 9px 3px 4px;gap:6px}.brand3 .logo3{width:38px;height:34px}}
+@media (min-width:700px){body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:calc(104px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(251,246,239,0) 0,rgba(251,246,239,.94) 26px,#FBF6EF 44px);z-index:9;pointer-events:none}}
 </style>
 <script data-goatcounter="https://{{key}}-edu-app.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}' async src="https://gc.zgo.at/count.js"></script>
 </head>
@@ -909,8 +916,8 @@ const HEART_DOODLE = `<svg class="doodle-heart" viewBox="0 0 64 56" width="52" h
 const LEAF_DOODLE = `<svg class="doodle-leaf" viewBox="0 0 90 90" width="86" height="86" fill="none" aria-hidden="true"><path d="M62 10 C44 14 36 30 40 50 C58 46 68 30 62 10 Z" fill="#F3D9A6" opacity=".85"/><path d="M84 36 C68 34 54 46 52 64 C70 66 84 54 84 36 Z" fill="#F0C98A" opacity=".8"/><path d="M40 50 C44 64 52 76 66 86" stroke="#E2B06A" stroke-width="2.2" stroke-linecap="round" opacity=".8"/></svg>`;
 function topBarV3() {
   return `<div class="top3">
-      <img class="logo3" src="assets/brand/logo-symbol.png" width="44" height="39" alt="아이랑 로고" decoding="async">
-      <div style="min-width:0;flex:1;line-height:1.1"><div class="brand-t brand-round" style="white-space:nowrap">아이랑 <span style="color:var(--orange-ink)">{{name}}</span></div><svg class="brand-under" viewBox="0 0 120 10" width="110" height="9" aria-hidden="true"><path d="M2 7 C30 1 60 1 118 6" stroke="#F3B48A" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg></div>
+      <div class="brand3"><img class="logo3" src="assets/brand/logo-symbol.png" width="44" height="39" alt="아이랑 로고" decoding="async">
+      <div style="min-width:0;line-height:1.1"><div class="brand-t brand-round" style="white-space:nowrap">아이랑 <span style="color:var(--orange-ink)">{{name}}</span></div><svg class="brand-under" viewBox="0 0 120 10" width="110" height="9" aria-hidden="true"><path d="M2 7 C30 1 60 1 118 6" stroke="#F3B48A" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg></div></div>
       <button class="chip glass" aria-label="지인에게 알려주기" title="지인에게 알려주기" style="flex:0 0 auto;width:44px;height:44px;padding:0;justify-content:center;color:var(--navy)" onclick="shareApp()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
       <button class="chip glass topbar-region" style="flex:0 0 auto;font-size:12px;padding:0 12px;height:44px;color:var(--navy)" onclick="go('region')">${icon.pin} ${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()} ▾</button></div>`;
 }
