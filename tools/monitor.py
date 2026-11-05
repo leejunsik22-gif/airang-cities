@@ -150,8 +150,18 @@ def main():
                 r.update(last_at=w["created_at"], last_conclusion=w.get("conclusion") or w.get("status"), last_url=w.get("html_url", ""))
             if w.get("conclusion") == "success" and w["created_at"] > r["last_success_at"]:
                 r["last_success_at"] = w["created_at"]
+    # 2026-11-05(피트 후속 1): 실행 기록이 없어도 워크플로가 등록돼 있고 일정이 있으면 '첫 예약 실행 대기'(검증 필요)로만 적는다 — 장애 확정 금지
+    registered = set()
+    try:
+        _st, _wf = F.json(f"{API}/repos/{CITIES_REPO}/actions/workflows?per_page=100")
+        registered = {os.path.basename(w.get("path", "")).replace(".yml", "") for w in (_wf or {}).get("workflows", []) if w.get("state") == "active"}
+    except Exception:
+        pass
     for name, cad in CADENCE.items():
         r = runs.get(name)
+        if not r and name in registered:
+            add("run_pending", "검증 필요", "P3", f"'{name}' 첫 예약 실행 대기", f"워크플로는 등록·활성 상태이나 아직 실행 이력이 없음 — 예정 간격 {cad}시간 안에 첫 실행 확인(병원은 매주 월 04:50 KST)")
+            continue
         if not r:
             add("run_missing", "장애", "P3", f"'{name}' 자동 작업 실행 기록 없음", f"최근 실행 목록에 없음 — 일정이 꺼져 있거나 기본 가지에 워크플로가 없음(예상 간격 {cad}시간)", url=f"https://github.com/{WF_REPO[name]}/actions")
             continue
