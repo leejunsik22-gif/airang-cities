@@ -915,7 +915,7 @@ function topBarV3() {
       <button class="chip glass topbar-region" style="flex:0 0 auto;font-size:12px;padding:0 12px;height:44px;color:var(--navy)" onclick="go('region')">${icon.pin} ${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()} ▾</button></div>`;
 }
 function heroV3(inner) {
-  return `<section class="scape hero-v3"><picture><source media="(min-width:700px)" srcset="assets/scenes/home-w.webp"><img class="ph" src="assets/scenes/home-m.webp" srcset="assets/scenes/home-m.webp 800w, assets/scenes/home-m2.webp 1400w" sizes="100vw" width="800" height="615" alt="" fetchpriority="high" decoding="async"></picture>
+  return `<section class="scape hero-v3"><picture><source media="(min-width:700px)" srcset="assets/scenes/home-w.webp 1600w, assets/scenes/home-w2.webp 2400w" sizes="100vw"><img class="ph" src="assets/scenes/home-m.webp" srcset="assets/scenes/home-m.webp 800w, assets/scenes/home-m2.webp 1400w" sizes="100vw" width="800" height="615" alt="" fetchpriority="high" decoding="async"></picture>
     ${topBarV3()}<div class="t3"><div class="in"><div style="text-align:right;margin:-16px 0 4px"><span class="img-tag" style="position:static;display:inline-block">AI 생성 이미지 · 실제 기관·인물 아님</span></div>${inner}</div></div></section>`;
 }
 
@@ -997,7 +997,7 @@ function homeSaved() {   // 026 저장한 것(즐겨찾기) — 휴대폰 안에
 }
 function homeWeekend() {
   const st = gated("events");
-  if (st) return `<section class="section"><button class="banner3" onclick="go('events')" aria-label="우리 동네 추천 행사 — 공식 자료 확인 뒤 열어요, 준비 중"><picture><source media="(min-width:700px)" srcset="assets/scenes/event-w.webp"><img src="assets/scenes/event-m.webp" width="800" height="615" alt="" loading="lazy" decoding="async"></picture><div class="bt"><b>우리 동네<br>추천 행사 모아보기</b><span>공식 자료 확인 뒤 열어요 · 준비 중</span></div><span class="ar" aria-hidden="true">→</span><span class="img-tag">AI 생성 이미지</span></button></section>`;   // v3: 사진 띠(어두운 덮개 위 흰 글자)
+  if (st) return `<section class="section"><button class="banner3" onclick="go('events')" aria-label="우리 동네 추천 행사 — 공식 자료 확인 뒤 열어요, 준비 중"><picture><source media="(min-width:700px)" srcset="assets/scenes/event-w.webp 1600w, assets/scenes/event-w2.webp 2400w" sizes="100vw"><img src="assets/scenes/event-m.webp" srcset="assets/scenes/event-m.webp 800w, assets/scenes/event-m2.webp 1400w" sizes="100vw" width="800" height="615" alt="" loading="lazy" decoding="async"></picture><div class="bt"><b>우리 동네<br>추천 행사 모아보기</b><span>공식 자료 확인 뒤 열어요 · 준비 중</span></div><span class="ar" aria-hidden="true">→</span><span class="img-tag">AI 생성 이미지</span></button></section>`;   // v3: 사진 띠(어두운 덮개 위 흰 글자)
   return "";   // 행사 자료가 열리면 homeEvents()가 주말 행사를 보여 준다
 }
 const _norm = s => String(s || "").toLowerCase().replace(/\s+/g, "");
@@ -3063,7 +3063,7 @@ function render() {
       const im = ts.querySelector("img"), sc = sceneSrc(r);   // v3: 메뉴별 장면 사진(AI 생성) — 없는 메뉴는 기존 도시 그림
       if (im && im.dataset.scene !== (sc || "city")) { im.dataset.scene = sc || "city";
         const srcW = document.getElementById("topscape-w");   // PC(700px 이상)는 가로형(-w), 휴대폰은 4:3(-m 800 / -m2 1400 — 고해상도 화면용)
-        if (sc) { im.srcset = `${sc}-m.webp 800w, ${sc}-m2.webp 1400w`; im.sizes = "100vw"; im.src = `${sc}-m.webp`; if (srcW) srcW.srcset = `${sc}-w.webp`; }
+        if (sc) { im.srcset = `${sc}-m.webp 800w, ${sc}-m2.webp 1400w`; im.sizes = "100vw"; im.src = `${sc}-m.webp`; if (srcW) { srcW.srcset = `${sc}-w.webp 1600w, ${sc}-w2.webp 2400w`; srcW.sizes = "100vw"; } }
         else { im.srcset = "assets/hero-{{key}}-800.webp 800w, assets/hero-{{key}}.webp 1200w"; im.sizes = "100vw"; im.src = "assets/hero-{{key}}-800.webp"; if (srcW) srcW.srcset = "assets/hero-{{key}}.webp"; } } } }
   trackView(r);
   window.scrollTo(0, 0);
