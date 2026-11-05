@@ -1,4 +1,15 @@
 {
  "_설명": "장애·검증 필요가 사라진 시각을 감시가 자동 기록(복구 완료). 사람이 적는 복구 이력은 ops/recovery_log.json",
- "items": []
+ "items": [
+  {
+   "id": "run_missing:-",
+   "kind": "run_missing",
+   "state": "장애",
+   "city": "",
+   "title": "'hospitals' 자동 작업 실행 기록 없음",
+   "since": "2026-11-05 02:41",
+   "resolved_at": "2026-11-05 12:58",
+   "how": "자동(감시에서 사라짐)"
+  }
+ ]
 }
