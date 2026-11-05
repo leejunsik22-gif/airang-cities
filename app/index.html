@@ -16,7 +16,7 @@
 <link rel="icon" href="icon-192.png?v=60">
 <link rel="apple-touch-icon" href="icon-192.png?v=60">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&family=Jua&display=swap">
 <style>
 :root{
   --ink:#141A2E;--muted:#5C6478;--line:#EEF0F6;--ground:#EEF1F8;
@@ -440,10 +440,29 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
   .topscape:not([hidden]) + .wrap > h1:first-child{margin-top:184px!important}
 }
 @media (max-width:360px){.home-menu{gap:8px}.home-menu .hm{font-size:13px;min-height:96px}.hero-v3 .t3 h1{font-size:23px!important}}
-@media (max-width:400px){.hero-v3 .ph{object-position:center 12%;height:clamp(300px,86vw,380px)}}   /* 좁은 폰: 얼굴이 상단 바 아래 가리지 않게 사진을 아래로 */
+@media (max-width:400px){.hero-v3 .ph{object-position:center 6%;height:clamp(300px,92vw,400px)}}   /* 좁은 폰: 얼굴이 상단 바 아래 가리지 않게 사진을 아래로 */
 /* 터치 44px 보강: 소식 카드 글 영역·검색 입력칸 */
 #view [onclick]{min-height:44px}#view .row[onclick]{display:flex;align-items:center}
 #view input[type=search],#view label.search input{min-height:44px}
+/* 2026-11-05 대표 확정 홈 디자인(둥근 글씨·주황 심볼·따뜻한 장식) — 기능 변경 없음 */
+.brand-round,.hero-v3 .t3 h1,.sec-head h2,.home-menu .hm span{font-family:'Jua','Noto Sans KR',sans-serif;font-weight:400;letter-spacing:0}
+.brand-round{font-size:22px;color:var(--navy);line-height:1}
+.brand-under{width:64px;height:3px;border-radius:2px;margin:5px 0 0 2px;background:linear-gradient(90deg,#F08A3C,#F6C28B)}
+.logo3{display:inline-flex;width:40px;height:40px;flex:0 0 auto;filter:drop-shadow(0 2px 4px rgba(184,100,30,.25))}
+.hero-v3 .t3 .eyebrow3{background:var(--peach);color:var(--orange-ink);padding:5px 12px;border-radius:999px;font-size:12.5px}
+.hero-v3 .t3{position:absolute}.hero-v3 .t3 .in{position:relative}
+.hero-v3 .t3 h1{font-size:30px!important;line-height:1.2;letter-spacing:-.5px}
+.doodle-heart{position:absolute;left:min(62%,250px);top:46px;pointer-events:none}
+.doodle-leaf{position:absolute;right:-6px;top:30px;pointer-events:none}
+.kidadd .kid-ic{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:16px;background:var(--peach);flex:0 0 auto}
+.kidadd .plus{background:linear-gradient(180deg,#F39A4D,#E07320)!important;box-shadow:0 3px 0 #B8641E,0 8px 16px -6px rgba(224,115,32,.5)!important;width:44px;height:44px;border-radius:22px}
+.kidadd b{font-family:'Jua','Noto Sans KR',sans-serif;font-weight:400;font-size:19px}
+.home-menu .hm{border-radius:22px}.home-menu .hm span{font-size:15px}
+.home-menu .hm .bi{color:#C9803A}.home-menu .hm:nth-child(3) .bi{color:#D9822B}
+.q-chip,.search-v2,.banner3,.lift{border-radius:22px}
+.sec-head h2{font-size:19px}
+.btn-3d{border-radius:16px!important}
+@media (max-width:360px){.hero-v3 .t3 h1{font-size:26px!important}.doodle-leaf{display:none}}
 </style>
 <script data-goatcounter="https://{{key}}-edu-app.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}' async src="https://gc.zgo.at/count.js"></script>
 </head>
@@ -883,16 +902,21 @@ function footer() {
 // 장면 사진(app/assets/scenes): 전부 AI 생성 · 실제 기관·인물 아님 · 화면에 표기. 메뉴별 장면 — 없는 메뉴는 기존 도시 그림
 const SCENE = { schools: "school", school: "school", acas: "academy", aca: "academy", hosp: "hospital", bene: "benefit", events: "event", library: "library", books: "library", kinders: "kinder", kinder: "kinder", my: "entry", saved: "entry", find: "entry", region: "entry", admin: "admin" };
 function sceneSrc(route) { const s = SCENE[(route || "").split("/")[0]]; return s ? `assets/scenes/${s}` : ""; }
+// 2026-11-05 대표 확정 홈 디자인: 주황 엄마·아이 심볼(자체 SVG, 글씨 없음) + 둥근 글씨체(Jua, OFL)
+const LOGO3 = `<svg viewBox="0 0 48 48" width="40" height="40" fill="none" aria-hidden="true"><path d="M8 20 C8 11 15 6 22 9 C26 11 28 15 28 18 C28 15 31 11 35 10 C40 9 44 13 44 18 C44 28 32 36 26 40 C20 36 8 30 8 20 Z" fill="#F08A3C"/><circle cx="19" cy="19" r="6.2" fill="#FBE6D2"/><path d="M12.8 18.6 C13 14.8 15.6 12.6 19 12.6 C22.4 12.6 25 14.8 25.2 18.6 C22.8 18.2 21 17 20 15.4 C18.4 17.2 15.8 18.4 12.8 18.6 Z" fill="#5A3B2E"/><circle cx="31" cy="22" r="5" fill="#FBE6D2"/><path d="M26 21.6 C26.2 18.6 28.2 16.8 31 16.8 C33.8 16.8 35.8 18.6 36 21.6 C34 21.3 32.6 20.3 31.8 19 C30.4 20.4 28.4 21.4 26 21.6 Z" fill="#5A3B2E"/><path d="M16.8 20.8 c.8 .9 2 1.2 3 .4 M28.8 23.8 c.6 .8 1.6 1 2.4 .4" stroke="#5A3B2E" stroke-width="1.1" stroke-linecap="round"/><path d="M36 6 l2 3 M40 4 l.6 3.4 M32.5 7.5 l2.6 2.4" stroke="#F08A3C" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+const KID_ICON = `<svg viewBox="0 0 48 48" width="34" height="34" fill="none" aria-hidden="true"><circle cx="24" cy="26" r="13" fill="#FBE6D2"/><path d="M10.6 25 C11 17 16.4 12.6 24 12.6 C31.6 12.6 37 17 37.4 25 C32.6 24.6 29 22.4 27 19.2 C23.6 22.8 18 25 10.6 25 Z" fill="#5A3B2E"/><circle cx="19.5" cy="27" r="1.6" fill="#5A3B2E"/><circle cx="28.5" cy="27" r="1.6" fill="#5A3B2E"/><path d="M20.5 32 c1.6 1.8 5.4 1.8 7 0" stroke="#5A3B2E" stroke-width="1.6" stroke-linecap="round"/><circle cx="15.5" cy="31" r="2" fill="#F7B9A3" opacity=".8"/><circle cx="32.5" cy="31" r="2" fill="#F7B9A3" opacity=".8"/></svg>`;
+const HEART_DOODLE = `<svg class="doodle-heart" viewBox="0 0 64 56" width="52" height="46" fill="none" aria-hidden="true"><path d="M32 46 C20 36 10 30 10 20 C10 13 15 9 20 9 C25 9 29 12 32 16 C35 12 39 9 44 9 C49 9 54 13 54 20 C54 30 44 36 32 46 Z" stroke="#F08A3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 50 c8 2 14 -2 20 -8" stroke="#F08A3C" stroke-width="2.4" stroke-linecap="round"/><path d="M44 4 l2 3 M50 2 l.4 3.6" stroke="#F08A3C" stroke-width="2" stroke-linecap="round"/></svg>`;
+const LEAF_DOODLE = `<svg class="doodle-leaf" viewBox="0 0 90 90" width="86" height="86" fill="none" aria-hidden="true"><path d="M62 10 C44 14 36 30 40 50 C58 46 68 30 62 10 Z" fill="#F3D9A6" opacity=".85"/><path d="M84 36 C68 34 54 46 52 64 C70 66 84 54 84 36 Z" fill="#F0C98A" opacity=".8"/><path d="M40 50 C44 64 52 76 66 86" stroke="#E2B06A" stroke-width="2.2" stroke-linecap="round" opacity=".8"/></svg>`;
 function topBarV3() {
   return `<div class="top3">
-      <img src="icon-192.png?v=60" alt="아이랑 로고" width="34" height="34" style="border-radius:10px;box-shadow:0 2px 8px rgba(120,80,40,.18);flex:0 0 auto">
-      <div style="min-width:0;flex:1;line-height:1.15"><div class="brand-t" style="font-size:18px;font-weight:800;letter-spacing:-.3px;white-space:nowrap;color:var(--navy)">아이랑 <span style="color:var(--orange-ink)">{{name}}</span></div><div style="font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">아이 키우는 집의 동네 정보</div></div>
+      <span class="logo3" aria-hidden="true">${LOGO3}</span>
+      <div style="min-width:0;flex:1;line-height:1.1"><div class="brand-t brand-round" style="white-space:nowrap">아이랑 <span style="color:var(--orange-ink)">{{name}}</span></div><div class="brand-under" aria-hidden="true"></div></div>
       <button class="chip glass" aria-label="지인에게 알려주기" title="지인에게 알려주기" style="flex:0 0 auto;width:44px;height:44px;padding:0;justify-content:center;color:var(--navy)" onclick="shareApp()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
       <button class="chip glass topbar-region" style="flex:0 0 auto;font-size:12px;padding:0 12px;height:44px;color:var(--navy)" onclick="go('region')">${icon.pin} ${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()} ▾</button></div>`;
 }
 function heroV3(inner) {
   return `<section class="scape hero-v3"><picture><source media="(min-width:700px)" srcset="assets/scenes/home-w.webp"><img class="ph" src="assets/scenes/home-m.webp" width="800" height="615" alt="" fetchpriority="high" decoding="async"></picture>
-    ${topBarV3()}<div class="t3"><div class="in"><div style="text-align:right;margin:-30px 0 2px"><span class="img-tag" style="position:static;display:inline-block">AI 생성 이미지 · 실제 기관·인물 아님</span></div>${inner}</div></div></section>`;
+    ${topBarV3()}<div class="t3"><div class="in"><div style="text-align:right;margin:-16px 0 4px"><span class="img-tag" style="position:static;display:inline-block">AI 생성 이미지 · 실제 기관·인물 아님</span></div>${inner}</div></div></section>`;
 }
 
 // ---------- 화면: 홈 ----------
@@ -931,8 +955,8 @@ function viewHome() {
       <button class="btn btn-soft" style="width:100%;height:42px;margin-top:10px;font-size:13px;color:var(--indigo)" onclick="go('myev/new')">+ 내 일정 추가 (준비물·병원·생일 등)</button>
       ${evs.length > 3 ? `<button onclick="homeAllEv=!homeAllEv;render()" style="width:100%;border:0;background:none;padding:12px 0 4px;font:inherit;font-size:13px;font-weight:700;color:var(--indigo);cursor:pointer">${homeAllEv ? "접기 ▲" : `일정 더보기 (${Math.min(evs.length, 8) - 3}개 더) ▼`}</button>` : ""}</div></section>`;
   } else {
-    hero = heroV3(`<div class="eyebrow3">${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()}</div><h1>아이와 가족이\n더 행복한 {{name}}</h1><p>학교·학원·병원·혜택까지, 우리 동네의 믿을 수 있는 정보를 한곳에</p>`)
-      + `<div class="lift" style="margin-top:12px;padding:4px 14px"><button class="kidadd" onclick="go('kid/new')">${e3d("🧒", 40)}<span style="min-width:0"><b>우리 아이 추가</b><small>형제자매가 여러 명이어도 한 번에 볼 수 있어요</small></span><span class="plus" aria-hidden="true">+</span></button></div>`;
+    hero = heroV3(`<div class="eyebrow3">${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()}</div><h1>아이와 가족이<br><span style="color:var(--orange-ink)">더 행복한</span> {{name}}</h1>${HEART_DOODLE}${LEAF_DOODLE}<p>학교·학원·병원·혜택까지, 우리 동네의 믿을 수 있는 정보를 한곳에</p>`)
+      + `<div class="lift" style="margin-top:12px;padding:4px 14px"><button class="kidadd" onclick="go('kid/new')"><span class="kid-ic">${KID_ICON}</span><span style="min-width:0"><b>우리 아이 추가</b><small>형제자매가 여러 명이어도 한 번에 볼 수 있어요</small></span><span class="plus" aria-hidden="true">+</span></button></div>`;
   }
 
   const install = "";
