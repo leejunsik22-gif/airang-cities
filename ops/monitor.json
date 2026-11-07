@@ -1,26 +1,26 @@
 {
  "_설명": "운영 감시 집계(tools/monitor.py, 매시간). 상태: 장애=지금 고쳐야 함 / 검증 필요=공개 중이거나 보류 중이지만 사람 확인 필요 / 공개 보류=원문 미확인으로 숨김 / 복구 완료=직전 집계에 있던 문제가 사라짐. 앱은 읽지 않음(관리자만)",
- "checked_at": "2026-11-05 10:07",
- "checked_at_utc": "2026-11-05T01:07:43Z",
- "ok": false,
+ "checked_at": "2026-11-07 04:55",
+ "checked_at_utc": "2026-11-06T19:55:03Z",
+ "ok": true,
  "summary": {
-  "장애": 1,
-  "검증 필요": 0,
+  "장애": 0,
+  "검증 필요": 1,
   "공개 보류": 5,
-  "복구 완료(7일)": 0
+  "복구 완료(7일)": 1
  },
  "incidents": [
   {
-   "id": "run_missing:-",
-   "kind": "run_missing",
-   "state": "장애",
+   "id": "run_pending:-",
+   "kind": "run_pending",
+   "state": "검증 필요",
    "severity": "P3",
    "city": "",
-   "title": "'hospitals' 자동 작업 실행 기록 없음",
-   "detail": "최근 실행 목록에 없음 — 일정이 꺼져 있거나 기본 가지에 워크플로가 없음(예상 간격 192시간)",
-   "url": "https://github.com/leejunsik22-gif/airang-cities/actions",
-   "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 10:07"
+   "title": "'hospitals' 첫 예약 실행 대기",
+   "detail": "워크플로는 등록·활성 상태이나 아직 실행 이력이 없음 — 예정 간격 192시간 안에 첫 실행 확인(병원은 매주 월 04:50 KST)",
+   "url": "",
+   "since": "2026-11-05 12:58",
+   "last_seen": "2026-11-07 04:55"
   },
   {
    "id": "hold:daedeok",
@@ -32,7 +32,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 10:07"
+   "last_seen": "2026-11-07 04:55"
   },
   {
    "id": "hold:djdonggu",
@@ -44,7 +44,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 10:07"
+   "last_seen": "2026-11-07 04:55"
   },
   {
    "id": "hold:djjunggu",
@@ -56,7 +56,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 10:07"
+   "last_seen": "2026-11-07 04:55"
   },
   {
    "id": "hold:djseogu",
@@ -68,7 +68,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 10:07"
+   "last_seen": "2026-11-07 04:55"
   },
   {
    "id": "hold:yuseong",
@@ -80,17 +80,28 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-05 10:07"
+   "last_seen": "2026-11-07 04:55"
   }
  ],
- "recovered": [],
+ "recovered": [
+  {
+   "id": "run_missing:-",
+   "kind": "run_missing",
+   "state": "장애",
+   "city": "",
+   "title": "'hospitals' 자동 작업 실행 기록 없음",
+   "since": "2026-11-05 02:41",
+   "resolved_at": "2026-11-05 12:58",
+   "how": "자동(감시에서 사라짐)"
+  }
+ ],
  "resolved_now": [],
  "cities": {
   "djdonggu": {
    "name": "동구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-05",
+   "status_checked_at": "2026-11-06",
    "published": 2,
    "hold": [
     "급식",
@@ -114,7 +125,7 @@
    "name": "중구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-05",
+   "status_checked_at": "2026-11-06",
    "published": 2,
    "hold": [
     "급식",
@@ -138,7 +149,7 @@
    "name": "서구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-05",
+   "status_checked_at": "2026-11-06",
    "published": 2,
    "hold": [
     "급식",
@@ -162,7 +173,7 @@
    "name": "유성구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-05",
+   "status_checked_at": "2026-11-06",
    "published": 2,
    "hold": [
     "급식",
@@ -186,7 +197,7 @@
    "name": "대덕구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-05",
+   "status_checked_at": "2026-11-06",
    "published": 2,
    "hold": [
     "급식",
@@ -209,24 +220,24 @@
  },
  "runs": {
   "weather": {
-   "last_at": "2026-11-04T23:26:49Z",
+   "last_at": "2026-11-06T09:16:57Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/41933772468",
-   "last_success_at": "2026-11-04T23:26:49Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/42193856010",
+   "last_success_at": "2026-11-06T09:16:57Z",
    "overdue": false
   },
   "daily": {
-   "last_at": "2026-11-04T21:16:29Z",
+   "last_at": "2026-11-05T21:14:45Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/41914538238",
-   "last_success_at": "2026-11-04T21:16:29Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/42110858094",
+   "last_success_at": "2026-11-05T21:14:45Z",
    "overdue": false
   },
   "cf-apps": {
-   "last_at": "2026-11-05T00:58:56Z",
+   "last_at": "2026-11-06T18:50:27Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/41945295714",
-   "last_success_at": "2026-11-05T00:58:56Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/42274321552",
+   "last_success_at": "2026-11-06T18:50:27Z",
    "overdue": false
   }
  },
@@ -235,7 +246,7 @@
   "app_branch": "main",
   "lag": false,
   "default_head_at": "2026-11-04T17:22:53Z",
-  "app_head_at": "2026-11-04T23:27:22Z"
+  "app_head_at": "2026-11-06T13:07:53Z"
  },
  "customer_view": {
   "app_branch": "main",
@@ -251,7 +262,7 @@
   "구 5곳 사이트·검문·재검증"
  ],
  "fetch_errors": [],
- "http_calls": 26,
+ "http_calls": 27,
  "external_api_calls": 0,
  "preapproval_rules": {
   "approved": false,
