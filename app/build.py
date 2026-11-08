@@ -176,7 +176,7 @@ def build_entry(out):
     ph = os.path.join(HERE, "entry", "photos")
     if os.path.isdir(ph):
         for f in os.listdir(ph):
-            if f.endswith(".webp"): shutil.copy(os.path.join(ph, f), os.path.join(d, "img", f))
+            if f.endswith((".webp", ".png")): shutil.copy(os.path.join(ph, f), os.path.join(d, "img", f))
     for k in CFG["cities"]:
         own = os.path.join(HERE, "cities", k)
         if not os.path.isdir(own):   # 후보 도시(미리보기 빌드)는 그림 폴더가 없을 수 있음 → 대표 그림 자리 비움(경고만)

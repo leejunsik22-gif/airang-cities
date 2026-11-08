@@ -346,7 +346,7 @@ function render(near) {
     <a class="lift city ${near === k ? "near" : ""}" style="--c:${c};--ci:${ci || c}" href="${url(k)}" onclick="pick('${k}')">
       ${near === k ? `<span class="badge">가까운 곳</span>` : ""}
       <div class="pic" style="background-image:image-set(url(img/card-${k}-800.webp) 1x,url(img/card-${k}-1600.webp) 2x)"></div>
-      <img class="ic" src="img/ic-${k}.png" alt="">
+      <img class="ic" src="img/tile-${k}.png" alt="">
       <div class="body"><div class="nm">아이랑 <span>${n}</span></div><div class="gu">${gu}</div><div class="bar"></div></div>
     </a>`;
   const n = s => CITIES.filter(x => x[6] === s).length;
@@ -359,7 +359,7 @@ function render(near) {
     : `<div class="grid">${CITIES.filter(x => x[6] === tab).map(card).join("")}</div><p class="ai-note">사진은 AI 생성 이미지예요 · 실제 기관·인물 아님</p>`;   // 2026-11-09: 카드 사진 위에 글씨를 얹지 않고 아래에 따로 표기
   const last = CITIES.find(x => x[0] === store.get("airang.city"));
   document.getElementById("again").innerHTML = last ? `
-    <a class="lift again" style="--c:${last[2]}" href="${url(last[0])}"><img src="img/ic-${last[0]}.png" alt="">
+    <a class="lift again" style="--c:${last[2]}" href="${url(last[0])}"><img src="img/tile-${last[0]}.png" alt="">
       <div class="t"><small>지난번에 본 도시</small><b>아이랑 ${last[1]}</b></div><span class="go">바로 가기 ›</span></a>` : "";
 }
 function locate() {

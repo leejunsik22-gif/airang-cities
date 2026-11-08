@@ -65,18 +65,23 @@
     "daedeok": "대덕"
   },
   "no_illustration": {
-    "_설명": "2026-11-09 피트·대표: 그림체·삽화 금지, 실사풍만. 아래는 삽화 파일 → 고객 화면(입구·앱)에 보이면 디자인 미완료",
+    "_설명": "2026-11-09 피트·대표: 그림체·삽화 금지, 실사풍만. 아래는 삽화 파일 → 고객 화면(입구·앱)에 보이면 디자인 미완료 / 2026-11-09 대표 승인: 구별 삽화 아이콘(ic-<구>)도 입구에서 제외 → 확정 로고 + 구 색 타일(tile-<구>)",
     "files": [
-      "hero-djdonggu-800.webp",
-      "hero-djjunggu-800.webp",
-      "hero-djseogu-800.webp",
-      "hero-yuseong-800.webp",
       "hero-daedeok-800.webp",
+      "hero-daedeok.webp",
+      "hero-djdonggu-800.webp",
       "hero-djdonggu.webp",
+      "hero-djjunggu-800.webp",
       "hero-djjunggu.webp",
+      "hero-djseogu-800.webp",
       "hero-djseogu.webp",
+      "hero-yuseong-800.webp",
       "hero-yuseong.webp",
-      "hero-daedeok.webp"
+      "ic-daedeok.png",
+      "ic-djdonggu.png",
+      "ic-djjunggu.png",
+      "ic-djseogu.png",
+      "ic-yuseong.png"
     ]
   }
 }
