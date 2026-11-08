@@ -2,6 +2,16 @@
  "_설명": "장애·검증 필요가 사라진 시각을 감시가 자동 기록(복구 완료). 사람이 적는 복구 이력은 ops/recovery_log.json",
  "items": [
   {
+   "id": "run_failed:-",
+   "kind": "run_failed",
+   "state": "장애",
+   "city": "",
+   "title": "'weather' 마지막 실행 실패(cancelled)",
+   "since": "2026-11-08 06:41",
+   "resolved_at": "2026-11-08 08:40",
+   "how": "자동(감시에서 사라짐)"
+  },
+  {
    "id": "run_missing:-",
    "kind": "run_missing",
    "state": "장애",
