@@ -476,7 +476,7 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 </head>
 <body>
 <div class="bg"></div>
-<div class="topscape" id="topscape" hidden><div><picture><source id="topscape-w" media="(min-width:700px)" srcset="assets/hero-{{key}}.webp"><img src="assets/hero-{{key}}-800.webp" srcset="assets/hero-{{key}}-800.webp 800w, assets/hero-{{key}}.webp 1200w" sizes="100vw" width="1200" height="500" alt="" decoding="async"></picture><span class="img-tag">AI 생성 이미지 · 실제 기관·인물 아님</span></div></div>
+<div class="topscape" id="topscape" hidden><div><picture><source id="topscape-w" media="(min-width:700px)" srcset="assets/scenes/entry-w.webp 1600w, assets/scenes/entry-w2.webp 2400w"><img src="assets/scenes/entry-m.webp" srcset="assets/scenes/entry-m.webp 800w, assets/scenes/entry-m2.webp 1400w" sizes="100vw" width="1200" height="500" alt="" decoding="async"></picture><span class="img-tag">AI 생성 이미지 · 실제 기관·인물 아님</span></div></div>
 <main class="wrap" id="view"><div class="loading">불러오는 중…</div></main>
 
 <nav class="nav glass" aria-label="주요 메뉴">
@@ -3075,7 +3075,7 @@ function render() {
       if (im && im.dataset.scene !== (sc || "city")) { im.dataset.scene = sc || "city";
         const srcW = document.getElementById("topscape-w");   // PC(700px 이상)는 가로형(-w), 휴대폰은 4:3(-m 800 / -m2 1400 — 고해상도 화면용)
         if (sc) { im.srcset = `${sc}-m.webp 800w, ${sc}-m2.webp 1400w`; im.sizes = "100vw"; im.src = `${sc}-m.webp`; if (srcW) { srcW.srcset = `${sc}-w.webp 1600w, ${sc}-w2.webp 2400w`; srcW.sizes = "100vw"; } }
-        else { im.srcset = "assets/hero-{{key}}-800.webp 800w, assets/hero-{{key}}.webp 1200w"; im.sizes = "100vw"; im.src = "assets/hero-{{key}}-800.webp"; if (srcW) srcW.srcset = "assets/hero-{{key}}.webp"; } } } }
+        else { im.srcset = "assets/scenes/entry-m.webp 800w, assets/scenes/entry-m2.webp 1400w"; im.sizes = "100vw"; im.src = "assets/scenes/entry-m.webp"; if (srcW) srcW.srcset = "assets/scenes/entry-w.webp 1600w, assets/scenes/entry-w2.webp 2400w"; /* 2026-11-09: 장면 없는 화면도 삽화 대신 실사풍(입구 가족) 사진 */ } } } }
   trackView(r);
   window.scrollTo(0, 0);
   autoInstall(r);

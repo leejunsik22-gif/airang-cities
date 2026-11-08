@@ -1,5 +1,5 @@
 # 디자인 차이 점검 — 2026-11-09
-기준 origin/main(274327b) ↔ 검수 가지 HEAD(98b6af1) · 자료는 양쪽 동일(디자인만 비교)
+기준 origin/main(274327b) ↔ 검수 가지 HEAD(aeb60ec) · 자료는 양쪽 동일(디자인만 비교)
 
 ## 디자인 파일 차이
 ```
@@ -16,9 +16,9 @@ app/build.py         | 2 ++
 ## 화면 화소 차이(2배 화질, 차이 기준 밝기 24 초과)
 | 화면 | 폭 | 다른 화소 | 그림 |
 |---|---|---|---|
-| entry | 390 | 1.40% | diff_entry_390.jpg |
+| entry | 390 | 21.58% | diff_entry_390.jpg |
 | yuseong_home | 390 | 0.00% | diff_yuseong_home_390.jpg |
-| entry | 1280 | 0.59% | diff_entry_1280.jpg |
+| entry | 1280 | 12.50% | diff_entry_1280.jpg |
 | yuseong_home | 1280 | 0.00% | diff_yuseong_home_1280.jpg |
 
 ## 대표 확정 원본 ↔ 실제

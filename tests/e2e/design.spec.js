@@ -99,3 +99,34 @@ test("@디자인 입구: 확정 로고·안내 문구·글씨체", async ({ page
   ]);
   await shot(page, "entry");
 });
+
+// 삽화풍 이미지 금지(2026-11-09) — 입구 + 5개 구 앱의 여러 화면에서 실제로 보이는 그림 파일을 모두 모아 검사
+async function usedImages(page) {
+  return page.evaluate(() => {
+    const urls = [...document.images].filter((i) => i.offsetParent).map((i) => i.currentSrc || i.src);
+    document.querySelectorAll("*").forEach((e) => { if (!e.offsetParent && e !== document.body) return; const bg = getComputedStyle(e).backgroundImage; for (const m of bg.matchAll(/url\("?([^")]+)"?\)/g)) urls.push(m[1]); });
+    return [...new Set(urls.map((u) => u.split("/").pop().split("?")[0]))];
+  });
+}
+test("@디자인 삽화풍 이미지 없음(입구 + 5개 구 주요 화면)", async ({ page }) => {
+  test.setTimeout(240_000);   // 화면 51개를 차례로 열어 봄
+  const found = [];
+  await page.goto("/entry/"); await page.waitForLoadState("networkidle");
+  (await usedImages(page)).filter((f) => B.no_illustration.files.includes(f)).forEach((f) => found.push(`입구: ${f}`));
+  for (const key of Object.keys(B.names)) {
+    for (const r of ["home", "my", "saved", "region", "find/" + encodeURIComponent("영어"), "acas", "schools", "hosp", "bene", "kid/new"]) {
+      await page.goto(`/${key}/?r=${encodeURIComponent(r)}#${r}`); await page.waitForLoadState("networkidle");
+      (await usedImages(page)).filter((f) => B.no_illustration.files.includes(f)).forEach((f) => found.push(`${key} #${decodeURIComponent(r)}: ${f}`));
+    }
+  }
+  test.info().annotations.push({ type: found.length ? "불일치" : "일치", description: `삽화풍: ${found.join(" / ") || "없음"}` });
+  expect(found, "고객 화면에 남은 삽화풍 이미지").toEqual([]);
+});
+
+test("@디자인 입구: 카드 사진 AI 생성 표기(사진 밖 별도 줄)", async ({ page }) => {
+  await page.goto("/entry/"); await page.waitForLoadState("networkidle");
+  const t = await page.locator(".ai-note").first().innerText();
+  expect(t, "카드 사진 AI 표기").toContain("AI 생성 이미지");
+  const inside = await page.evaluate(() => { const n = document.querySelector(".ai-note").getBoundingClientRect(); return [...document.querySelectorAll(".city .pic")].some((p) => { const b = p.getBoundingClientRect(); return n.top < b.bottom && n.bottom > b.top && n.left < b.right && n.right > b.left; }); });
+  expect(inside, "표기가 사진 위에 겹침").toBe(false);
+});
