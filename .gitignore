@@ -1,3 +1,6 @@
 __pycache__/
 output/
 out/
+node_modules/
+tests/report/
+tests/results/

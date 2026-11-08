@@ -1,0 +1,12 @@
+{
+  "name": "airang-cities-qa",
+  "private": true,
+  "description": "아이랑 자동 화면 검사(개발용). 운영 배포와 무관 — 앱 자체는 package.json 없이 동작합니다.",
+  "scripts": {
+    "qa": "playwright test",
+    "qa:report": "playwright show-report tests/report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0"
+  }
+}

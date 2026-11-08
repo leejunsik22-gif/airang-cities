@@ -581,6 +581,8 @@ function loadGate() { return dataFetch("_status.json").then(r => r.ok ? r.json()
 function gated(route) { const f = GATE_FILE[(route || "").split("/")[0]]; if (!f || !GATE) return null; const st = GATE[f]; return st && st.published === false ? st : null; }
 function gateNote(route) { const st = gated(route); return st ? ` <span class="pill pill-gray" style="margin-left:4px">준비 중</span>` : ""; }
 function dataFetch(name) {
+  // 2026-11-08 자동검사 발견: 공개 보류(검문 published=false) 자료는 운영에 파일이 없어 매 방문 404 요청 10건이 났음 → 요청하지 않고 '없음'으로 처리(화면 동작은 동일)
+  const held = GATE && GATE[name]; if (held && held.published === false) return Promise.resolve(new Response(null, { status: 404, statusText: "held" }));
   return fetch(RAW + name, { cache: "no-cache" }).then(r => r.ok ? r : Promise.reject(r.status))   // 앱 서버엔 데이터가 없어서 원본에 바로 묻기
     .catch(() => fetch("./data/" + name, { cache: "no-cache" }));
 }
