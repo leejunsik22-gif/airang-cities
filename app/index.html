@@ -285,6 +285,7 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 .search-v2{display:flex;align-items:center;gap:8px;padding:8px 8px 8px 16px;border:1px solid var(--line);background:var(--paper);border-radius:var(--r-card);box-shadow:var(--shadow-lg)}
 .search-v2 input{flex:1;min-width:0;border:0;background:transparent;font-size:16px;min-height:48px;outline:none;color:var(--ink)}
 .search-v2 input::placeholder{color:#6B7285}
+.search-v2 input{text-overflow:ellipsis}   /* 2026-11-08 글자 확대(150%) 때 안내 글자가 중간에서 잘리던 것 → 끝을 … 로 */
 .q-chips{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 2px;scrollbar-width:none}
 .q-chips::-webkit-scrollbar{display:none}
 .q-chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:var(--r-chip);background:var(--ivory-2);color:var(--navy);border:1px solid transparent;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer}
