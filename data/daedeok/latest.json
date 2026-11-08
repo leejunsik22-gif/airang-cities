@@ -1,9 +1,9 @@
 {
  "region": "대덕구",
- "updated_at": "2026-11-08 06:07:45",
+ "updated_at": "2026-11-09 06:07:47",
  "period": {
-  "from": "20261108",
-  "to": "20270107"
+  "from": "20261109",
+  "to": "20270108"
  },
  "school_count": 38,
  "public_holidays": [
@@ -892,6 +892,238 @@
    "date": "2027-01-07",
    "name": "졸업식",
    "holiday": false
+  },
+  {
+   "school": "대전대화중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "방학식",
+   "holiday": false
+  },
+  {
+   "school": "대전대화중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "졸업식",
+   "holiday": false
+  },
+  {
+   "school": "대전동도초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "졸업식",
+   "holiday": false
+  },
+  {
+   "school": "대전동산초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "졸업식",
+   "holiday": false
+  },
+  {
+   "school": "대전매봉중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전매봉초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전목상초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "졸업식",
+   "holiday": false
+  },
+  {
+   "school": "대전법동중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전비래초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "졸업식",
+   "holiday": false
+  },
+  {
+   "school": "대전새여울초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전석봉초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전송촌고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "졸업식(3)",
+   "holiday": false
+  },
+  {
+   "school": "대전송촌고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학(1,2)",
+   "holiday": true
+  },
+  {
+   "school": "대전송촌중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전송촌초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전이문고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전중리초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전중원초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전화정초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "동대전고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "동대전고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "졸업식",
+   "holiday": false
+  },
+  {
+   "school": "새일초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "신탄중앙중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "신탄진고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "신탄진중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학(3학년)",
+   "holiday": true
+  },
+  {
+   "school": "신탄진중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학(1, 2학년)",
+   "holiday": true
+  },
+  {
+   "school": "신탄진초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "장동초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "학년말방학",
+   "holiday": true
+  },
+  {
+   "school": "회덕초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-08",
+   "name": "졸업식",
+   "holiday": false
   }
  ],
  "schools": [
@@ -961,6 +1193,16 @@
      "date": "2026-12-24",
      "name": "재량휴업일",
      "holiday": true
+    },
+    {
+     "date": "2027-01-08",
+     "name": "종업식",
+     "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "졸업식",
+     "holiday": false
     }
    ]
   },
@@ -971,7 +1213,18 @@
    "address": "대전광역시 대덕구 동산초교로63번길 50",
    "gu": "",
    "dong": "오정동",
-   "events": []
+   "events": [
+    {
+     "date": "2027-01-08",
+     "name": "졸업식",
+     "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "종업식",
+     "holiday": false
+    }
+   ]
   },
   {
    "code": "7441064",
@@ -1000,6 +1253,11 @@
      "date": "2027-01-07",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -1010,7 +1268,18 @@
    "address": "대전광역시 대덕구 대덕대로1486번길 117",
    "gu": "",
    "dong": "목상동",
-   "events": []
+   "events": [
+    {
+     "date": "2027-01-08",
+     "name": "졸업식",
+     "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "종업식",
+     "holiday": false
+    }
+   ]
   },
   {
    "code": "7441072",
@@ -1032,6 +1301,16 @@
     {
      "date": "2026-12-24",
      "name": "학예발표회",
+     "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "졸업식",
+     "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "종업식",
      "holiday": false
     }
    ]
@@ -1091,6 +1370,11 @@
     },
     {
      "date": "2027-01-07",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-08",
      "name": "겨울방학",
      "holiday": true
     }
@@ -1153,6 +1437,11 @@
      "date": "2027-01-07",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -1178,6 +1467,11 @@
      "date": "2027-01-07",
      "name": "종업식",
      "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -1212,6 +1506,11 @@
      "date": "2027-01-07",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -1232,6 +1531,11 @@
      "date": "2027-01-07",
      "name": "종업식",
      "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -1255,6 +1559,11 @@
     },
     {
      "date": "2027-01-07",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-08",
      "name": "겨울방학",
      "holiday": true
     }
@@ -1322,6 +1631,11 @@
      "date": "2027-01-07",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -1367,6 +1681,11 @@
      "date": "2027-01-07",
      "name": "종업식",
      "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -1396,6 +1715,11 @@
      "date": "2027-01-07",
      "name": "종업식",
      "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "학년말방학",
+     "holiday": true
     }
    ]
   },
@@ -1406,7 +1730,18 @@
    "address": "대전광역시 대덕구 대전로 1350",
    "gu": "",
    "dong": "읍내동",
-   "events": []
+   "events": [
+    {
+     "date": "2027-01-08",
+     "name": "졸업식",
+     "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "종업식",
+     "holiday": false
+    }
+   ]
   },
   {
    "code": "7441266",
@@ -1615,6 +1950,16 @@
      "date": "2026-12-31",
      "name": "대화축제",
      "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "방학식",
+     "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "졸업식",
+     "holiday": false
     }
    ]
   },
@@ -1678,6 +2023,11 @@
     },
     {
      "date": "2027-01-07",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-08",
      "name": "겨울방학",
      "holiday": true
     }
@@ -1805,6 +2155,11 @@
      "date": "2027-01-07",
      "name": "졸업식(3)",
      "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -1913,6 +2268,11 @@
     },
     {
      "date": "2027-01-07",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-08",
      "name": "겨울방학",
      "holiday": true
     }
@@ -2034,6 +2394,11 @@
      "date": "2027-01-07",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -2092,6 +2457,16 @@
     },
     {
      "date": "2027-01-07",
+     "name": "겨울방학(1, 2학년)",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학(3학년)",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-08",
      "name": "겨울방학(1, 2학년)",
      "holiday": true
     }
@@ -2404,6 +2779,16 @@
      "date": "2027-01-07",
      "name": "겨울방학(1,2)",
      "holiday": true
+    },
+    {
+     "date": "2027-01-08",
+     "name": "졸업식(3)",
+     "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학(1,2)",
+     "holiday": true
     }
    ]
   },
@@ -2504,6 +2889,11 @@
      "date": "2027-01-07",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -2579,6 +2969,16 @@
      "date": "2027-01-07",
      "name": "방학식",
      "holiday": false
+    },
+    {
+     "date": "2027-01-08",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-08",
+     "name": "졸업식",
+     "holiday": false
     }
    ]
   },
@@ -2642,6 +3042,11 @@
     },
     {
      "date": "2027-01-07",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-08",
      "name": "겨울방학",
      "holiday": true
     }
