@@ -20,6 +20,8 @@ module.exports = defineConfig({
     { name: "폰360", use: phone(360) },
     { name: "폰390", use: phone(390) },
     { name: "폰430", use: phone(430) },
+    // PC 는 디자인 검수만(기능 검사는 손가락 터치를 쓰므로 휴대폰 폭에서만)
+    { name: "PC1280", use: { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1, locale: "ko-KR" }, testMatch: /design\.spec\.js/ },
   ],
   webServer: {
     command: `python3 tools/qa/serve.py ${PORT}`,

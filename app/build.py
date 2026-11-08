@@ -170,6 +170,8 @@ def build_entry(out):
     open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(src)
     for f in ("icon-192.png", "icon-512.png"):
         shutil.copy(os.path.join(HERE, "entry", f), d)
+    # 2026-11-08: 입구 상단에도 대표 확정 로고(고객 앱과 같은 파일)를 씀 — 새 그림 아님, 복사만
+    shutil.copy(os.path.join(HERE, "assets", "brand", "logo-symbol.png"), os.path.join(d, "img", "logo-symbol.png"))
     for k in CFG["cities"]:
         own = os.path.join(HERE, "cities", k)
         if not os.path.isdir(own):   # 후보 도시(미리보기 빌드)는 그림 폴더가 없을 수 있음 → 대표 그림 자리 비움(경고만)
