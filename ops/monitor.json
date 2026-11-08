@@ -1,27 +1,15 @@
 {
  "_설명": "운영 감시 집계(tools/monitor.py, 매시간). 상태: 장애=지금 고쳐야 함 / 검증 필요=공개 중이거나 보류 중이지만 사람 확인 필요 / 공개 보류=원문 미확인으로 숨김 / 복구 완료=직전 집계에 있던 문제가 사라짐. 앱은 읽지 않음(관리자만)",
- "checked_at": "2026-11-09 04:48",
- "checked_at_utc": "2026-11-08T19:48:29Z",
+ "checked_at": "2026-11-09 05:42",
+ "checked_at_utc": "2026-11-08T20:42:44Z",
  "ok": true,
  "summary": {
   "장애": 0,
-  "검증 필요": 1,
+  "검증 필요": 0,
   "공개 보류": 5,
-  "복구 완료(7일)": 2
+  "복구 완료(7일)": 3
  },
  "incidents": [
-  {
-   "id": "run_pending:-",
-   "kind": "run_pending",
-   "state": "검증 필요",
-   "severity": "P3",
-   "city": "",
-   "title": "'hospitals' 첫 예약 실행 대기",
-   "detail": "워크플로는 등록·활성 상태이나 아직 실행 이력이 없음 — 예정 간격 192시간 안에 첫 실행 확인(병원은 매주 월 04:50 KST)",
-   "url": "",
-   "since": "2026-11-05 12:58",
-   "last_seen": "2026-11-09 04:48"
-  },
   {
    "id": "hold:daedeok",
    "kind": "hold",
@@ -32,7 +20,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-09 04:48"
+   "last_seen": "2026-11-09 05:42"
   },
   {
    "id": "hold:djdonggu",
@@ -44,7 +32,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-09 04:48"
+   "last_seen": "2026-11-09 05:42"
   },
   {
    "id": "hold:djjunggu",
@@ -56,7 +44,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-09 04:48"
+   "last_seen": "2026-11-09 05:42"
   },
   {
    "id": "hold:djseogu",
@@ -68,7 +56,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-09 04:48"
+   "last_seen": "2026-11-09 05:42"
   },
   {
    "id": "hold:yuseong",
@@ -80,10 +68,20 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-09 04:48"
+   "last_seen": "2026-11-09 05:42"
   }
  ],
  "recovered": [
+  {
+   "id": "run_pending:-",
+   "kind": "run_pending",
+   "state": "검증 필요",
+   "city": "",
+   "title": "'hospitals' 첫 예약 실행 대기",
+   "since": "2026-11-05 12:58",
+   "resolved_at": "2026-11-09 05:42",
+   "how": "자동(감시에서 사라짐)"
+  },
   {
    "id": "run_failed:-",
    "kind": "run_failed",
@@ -105,13 +103,24 @@
    "how": "자동(감시에서 사라짐)"
   }
  ],
- "resolved_now": [],
+ "resolved_now": [
+  {
+   "id": "run_pending:-",
+   "kind": "run_pending",
+   "state": "검증 필요",
+   "city": "",
+   "title": "'hospitals' 첫 예약 실행 대기",
+   "since": "2026-11-05 12:58",
+   "resolved_at": "2026-11-09 05:42",
+   "how": "자동(감시에서 사라짐)"
+  }
+ ],
  "cities": {
   "djdonggu": {
    "name": "동구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-08",
+   "status_checked_at": "2026-11-09",
    "published": 2,
    "hold": [
     "급식",
@@ -135,7 +144,7 @@
    "name": "중구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-08",
+   "status_checked_at": "2026-11-09",
    "published": 2,
    "hold": [
     "급식",
@@ -159,7 +168,7 @@
    "name": "서구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-08",
+   "status_checked_at": "2026-11-09",
    "published": 2,
    "hold": [
     "급식",
@@ -183,7 +192,7 @@
    "name": "유성구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-08",
+   "status_checked_at": "2026-11-09",
    "published": 2,
    "hold": [
     "급식",
@@ -207,7 +216,7 @@
    "name": "대덕구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-08",
+   "status_checked_at": "2026-11-09",
    "published": 2,
    "hold": [
     "급식",
@@ -229,6 +238,13 @@
   }
  },
  "runs": {
+  "hospitals": {
+   "last_at": "2026-11-08T20:19:48Z",
+   "last_conclusion": "success",
+   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/42519557142",
+   "last_success_at": "2026-11-08T20:19:48Z",
+   "overdue": false
+  },
   "weather": {
    "last_at": "2026-11-08T09:09:32Z",
    "last_conclusion": "success",
@@ -256,7 +272,7 @@
   "app_branch": "main",
   "lag": false,
   "default_head_at": "2026-11-04T17:22:53Z",
-  "app_head_at": "2026-11-08T16:45:03Z"
+  "app_head_at": "2026-11-08T20:25:15Z"
  },
  "customer_view": {
   "app_branch": "main",
@@ -267,7 +283,7 @@
  },
  "checks_done": [
   "가지 비교",
-  "자동 작업 3종",
+  "자동 작업 4종",
   "배포 기록",
   "구 5곳 사이트·검문·재검증"
  ],
