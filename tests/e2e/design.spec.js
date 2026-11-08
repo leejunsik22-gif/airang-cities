@@ -130,3 +130,20 @@ test("@디자인 입구: 카드 사진 AI 생성 표기(사진 밖 별도 줄)",
   const inside = await page.evaluate(() => { const n = document.querySelector(".ai-note").getBoundingClientRect(); return [...document.querySelectorAll(".city .pic")].some((p) => { const b = p.getBoundingClientRect(); return n.top < b.bottom && n.bottom > b.top && n.left < b.right && n.right > b.left; }); });
   expect(inside, "표기가 사진 위에 겹침").toBe(false);
 });
+
+// 2026-11-09 견본 육안에서 발견: 긴 구 이름이 공유 버튼 뒤로 잘림 — 글자 내용 검사로는 못 잡아 '보이는 영역' 검사 추가
+for (const [key, name] of Object.entries(B.names)) {
+  test(`@디자인 ${name}: 상단 이름이 잘리거나 버튼에 가리지 않음`, async ({ page }) => {
+    await page.goto(`/${key}/`); await expect(page.locator(".brand-round").first()).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+    const r = await page.evaluate(() => {
+      const t = document.querySelector(".brand-round"), box = document.querySelector(".brand3").getBoundingClientRect();
+      const range = document.createRange(); range.selectNodeContents(t); const tx = range.getBoundingClientRect();
+      const btns = [...document.querySelectorAll(".top3 > button")].map((b) => b.getBoundingClientRect());
+      return { textRight: Math.round(tx.right), boxRight: Math.round(box.right), firstBtnLeft: Math.round(Math.min(...btns.map((b) => b.left))), clipped: t.scrollWidth > t.clientWidth + 1, fs: getComputedStyle(t).fontSize };
+    });
+    expect(r.clipped, "이름 글자 넘침").toBe(false);
+    expect(r.textRight, `이름 끝(${r.textRight})이 받침(${r.boxRight}) 안`).toBeLessThanOrEqual(r.boxRight + 1);
+    expect(r.boxRight, `받침 끝이 버튼(${r.firstBtnLeft})보다 왼쪽`).toBeLessThanOrEqual(r.firstBtnLeft);
+  });
+}

@@ -480,6 +480,8 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
   .hero-v3{background:linear-gradient(180deg,#E9E2D3 0,#EFE8DB 70px,var(--ivory) 100%)}
   .hero-v3 .ph{margin-top:44px;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 56px);mask-image:linear-gradient(180deg,transparent 0,#000 56px)}
 }
+.brand-round.long{font-size:clamp(15px,4.3vw,21px)}
+@media (max-width:430px){.top3.long{gap:6px;padding-left:12px;padding-right:12px}.top3.long .brand3{gap:5px;padding:3px 9px 3px 4px}.top3.long .logo3{width:36px;height:32px}.top3.long .topbar-region{padding:0 9px!important}.top3.long .brand-under{width:96px}}   /* 2026-11-09: '대전 동구' 등 긴 이름이 공유 버튼 뒤로 잘리던 것 → 좁은 폰에서만 조금 작게 */
 .hero-v3 .t3 h1 .doodle-heart{position:static;display:inline-block;vertical-align:-6px;margin-left:2px;width:40px;height:36px}
 .kidadd .kid-ic{width:62px;height:62px;border-radius:20px}.kidadd .kid-ic svg{width:46px;height:46px}
 .home-menu .hm .bi{width:42px!important;height:42px!important}.home-menu .hm .bi svg{width:42px;height:42px}
@@ -931,11 +933,11 @@ const KID_ICON = `<svg viewBox="0 0 48 48" width="34" height="34" fill="none" ar
 const HEART_DOODLE = `<svg class="doodle-heart" viewBox="0 0 64 56" width="52" height="46" fill="none" aria-hidden="true"><path d="M32 46 C20 36 10 30 10 20 C10 13 15 9 20 9 C25 9 29 12 32 16 C35 12 39 9 44 9 C49 9 54 13 54 20 C54 30 44 36 32 46 Z" stroke="#F08A3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 50 c8 2 14 -2 20 -8" stroke="#F08A3C" stroke-width="2.4" stroke-linecap="round"/><path d="M44 4 l2 3 M50 2 l.4 3.6" stroke="#F08A3C" stroke-width="2" stroke-linecap="round"/></svg>`;
 const LEAF_DOODLE = `<svg class="doodle-leaf" viewBox="0 0 90 90" width="86" height="86" fill="none" aria-hidden="true"><path d="M62 10 C44 14 36 30 40 50 C58 46 68 30 62 10 Z" fill="#F3D9A6" opacity=".85"/><path d="M84 36 C68 34 54 46 52 64 C70 66 84 54 84 36 Z" fill="#F0C98A" opacity=".8"/><path d="M40 50 C44 64 52 76 66 86" stroke="#E2B06A" stroke-width="2.2" stroke-linecap="round" opacity=".8"/></svg>`;
 function topBarV3() {
-  return `<div class="top3">
+  return `<div class="top3${"{{name}}".length > 3 ? " long" : ""}">
       <div class="brand3"><img class="logo3" src="assets/brand/logo-symbol.png" width="44" height="39" alt="아이랑 로고" decoding="async">
-      <div style="min-width:0;line-height:1.1"><div class="brand-t brand-round" style="white-space:nowrap">아이랑 <span style="color:var(--orange-ink)">{{name}}</span></div><svg class="brand-under" viewBox="0 0 120 10" width="110" height="9" aria-hidden="true"><path d="M2 7 C30 1 60 1 118 6" stroke="#F3B48A" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg></div></div>
+      <div style="min-width:0;line-height:1.1"><div class="brand-t brand-round${"{{name}}".length > 3 ? " long" : ""}" style="white-space:nowrap">아이랑 <span style="color:var(--orange-ink)">{{name}}</span></div><svg class="brand-under" viewBox="0 0 120 10" width="110" height="9" aria-hidden="true"><path d="M2 7 C30 1 60 1 118 6" stroke="#F3B48A" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg></div></div>
       <button class="chip glass" aria-label="지인에게 알려주기" title="지인에게 알려주기" style="flex:0 0 auto;width:44px;height:44px;padding:0;justify-content:center;color:var(--navy)" onclick="shareApp()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="M7 8l5-5 5 5"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg></button>
-      <button class="chip glass topbar-region" style="flex:0 0 auto;font-size:12px;padding:0 12px;height:44px;color:var(--navy)" onclick="go('region')">${icon.pin} ${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()} ▾</button></div>`;
+      <button class="chip glass topbar-region" style="flex:0 0 auto;font-size:12px;padding:0 12px;height:44px;color:var(--navy)" onclick="go('region')">${icon.pin} ${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", "").replace(/^대전 /, ""))} · ${levelLabel()} ▾</button></div>`;   // 2026-11-09: 지역 버튼은 '동구 · 초등'처럼 짧게(확정 원본 '유성 · 초등'과 같은 꼴) — 상단 이름이 잘리지 않게
 }
 function heroV3(inner) {
   return `<section class="scape hero-v3"><picture><source media="(min-width:700px)" srcset="assets/scenes/home-w.webp 1600w, assets/scenes/home-w2.webp 2400w" sizes="100vw"><img class="ph" src="assets/scenes/home-m.webp" srcset="assets/scenes/home-m.webp 800w, assets/scenes/home-m2.webp 1400w" sizes="100vw" width="800" height="615" alt="" fetchpriority="high" decoding="async"></picture>
