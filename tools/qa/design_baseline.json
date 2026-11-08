@@ -1,0 +1,77 @@
+{
+  "_설명": "아이랑 대표 확정 디자인 검수 기준 v01후보 (2026-11-08). 원본: docs/design_baseline/2026-11-05_대표확정_홈디자인_유성_v01.png (대표 2026-11-05 확정·첨부). 값은 원본 그림과 승인된 운영본(044·044-5)에서 옮겨 적음 — 새 디자인 아님.",
+  "approved_image": "docs/design_baseline/2026-11-05_대표확정_홈디자인_유성_v01.png",
+  "approved_deviations": [
+    {
+      "항목": "상단 로고·이름 뒤 반투명 흰 받침",
+      "근거": "044-5 사진 위 대비 보완(피트 지시 2026-11-05 4항), 운영 반영 대표 승인 2026-11-07",
+      "원본과 차이": "원본은 받침 없이 사진 위에 바로 글자"
+    }
+  ],
+  "logo": {
+    "home_src": "assets/brand/logo-symbol.png",
+    "entry_src": "img/logo-symbol.png",
+    "min_width": 34
+  },
+  "fonts": {
+    "title": "Gothic A1",
+    "title_weight": "800",
+    "body": "Noto Sans KR"
+  },
+  "colors": {
+    "navy_title": "rgb(31, 42, 68)",
+    "orange_accent": "rgb(184, 100, 30)",
+    "brand_brown": "rgb(91, 58, 42)",
+    "ivory_bg": "rgb(251, 246, 239)"
+  },
+  "photo": {
+    "mobile": "home-m2?\\.webp",
+    "pc": "home-w2?\\.webp"
+  },
+  "texts": {
+    "h1": "아이와 가족이\n더 행복한 {name}",
+    "brand": "아이랑 {name}",
+    "ai_tag": "AI 생성 이미지 · 실제 기관·인물 아님",
+    "sub": "학교·학원·병원·혜택까지, 우리 동네의 믿을 수 있는 정보를 한곳에",
+    "kid": "우리 아이 추가",
+    "placeholder": "소아과, 학원, 학교, 혜택 이름",
+    "chips_first": [
+      "밤에 여는 소아과",
+      "우리 동네 학원"
+    ],
+    "nav": [
+      "홈",
+      "동네병원",
+      "혜택",
+      "저장",
+      "마이"
+    ],
+    "entry_tag": "AI 생성 이미지 · 실제 기관·인물 아님",
+    "entry_h1": "우리 동네를 골라 주세요"
+  },
+  "layout_order": [
+    ".top3",
+    ".hero-v3 h1",
+    ".kidadd",
+    "form.search-v2",
+    ".q-chips",
+    ".home-menu"
+  ],
+  "names": {
+    "djdonggu": "대전 동구",
+    "djjunggu": "대전 중구",
+    "djseogu": "대전 서구",
+    "yuseong": "유성",
+    "daedeok": "대덕"
+  },
+  "no_illustration": {
+    "_설명": "2026-11-09 피트·대표: 그림체·삽화 금지, 실사풍만. 아래 파일은 삽화풍으로 판정됨 → 입구·카드에 쓰이면 디자인 미완료",
+    "files": [
+      "hero-djdonggu-800.webp",
+      "hero-djjunggu-800.webp",
+      "hero-djseogu-800.webp",
+      "hero-yuseong-800.webp",
+      "hero-daedeok-800.webp"
+    ]
+  }
+}

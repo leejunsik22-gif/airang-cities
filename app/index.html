@@ -470,6 +470,18 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 .hero-v3 .top3 .brand3 .brand-t{text-shadow:none}
 @media (max-width:374px){.brand3{padding:3px 9px 3px 4px;gap:6px}.brand3 .logo3{width:38px;height:34px}}
 @media (min-width:700px){body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:calc(104px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(251,246,239,0) 0,rgba(251,246,239,.94) 26px,#FBF6EF 44px);z-index:9;pointer-events:none}}
+/* 2026-11-09 대표 확정 원본(docs/design_baseline) 대조 보완 — 위치·크기·색만, 새 그림 없음 (050 A-2 2~6)
+   ② 첫 사진: 원본처럼 머리 위 여유 — 사진을 상단 바 높이만큼 내리고 윗부분을 부드럽게 흐림
+   ③ 하트 낙서: 제목의 구 이름 바로 옆(원본 위치)
+   ④ 우리 아이 추가: 얼굴 그림 크게(원본 비율) — 해·구름 장식은 원본 그림 파일 없어 보류
+   ⑥ 메뉴판: 그림 크게·주황(원본 비율) — 원본의 색 채운 그림은 파일 없어 기존 선 그림 유지 */
+@media (max-width:699px){
+  .hero-v3{background:linear-gradient(180deg,#E9E2D3 0,#EFE8DB 70px,var(--ivory) 100%)}
+  .hero-v3 .ph{margin-top:44px;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 56px);mask-image:linear-gradient(180deg,transparent 0,#000 56px)}
+}
+.hero-v3 .t3 h1 .doodle-heart{position:static;display:inline-block;vertical-align:-6px;margin-left:2px;width:40px;height:36px}
+.kidadd .kid-ic{width:62px;height:62px;border-radius:20px}.kidadd .kid-ic svg{width:46px;height:46px}
+.home-menu .hm .bi{width:42px!important;height:42px!important}.home-menu .hm .bi svg{width:42px;height:42px}
 </style>
 <script data-goatcounter="https://{{key}}-edu-app.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}' async src="https://gc.zgo.at/count.js"></script>
 </head>
@@ -965,7 +977,7 @@ function viewHome() {
       <button class="btn btn-soft" style="width:100%;height:42px;margin-top:10px;font-size:13px;color:var(--indigo)" onclick="go('myev/new')">+ 내 일정 추가 (준비물·병원·생일 등)</button>
       ${evs.length > 3 ? `<button onclick="homeAllEv=!homeAllEv;render()" style="width:100%;border:0;background:none;padding:12px 0 4px;font:inherit;font-size:13px;font-weight:700;color:var(--indigo);cursor:pointer">${homeAllEv ? "접기 ▲" : `일정 더보기 (${Math.min(evs.length, 8) - 3}개 더) ▼`}</button>` : ""}</div></section>`;
   } else {
-    hero = heroV3(`<div class="eyebrow3">${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()}</div><h1>아이와 가족이<br><span style="color:var(--orange-ink)">더 행복한</span> {{name}}</h1>${HEART_DOODLE}${LEAF_DOODLE}<p>학교·학원·병원·혜택까지, 우리 동네의 믿을 수 있는 정보를 한곳에</p>`)
+    hero = heroV3(`<div class="eyebrow3">${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()}</div><h1>아이와 가족이<br><span style="color:var(--orange-ink)">더 행복한</span> {{name}}${HEART_DOODLE}</h1>${LEAF_DOODLE}<p>학교·학원·병원·혜택까지, 우리 동네의 믿을 수 있는 정보를 한곳에</p>`)
       + `<div class="lift" style="margin-top:12px;padding:4px 14px"><button class="kidadd" onclick="go('kid/new')"><span class="kid-ic">${KID_ICON}</span><span style="min-width:0"><b>우리 아이 추가</b><small>형제자매가 여러 명이어도 한 번에 볼 수 있어요</small></span><span class="plus" aria-hidden="true">+</span></button></div>`;
   }
 
@@ -993,7 +1005,7 @@ function homeQuick() {   // 026: 핵심 질문 칩 3~4개 (홈5) — 눌러서 �
   const n = new Date(), h = n.getHours(), wk = n.getDay() === 0 || n.getDay() === 6;
   const kidsTxt = h >= 19 || h < 8 ? "밤에 여는 소아과" : wk ? "주말에 여는 소아과" : "지금 문 연 소아과";
   const chip = (label, fn, name) => `<button class="q-chip" onclick="${fn}">${ico(name, 16, "none")}${esc(label)}</button>`;
-  return `<div class="q-chips" aria-label="자주 찾는 것">${chip(kidsTxt, "hsOpenKids()", "stethoscope")}${chip("우리 동네 학원", "go('acas')", "pencil")}${chip("받을 수 있는 혜택", "go('bene')", "gift")}${chip("학교 일정", "go('schools')", "school")}${chip("약국", "hsTab='pharm';go('hosp')", "pill")}</div>`;
+  return `<div class="q-chips" aria-label="자주 찾는 것">${chip(kidsTxt, "hsOpenKids()", "stethoscope")}${chip("우리 동네 학원", "go('acas')", "pencil")}${chip("학교 일정", "go('schools')", "calendar")}${chip("받을 수 있는 혜택", "go('bene')", "gift")}${chip("약국", "hsTab='pharm';go('hosp')", "pill")}</div>`;
 }
 function homeMenu() {   // v3(2026-11-04): 핵심 메뉴 6개 3×2 큰 타일(PC 6칸) — 준비 중은 눌러도 준비 중 틀. 도서관·유치원은 '전체보기'와 아래 섹션에서
   const nSch = DATA && DATA.schools ? regionSchools().length : 0, nAca = ACAS && ACAS.academies ? ACAS.academies.length : 0;

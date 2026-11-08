@@ -4,6 +4,9 @@
   "description": "아이랑 자동 화면 검사(개발용). 운영 배포와 무관 — 앱 자체는 package.json 없이 동작합니다.",
   "scripts": {
     "qa": "playwright test",
+    "qa:func": "playwright test --grep-invert @디자인",
+    "qa:design": "playwright test --grep @디자인",
+    "qa:diff": "python3 tools/qa/design_diff.py",
     "qa:report": "playwright show-report tests/report"
   },
   "devDependencies": {
