@@ -186,6 +186,15 @@ def build_entry(out):
     return d
 
 
+def build_inquiry(out):
+    """문의하기(BASE/inquiry/) + 관리자 접수함(BASE/inquiry/admin/) v01후보(2026-11-09, A안 시험).
+    화면만 복사. 접수·저장은 functions/api/inquiry (Cloudflare Pages Functions + D1) 가 맡음."""
+    d = os.path.join(out, "inquiry")
+    if os.path.exists(d): shutil.rmtree(d)
+    shutil.copytree(os.path.join(HERE, "inquiry"), d)
+    return d
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=os.path.join(os.path.dirname(HERE), "out"))
@@ -193,3 +202,4 @@ if __name__ == "__main__":
     a = ap.parse_args()
     for c in a.city or list(CFG["cities"]) + ["entry"]:
         print("만듦:", build_entry(a.out) if c == "entry" else build(c, a.out))
+        if c == "entry": print("만듦:", build_inquiry(a.out))

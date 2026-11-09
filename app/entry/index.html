@@ -221,10 +221,11 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 .ptbl th{font-size:12px;color:var(--muted);font-weight:700}
 .pcard .k{font-size:12.5px;color:var(--muted)}
 @media (max-width:430px){h1{font-size:24px!important}.sheet .hours{grid-template-columns:repeat(4,1fr)}}
-/* 2026-11-09 피트 의견·대표 승인: 설치 안내(문의하기는 전용 메일 준비 후) (구 선택·내 위치 버튼 아래) */
+/* 2026-11-09 피트 의견·대표 승인: 설치 안내 + 문의하기(/inquiry/, A안 시험) (구 선택·내 위치 버튼 아래) */
 .help-row{display:flex;gap:10px;margin:-12px 0 26px}
 .help-btn{flex:1;min-height:48px;padding:0 8px;white-space:nowrap;border:1px solid var(--line);border-radius:14px;background:var(--paper);font:inherit;font-size:clamp(13px,3.6vw,14px);font-weight:800;color:var(--navy);cursor:pointer}
 #btn-install{flex:1.7}
+a.help-btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
 .help-btn:focus-visible,.sheet a.pick:focus-visible{outline:3px solid var(--gold,#E8B547);outline-offset:2px}
 .sheet ol{margin:10px 0 6px;padding-left:22px;font-size:15px;line-height:1.7}
 .sheet .tip{font-size:13px;color:var(--muted);margin:6px 0 0;word-break:keep-all}
@@ -252,6 +253,7 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
   <div class="note">위치는 이 휴대폰 안에서만 써요. 어디에도 보내지 않아요.</div>
   <div class="help-row">
     <button class="help-btn" id="btn-install" type="button" onclick="openHelp('install')">📲 홈 화면에 추가해 보세요</button>
+    <a class="help-btn" id="btn-contact" href="../inquiry/">✉️ 문의하기</a>
   </div>
 
   <div class="lift soon">
