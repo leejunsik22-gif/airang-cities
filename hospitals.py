@@ -295,8 +295,8 @@ def main():
         except (OSError, ValueError):
             pass
 
-    for r in result["clinics"] + result["hospitals"] + result["er"] + result["pharm"]:
-        r.pop("id", None)
+    # 2026-11-09 피트 038 검수: 재검수 표에 원자료 기관 ID(국립중앙의료원 hpid / 심평원 ykiho)가 필요 → 지우지 않고 남김(공개 기관 코드, 개인정보 아님)
+    result["fetched_at"] = datetime.now(KST).strftime("%Y-%m-%d %H:%M")
     if not result["src"]["nmc"] and not result["src"]["er"]:
         raise SystemExit("병원 정보를 못 받음 — 저장하지 않음 (활용신청 확인)")
     os.makedirs("output", exist_ok=True)
