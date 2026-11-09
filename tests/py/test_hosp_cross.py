@@ -44,6 +44,14 @@ ok("불일치 의원은 수집본에서 빠짐(목록·검색·상세 모두 없
 ok("통과 의원엔 cx=1, 제외 ID 기록", all(c.get("cx") == 1 for c in saved.get("clinics", [])) and saved.get("cross", {}).get("excluded_ids") == ["A4"])
 for s, n in R: print(f"{s} | {n}")
 
+# ── 2026-11-10 대표: 확인 전 제외 목록(hosp_hold.json)에 있는 의원은 대조를 통과해도 수집본에서 빠짐 ──
+_lh = H.load_hold; H.load_hold = lambda: {"A1"}
+if os.path.exists("output/hospitals.json"): os.remove("output/hospitals.json")
+r = run_main(hira_ok, nmc_ok); H.load_hold = _lh
+saved = json.load(open("output/hospitals.json", encoding="utf-8")) if os.path.exists("output/hospitals.json") else {}
+ok("확인 전 제외 의원(A1)은 대조 통과해도 수집본에서 빠짐", r == "저장" and "가나소아청소년과의원" not in [c["n"] for c in saved.get("clinics", [])] and saved.get("cross", {}).get("held_ids") == ["A1"])
+ok("실제 제외 목록에 도안누리소아청소년과의원(A1600074) 있음", "A1600074" in H.load_hold())
+
 # ── 2026-11-10: 공개 문에서 보류 유형(병원·약국·응급실) 비우기 ──
 import tempfile as _tf, shutil as _sh, subprocess as _sp, datetime as _dt
 def gate_case():

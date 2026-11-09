@@ -307,10 +307,12 @@ def main():
     except Exception as e:
         raise SystemExit(f"심평원 대조 자료를 못 받음 — 이번 수집본 저장 안 함(지난 공개본 유지): {e}")
     passed = [x for x in result["clinics"] if cross.get(x.get("id") or x.get("n"), {}).get("ok")]
+    hold = load_hold()   # 2026-11-10 대표: 확인 전 제외 목록(전화번호 불일치 등)
     rate = len(passed) / len(result["clinics"])
     if rate < CROSS_MIN_OK:
         raise SystemExit(f"대조 통과율 {rate:.1%} < {CROSS_MIN_OK:.0%} — 심평원 자료가 덜 온 것으로 보고 저장 안 함")
-    result["cross"] = {"checked": len(result["clinics"]), "ok": len(passed), "excluded_ids": sorted(x.get("id") or "" for x in result["clinics"] if x not in passed), "src": "건강보험심사평가원 병원정보서비스", "at": datetime.now(KST).strftime("%Y-%m-%d %H:%M")}
+    passed_n = len(passed); passed = [x for x in passed if (x.get("id") or "") not in hold]
+    result["cross"] = {"checked": len(result["clinics"]), "ok": passed_n, "held_ids": sorted(hold), "excluded_ids": sorted(x.get("id") or "" for x in result["clinics"] if x not in passed), "src": "건강보험심사평가원 병원정보서비스", "at": datetime.now(KST).strftime("%Y-%m-%d %H:%M")}
     for x in passed: x["cx"] = 1
     result["clinics"] = passed   # 불일치 의원은 목록·검색·상세 어디에도 안 나오게 수집본에서 뺌
     print(f"  두 공식 자료 대조: {len(passed)}/{result['cross']['checked']} 통과, {len(result['cross']['excluded_ids'])}곳 제외")
@@ -328,6 +330,13 @@ def _ca(s):
     s = re.sub(r"\(.*?\)", "", s or ""); s = re.sub(r"^\s*" + SIDO + r"\s*\S+구\s*", "", s); s = re.sub(r"^\s*대전(광역시)?\s*\S+구\s*", "", s)
     m = re.search(r"([가-힣0-9]+(?:로|길)(?:\s*\d+번?길)?)\s*(\d+(?:-\d+)?)", s)
     return (re.sub(r"\s", "", m.group(1)), m.group(2)) if m else None
+def load_hold(path=os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools", "hosp_hold.json")):
+    """확인될 때까지 빼는 의원 hpid 묶음(tools/hosp_hold.json). 파일이 없으면 빈 묶음"""
+    try:
+        return set(json.load(open(path, encoding="utf-8")).get("ids", {}))
+    except FileNotFoundError:
+        return set()
+
 def cross_check(clinics, rows=None):
     """의원마다 {ok,name,tel,addr,ykiho}. rows 를 안 주면 심평원에서 받음(실패하면 예외 — 부르는 쪽이 저장을 멈춤)."""
     if rows is None:
