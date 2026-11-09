@@ -299,10 +299,62 @@ def main():
     result["fetched_at"] = datetime.now(KST).strftime("%Y-%m-%d %H:%M")
     if not result["src"]["nmc"] and not result["src"]["er"]:
         raise SystemExit("병원 정보를 못 받음 — 저장하지 않음 (활용신청 확인)")
+    # 2026-11-09 A+B안: 의원 목록은 두 공식 자료가 모두 있어야 저장. 한쪽이라도 못 받으면 이번 수집본은 저장·공개 안 함(지난 공개본 유지)
+    if not result["src"]["nmc"] or not result["clinics"]:
+        raise SystemExit("국립중앙의료원 의원 목록을 못 받음 — 이번 수집본 저장 안 함(지난 공개본 유지)")
+    try:
+        cross = cross_check(result["clinics"])
+    except Exception as e:
+        raise SystemExit(f"심평원 대조 자료를 못 받음 — 이번 수집본 저장 안 함(지난 공개본 유지): {e}")
+    passed = [x for x in result["clinics"] if cross.get(x.get("id") or x.get("n"), {}).get("ok")]
+    rate = len(passed) / len(result["clinics"])
+    if rate < CROSS_MIN_OK:
+        raise SystemExit(f"대조 통과율 {rate:.1%} < {CROSS_MIN_OK:.0%} — 심평원 자료가 덜 온 것으로 보고 저장 안 함")
+    result["cross"] = {"checked": len(result["clinics"]), "ok": len(passed), "excluded_ids": sorted(x.get("id") or "" for x in result["clinics"] if x not in passed), "src": "건강보험심사평가원 병원정보서비스", "at": datetime.now(KST).strftime("%Y-%m-%d %H:%M")}
+    for x in passed: x["cx"] = 1
+    result["clinics"] = passed   # 불일치 의원은 목록·검색·상세 어디에도 안 나오게 수집본에서 뺌
+    print(f"  두 공식 자료 대조: {len(passed)}/{result['cross']['checked']} 통과, {len(result['cross']['excluded_ids'])}곳 제외")
     os.makedirs("output", exist_ok=True)
     with open("output/hospitals.json", "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, separators=(",", ":"))
     print("  저장:", os.path.getsize("output/hospitals.json") // 1024, "KB")
+
+
+# ── 2026-11-09 A+B안(대표·피트): 국립중앙의료원 의원 ↔ 건강보험심사평가원 대조. 불일치 의원은 수집본에서 뺌 ──
+CROSS_CL = ("31", "51", "71", "72", "75")   # 심평원 종별: 의원·치과의원·보건소·보건지소·보건진료소
+CROSS_MIN_OK = 0.9                           # 통과율이 이보다 낮으면 심평원 자료가 덜 온 것으로 보고 저장 안 함
+def _cn(s): return re.sub(r"[\s()·\-]|의료법인|사회복지법인|재단|\(.*?\)", "", s or "")
+def _ca(s):
+    s = re.sub(r"\(.*?\)", "", s or ""); s = re.sub(r"^\s*" + SIDO + r"\s*\S+구\s*", "", s); s = re.sub(r"^\s*대전(광역시)?\s*\S+구\s*", "", s)
+    m = re.search(r"([가-힣0-9]+(?:로|길)(?:\s*\d+번?길)?)\s*(\d+(?:-\d+)?)", s)
+    return (re.sub(r"\s", "", m.group(1)), m.group(2)) if m else None
+def cross_check(clinics, rows=None):
+    """의원마다 {ok,name,tel,addr,ykiho}. rows 를 안 주면 심평원에서 받음(실패하면 예외 — 부르는 쪽이 저장을 멈춤)."""
+    if rows is None:
+        rows = []
+        for cl in CROSS_CL:
+            rows += hira({"sidoCd": SIDO_CD, "clCd": cl})
+    if not rows:
+        raise RuntimeError("심평원 의원 목록이 비어 있음")
+    by_tel, by_name = {}, {}
+    for it in rows:
+        t = digits(it.get("telno"))
+        if t: by_tel.setdefault(t, []).append(it)
+        by_name.setdefault(_cn(it.get("yadmNm")), []).append(it)
+    out = {}
+    for x in clinics:
+        n, t, a = _cn(x.get("n")), digits(x.get("t")), _ca(x.get("a"))
+        cands = by_name.get(n, []) + [c for c in by_tel.get(t, []) if c not in by_name.get(n, [])]
+        best = None
+        for c in cands:
+            r = {"name": _cn(c.get("yadmNm")) == n, "tel": bool(t) and digits(c.get("telno")) == t, "addr": a is not None and _ca(c.get("addr")) == a}
+            sc = r["name"] * 2 + r["tel"] + r["addr"]
+            if not best or sc > best[0]: best = (sc, r, c.get("ykiho"))
+        r = best[1] if best else {"name": False, "tel": False, "addr": False}
+        r["ok"] = (r["name"] and (r["tel"] or r["addr"])) or (r["tel"] and r["addr"])   # 전화·주소 모두 같으면 이름만 바뀐 같은 곳
+        r["ykiho"] = best[2] if best else None
+        out[x.get("id") or x.get("n")] = r
+    return out
 
 
 if __name__ == "__main__":
