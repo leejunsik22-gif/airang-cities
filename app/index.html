@@ -2849,7 +2849,11 @@ function hsLocate() {
     () => toast("위치를 허용하면 가까운 순으로 볼 수 있어요"), { enableHighAccuracy: false, timeout: 8000, maximumAge: 300000 });
 }
 // 오늘 진료시간: h = [월,화,수,목,금,토,일,공휴일] 각 "09001900"
+// 2026-11-09 대표 승인 A+B안(견본): 진료시간은 피트 검수 끝날 때까지 숨기고 '방문 전 전화 확인'만. 두 공식 자료(국립중앙의료원↔심평원)가 맞는 곳(cx=1)만 목록에
+const HOSP_HOURS = false;   // 피트 진료시간 검수 통과 후 true 로 바꾸면 진료시간·시간 거르기가 다시 보임
+const hsCross = x => x.cx !== 0;   // cx 칸이 없으면(옛 자료) 그대로 보임
 function hsToday(x) {
+  if (!HOSP_HOURS) return null;
   if (!x.h || !x.h.length) return null;   // 확인 중(rv)으로 비운 진료시간은 표시하지 않음
   const now = new Date(), s = x.h[(now.getDay() + 6) % 7] || "";
   if (s.length < 8) return { open: false, text: "오늘 진료시간 정보 없음(전화 확인)" };   // 2026-11-09 피트 038: 원자료 빈 칸 = 휴진이 아니라 정보 없음
@@ -2911,17 +2915,17 @@ function hsSheet(x) {
   closeSheet();
   const DAYS = ["월", "화", "수", "목", "금", "토", "일", "공휴일"], today = (new Date().getDay() + 6) % 7;
   const f = v => String(v).padStart(4, "0").replace(/(\d\d)(\d\d)/, "$1:$2");
-  const hours = x.h && x.h.length ? `<div class="hours">${DAYS.map((d, i) => { const t = x.h[i] || ""; return `<div class="${i === today ? "today" : ""}"><b>${d}</b>${t.length >= 8 ? `${f(t.slice(0, 4))}<br>~${f(t.slice(4, 8))}` : `<span class="sub">정보<br>없음</span>`}</div>`; }).join("")}</div>${hsSpecial(x)}` : `<p class="sub">진료시간 ${x.rv ? "확인 중 — 병원에 전화로 확인해 주세요" : "정보 없음"}</p>`;
+  const hours = !HOSP_HOURS ? `<p class="sub" style="background:var(--ivory-2);border-radius:12px;padding:10px 12px;margin:6px 0 0">진료시간은 <b>방문 전에 전화로 확인</b>해 주세요. 공식 자료로 진료시간을 확인하고 있어서 아직 보여 드리지 않아요.</p>` : x.h && x.h.length ? `<div class="hours">${DAYS.map((d, i) => { const t = x.h[i] || ""; return `<div class="${i === today ? "today" : ""}"><b>${d}</b>${t.length >= 8 ? `${f(t.slice(0, 4))}<br>~${f(t.slice(4, 8))}` : `<span class="sub">정보<br>없음</span>`}</div>`; }).join("")}</div>${hsSpecial(x)}` : `<p class="sub">진료시간 ${x.rv ? "확인 중 — 병원에 전화로 확인해 주세요" : "정보 없음"}</p>`;
   const tel = (x.t || "").replace(/[^\d-]/g, ""), map = "https://map.naver.com/p/search/" + encodeURIComponent((x.n || "") + " " + (x.a || "").split(" ").slice(0, 2).join(" "));
   const st = GATE && GATE["hospitals.json"] || {};
   const fav = favBtn({ t: "hosp", id: (x.n || "") + "|" + (x.a || ""), n: x.n, sub: x.p || x.k || "", route: "hosp" });
   const html = `<div class="sheet-bg" id="sheet" onclick="if(event.target===this)closeSheet()"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(x.n)} 상세"><div class="grip"></div>
     <div style="display:flex;gap:8px;align-items:flex-start"><div style="flex:1;min-width:0"><span class="eyebrow" style="background:var(--navy-soft);color:var(--navy)">${esc(x.k || "의료기관")}</span>${x.rv ? ` <span class="eyebrow">확인 중</span>` : ""}<h2>${esc(x.n)}</h2><div class="sub">${deptLine(x)}</div></div>${fav}<button class="fav-btn" aria-label="닫기" onclick="closeSheet()">✕</button></div>
     <div class="kv"><b>주소</b><span>${esc(x.a || "—")}</span><b>전화</b><span>${tel ? `<a href="tel:${esc(tel)}" style="font-weight:700">${esc(x.t)}</a>` : (x.rv && (x.rv.f || []).includes("t") ? "확인 중" : "—")}</span><b>진료과목</b><span>${(x.d || []).length ? esc((x.d || []).join(", ")) : (x.rv ? "확인 중" : "—")} <span class="sub">(국립중앙의료원 신고 기준)</span></span></div>
-    <div class="sec-head" style="margin-top:6px"><h2 style="font-size:15px">진료시간</h2>${x.h && x.h.length ? `<span class="sub">오늘 ${DAYS[today]}요일</span>` : ""}</div>${hours}
+    <div class="sec-head" style="margin-top:6px"><h2 style="font-size:15px">진료시간</h2>${HOSP_HOURS && x.h && x.h.length ? `<span class="sub">오늘 ${DAYS[today]}요일</span>` : ""}</div>${hours}
     ${x.rv ? `<div class="rv-note" role="status">⏳ <b>${esc([...new Set((x.rv.f || []).map(f => ({ h: "진료시간", d: "진료과목", p: "진료과목", k: "종별", t: "전화번호", a: "주소" })[f] || f))].join("·"))} 확인 중</b><span class="rv-meta">확인 시작 ${esc(x.rv.since || "—")}${x.rv.due ? ` · 확인 기한 ${esc(x.rv.due)}` : ""} · 상태: 공식 확인 전 — 바뀐 칸은 보여 드리지 않아요. 기한까지 확인되지 않으면 목록에서 잠시 뺍니다.</span></div>` : ""}
     <div class="acts">${tel ? `<a class="btn btn-3d" href="tel:${esc(tel)}" onclick="trackEvent('병원-전화-상세')">📞 전화</a>` : ""}<a class="btn btn-soft" href="${esc(map)}" target="_blank" rel="noopener" onclick="trackEvent('병원-길찾기-상세')">📍 길찾기</a></div>
-    <div class="src-line"><span class="dot"></span><span>출처 ${esc(st.source_org || "국립중앙의료원 병·의원·약국 정보(공공데이터포털)")}${st.checked_at ? ` · 검문 확인 ${esc(st.checked_at)}` : ""}${HOSP && HOSP.updated ? ` · 자료 ${esc(HOSP.updated)}` : ""}<br>진료 과목·시간·휴진은 바뀔 수 있어요. 가기 전에 전화로 확인해 주세요. <a href="mailto:leejunsik22@gmail.com?subject=${encodeURIComponent("[아이랑] 병원 정보 수정 요청: " + (x.n || ""))}">잘못된 정보 알리기</a></span></div>
+    <div class="src-line"><span class="dot"></span><span>출처 ${esc(st.source_org || "국립중앙의료원 병·의원·약국 정보(공공데이터포털)")}${x.cx === 1 ? " · 건강보험심사평가원 자료와 이름·전화·주소 대조 일치" : ""}${st.checked_at ? ` · 검문 확인 ${esc(st.checked_at)}` : ""}${HOSP && HOSP.updated ? ` · 자료 ${esc(HOSP.updated)}` : ""}<br>진료 과목·시간·휴진은 바뀔 수 있어요. 가기 전에 전화로 확인해 주세요. <a href="mailto:leejunsik22@gmail.com?subject=${encodeURIComponent("[아이랑] 병원 정보 수정 요청: " + (x.n || ""))}">잘못된 정보 알리기</a></span></div>
     </div></div>`;
   document.body.insertAdjacentHTML("beforeend", html); trackEvent("병원-상세");
 }
@@ -2976,7 +2980,8 @@ function viewHosp(keepFocus) {
     depts = `<div class="chips-scroll" aria-label="진료 과목으로 거르기">${ds.map(d => chip("dept", d, hsDept === d)).join("")}</div>`;   // 027: 가로 스크롤 + 오른쪽 흐림(더 있음 표시)
     if (hsDept !== "전체") list = list.filter(x => x.p === hsDept && (hsDept === "치과") === (x.k || "").startsWith("치과"));   // 2026-11-09 피트 038: 신고 과목만으로는 그 과 검색·'지금 진료 중 소아과'에 넣지 않음(대표 과목 기준) if (hsDept !== "전체") { const re = new RegExp(HS_HINT[hsDept] || hsDept); list.sort((a, b) => (re.test(a.n) ? 0 : 1) - (re.test(b.n) ? 0 : 1)); }  // 이름에 그 과가 있는 의원 먼저
   }
-  if (hsTab === "clinic" || hsTab === "hosp") {   // 의원·병원: 진료 예정 시간 안 / 20:00 이상 종료 / 일요일·공휴일 (2026-11-09 피트 063)
+  if (hsTab === "clinic") list = list.filter(hsCross);   // 두 공식 자료가 다른 의원은 확인될 때까지 목록에서 뺌(A+B안)
+  if (HOSP_HOURS && (hsTab === "clinic" || hsTab === "hosp")) {   // 의원·병원: 진료 예정 시간 안 / 20:00 이상 종료 / 일요일·공휴일 (2026-11-09 피트 063)
     const late = t => t && t.length >= 8 && (+t.slice(4) >= 2000 || +t.slice(4) < +t.slice(0, 4));
     const OF = { "🕘 진료 예정 시간 안": x => (hsToday(x) || {}).open, "🌙 20:00 이상 종료": x => x.h && x.h.slice(0, 5).some(late), "📅 일요일·공휴일": x => x.h && (x.h[6] || x.h[7]) };
     if (!OF[hsOf]) hsOf = "전체";
