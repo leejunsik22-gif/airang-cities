@@ -23,10 +23,16 @@ module.exports = defineConfig({
     // PC 는 디자인 검수만(기능 검사는 손가락 터치를 쓰므로 휴대폰 폭에서만)
     { name: "PC1280", use: { viewport: { width: 1280, height: 800 }, deviceScaleFactor: 1, locale: "ko-KR" }, testMatch: /(design|pc)\.spec\.js/ },
   ],
-  webServer: {
+  webServer: [{
     command: `python3 tools/qa/serve.py ${PORT}`,
     url: `http://127.0.0.1:${PORT}/entry/`,
     reuseExistingServer: true,
     timeout: 120_000,
-  },
+  }, {
+    // 2026-11-09 문의 A안 시험: 화면 + functions + D1 흉내(메모리). 운영·Cloudflare 계정과 무관
+    command: "node tools/qa/pages_dev.mjs 8791",
+    url: "http://127.0.0.1:8791/inquiry/",
+    reuseExistingServer: false,
+    timeout: 120_000,
+  }],
 });
