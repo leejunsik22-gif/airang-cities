@@ -13,6 +13,8 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - env: { WEATHER_KEY: "${{ secrets.WEATHER_KEY }}", }
-        run: python3 -u tools/hosp_raw.py $(cat tools/hosp_raw_ids.txt)
+        run: |
+          [ ! -s tools/hosp_raw_ids.txt ] || python3 -u tools/hosp_raw.py $(cat tools/hosp_raw_ids.txt)
+          [ ! -f tools/hosp_cross.py ] || python3 -u tools/hosp_cross.py   # 2026-11-09 두 공식 자료 자동 대조(A+B안 견본)
       - uses: actions/upload-artifact@v4
         with: { name: hosp-raw, path: "output/hosp_raw.*" }
