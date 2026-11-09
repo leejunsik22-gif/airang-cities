@@ -10,9 +10,11 @@ async function post(request, data, { origin = B, who } = {}) {
   const r = await request.post(`${B}/api/inquiry`, { data, headers: { origin, "x-test-ip": who || ip("api") } });
   return { status: r.status(), body: await r.json() };
 }
-async function adminCtx(browser, email = "admin@test.invalid", q = "") {
+const PW = "test-password-가상-1234";   // tools/qa/pages_dev.mjs 의 시험용 가상 비밀번호(운영 아님)
+async function adminCtx(browser) {   // v02: 비밀번호 로그인(카드 없는 무료 방식)
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, locale: "ko-KR" });
-  await ctx.request.get(`${B}/__test/login?email=${encodeURIComponent(email)}${q}`);
+  const r = await ctx.request.post(`${B}/api/inquiry/login`, { data: { password: PW }, headers: { origin: B, "x-test-ip": ip("login") } });
+  if (r.status() !== 200) throw new Error("시험 로그인 실패 " + r.status());
   return ctx;
 }
 const only390 = (info) => test.skip(info.project.name !== "폰390", "관리자·서버 검사는 폰390에서 한 번만");
@@ -105,18 +107,38 @@ test("서버: 로봇용 숨은 칸이 채워지면 저장하지 않음", async (
 });
 
 // ── 관리자 ──
-test("관리자: 로그인 없음·다른 메일·다른 앱·만료 증표는 차단", async ({ browser, request }, info) => {
+test("관리자: 로그인 없음·틀린 비밀번호·위조·만료 쿠키 차단, 5번 틀리면 잠김, 로그아웃", async ({ browser, request }, info) => {
   only390(info);
-  expect((await request.get(`${B}/api/inquiry/admin`)).status()).toBe(401);
-  for (const [email, q, code] of [["someone@test.invalid", "", 403], ["admin@test.invalid", "&aud=other", 401], ["admin@test.invalid", "&exp=-60", 401]]) {
-    const ctx = await adminCtx(browser, email, q);
-    expect((await ctx.request.get(`${B}/api/inquiry/admin`)).status(), `${email}${q}`).toBe(code);
+  expect((await request.get(`${B}/api/inquiry/admin`)).status(), "로그인 없음").toBe(401);
+  const who = ip("brute"), login = (pw, o = B) => request.post(`${B}/api/inquiry/login`, { data: { password: pw }, headers: { origin: o, "x-test-ip": who } });
+  expect((await login(PW, "https://evil.example")).status(), "다른 사이트에서 로그인").toBe(403);
+  const codes = []; for (let i = 0; i < 6; i++) codes.push((await login("틀린비밀번호-" + i)).status());
+  expect(codes.slice(0, 5)).toEqual([401, 401, 401, 401, 401]);
+  expect(codes[5], "5번 틀린 뒤 잠김").toBe(429);
+  expect((await login(PW)).status(), "잠긴 동안엔 맞는 비밀번호도 거절").toBe(429);
+  for (const [name, v] of [["위조", `${Date.now() + 3600000}.${"0".repeat(64)}`], ["만료", `${Date.now() - 1000}.${"a".repeat(64)}`], ["형식 틀림", "abc"]]) {
+    const ctx = await browser.newContext(); await ctx.addCookies([{ name: "airang_admin", value: v, url: B }]);
+    expect((await ctx.request.get(`${B}/api/inquiry/admin`)).status(), name + " 쿠키").toBe(401);
     await ctx.close();
   }
-  const ctx = await browser.newContext(); await ctx.addCookies([{ name: "CF_Authorization", value: "a.b.c", url: B }]);
-  expect((await ctx.request.get(`${B}/api/inquiry/admin`)).status(), "위조 증표").toBe(401);
+  // 화면: 로그인 전엔 비밀번호 칸만, 로그인 → 접수함 → 로그아웃 → 다시 비밀번호 칸
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, locale: "ko-KR" });
+  await ctx.setExtraHTTPHeaders({ "x-test-ip": ip("ui") });
   const page = await ctx.newPage(); await page.goto(`${B}/inquiry/admin/`);
-  await expect(page.locator("#list")).toContainText("관리자 로그인이 필요해요");
+  await expect(page.locator("#pw")).toBeVisible();
+  await expect(page.locator("#today")).toBeHidden();
+  await expect(page.locator(".item")).toHaveCount(0);
+  await page.locator("#pw").fill("틀린비밀번호"); await page.locator("#login button").click();
+  await expect(page.locator("#lerr")).toHaveText("비밀번호가 맞지 않아요.");
+  await page.locator("#pw").fill(PW); await page.locator("#login button").click();
+  await expect(page.locator("#today")).toBeVisible();
+  await expect(page.locator("#logout")).toBeVisible();
+  const ck = (await ctx.cookies()).find((c) => c.name === "airang_admin");
+  expect(ck && ck.httpOnly, "쿠키는 화면 스크립트가 못 읽음(HttpOnly)").toBe(true);
+  expect(ck.sameSite).toBe("Strict");
+  await page.locator("#logout").click();
+  await expect(page.locator("#pw")).toBeVisible();
+  expect((await ctx.request.get(`${B}/api/inquiry/admin`)).status(), "로그아웃 뒤 차단").toBe(401);
   await ctx.close();
 });
 

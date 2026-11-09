@@ -38,6 +38,16 @@ h1{font-size:22px;margin:18px 2px 10px}
 .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--navy);color:#fff;border-radius:12px;padding:10px 16px;font-weight:700;display:none}
 .toast.on{display:block}
 .note{font-size:12.5px;color:var(--muted);margin-top:18px}
+/* v02 로그인(카드 없는 무료 방식) */
+.today[hidden]{display:none}
+.btn.out{margin-left:auto;background:var(--paper);color:var(--navy);border:1px solid var(--line)}
+.login{background:var(--paper);border:1px solid rgba(31,42,68,.06);border-radius:18px;box-shadow:var(--shadow);padding:18px 16px;margin-top:6px}
+.login label{display:block;font-weight:800;margin-bottom:8px}
+.login input{width:100%;min-height:48px;font:inherit;font-size:16px;border:1px solid #CFC7B8;border-radius:14px;padding:0 14px}
+.login .btn{width:100%;margin-top:12px;min-height:50px}
+.login .err{color:var(--coral-ink);background:var(--coral-bg);border-radius:12px;padding:10px 12px;margin-top:10px;font-weight:700;display:none}
+.login .err.on{display:block}
+.login small{display:block;color:var(--muted);margin-top:10px}
 /* 11/9 피트 의견: 매일 확인 — '새 문의' 건수·목록을 맨 먼저, 곧 삭제될 미처리 문의 따로 표시 */
 .today{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid rgba(31,42,68,.06);border-radius:18px;box-shadow:var(--shadow);padding:14px 16px;margin:0 0 12px}
 .today .big{font-size:30px;font-weight:800;color:var(--coral-ink);line-height:1}
@@ -48,9 +58,9 @@ h1{font-size:22px;margin:18px 2px 10px}
 .pill.dd{background:var(--gold-bg);color:var(--gold-ink)}
 </style></head><body>
 <div class="wrap">
-  <div class="top"><img src="../../entry/img/logo-symbol.png" width="44" height="39" alt="아이랑 로고"><div><b>아이랑 문의 접수함</b><small>관리자 전용 · 메일 발송 없음</small></div></div>
+  <div class="top"><img src="../../entry/img/logo-symbol.png" width="44" height="39" alt="아이랑 로고"><div><b>아이랑 문의 접수함</b><small>관리자 전용 · 메일 발송 없음</small></div><button class="btn out" id="logout" type="button" hidden>로그아웃</button></div>
   <h1>문의 접수함</h1>
-  <div class="today" id="today" aria-live="polite"><span class="big" id="newN">-</span><div><b>새 문의</b><small>아직 확인하지 않은 문의예요.</small></div></div>
+  <div class="today" id="today" aria-live="polite" hidden><span class="big" id="newN">-</span><div><b>새 문의</b><small>아직 확인하지 않은 문의예요.</small></div></div>
   <button class="soonbar" id="soonbar" type="button"></button>
   <div class="tabs" id="tabs" role="tablist" aria-label="처리 상태로 보기"></div>
   <div id="list" aria-live="polite"><p class="msg">불러오는 중…</p></div>
@@ -69,13 +79,16 @@ async function api(method, data) {
   const qs = method === "GET" ? `?${new URLSearchParams({ ...(view.soon ? { soon: 1 } : view.state && { state: view.state }), page: view.page })}` : "";
   const r = await fetch("/api/inquiry/admin" + qs, { method, credentials: "same-origin", headers: data ? { "content-type": "application/json" } : {}, body: data ? JSON.stringify(data) : undefined });
   const d = await r.json().catch(() => ({ ok: false, msg: "응답을 읽을 수 없어요." }));
-  if (!r.ok || !d.ok) throw new Error(d.msg || "잠시 뒤 다시 시도해 주세요.");
+  if (!r.ok || !d.ok) throw Object.assign(new Error(d.msg || "잠시 뒤 다시 시도해 주세요."), { status: r.status });
   return d;
 }
 let seq = 0;   // 늦게 도착한 이전 목록이 새 목록을 덮지 않게(빠르게 탭을 바꿀 때)
 async function load() {
   let d; const my = ++seq;
-  try { d = await api("GET"); if (my !== seq) return; } catch (e) { if (my !== seq) return; $("list").innerHTML = `<p class="msg">${esc(e.message)}</p>`; $("tabs").innerHTML = ""; $("pager").innerHTML = ""; return; }
+  try { d = await api("GET"); if (my !== seq) return; } catch (e) { if (my !== seq) return; $("tabs").innerHTML = ""; $("pager").innerHTML = ""; $("today").hidden = true; $("soonbar").classList.remove("on"); $("logout").hidden = true;
+    if (e.status === 401) return showLogin();
+    $("list").innerHTML = `<p class="msg">${esc(e.message)}</p>`; return; }
+  $("today").hidden = false; $("logout").hidden = false;
   const all = STATES.reduce((a, s) => a + (d.counts[s] || 0), 0);
   const nn = d.counts["새 문의"] || 0; $("newN").textContent = nn; $("newN").classList.toggle("zero", !nn);
   const sb = $("soonbar"); sb.classList.toggle("on", !!d.soon || view.soon);
@@ -107,6 +120,23 @@ $("list").addEventListener("click", async (e) => {
     }
   } catch (x) { toast(x.message); }
 });
+function showLogin(msg) {
+  $("list").innerHTML = `<form class="login" id="login"><label for="pw">관리자 비밀번호</label>
+    <input id="pw" type="password" autocomplete="current-password" required>
+    <button class="btn" type="submit">로그인</button><div class="err" id="lerr" role="alert"></div>
+    <small>대표만 쓰는 화면이에요. 비밀번호를 여러 번 틀리면 15분 동안 잠겨요.</small></form>`;
+  $("pw").focus();
+  $("login").addEventListener("submit", async (e) => {
+    e.preventDefault(); const b = e.target.querySelector("button"); b.disabled = true;
+    try {
+      const r = await fetch("/api/inquiry/login", { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: JSON.stringify({ password: $("pw").value }) });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok || !d.ok) throw new Error(d.msg || "로그인할 수 없어요.");
+      view = { state: "새 문의", page: 1, soon: false }; load();
+    } catch (x) { $("lerr").textContent = x.message; $("lerr").classList.add("on"); $("pw").select(); b.disabled = false; }
+  });
+}
+$("logout").addEventListener("click", async () => { await fetch("/api/inquiry/login", { method: "DELETE", credentials: "same-origin" }); load(); });
 load();
 </script>
 </body></html>

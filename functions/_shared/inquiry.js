@@ -63,40 +63,41 @@ export async function ipHash(request, env) {
   return [...new Uint8Array(buf)].slice(0, 16).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-// ── 관리자 확인: Cloudflare Access 가 붙여 주는 서명된 증표(JWT)를 직접 검증 ──
-// 필요한 설정(운영 연결 때): ACCESS_TEAM_DOMAIN(https://<팀>.cloudflareaccess.com), ACCESS_AUD, ADMIN_EMAILS(쉼표 구분)
-// 설정이 없으면 관리자 기능은 닫힘(503) — 실수로 열린 채 공개되지 않게.
-const b64u = (s) => Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(s.length / 4) * 4, "=")), (c) => c.charCodeAt(0));
-let certCache = { at: 0, keys: [] };
-async function accessKeys(env) {
-  if (env.ACCESS_JWKS_TEST) return JSON.parse(env.ACCESS_JWKS_TEST).keys;   // 로컬 시험 전용
-  if (Date.now() - certCache.at < 3600000 && certCache.keys.length) return certCache.keys;
-  const r = await fetch(`${env.ACCESS_TEAM_DOMAIN}/cdn-cgi/access/certs`);
-  certCache = { at: Date.now(), keys: (await r.json()).keys || [] };
-  return certCache.keys;
+// ── 관리자 확인 v02 (2026-11-09 대표 결정: 카드 등록 없는 무료 방식) ──
+// 대표만 아는 비밀번호(ADMIN_PASSWORD, Cloudflare 화면의 '비밀(Secret)'로 대표가 직접 등록 — 코드·GitHub에 없음)
+// 로그인하면 12시간짜리 서명 쿠키를 줌. 비밀번호를 바꾸면 기존 로그인은 모두 풀림.
+// 비밀번호가 없거나 12자 미만이면 관리자 기능은 닫힘(503) — 실수로 열린 채 공개되지 않게.
+export const SESSION_HOURS = 12;
+export const LOGIN_LIMIT = { perIp15m: 5, global1h: 30 };     // 틀린 비밀번호: 같은 기기 15분 5번, 전체 1시간 30번까지
+const enc = new TextEncoder();
+const hex = (buf) => [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("");
+async function hmac(keyText, msg) {
+  const key = await crypto.subtle.importKey("raw", enc.encode(keyText), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  return hex(await crypto.subtle.sign("HMAC", key, enc.encode(msg)));
+}
+export function passwordReady(env) { return typeof env.ADMIN_PASSWORD === "string" && [...env.ADMIN_PASSWORD].length >= 12; }
+// 같은 길이 비교(글자마다 시간 차이로 비밀번호를 알아내는 방법 차단): 둘 다 서명값으로 바꿔 비교
+export async function passwordMatches(env, given) {
+  const a = await hmac("pw-check", String(given || "")), b = await hmac("pw-check", env.ADMIN_PASSWORD);
+  let d = 0; for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return d === 0;
+}
+export async function sessionCookie(env, request) {
+  const exp = Date.now() + SESSION_HOURS * 3600000;
+  const v = `${exp}.${await hmac("session|" + env.ADMIN_PASSWORD, String(exp))}`;
+  const secure = new URL(request.url).protocol === "https:" ? "; Secure" : "";
+  return `airang_admin=${v}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${SESSION_HOURS * 3600}${secure}`;
+}
+export function clearCookie(request) {
+  const secure = new URL(request.url).protocol === "https:" ? "; Secure" : "";
+  return `airang_admin=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0${secure}`;
 }
 export async function adminUser(request, env) {
-  if (!env.ACCESS_AUD || !env.ACCESS_TEAM_DOMAIN || !env.ADMIN_EMAILS) return { status: 503, msg: "관리자 로그인이 아직 설정되지 않았어요." };
-  const cookie = (request.headers.get("cookie") || "").match(/(?:^|;\s*)CF_Authorization=([^;]+)/);
-  const token = request.headers.get("cf-access-jwt-assertion") || (cookie && cookie[1]);
-  if (!token) return { status: 401, msg: "관리자 로그인이 필요해요." };
-  try {
-    const [h, p, s] = token.split(".");
-    const head = JSON.parse(new TextDecoder().decode(b64u(h))), claims = JSON.parse(new TextDecoder().decode(b64u(p)));
-    if (head.alg !== "RS256") throw 0;
-    const jwk = (await accessKeys(env)).find((k) => k.kid === head.kid);
-    if (!jwk) throw 0;
-    const key = await crypto.subtle.importKey("jwk", jwk, { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["verify"]);
-    if (!(await crypto.subtle.verify("RSASSA-PKCS1-v1_5", key, b64u(s), new TextEncoder().encode(`${h}.${p}`)))) throw 0;
-    const aud = Array.isArray(claims.aud) ? claims.aud : [claims.aud];
-    const now = Date.now() / 1000;
-    if (!aud.includes(env.ACCESS_AUD) || claims.iss !== env.ACCESS_TEAM_DOMAIN || !(claims.exp > now) || (claims.nbf && claims.nbf > now + 60)) throw 0;
-    const allow = env.ADMIN_EMAILS.split(",").map((x) => x.trim().toLowerCase()).filter(Boolean);
-    if (!allow.includes(String(claims.email || "").toLowerCase())) return { status: 403, msg: "이 계정은 접수함을 볼 수 없어요." };
-    return { status: 200, email: claims.email };
-  } catch (e) {
-    return { status: 401, msg: "관리자 로그인이 필요해요." };
-  }
+  if (!passwordReady(env)) return { status: 503, msg: "관리자 비밀번호가 아직 설정되지 않았어요." };
+  const m = (request.headers.get("cookie") || "").match(/(?:^|;\s*)airang_admin=(\d+)\.([0-9a-f]{64})(?:;|$)/);
+  if (!m || +m[1] < Date.now()) return { status: 401, msg: "관리자 로그인이 필요해요." };
+  if ((await hmac("session|" + env.ADMIN_PASSWORD, m[1])) !== m[2]) return { status: 401, msg: "관리자 로그인이 필요해요." };
+  return { status: 200 };
 }
 
 // 다른 사이트에서 몰래 보낸 요청 차단(쿠키 로그인이라 필요)

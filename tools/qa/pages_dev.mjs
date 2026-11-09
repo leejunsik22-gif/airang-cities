@@ -3,15 +3,13 @@
 //   node tools/qa/pages_dev.mjs [PORT=8791]
 // - 화면: app/build.py 로 임시 폴더에 만든 것을 그대로 보여 줌
 // - D1: Node 내장 sqlite 로 같은 사용법(prepare/bind/run/first/all)을 흉내 냄(메모리 저장 — 끄면 사라짐)
-// - 관리자 로그인(Cloudflare Access): 시험용 열쇠를 이 자리에서 만들어, 진짜와 같은 방식(RS256 서명)으로 검증
-//   시험 로그인 증표 받기: GET /__test/login?email=… (이 시험 서버에만 있음)
+// - 관리자 비밀번호: 시험용 가상값(test-password-가상-1234)
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
 import { execFileSync } from "node:child_process";
 import { DatabaseSync } from "node:sqlite";
-import { webcrypto as crypto } from "node:crypto";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -30,22 +28,13 @@ class Stmt {
 }
 const D1 = { prepare: (q) => new Stmt(q) };
 
-// ── Access 흉내: 시험용 RSA 열쇠 ──
-const TEAM = "https://airang-test.cloudflareaccess.com", AUD = "test-aud-airang";
-const kp = await crypto.subtle.generateKey({ name: "RSASSA-PKCS1-v1_5", modulusLength: 2048, publicExponent: new Uint8Array([1, 0, 1]), hash: "SHA-256" }, true, ["sign", "verify"]);
-const pub = { ...(await crypto.subtle.exportKey("jwk", kp.publicKey)), kid: "test1", alg: "RS256", use: "sig" };
-const b64u = (b) => Buffer.from(b).toString("base64url");
-async function token(email, { aud = AUD, exp = 3600, iss = TEAM } = {}) {
-  const h = b64u(JSON.stringify({ alg: "RS256", kid: "test1", typ: "JWT" }));
-  const p = b64u(JSON.stringify({ aud: [aud], email, exp: Math.floor(Date.now() / 1000) + exp, iat: Math.floor(Date.now() / 1000), iss }));
-  const s = await crypto.subtle.sign("RSASSA-PKCS1-v1_5", kp.privateKey, new TextEncoder().encode(`${h}.${p}`));
-  return `${h}.${p}.${b64u(s)}`;
-}
-const ENV = { INQ_DB: D1, HASH_SALT: "local-test-salt", ACCESS_TEAM_DOMAIN: TEAM, ACCESS_AUD: AUD, ADMIN_EMAILS: "admin@test.invalid", ACCESS_JWKS_TEST: JSON.stringify({ keys: [pub] }) };
+// ── 관리자 비밀번호(시험용 가상값 — 운영 비밀번호 아님) ──
+export const TEST_ADMIN_PASSWORD = "test-password-가상-1234";
+const ENV = { INQ_DB: D1, HASH_SALT: "local-test-salt", ADMIN_PASSWORD: TEST_ADMIN_PASSWORD };
 
 // ── functions/ 경로 만들기(Pages 규칙: 파일 경로 = 주소, onRequestGet/Post…) ──
 const ROUTES = {};
-for (const f of ["api/inquiry/index.js", "api/inquiry/admin.js"]) {
+for (const f of ["api/inquiry/index.js", "api/inquiry/admin.js", "api/inquiry/login.js"]) {
   const mod = await import(pathToFileURL(path.join(ROOT, "functions", f)).href);
   ROUTES["/" + f.replace(/(\/index)?\.js$/, "")] = mod;
 }
@@ -54,10 +43,6 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", "
 http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, `http://127.0.0.1:${PORT}`);
-    if (url.pathname === "/__test/login") {   // 시험 전용: Access 로그인 쿠키 발급(다른 허용 메일·만료·위조 시험 포함)
-      const t = await token(url.searchParams.get("email") || "admin@test.invalid", { aud: url.searchParams.get("aud") || AUD, exp: +(url.searchParams.get("exp") || 3600) });
-      res.writeHead(200, { "set-cookie": `CF_Authorization=${t}; Path=/; HttpOnly; SameSite=Lax`, "content-type": "text/plain" }); return res.end("ok");
-    }
     if (url.pathname === "/__test/age") {     // 시험 전용: 보관 기간 시험용으로 문의 날짜를 과거로 돌림
       sql.prepare("UPDATE inquiries SET created_at=created_at-?, done_at=CASE WHEN done_at IS NULL THEN NULL ELSE done_at-? END WHERE id=?").run(+url.searchParams.get("ms"), +url.searchParams.get("ms"), +url.searchParams.get("id"));
       res.writeHead(200); return res.end("ok");
