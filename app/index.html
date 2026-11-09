@@ -490,6 +490,11 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
   .hero-v3 .ph{height:clamp(240px,calc(100vh - 470px),460px)!important;aspect-ratio:auto;object-fit:cover;object-position:center 42%!important}   /* 첫 화면에서 검색창이 하단 메뉴 위에 보이도록 화면 높이에 맞춰 사진 높이 조절 */
   .hero-v3 .t3{position:static!important;background:none!important;padding:18px 0 6px!important}
 }
+.svc-card{padding:14px 16px}.svc-h{display:flex;align-items:center;justify-content:space-between}.svc-h b{font-size:15px}.svc-x{border:0;background:none;font-size:18px;color:var(--muted);min-width:44px;min-height:44px;cursor:pointer}
+.svc-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.svc-on{border:1px solid var(--line);background:var(--paper);color:var(--navy);font:inherit;font-size:13px;font-weight:700;border-radius:10px;padding:0 12px;min-height:36px;cursor:pointer}
+.svc-plain{display:inline-flex;align-items:center;cursor:default;background:var(--ivory-2);border-color:transparent;font-weight:600;color:var(--muted)}
+.svc-h2{margin-top:12px;font-size:13px;font-weight:800;color:var(--muted)}.svc-h2 small{font-weight:500;margin-left:4px}
+.svc-soon{display:inline-flex;align-items:center;font-size:12.5px;color:var(--muted);background:var(--ivory-2);border-radius:10px;padding:0 10px;min-height:30px}
 @media (min-width:700px){.topscape .img-tag{right:max(14px,calc(50% - 410px));white-space:nowrap;max-width:calc(100% - 28px)}}   /* 2026-11-09: 넓은 PC에서 AI 표기가 화면 오른쪽 끝에서 잘리던 것 → 본문(820px) 오른쪽 끝에 맞춤 */
 </style>
 <script data-goatcounter="https://{{key}}-edu-app.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}' async src="https://gc.zgo.at/count.js"></script>
@@ -2392,8 +2397,20 @@ function homeUpdated() {
     <button onclick="event.stopPropagation();closeUpdated(false)" aria-label="닫기" style="border:0;background:none;font-size:18px;color:var(--muted);cursor:pointer;padding:0 4px">×</button></div>`;
 }
 function newsUnseen() { return store("edu.newsSeen") !== NEWS[0].v; }
+// 2026-11-09 대표 지시: 오픈 전 '준비 중이에요' 카드 → '지금 쓸 수 있어요 / 준비 중' 구분 카드(공개 상태 _status.json 을 그대로 따름, 손으로 적지 않음)
+const SVC_LIST = [["schools", "학교 일정"], ["acas", "학원"], ["meals", "급식"], ["kinders", "유치원"], ["library", "도서관"], ["hosp", "소아과·병원"], ["bene", "혜택"], ["events", "행사·체험"], ["weather", "날씨"]];
+function homeServiceStatus() {
+  if (store("edu.svcHide") === "1" || !GATE) return "";
+  const on = SVC_LIST.filter(([r]) => !gated(r)), soon = SVC_LIST.filter(([r]) => gated(r));
+  const chip = ([r, t], live) => live ? `<button class="svc-on" onclick="go('${r}')">${esc(t)}</button>` : `<span class="svc-soon">${esc(t)}</span>`;
+  return `<section class="section"><div class="lift svc-card">
+    <div class="svc-h"><b>지금 쓸 수 있어요</b><button onclick="store('edu.svcHide','1');render()" aria-label="닫기" class="svc-x">×</button></div>
+    <div class="svc-row">${on.map(x => chip(x, true)).join("")}<span class="svc-on svc-plain">검색 · 저장 · 우리 아이</span></div>
+    ${soon.length ? `<div class="svc-h2">준비 중 <small>공식 자료를 확인한 뒤 열어요</small></div><div class="svc-row">${soon.map(x => chip(x, false)).join("")}</div>` : ""}
+  </div></section>`;
+}
 function homeNews() {
-  return "";   // 2026-11-09 대표 승인: 오픈 전 문구('아이랑 대전이 준비 중이에요') 홈 카드 내림 — 소식 화면(마이 → 업데이트 소식)은 유지
+  return homeServiceStatus();
   if (UPDATED_FROM || !newsUnseen()) return "";   // 위쪽 "새 버전" 알림이 있으면 가운데 카드는 안 보임 (한 번만)
   const n = NEWS[0], days = (new Date(todayYmd() + "T00:00:00") - new Date(n.d + "T00:00:00")) / 864e5;
   if (days > 14) return "";

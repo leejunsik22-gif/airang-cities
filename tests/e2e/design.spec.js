@@ -149,10 +149,16 @@ for (const [key, name] of Object.entries(B.names)) {
 }
 
 // 2026-11-09 대표 실화면 확인에서 나온 작은 점 3건
-test("@디자인 홈: 오픈 전 알림 카드('준비 중이에요') 없음", async ({ page }) => {
+test("@디자인 홈: '지금 쓸 수 있어요 / 준비 중' 구분 카드가 공개 상태와 일치", async ({ page }) => {
+  const MAP = { "학교 일정": "latest.json", "학원": "academies.json", "급식": "meals.json", "유치원": "kinder.json", "도서관": "libs.json", "소아과·병원": "hospitals.json", "혜택": "benefits.json", "행사·체험": "events.json", "날씨": "weather.json" };
   for (const key of Object.keys(B.names)) {
     await page.goto(`/${key}/`); await expect(page.locator(".brand-round").first()).toBeVisible(); await page.waitForLoadState("networkidle");
     await expect(page.locator("#view"), key).not.toContainText("준비 중이에요 ›");
+    const st = await page.evaluate(() => fetch("./data/_status.json").then((r) => r.json()));
+    const on = await page.locator(".svc-card button.svc-on").allInnerTexts(), soon = await page.locator(".svc-card .svc-soon").allInnerTexts();
+    for (const t of on) expect(st.files[MAP[t]].published, `${key} '${t}'는 공개 상태여야 '쓸 수 있어요'`).not.toBe(false);
+    for (const t of soon) expect(st.files[MAP[t]].published, `${key} '${t}'는 보류 상태여야 '준비 중'`).toBe(false);
+    expect(on.length + soon.length, `${key} 9개 기능 모두 표시`).toBe(9);
   }
 });
 test("@디자인 검색 화면: 하단 메뉴 '홈'에 불", async ({ page }) => {
