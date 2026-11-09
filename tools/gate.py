@@ -9,7 +9,7 @@
   검사 실패 → 새 파일을 올리지 않고 직전 공개본 유지(없으면 미공개). 이유는 _status.json 과 표준출력에 남긴다.
 - 결과: <out>/_status.json (파일별 상태·출처·확인일·건수·사유), 종료 코드 0(이전본 유지로 운영 지속). --strict 면 실패 시 1.
 """
-import argparse, json, os, shutil, sys
+import argparse, json, os, shutil, sys, tempfile
 from datetime import datetime, date, timedelta, timezone
 KST = timezone(timedelta(hours=9))
 
@@ -128,6 +128,23 @@ def keep_review(a, src, fn, why):
     json.dump(m, open(meta, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 
+def strip_held_parts(a, src, fn, rule):
+    """2026-11-10 피트: 한 파일에 여러 유형이 들어 있을 때(병원 파일 = 의원·병원·약국·응급실) 검수 근거가 있는 유형만 공개.
+    held_parts 에 적힌 유형은 공개본에서 빈 목록으로 바꾸고, 전체 수집본은 비공개 검토 폴더에 그대로 둔다."""
+    held = rule.get("held_parts") or []
+    if not held:
+        return src
+    obj = json.load(open(src, encoding="utf-8"))
+    keep_review(a, src, fn, "일부 유형 공개 보류: " + "·".join(held))
+    for k in held:
+        if k in obj:
+            obj[k] = []
+    obj["held_parts"] = held
+    out = os.path.join(tempfile.mkdtemp(prefix="gate_"), fn)
+    json.dump(obj, open(out, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--city", required=True)
@@ -203,6 +220,8 @@ def main():
                 print(f"  ◻ {fn:16} 없음")
         else:
             g = None
+            src = strip_held_parts(a, src, fn, rule)   # 검수 안 된 유형(병원·약국·응급실)은 공개본에서 비움
+            if rule.get("held_parts"): ent["held_parts"] = rule["held_parts"]
             if os.path.exists(dst) and not a.no_guard:   # 직전 공개본이 있으면 기록 단위 변경 감지 → 의미 변경은 직전본 값으로 되돌려 공개(재검증 대기)
                 g = change_guard(a.city, fn, src, dst, a.today, a.review, a.approvals, a.changes, dry_run=a.dry_run)
                 ent["change_check"] = guard_summary(g); ent["reverify_pending"] = g["counts"]["held"]

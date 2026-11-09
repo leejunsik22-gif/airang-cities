@@ -104,3 +104,39 @@ test("B: 불일치 의원은 통합 검색·상세 주소(저장·공유 링크)
     await expect(page.locator("#sheet", { hasText: x.n })).toHaveCount(0);   // 상세 창이 안 열림
   }
 });
+
+// ── 2026-11-10 피트: 1차 공개 범위는 대조 통과 의원만. 병원·약국·응급실은 파일에 있어도 화면에 안 열림 ──
+test("범위: 병원·약국·응급실 탭이 없고, 파일에 들어 있어도 목록·검색·상세로 안 열림", async ({ page }) => {
+  expect(RAW.hospitals.length + RAW.pharm.length + RAW.er.length, "시험 자료에 세 유형이 들어 있어야 함").toBeGreaterThan(0);
+  await page.goto("/yuseong/#hosp"); await ready(page);
+  const v = page.locator("#view");
+  await expect(v).toContainText("병원·약국·응급실 정보는 공식 자료를 확인한 뒤 열어요");
+  await expect(v).toContainText("동네 의원을 모았어요");
+  for (const t of ["의원", "병원", "약국", "응급실"]) await expect(v.locator("button", { hasText: new RegExp("^\\s*" + t + "\\s*\\d") }), t + " 탭").toHaveCount(0);   // 유형 탭 줄 자체가 없음
+  expect(await page.evaluate(() => [HOSP.hospitals.length, HOSP.pharm.length, HOSP.er.length])).toEqual([0, 0, 0]);
+  await page.evaluate(() => { hsTab = "pharm"; viewHosp(); });   // 저장된 이전 상태로 약국 탭을 열려 해도 의원으로
+  expect(await page.evaluate(() => hsTab)).toBe("clinic");
+  for (const x of [RAW.hospitals[0], RAW.pharm[0], RAW.er[0]].filter(Boolean)) {
+    await page.evaluate((k) => hsOpenByKey(k), x.n + "|" + (x.a || ""));
+    await expect(page.locator("#sheet", { hasText: x.n })).toHaveCount(0);
+  }
+  const h = RAW.hospitals[0];
+  if (h) { await page.goto("/yuseong/?t=s#find/" + encodeURIComponent(h.n)); await page.waitForFunction(() => !document.querySelector("#view").innerText.includes("찾는 중"));
+    expect(await page.locator("#view button.lift, #view .row, #view li").filter({ hasText: h.n }).count(), "검색 " + h.n).toBe(0); }
+  await page.goto("/yuseong/"); await expect(page.locator(".q-chips")).toBeVisible();
+  await expect(page.locator(".q-chips .q-chip", { hasText: "약국" })).toHaveCount(0);
+});
+
+test("전화·길찾기: 소아과 상세의 전화번호·지도 검색어가 수집 자료와 같음(유성 전체)", async ({ page }) => {
+  await page.goto("/yuseong/#hosp"); await ready(page);
+  const kids = await page.evaluate(() => HOSP.clinics.map((x, i) => [x, i]).filter(([x]) => x.p === "소아청소년과").map(([x, i]) => ({ i, n: x.n, t: x.t, a: x.a })));
+  expect(kids.length).toBe(19);
+  for (const k of kids) {
+    await page.evaluate((i) => hsDetail("clinics", i), k.i);
+    const tel = await page.locator("#sheet .acts a[href^='tel:']").getAttribute("href");
+    expect(tel, k.n).toBe("tel:" + k.t.replace(/[^\d-]/g, ""));
+    const map = decodeURIComponent(await page.locator("#sheet .acts a", { hasText: "길찾기" }).getAttribute("href"));
+    expect(map.startsWith("https://map.naver.com/p/search/" + k.n), k.n).toBe(true);
+    await page.keyboard.press("Escape");
+  }
+});

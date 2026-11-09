@@ -1019,7 +1019,7 @@ function homeQuick() {   // 026: 핵심 질문 칩 3~4개 (홈5) — 눌러서 �
   const n = new Date(), h = n.getHours(), wk = n.getDay() === 0 || n.getDay() === 6;
   const kidsTxt = !HOSP_HOURS ? "동네 소아과" : h >= 19 || h < 8 ? "밤에 여는 소아과" : wk ? "주말에 여는 소아과" : "지금 문 연 소아과";   // 2026-11-09 피트·대표: 진료시간 숨기는 동안 '동네 소아과'
   const chip = (label, fn, name) => `<button class="q-chip" onclick="${fn}">${ico(name, 16, "none")}${esc(label)}</button>`;
-  return `<div class="q-chips" aria-label="자주 찾는 것">${chip(kidsTxt, "hsOpenKids()", "stethoscope")}${chip("우리 동네 학원", "go('acas')", "pencil")}${chip("학교 일정", "go('schools')", "calendar")}${chip("받을 수 있는 혜택", "go('bene')", "gift")}${chip("약국", "hsTab='pharm';go('hosp')", "pill")}</div>`;
+  return `<div class="q-chips" aria-label="자주 찾는 것">${chip(kidsTxt, "hsOpenKids()", "stethoscope")}${chip("우리 동네 학원", "go('acas')", "pencil")}${chip("학교 일정", "go('schools')", "calendar")}${chip("받을 수 있는 혜택", "go('bene')", "gift")}${hsPartOpen("pharm") ? chip("약국", "hsTab='pharm';go('hosp')", "pill") : ""}</div>`;
 }
 function homeMenu() {   // v3(2026-11-04): 핵심 메뉴 6개 3×2 큰 타일(PC 6칸) — 준비 중은 눌러도 준비 중 틀. 도서관·유치원은 '전체보기'와 아래 섹션에서
   const nSch = DATA && DATA.schools ? regionSchools().length : 0, nAca = ACAS && ACAS.academies ? ACAS.academies.length : 0;
@@ -2839,7 +2839,7 @@ function viewDeals() {
 const HS_HINT = { "소아청소년과": "소아", "이비인후과": "이비인후", "내과": "내과", "피부과": "피부", "안과": "안과", "가정의학과": "가정의학|가정의원", "산부인과": "산부인|여성", "정형외과": "정형", "치과": "치과" };
 let HOSP = null, hsLoading = null, hsTab = "clinic", hsDept = "전체", hsGu = "전체", hsQ = "", hsNear = null, hsMore = 40, hsPf = "전체", hsOf = "전체";
 // 불일치·미대조 의원(cx≠1)은 목록·검색·상세 어디에도 안 들어가게 불러올 때 뺌 (2026-11-09)
-function loadHosp() { if (!hsLoading) hsLoading = (GATE ? Promise.resolve() : loadGate()).then(() => gated("hosp") ? Promise.reject("held") : dataFetch("hospitals.json")).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(j => { j.clinics = (j.clinics || []).filter(hsCross); HOSP = j; if (location.hash === "#hosp") render(); }).catch(() => { HOSP = { clinics: [], hospitals: [], er: [], err: 1 }; if (location.hash === "#hosp") render(); }); return hsLoading; }
+function loadHosp() { if (!hsLoading) hsLoading = (GATE ? Promise.resolve() : loadGate()).then(() => gated("hosp") ? Promise.reject("held") : dataFetch("hospitals.json")).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(j => { j.clinics = (j.clinics || []).filter(hsCross); for (const k of ["hospitals", "pharm", "er"]) if (!HOSP_PARTS.includes(k) || (j.held_parts || []).includes(k)) j[k] = []; HOSP = j; if (location.hash === "#hosp") render(); }).catch(() => { HOSP = { clinics: [], hospitals: [], er: [], err: 1 }; if (location.hash === "#hosp") render(); }); return hsLoading; }
 function hsSet(k, v) { if (k === "tab") { hsTab = v; hsMore = 40; } if (k === "dept") { hsDept = v; hsMore = 40; } if (k === "gu") { hsGu = v; hsMore = 40; } if (k === "pf") { hsPf = v; hsMore = 40; } if (k === "of") { hsOf = v; hsMore = 40; } if (k === "more") hsMore += 40; viewHosp(); }
 function hsKm(x) { if (!hsNear || x.y == null) return null; const R = 6371, r = Math.PI / 180, dy = (x.y - hsNear.y) * r, dx = (x.x - hsNear.x) * r * Math.cos(hsNear.y * r); return R * Math.sqrt(dx * dx + dy * dy); }
 function hsLocate() {
@@ -2851,7 +2851,10 @@ function hsLocate() {
 }
 // 오늘 진료시간: h = [월,화,수,목,금,토,일,공휴일] 각 "09001900"
 // 2026-11-09 대표 승인 A+B안(견본): 진료시간은 피트 검수 끝날 때까지 숨기고 '방문 전 전화 확인'만. 두 공식 자료(국립중앙의료원↔심평원)가 맞는 곳(cx=1)만 목록에
-const HOSP_HOURS = false;   // 피트 진료시간 검수 통과 후 true 로 바꾸면 진료시간·시간 거르기가 다시 보임
+const HOSP_HOURS = false;
+// 2026-11-10 피트: 1차 공개는 두 공식 자료 대조를 통과한 의원만. 병원·약국·응급실은 유형별 검수 근거가 생기면 여기에 더해 연다
+const HOSP_PARTS = ["clinics"];
+const hsPartOpen = k => HOSP_PARTS.includes({ clinic: "clinics", hosp: "hospitals", pharm: "pharm", er: "er" }[k] || k);   // 피트 진료시간 검수 통과 후 true 로 바꾸면 진료시간·시간 거르기가 다시 보임
 const hsCross = x => x.cx === 1;   // 두 공식 자료 대조를 통과한 의원만(대조 기록이 없는 옛 수집본은 의원 목록을 비움 — 피트 2026-11-09)
 function hsToday(x) {
   if (!HOSP_HOURS) return null;
@@ -2964,13 +2967,15 @@ function viewHosp(keepFocus) {
   const sos = `<a href="tel:119" onclick="trackEvent('병원-119')" style="display:flex;align-items:center;gap:10px;margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--coral-ink);color:#fff;text-decoration:none;font-weight:800;font-size:15px;min-height:52px;box-shadow:var(--shadow)">${ico3d("🚑", 34, 28)}<span style="flex:1">위급하면 바로 119에 전화하세요</span><span style="background:rgba(255,255,255,.22);padding:6px 12px;border-radius:10px">📞 119</span></a>`;
   const head = `<button class="back glass" onclick="history.back()" aria-label="뒤로">${icon.back}</button>
     <h1 style="font-size:25px;font-weight:800;margin-top:14px">동네 병원</h1>
-    <p style="font-size:13px;color:var(--muted);margin-top:4px">${esc(city)}의 의원·병원·약국·응급실을 모았어요. 일주일마다 새로 받아 와요.</p>${sos}`;
+    <p style="font-size:13px;color:var(--muted);margin-top:4px">${esc(city)}의 ${HOSP_PARTS.length === 1 ? "동네 의원을" : "의원·병원·약국·응급실을"} 모았어요. 일주일마다 새로 받아 와요.</p>${sos}`;
   if (!HOSP) { loadHosp(); $view.innerHTML = head + `<div class="lift empty" style="margin-top:16px">병원 정보를 불러오는 중이에요…</div>`; return; }
   const all = { clinic: HOSP.clinics || [], hosp: HOSP.hospitals || [], pharm: HOSP.pharm || [], er: HOSP.er || [] };
   if (!all.clinic.length && !all.hosp.length && !all.pharm.length && !all.er.length) { $view.innerHTML = head + `<div class="lift empty" style="margin-top:16px">병원 정보를 준비하고 있어요. 곧 볼 수 있어요.</div>`; return; }
-  const seg = [["clinic", "의원", "🩺"], ["hosp", "병원", "🏥"], ["pharm", "약국", "💊"], ["er", "응급실", "🚑"]].filter(([k]) => k !== "pharm" || all.pharm.length).map(([k, l, e]) =>
+  const seg = [["clinic", "의원", "🩺"], ["hosp", "병원", "🏥"], ["pharm", "약국", "💊"], ["er", "응급실", "🚑"]].filter(([k]) => hsPartOpen(k) && (k !== "pharm" || all.pharm.length)).map(([k, l, e]) =>
     `<button class="btn ${hsTab === k ? "btn-3d" : "btn-soft"}" style="flex:1;min-width:0;height:44px;font-size:13px;padding:0 4px;gap:3px;white-space:nowrap" onclick="hsSet('tab','${k}')">${e3d(e, 18)} ${l} <span style="opacity:.7;font-size:12px;margin-left:2px">${all[k].length}</span></button>`).join("");
   const chip = (k, v, on, label) => `<button class="btn ${on ? "btn-3d" : "btn-soft"}" style="font-size:13px;padding:0 12px;flex:0 0 auto" onclick="hsSet('${k}','${v}')">${esc(label || v)}</button>`;
+  if (!hsPartOpen(hsTab)) hsTab = "clinic";
+  const onlyClinic = !hsPartOpen("hosp") && !hsPartOpen("pharm") && !hsPartOpen("er");
   let list = all[hsTab];
   const gus = ["전체", ...[...new Set(list.map(x => x.g).filter(Boolean))].sort()];
   if (!gus.includes(hsGu)) hsGu = "전체";
@@ -3007,7 +3012,7 @@ function viewHosp(keepFocus) {
   const shown = list.slice(0, hsMore);
   const more = list.length > hsMore ? `<button class="btn btn-soft" style="width:100%;height:46px;font-size:14px" onclick="hsSet('more')">더 보기 (${list.length - hsMore}곳 더)</button>` : "";
   const nearNote = hsNear ? `<div style="font-size:11.5px;color:var(--muted);margin:2px 0 8px">내 위치는 이 휴대폰 안에서 거리 계산에만 쓰고, 어디에도 보내지 않아요.</div>` : "";
-  $view.innerHTML = head + `<div style="display:flex;gap:8px;margin-top:16px">${seg}</div>` + filters + erNote +
+  $view.innerHTML = head + (onlyClinic ? `<p class="lift" style="margin-top:14px;padding:10px 14px;border-radius:14px;font-size:12.5px;color:var(--muted)">병원·약국·응급실 정보는 공식 자료를 확인한 뒤 열어요.</p>` : `<div style="display:flex;gap:8px;margin-top:16px">${seg}</div>`) + filters + erNote +
     `<div style="font-size:12.5px;color:var(--muted);margin:12px 2px 8px">${list.length}곳${hsNear ? " · 가까운 순" : ""}</div>` + nearNote +
     (shown.map(x => hsRow(x, hsTab === "er")).join("") || `<div class="lift empty">조건에 맞는 곳이 없어요.</div>`) + more +
     `<div class="foot">⚠️ 진료 과목·진료 시간·휴진일은 바뀔 수 있어요. <b>가기 전에 꼭 병원에 전화로 확인해 주세요.</b><br>위급한 상황이면 바로 119에 전화하세요.<br>
