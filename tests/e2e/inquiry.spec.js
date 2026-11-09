@@ -134,6 +134,7 @@ test("관리자: 새 문의 → 처리 중 → 완료, 필터·삭제·없는 �
   const card = page.locator(`.item[data-id="${ticket}"]`);
   await expect(card).toBeVisible();
   await page.locator('.tab[data-s=""]').click();
+  await expect(page.locator('.tab.on')).toHaveAttribute("data-s", "");   // '전체' 목록이 다 그려진 뒤 조작
   await expect(card).toContainText("<script>alert(1)</script>");        // 글자로만 보임
   expect(await card.locator("script").count()).toBe(0);
   await expect(card.locator(".meta")).toContainText("보낸 화면: 유성 / 학원 상세");

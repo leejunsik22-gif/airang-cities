@@ -72,9 +72,10 @@ async function api(method, data) {
   if (!r.ok || !d.ok) throw new Error(d.msg || "잠시 뒤 다시 시도해 주세요.");
   return d;
 }
+let seq = 0;   // 늦게 도착한 이전 목록이 새 목록을 덮지 않게(빠르게 탭을 바꿀 때)
 async function load() {
-  let d;
-  try { d = await api("GET"); } catch (e) { $("list").innerHTML = `<p class="msg">${esc(e.message)}</p>`; $("tabs").innerHTML = ""; $("pager").innerHTML = ""; return; }
+  let d; const my = ++seq;
+  try { d = await api("GET"); if (my !== seq) return; } catch (e) { if (my !== seq) return; $("list").innerHTML = `<p class="msg">${esc(e.message)}</p>`; $("tabs").innerHTML = ""; $("pager").innerHTML = ""; return; }
   const all = STATES.reduce((a, s) => a + (d.counts[s] || 0), 0);
   const nn = d.counts["새 문의"] || 0; $("newN").textContent = nn; $("newN").classList.toggle("zero", !nn);
   const sb = $("soonbar"); sb.classList.toggle("on", !!d.soon || view.soon);
