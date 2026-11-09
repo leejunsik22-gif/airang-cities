@@ -11,7 +11,8 @@ export const LIMITS = {
   perIpDay: 20,           // 하루 20건
   globalDay: 300,         // 전체 하루 300건(도배 방어)
   doneKeepDays: 90,       // 완료 후 90일 뒤 자동 삭제(대표 결정 대기 — 추천값)
-  maxKeepDays: 365,       // 처리 안 된 문의도 1년 지나면 삭제
+  maxKeepDays: 180,       // 처리 안 된 문의도 180일 지나면 삭제(11/9 피트 의견: 1년→180일)
+  warnDays: 30,           // 삭제 30일 전부터 접수함에 '곧 삭제' 표시
 };
 const DAY = 86400000;
 

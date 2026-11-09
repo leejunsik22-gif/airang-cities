@@ -41,6 +41,8 @@ textarea:focus,input:focus{outline:3px solid rgba(184,146,62,.45);outline-offset
 .send{width:100%;min-height:54px;margin-top:18px;border:0;border-radius:16px;background:var(--navy);color:#fff;font:inherit;font-size:16px;font-weight:800;cursor:pointer;box-shadow:var(--shadow)}
 .send:disabled{opacity:.6;cursor:default}
 .send:focus-visible,.back:focus-visible{outline:3px solid rgba(184,146,62,.6);outline-offset:2px}
+.more[hidden]{display:none}
+.more{animation:none}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .note{font-size:12.5px;color:var(--muted);margin:14px 2px 0;line-height:1.7;word-break:keep-all}
 .done{text-align:center;padding:28px 18px}
@@ -64,19 +66,22 @@ textarea:focus,input:focus{outline:3px solid rgba(184,146,62,.45);outline-offset
           <label class="kind"><input type="radio" name="kind" value="ad"><span><b>광고·제휴 문의</b><small>검토한 뒤 회신해요. 광고는 ‘광고’ 표시가 붙은 별도 자리에만 싣고, 검색 순서는 바꾸지 않아요.</small></span></label>
         </div>
       </fieldset>
+      <div class="more" id="more" hidden>
       <div class="f">
         <label class="lb" for="body">문의 내용</label>
-        <textarea id="body" name="body" maxlength="2000" aria-describedby="body-hint" placeholder="문의 유형을 고르면 적을 내용을 알려 드려요."></textarea>
+        <textarea id="body" name="body" maxlength="2000" aria-describedby="body-hint" placeholder="문의 내용을 적어 주세요."></textarea>
         <div class="hint" id="body-hint"><span id="guide">전화번호·주민등록번호는 적지 말아 주세요.</span><span class="cnt"><span id="cnt">0</span> / 2000자</span></div>
       </div>
       <div class="f">
         <label class="lb" for="reply">회신 이메일 <small style="font-weight:600;color:var(--muted)">(선택)</small></label>
         <input id="reply" name="reply" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="답장이 필요할 때만 적어 주세요">
       </div>
+      </div>
       <div class="hp" aria-hidden="true"><label>웹사이트<input name="website" tabindex="-1" autocomplete="off"></label></div>
       <div class="err" id="err" role="alert"></div>
       <button class="send" id="send" type="submit">문의 보내기</button>
-      <p class="note">회신 이메일은 답장에만 쓰고 다른 곳에 쓰지 않아요. 문의는 처리 완료 90일 뒤 이메일과 함께 지워요(처리하지 못한 문의도 1년 뒤 지워요).<br>아이랑은 공공기관이 아닌 민간이 만든 무료 서비스예요.</p>
+      <p class="hint" id="pickfirst" style="justify-content:center">문의 유형을 고르면 적을 칸이 나와요.</p>
+      <p class="note">회신 이메일은 답장에만 쓰고 다른 곳에 쓰지 않아요. 문의는 처리 완료 90일 뒤 이메일과 함께 지워요(처리하지 못한 문의도 180일 뒤 지워요).<br>아이랑은 공공기관이 아닌 민간이 만든 무료 서비스예요.</p>
     </form>
   </main>
 </div>
@@ -95,6 +100,8 @@ function count() { $("cnt").textContent = [...body.value].length; }
 let lastAuto = "";   // 자동으로 채운 양식 — 이용자가 고치지 않았을 때만 다른 유형 양식으로 바꿈
 function pick(k, fill) {
   const g = GUIDE[k]; if (!g) return;
+  $("more").hidden = false; $("pickfirst").hidden = true;
+  $("reply").placeholder = k === "ad" ? "회신받을 이메일(권장)" : "답장이 필요할 때만 적어 주세요";
   $("guide").textContent = g[1] + (k === "ad" ? "" : " 전화번호·주민등록번호는 적지 말아 주세요.");
   if (fill && (!body.value.trim() || body.value === lastAuto)) {
     const where = [ctx.gu, ctx.screen].filter(Boolean).join(" / ");

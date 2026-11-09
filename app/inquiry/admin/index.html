@@ -38,25 +38,35 @@ h1{font-size:22px;margin:18px 2px 10px}
 .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--navy);color:#fff;border-radius:12px;padding:10px 16px;font-weight:700;display:none}
 .toast.on{display:block}
 .note{font-size:12.5px;color:var(--muted);margin-top:18px}
+/* 11/9 피트 의견: 매일 확인 — '새 문의' 건수·목록을 맨 먼저, 곧 삭제될 미처리 문의 따로 표시 */
+.today{display:flex;align-items:center;gap:12px;background:var(--paper);border:1px solid rgba(31,42,68,.06);border-radius:18px;box-shadow:var(--shadow);padding:14px 16px;margin:0 0 12px}
+.today .big{font-size:30px;font-weight:800;color:var(--coral-ink);line-height:1}
+.today .big.zero{color:var(--sage-ink)}
+.today small{display:block;color:var(--muted);font-size:12.5px}
+.soonbar{display:none;width:100%;text-align:left;min-height:48px;margin:0 0 12px;padding:10px 14px;border-radius:14px;border:1px solid #E9C98B;background:var(--gold-bg);color:var(--gold-ink);font:inherit;font-weight:800;font-size:14px;cursor:pointer}
+.soonbar.on{display:block}
+.pill.dd{background:var(--gold-bg);color:var(--gold-ink)}
 </style></head><body>
 <div class="wrap">
   <div class="top"><img src="../../entry/img/logo-symbol.png" width="44" height="39" alt="아이랑 로고"><div><b>아이랑 문의 접수함</b><small>관리자 전용 · 메일 발송 없음</small></div></div>
   <h1>문의 접수함</h1>
+  <div class="today" id="today" aria-live="polite"><span class="big" id="newN">-</span><div><b>새 문의</b><small>아직 확인하지 않은 문의예요.</small></div></div>
+  <button class="soonbar" id="soonbar" type="button"></button>
   <div class="tabs" id="tabs" role="tablist" aria-label="처리 상태로 보기"></div>
   <div id="list" aria-live="polite"><p class="msg">불러오는 중…</p></div>
   <div class="pager" id="pager"></div>
-  <p class="note">완료된 문의는 90일 뒤, 처리하지 못한 문의도 1년 뒤 자동으로 지워져요. 답장은 회신 주소를 눌러 대표 메일 앱에서 보내 주세요.</p>
+  <p class="note">완료된 문의는 90일 뒤, 처리하지 못한 문의도 180일 뒤 자동으로 지워져요(30일 전부터 위에 따로 알려 드려요). 답장은 회신 주소를 눌러 대표 메일 앱에서 보내 주세요.</p>
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
 const STATES = ["새 문의", "처리 중", "완료"];
-let view = { state: "", page: 1 };
+let view = { state: "새 문의", page: 1, soon: false };   // 처음 열면 새 문의부터
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const when = (t) => new Date(t).toLocaleString("ko-KR", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
 function toast(t) { const el = $("toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove("on"), 2200); }
 async function api(method, data) {
-  const qs = method === "GET" ? `?${new URLSearchParams({ ...(view.state && { state: view.state }), page: view.page })}` : "";
+  const qs = method === "GET" ? `?${new URLSearchParams({ ...(view.soon ? { soon: 1 } : view.state && { state: view.state }), page: view.page })}` : "";
   const r = await fetch("/api/inquiry/admin" + qs, { method, credentials: "same-origin", headers: data ? { "content-type": "application/json" } : {}, body: data ? JSON.stringify(data) : undefined });
   const d = await r.json().catch(() => ({ ok: false, msg: "응답을 읽을 수 없어요." }));
   if (!r.ok || !d.ok) throw new Error(d.msg || "잠시 뒤 다시 시도해 주세요.");
@@ -66,11 +76,14 @@ async function load() {
   let d;
   try { d = await api("GET"); } catch (e) { $("list").innerHTML = `<p class="msg">${esc(e.message)}</p>`; $("tabs").innerHTML = ""; $("pager").innerHTML = ""; return; }
   const all = STATES.reduce((a, s) => a + (d.counts[s] || 0), 0);
-  $("tabs").innerHTML = [["", "전체", all], ...STATES.map((s) => [s, s, d.counts[s] || 0])].map(([v, l, n]) =>
-    `<button class="tab ${view.state === v ? "on" : ""}" role="tab" aria-selected="${view.state === v}" data-s="${esc(v)}">${l}<span class="n">${n}</span></button>`).join("");
+  const nn = d.counts["새 문의"] || 0; $("newN").textContent = nn; $("newN").classList.toggle("zero", !nn);
+  const sb = $("soonbar"); sb.classList.toggle("on", !!d.soon || view.soon);
+  sb.textContent = view.soon ? "← 곧 삭제될 문의 보기를 닫기" : `⏳ ${d.warnDays}일 안에 자동 삭제될 미처리 문의 ${d.soon}건 — 눌러서 확인`;
+  $("tabs").innerHTML = [...STATES.map((s) => [s, s, d.counts[s] || 0]), ["", "전체", all]].map(([v, l, n]) => { const on = !view.soon && view.state === v;
+    return `<button class="tab ${on ? "on" : ""}" role="tab" aria-selected="${on}" data-s="${esc(v)}">${l}<span class="n">${n}</span></button>`; }).join("");
   $("list").innerHTML = d.items.length ? d.items.map((r) => `
     <article class="item" data-id="${r.id}">
-      <div class="h"><b>#${r.id}</b><span class="pill">${esc(r.kind)}</span><span class="pill s${STATES.indexOf(r.state)}">${esc(r.state)}</span><span class="when">${when(r.created_at)}</span></div>
+      <div class="h"><b>#${r.id}</b><span class="pill">${esc(r.kind)}</span><span class="pill s${STATES.indexOf(r.state)}">${esc(r.state)}</span>${r.delete_in_days != null && r.delete_in_days <= d.warnDays ? `<span class="pill dd">${r.delete_in_days}일 뒤 삭제</span>` : ""}<span class="when">${when(r.created_at)}</span></div>
       <pre>${esc(r.body)}</pre>
       <div class="meta">${r.gu || r.screen ? `보낸 화면: ${esc([r.gu, r.screen].filter(Boolean).join(" / "))} · ` : ""}회신 주소: ${r.reply ? `<a href="mailto:${esc(encodeURIComponent(r.reply).replace(/%40/, "@"))}?subject=${encodeURIComponent(`[아이랑] 문의 #${r.id} 답변`)}">${esc(r.reply)}</a>` : "없음"}</div>
       <div class="acts"><label class="sr" for="st-${r.id}" style="font-weight:700;font-size:13.5px">처리 상태</label>
@@ -79,7 +92,8 @@ async function load() {
     </article>`).join("") : `<p class="msg">문의가 없어요.</p>`;
   $("pager").innerHTML = d.pages > 1 ? `<button class="btn" data-p="${d.page - 1}" ${d.page <= 1 ? "disabled" : ""}>이전</button><span>${d.page} / ${d.pages}쪽</span><button class="btn" data-p="${d.page + 1}" ${d.page >= d.pages ? "disabled" : ""}>다음</button>` : "";
 }
-$("tabs").addEventListener("click", (e) => { const b = e.target.closest(".tab"); if (b) { view = { state: b.dataset.s, page: 1 }; load(); } });
+$("tabs").addEventListener("click", (e) => { const b = e.target.closest(".tab"); if (b) { view = { state: b.dataset.s, page: 1, soon: false }; load(); } });
+$("soonbar").addEventListener("click", () => { view = view.soon ? { state: "새 문의", page: 1, soon: false } : { state: "", page: 1, soon: true }; load(); });
 $("pager").addEventListener("click", (e) => { const b = e.target.closest("[data-p]"); if (b && !b.disabled) { view.page = +b.dataset.p; load(); } });
 $("list").addEventListener("click", async (e) => {
   const item = e.target.closest(".item"); if (!item) return; const id = +item.dataset.id;

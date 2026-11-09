@@ -54,10 +54,11 @@ test("오류 신고 주소로 열면 구·화면이 미리 채워짐", async ({ 
 test("입력 오류 안내: 유형 없음 · 전화번호 · 회신 이메일 형식", async ({ page }) => {
   await page.setExtraHTTPHeaders({ "x-test-ip": ip("err") });
   await page.goto(`${B}/inquiry/`);
-  await page.locator("#body").fill("[가상] 내용");
+  await expect(page.locator("#body"), "유형 고르기 전엔 칸이 접혀 있음").toBeHidden();
   await page.locator("#send").click();
   await expect(page.locator("#err")).toHaveText("문의 유형을 골라 주세요.");
   await page.locator("input[value=use]").check();
+  await expect(page.locator("#body"), "유형을 고르면 칸이 펼쳐짐").toBeVisible();
   await page.locator("#body").fill("[가상] 연락 주세요 010-0000-0000");
   await page.locator("#send").click();
   await expect(page.locator("#err")).toContainText("전화번호는 지워 주세요");
@@ -126,7 +127,13 @@ test("관리자: 새 문의 → 처리 중 → 완료, 필터·삭제·없는 �
   const ctx = await adminCtx(browser); const page = await ctx.newPage();
   page.on("dialog", (d) => { throw new Error("대화상자 뜸: " + d.message()); });
   await page.goto(`${B}/inquiry/admin/`);
+  await expect(page.locator('.tab.on'), "처음엔 '새 문의'부터").toHaveAttribute("data-s", "새 문의");
+  expect(+(await page.locator("#newN").textContent()), "새 문의 건수 표시").toBeGreaterThan(0);
+  const first = await page.evaluate(() => [document.querySelector("#today").getBoundingClientRect().top, document.querySelector("#list").getBoundingClientRect().top]);
+  expect(first[0], "새 문의 건수가 목록보다 위").toBeLessThan(first[1]);
   const card = page.locator(`.item[data-id="${ticket}"]`);
+  await expect(card).toBeVisible();
+  await page.locator('.tab[data-s=""]').click();
   await expect(card).toContainText("<script>alert(1)</script>");        // 글자로만 보임
   expect(await card.locator("script").count()).toBe(0);
   await expect(card.locator(".meta")).toContainText("보낸 화면: 유성 / 학원 상세");
@@ -169,17 +176,26 @@ test("관리자: 30건씩 쪽 나눔(058: 100건만 보이던 문제)", async ({
   await ctx.close();
 });
 
-test("보관 기간: 완료 90일 뒤·미처리 1년 뒤 자동 삭제, 그 전엔 남음", async ({ browser, request }, info) => {
+test("보관 기간: 완료 90일 뒤·미처리 180일 뒤 자동 삭제, 그 전엔 남음 + 곧 삭제 표시", async ({ browser, request }, info) => {
   only390(info);
   const DAY = 86400000, ids = {};
-  for (const k of ["done91", "done89", "open366", "open200"]) ids[k] = (await post(request, { kind: "use", body: `[가상] 보관 ${k}` })).body.ticket;
+  for (const k of ["done91", "done89", "open181", "open170", "open100"]) ids[k] = (await post(request, { kind: "use", body: `[가상] 보관 ${k}` })).body.ticket;
   const ctx = await adminCtx(browser);
   for (const k of ["done91", "done89"]) await ctx.request.post(`${B}/api/inquiry/admin`, { data: { action: "state", id: ids[k], state: "완료" }, headers: { origin: B } });
-  for (const [k, d] of [["done91", 91], ["done89", 89], ["open366", 366], ["open200", 200]]) await ctx.request.get(`${B}/__test/age?id=${ids[k]}&ms=${d * DAY}`);
+  for (const [k, d] of [["done91", 91], ["done89", 89], ["open181", 181], ["open170", 170], ["open100", 100]]) await ctx.request.get(`${B}/__test/age?id=${ids[k]}&ms=${d * DAY}`);
   const all = []; for (let p = 1; p < 10; p++) { const d = await (await ctx.request.get(`${B}/api/inquiry/admin?page=${p}`)).json(); all.push(...d.items.map((x) => x.id)); if (p >= d.pages) break; }
   expect(all.includes(ids.done91), "완료 91일 → 삭제").toBe(false);
-  expect(all.includes(ids.open366), "미처리 366일 → 삭제").toBe(false);
+  expect(all.includes(ids.open181), "미처리 181일 → 삭제").toBe(false);
   expect(all.includes(ids.done89), "완료 89일 → 남음").toBe(true);
-  expect(all.includes(ids.open200), "미처리 200일 → 남음").toBe(true);
+  expect(all.includes(ids.open170), "미처리 170일 → 남음").toBe(true);
+  // 곧 삭제(30일 안) 모아 보기: 170일 된 미처리는 들어가고(10일 뒤 삭제), 100일 된 건 안 들어감
+  const soon = await (await ctx.request.get(`${B}/api/inquiry/admin?soon=1`)).json();
+  const s170 = soon.items.find((x) => x.id === ids.open170);
+  expect(s170 && s170.delete_in_days, "170일 → 10일 뒤 삭제 예정").toBe(10);
+  expect(soon.items.some((x) => x.id === ids.open100)).toBe(false);
+  const page = await ctx.newPage(); await page.goto(`${B}/inquiry/admin/`);
+  await expect(page.locator("#soonbar")).toContainText("자동 삭제될 미처리 문의");
+  await page.locator("#soonbar").click();
+  await expect(page.locator(`.item[data-id="${ids.open170}"] .pill.dd`)).toHaveText("10일 뒤 삭제");
   await ctx.close();
 });

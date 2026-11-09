@@ -1,5 +1,5 @@
 // /api/inquiry/admin — 관리자 접수함 v01후보 (2026-11-09). Cloudflare Access 로그인 + 허용 메일만.
-import { STATES, json, schema, purge, adminUser, sameOrigin } from "../../_shared/inquiry.js";
+import { STATES, LIMITS, json, schema, purge, adminUser, sameOrigin } from "../../_shared/inquiry.js";
 const PAGE = 30;
 
 async function guard(request, env) {
@@ -15,13 +15,18 @@ export async function onRequestGet({ request, env }) {
   const u = new URL(request.url);
   const state = STATES.includes(u.searchParams.get("state")) ? u.searchParams.get("state") : null;
   const page = Math.max(1, Math.min(1000, parseInt(u.searchParams.get("page"), 10) || 1));
-  const where = state ? "WHERE state=?" : "", args = state ? [state] : [];
+  // 곧 삭제될 미처리 문의(삭제 30일 전부터) — 회신할 건을 놓치지 않게 따로 모아 봄
+  const DAY = 86400000, soonBefore = Date.now() - (LIMITS.maxKeepDays - LIMITS.warnDays) * DAY;
+  const soon = u.searchParams.get("soon") === "1";
+  const where = soon ? "WHERE state<>'완료' AND created_at<?" : state ? "WHERE state=?" : "", args = soon ? [soonBefore] : state ? [state] : [];
   const total = (await db.prepare(`SELECT COUNT(*) AS n FROM inquiries ${where}`).bind(...args).first()).n;
   const items = (await db.prepare(`SELECT id,kind,body,reply,gu,screen,state,created_at,done_at FROM inquiries ${where} ORDER BY id DESC LIMIT ? OFFSET ?`)
     .bind(...args, PAGE, (page - 1) * PAGE).all()).results;
   const counts = Object.fromEntries(STATES.map((s) => [s, 0]));
   for (const r of (await db.prepare("SELECT state, COUNT(*) AS n FROM inquiries GROUP BY state").all()).results) counts[r.state] = r.n;
-  return json({ ok: true, items, total, page, pages: Math.max(1, Math.ceil(total / PAGE)), counts });
+  const soonCount = (await db.prepare("SELECT COUNT(*) AS n FROM inquiries WHERE state<>'완료' AND created_at<?").bind(soonBefore).first()).n;
+  for (const r of items) if (r.state !== "완료") r.delete_in_days = Math.max(0, Math.ceil((r.created_at + LIMITS.maxKeepDays * DAY - Date.now()) / DAY));
+  return json({ ok: true, items, total, page, pages: Math.max(1, Math.ceil(total / PAGE)), counts, soon: soonCount, warnDays: LIMITS.warnDays });
 }
 
 export async function onRequestPost({ request, env }) {
