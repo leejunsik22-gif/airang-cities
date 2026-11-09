@@ -1,6 +1,6 @@
 {
  "city": "yuseong",
- "checked_at": "2026-11-09",
+ "checked_at": "2026-11-10",
  "files": {
   "latest.json": {
    "label": "학교·학사일정",
@@ -112,7 +112,7 @@
    "verify_status": "확인 완료",
    "source_org": "기상청·한국환경공단",
    "source_url": "https://www.data.go.kr",
-   "checked_at": "2026-11-09",
+   "checked_at": "2026-11-10",
    "published": false,
    "count": null,
    "reason": "공개 보류: 공식기관 원문 확인 미확인 (자동 검사 통과) — 표본 대조 후 official_verify 갱신 필요",
