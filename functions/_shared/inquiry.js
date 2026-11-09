@@ -93,7 +93,7 @@ export function clearCookie(request) {
   return `airang_admin=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0${secure}`;
 }
 export async function adminUser(request, env) {
-  if (!passwordReady(env)) return { status: 503, msg: "관리자 비밀번호가 아직 설정되지 않았어요." };
+  if (!passwordReady(env)) return { status: 503, msg: env.ADMIN_PASSWORD ? "관리자 비밀번호가 너무 짧아요. 12자 이상으로 다시 등록해 주세요." : "관리자 비밀번호가 아직 설정되지 않았어요." };
   const m = (request.headers.get("cookie") || "").match(/(?:^|;\s*)airang_admin=(\d+)\.([0-9a-f]{64})(?:;|$)/);
   if (!m || +m[1] < Date.now()) return { status: 401, msg: "관리자 로그인이 필요해요." };
   if ((await hmac("session|" + env.ADMIN_PASSWORD, m[1])) !== m[2]) return { status: 401, msg: "관리자 로그인이 필요해요." };
