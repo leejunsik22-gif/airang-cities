@@ -1,0 +1,18 @@
+name: hosp-raw (병원 원자료 그대로 뽑기 — 재검수용, 읽기 전용)
+# 2026-11-09 피트 063: 표본 기관 hpid 별 국립중앙의료원 원자료를 고치지 않고 뽑아 앱 값과 나란히. 결과는 실행 결과물(artifact)로만 남김(저장소·운영 변경 없음)
+on:
+  workflow_dispatch:
+    inputs:
+      ids: { description: "hpid 띄어쓰기로", required: true }
+permissions: { contents: read }
+jobs:
+  raw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - env: { WEATHER_KEY: "${{ secrets.WEATHER_KEY }}", IDS: "${{ inputs.ids }}" }
+        run: python3 -u tools/hosp_raw.py $IDS
+      - uses: actions/upload-artifact@v4
+        with: { name: hosp-raw, path: "output/hosp_raw.*" }

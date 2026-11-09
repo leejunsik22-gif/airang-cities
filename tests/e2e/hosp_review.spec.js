@@ -33,7 +33,7 @@ test("테크노본정형외과의원: 금 20:00 종료는 야간에 표시, 일�
   await expect(sh.locator(".hours")).not.toContainText("휴진");
   await expect(sh.locator(".hours")).toContainText("정보");
   const sp = sh.locator(".hs-special");
-  await expect(sp).toContainText("야간(밤 8시 이후)금 ~20:00");
+  await expect(sp).toContainText("야간(20:00 이상 종료)금 ~20:00");
   await expect(sp).toContainText("토요일09:00~13:00");
   await expect(sp).toContainText("일요일정보 없음(전화 확인)");
   await expect(sp).toContainText("공휴일정보 없음(전화 확인)");
@@ -45,6 +45,26 @@ test("소아청소년과 거르기: 대표 과목 기준(정형외과·외과·�
   const txt = await page.locator("#view").innerText();
   expect(txt, "정형외과의원이 소아과 목록에 없어야 함").not.toContain("테크노본정형외과의원");
   expect(txt, "소아청소년과의원은 그대로 보여야 함").toMatch(/소아청소년과의원|소아과의원/);
+});
+
+test("이름에 과목이 없는 의원은 소아청소년과 거르기에 안 나옴(피트 063)", async ({ page }) => {
+  await page.goto("/yuseong/#hosp"); await page.waitForFunction(() => typeof HOSP !== "undefined" && HOSP && (HOSP.clinics || []).length > 0);
+  const r = await page.evaluate(() => {
+    hsGu = "전체"; hsQ = ""; hsOf = "전체"; hsSet("dept", "소아청소년과"); hsMore = 9999; viewHosp();
+    const txt = document.querySelector("#view").innerText;
+    const noP = HOSP.clinics.filter((x) => !x.p && (x.d || []).includes("소아청소년과")).map((x) => x.n);
+    return { leak: noP.filter((n) => txt.includes(n)), noP: noP.length };
+  });
+  expect(r.noP, "시험 자료에 이름에 과목 없는 의원이 있어야 의미 있음").toBeGreaterThan(0);
+  expect(r.leak).toEqual([]);
+});
+
+test("'지금 진료 중' 대신 '진료 예정 시간'으로 표시", async ({ page }) => {
+  await page.goto("/yuseong/#hosp"); await page.waitForFunction(() => typeof HOSP !== "undefined" && HOSP && (HOSP.clinics || []).length > 0);
+  const r = await page.evaluate(() => ({ t: hsToday({ h: Array(8).fill("00002359") }).text, view: (hsOf = "전체", viewHosp(), document.querySelector("#view").innerText) }));
+  expect(r.t).toMatch(/^오늘 진료 예정 /);
+  expect(r.view).not.toContain("지금 진료 중");
+  expect(r.view).toContain("20:00 이상 종료");
 });
 
 test("목록의 '오늘' 표시: 빈 칸이면 '휴진' 대신 '정보 없음'", async ({ page }) => {
