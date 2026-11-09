@@ -80,14 +80,15 @@
    "source_url": "https://www.data.go.kr",
    "checked_at": "2026-11-09",
    "published": false,
-   "count": null,
-   "reason": "공개 보류: 공식기관 원문 확인 부분 확인 (자동 검사 수집 없음) — 표본 대조 후 official_verify 갱신 필요",
-   "auto_check": "수집 없음",
+   "count": 254,
+   "reason": "공개 보류: 공식기관 원문 확인 부분 확인 (자동 검사 통과) — 표본 대조 후 official_verify 갱신 필요",
+   "auto_check": "통과",
    "official_verify": "부분 확인",
    "verified_at": "2026-11-02",
    "verified_by": "클로드 표본 7건(심평원) — 주소·전화 일치, 진료과목 필터 왜곡 1건·진료시간 원문 대조 불가",
    "valid_days": 30,
-   "hold": true
+   "hold": true,
+   "region_check": "통과"
   },
   "benefits.json": {
    "label": "혜택",
@@ -96,14 +97,15 @@
    "source_url": "https://www.bokjiro.go.kr",
    "checked_at": "2026-11-09",
    "published": false,
-   "count": null,
-   "reason": "공개 보류: 공식기관 원문 확인 부분 확인 (자동 검사 수집 없음) — 표본 대조 후 official_verify 갱신 필요",
-   "auto_check": "수집 없음",
+   "count": 118,
+   "reason": "공개 보류: 공식기관 원문 확인 부분 확인 (자동 검사 통과) — 표본 대조 후 official_verify 갱신 필요",
+   "auto_check": "통과",
    "official_verify": "부분 확인",
    "verified_at": "2026-11-02",
    "verified_by": "클로드 표본 3건(복지로) — 전화·대상·기한 결손",
    "valid_days": 30,
-   "hold": true
+   "hold": true,
+   "region_check": "통과"
   },
   "weather.json": {
    "label": "날씨·미세먼지",
