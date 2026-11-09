@@ -131,7 +131,7 @@ test("관리자: 로그인 없음·틀린 비밀번호·위조·만료 쿠키 �
   await expect(page.locator(".item")).toHaveCount(0);
   await page.locator("#pw").fill("틀린비밀번호"); await page.locator("#login button").click();
   await expect(page.locator("#lerr")).toHaveText("비밀번호가 맞지 않아요.");
-  await page.locator("#pw").fill(PW); await page.locator("#login button").click();
+  await page.locator("#pw").fill("  " + PW + " "); await page.locator("#login button").click();   // 앞뒤 빈칸이 붙어도 로그인(메모장 복사 실수 대비)
   await expect(page.locator("#today")).toBeVisible();
   await expect(page.locator("#logout")).toBeVisible();
   const ck = (await ctx.cookies()).find((c) => c.name === "airang_admin");

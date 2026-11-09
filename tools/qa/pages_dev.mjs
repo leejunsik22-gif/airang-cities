@@ -29,8 +29,8 @@ class Stmt {
 const D1 = { prepare: (q) => new Stmt(q) };
 
 // ── 관리자 비밀번호(시험용 가상값 — 운영 비밀번호 아님) ──
-export const TEST_ADMIN_PASSWORD = "test-password-가상-1234";
-const ENV = { INQ_DB: D1, HASH_SALT: "local-test-salt", ADMIN_PASSWORD: TEST_ADMIN_PASSWORD };
+export const TEST_ADMIN_PASSWORD = "test-password-가상-1234";   // 아래 ENV 에는 앞에 빈칸을 붙여 저장값 빈칸 무시도 시험
+const ENV = { INQ_DB: D1, HASH_SALT: "local-test-salt", ADMIN_PASSWORD: " " + TEST_ADMIN_PASSWORD };
 
 // ── functions/ 경로 만들기(Pages 규칙: 파일 경로 = 주소, onRequestGet/Post…) ──
 const ROUTES = {};

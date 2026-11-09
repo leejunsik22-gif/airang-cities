@@ -75,16 +75,18 @@ async function hmac(keyText, msg) {
   const key = await crypto.subtle.importKey("raw", enc.encode(keyText), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
   return hex(await crypto.subtle.sign("HMAC", key, enc.encode(msg)));
 }
-export function passwordReady(env) { return typeof env.ADMIN_PASSWORD === "string" && [...env.ADMIN_PASSWORD].length >= 12; }
+// 2026-11-09 대표 실사용 중 발견: 메모장에서 복사할 때 앞뒤 빈칸이 붙어 로그인이 안 됨 → 저장값·입력값 모두 앞뒤 빈칸 무시
+const pw = (env) => (typeof env.ADMIN_PASSWORD === "string" ? env.ADMIN_PASSWORD.trim() : "");
+export function passwordReady(env) { return [...pw(env)].length >= 12; }
 // 같은 길이 비교(글자마다 시간 차이로 비밀번호를 알아내는 방법 차단): 둘 다 서명값으로 바꿔 비교
 export async function passwordMatches(env, given) {
-  const a = await hmac("pw-check", String(given || "")), b = await hmac("pw-check", env.ADMIN_PASSWORD);
+  const a = await hmac("pw-check", String(given || "").trim()), b = await hmac("pw-check", pw(env));
   let d = 0; for (let i = 0; i < a.length; i++) d |= a.charCodeAt(i) ^ b.charCodeAt(i);
   return d === 0;
 }
 export async function sessionCookie(env, request) {
   const exp = Date.now() + SESSION_HOURS * 3600000;
-  const v = `${exp}.${await hmac("session|" + env.ADMIN_PASSWORD, String(exp))}`;
+  const v = `${exp}.${await hmac("session|" + pw(env), String(exp))}`;
   const secure = new URL(request.url).protocol === "https:" ? "; Secure" : "";
   return `airang_admin=${v}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${SESSION_HOURS * 3600}${secure}`;
 }
@@ -93,10 +95,10 @@ export function clearCookie(request) {
   return `airang_admin=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0${secure}`;
 }
 export async function adminUser(request, env) {
-  if (!passwordReady(env)) return { status: 503, msg: env.ADMIN_PASSWORD ? "관리자 비밀번호가 너무 짧아요. 12자 이상으로 다시 등록해 주세요." : "관리자 비밀번호가 아직 설정되지 않았어요." };
+  if (!passwordReady(env)) return { status: 503, msg: pw(env) ? "관리자 비밀번호가 너무 짧아요. 12자 이상으로 다시 등록해 주세요." : "관리자 비밀번호가 아직 설정되지 않았어요." };
   const m = (request.headers.get("cookie") || "").match(/(?:^|;\s*)airang_admin=(\d+)\.([0-9a-f]{64})(?:;|$)/);
   if (!m || +m[1] < Date.now()) return { status: 401, msg: "관리자 로그인이 필요해요." };
-  if ((await hmac("session|" + env.ADMIN_PASSWORD, m[1])) !== m[2]) return { status: 401, msg: "관리자 로그인이 필요해요." };
+  if ((await hmac("session|" + pw(env), m[1])) !== m[2]) return { status: 401, msg: "관리자 로그인이 필요해요." };
   return { status: 200 };
 }
 
