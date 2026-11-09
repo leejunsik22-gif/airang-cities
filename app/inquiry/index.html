@@ -41,7 +41,7 @@ textarea:focus,input:focus{outline:3px solid rgba(184,146,62,.45);outline-offset
 .send{width:100%;min-height:54px;margin-top:18px;border:0;border-radius:16px;background:var(--navy);color:#fff;font:inherit;font-size:16px;font-weight:800;cursor:pointer;box-shadow:var(--shadow)}
 .send:disabled{opacity:.6;cursor:default}
 .send:focus-visible,.back:focus-visible{outline:3px solid rgba(184,146,62,.6);outline-offset:2px}
-.more[hidden]{display:none}
+.more[hidden],.hint[hidden]{display:none}   /* 11/9 대표 확인 중 발견: 유형을 고른 뒤에도 안내 줄이 남던 문제 */
 .more{animation:none}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .note{font-size:12.5px;color:var(--muted);margin:14px 2px 0;line-height:1.7;word-break:keep-all}

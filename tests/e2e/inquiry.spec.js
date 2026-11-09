@@ -61,6 +61,7 @@ test("입력 오류 안내: 유형 없음 · 전화번호 · 회신 이메일 �
   await expect(page.locator("#err")).toHaveText("문의 유형을 골라 주세요.");
   await page.locator("input[value=use]").check();
   await expect(page.locator("#body"), "유형을 고르면 칸이 펼쳐짐").toBeVisible();
+  await expect(page.locator("#pickfirst"), "유형을 고르면 '칸이 나와요' 안내는 사라짐").toBeHidden();
   await page.locator("#body").fill("[가상] 연락 주세요 010-0000-0000");
   await page.locator("#send").click();
   await expect(page.locator("#err")).toContainText("전화번호는 지워 주세요");
