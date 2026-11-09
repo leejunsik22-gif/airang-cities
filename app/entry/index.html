@@ -221,6 +221,17 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 .ptbl th{font-size:12px;color:var(--muted);font-weight:700}
 .pcard .k{font-size:12.5px;color:var(--muted)}
 @media (max-width:430px){h1{font-size:24px!important}.sheet .hours{grid-template-columns:repeat(4,1fr)}}
+/* 2026-11-09 피트 의견·대표 승인: 설치 안내 + 문의하기 (구 선택·내 위치 버튼 아래) */
+.help-row{display:flex;gap:10px;margin:-12px 0 26px}
+.help-btn{flex:1;min-height:48px;padding:0 8px;white-space:nowrap;border:1px solid var(--line);border-radius:14px;background:var(--paper);font:inherit;font-size:clamp(13px,3.6vw,14px);font-weight:800;color:var(--navy);cursor:pointer}
+#btn-install{flex:1.7}
+.help-btn:focus-visible,.sheet a.pick:focus-visible{outline:3px solid var(--gold,#E8B547);outline-offset:2px}
+.sheet ol{margin:10px 0 6px;padding-left:22px;font-size:15px;line-height:1.7}
+.sheet .tip{font-size:13px;color:var(--muted);margin:6px 0 0;word-break:keep-all}
+.sheet .warn{background:#FFF4E0;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:700;color:#7A4B00;margin:10px 0}
+.sheet a.pick{display:block;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;text-decoration:none;color:var(--navy);background:var(--ivory-2)}
+.sheet a.pick b{display:block;font-size:15.5px}.sheet a.pick small{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;word-break:keep-all}
+.sheet .x{float:right;border:0;background:none;font-size:22px;color:var(--muted);cursor:pointer}
 </style></head><body>
 <div class="wrap">
   <div class="top"><img class="brandlogo" src="img/logo-symbol.png" width="44" height="39" alt="아이랑 로고"><div><b>아이랑 대전</b><small>아이 키우는 집을 위한 동네 정보</small></div></div>
@@ -239,6 +250,10 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 
   <button class="locate" onclick="locate()"><span id="loc-ic"></span> 내 위치로 우리 구 찾기</button>
   <div class="note">위치는 이 휴대폰 안에서만 써요. 어디에도 보내지 않아요.</div>
+  <div class="help-row">
+    <button class="help-btn" id="btn-install" type="button" onclick="openHelp('install')">📲 홈 화면에 추가해 보세요</button>
+    <button class="help-btn" id="btn-contact" type="button" onclick="openHelp('contact')">✉️ 문의하기</button>
+  </div>
 
   <div class="lift soon">
     <h3><span class="ih"></span> 곧 열려요</h3>
@@ -378,4 +393,31 @@ render(q);
 <script>document.getElementById("chips").innerHTML = [["school", "학교·급식"], ["pencil", "학원"], ["hospital", "병원"], ["gift", "혜택"]].map(([i, t]) => `<span>${ico(i, 16, "none")} ${t}</span>`).join("");
 document.getElementById("loc-ic").innerHTML = ico("pin", 18, "none", "#fff");
 document.querySelectorAll(".ih").forEach(e => e.innerHTML = ico("city", 16, "none"));</script>
+<script>
+// 2026-11-09 설치 안내·문의하기 시트 v01후보 — 외부 연결 없음(메일 앱만 열림)
+const HELP_MAIL = "leejunsik22@gmail.com";   // 대표 결정 대기: 아이랑 전용 메일함 생기면 여기만 바꿈
+const NO_KID = "※ 아이 이름·학교·건강 정보는 적지 말아 주세요.";
+function mailLink(subj, body){ return `mailto:${HELP_MAIL}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(body + "\n\n" + NO_KID)}`; }
+const HELP = {
+  install: `<h2>홈 화면에 추가하는 방법</h2><p class="tip">갤럭시 · 크롬 기준이에요.</p>
+    <ol><li>위에서 <b>우리 구</b>를 눌러 들어가요.</li><li>오른쪽 위 <b>⋮</b>(점 세 개)를 눌러요.</li><li><b>홈 화면에 추가</b>(또는 <b>앱 설치</b>)를 눌러요.</li><li><b>설치</b>를 누르면 홈 화면에 아이랑 아이콘이 생겨요.</li></ol>
+    <p class="tip">이 입구 화면이 아니라 <b>구 화면</b>에서 해야 설치돼요. 아이폰은 사파리 아래 공유 버튼 → ‘홈 화면에 추가’예요.</p>`,
+  contact: `<h2>문의하기</h2><div class="warn">${NO_KID.slice(2)}</div>
+    <a class="pick" data-kind="fix" href="${mailLink("[아이랑 정보 수정·오류 신고] ", "어느 구·어느 화면인가요:\n틀린 내용:\n맞는 내용(아시면):\n확인할 수 있는 공식 자료 주소(있으면):")}"><b>정보 수정·오류 신고</b><small>공식 자료를 확인한 뒤 고쳐요.</small></a>
+    <a class="pick" data-kind="use" href="${mailLink("[아이랑 이용 문의] ", "문의 내용:")}"><b>이용 문의</b><small>쓰는 방법, 불편한 점을 알려 주세요.</small></a>
+    <a class="pick" data-kind="ad" href="${mailLink("[아이랑 광고·제휴 문의] ", "업체명:\n담당자 이름·연락처:\n제안 내용:")}"><b>광고·제휴 문의</b><small>검토한 뒤 회신해요. 광고를 싣게 되면 ‘광고’ 표시가 붙은 별도 자리에만 싣고, 검색 순서는 바꾸지 않아요.</small></a>
+    <p class="tip">누르면 메일 앱이 열려요. 받는 곳 ${HELP_MAIL}</p>`
+};
+let helpLast = null;
+function openHelp(k){
+  closeHelp(); helpLast = document.activeElement;
+  const bg = document.createElement("div"); bg.className = "sheet-bg"; bg.id = "help-sheet";
+  bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="help-h"><div class="grip"></div><button class="x" type="button" aria-label="닫기" onclick="closeHelp()">×</button>${HELP[k]}</div>`;
+  bg.querySelector("h2").id = "help-h";
+  bg.addEventListener("click", (e) => { if (e.target === bg) closeHelp(); });
+  document.body.appendChild(bg); bg.querySelector(".x").focus();
+}
+function closeHelp(){ const b = document.getElementById("help-sheet"); if (b) { b.remove(); if (helpLast) helpLast.focus(); } }
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeHelp(); });
+</script>
 </body></html>
