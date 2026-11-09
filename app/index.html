@@ -490,6 +490,7 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
   .hero-v3 .ph{height:clamp(240px,calc(100vh - 470px),460px)!important;aspect-ratio:auto;object-fit:cover;object-position:center 42%!important}   /* 첫 화면에서 검색창이 하단 메뉴 위에 보이도록 화면 높이에 맞춰 사진 높이 조절 */
   .hero-v3 .t3{position:static!important;background:none!important;padding:18px 0 6px!important}
 }
+@media (min-width:700px){.topscape .img-tag{right:max(14px,calc(50% - 410px));white-space:nowrap;max-width:calc(100% - 28px)}}   /* 2026-11-09: 넓은 PC에서 AI 표기가 화면 오른쪽 끝에서 잘리던 것 → 본문(820px) 오른쪽 끝에 맞춤 */
 </style>
 <script data-goatcounter="https://{{key}}-edu-app.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}' async src="https://gc.zgo.at/count.js"></script>
 </head>
@@ -2392,6 +2393,7 @@ function homeUpdated() {
 }
 function newsUnseen() { return store("edu.newsSeen") !== NEWS[0].v; }
 function homeNews() {
+  return "";   // 2026-11-09 대표 승인: 오픈 전 문구('아이랑 대전이 준비 중이에요') 홈 카드 내림 — 소식 화면(마이 → 업데이트 소식)은 유지
   if (UPDATED_FROM || !newsUnseen()) return "";   // 위쪽 "새 버전" 알림이 있으면 가운데 카드는 안 보임 (한 번만)
   const n = NEWS[0], days = (new Date(todayYmd() + "T00:00:00") - new Date(n.d + "T00:00:00")) / 864e5;
   if (days > 14) return "";
@@ -3043,7 +3045,7 @@ function viewBene(keepFocus) {
 function render() {
   if (!DATA) return;
   const r = (location.hash || "#home").slice(1);
-  const tab = r.startsWith("school") ? "home" : r === "saved" ? "saved" : r === "bene" ? "bene" : r === "hosp" ? "hosp" : r === "home" || r === "" ? "home" : r.startsWith("myev/") ? "home" : "my";
+  const tab = r.startsWith("school") || r.startsWith("find") ? "home" : r === "saved" ? "saved" : r === "bene" ? "bene" : r === "hosp" ? "hosp" : r === "home" || r === "" ? "home" : r.startsWith("myev/") ? "home" : "my";
   closeSheet();
   document.querySelectorAll(".navi").forEach(b => b.classList.toggle("on", b.dataset.tab === tab));
 {{#if yongin}}

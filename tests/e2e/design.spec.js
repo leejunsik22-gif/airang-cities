@@ -147,3 +147,25 @@ for (const [key, name] of Object.entries(B.names)) {
     expect(r.boxRight, `받침 끝이 버튼(${r.firstBtnLeft})보다 왼쪽`).toBeLessThanOrEqual(r.firstBtnLeft);
   });
 }
+
+// 2026-11-09 대표 실화면 확인에서 나온 작은 점 3건
+test("@디자인 홈: 오픈 전 알림 카드('준비 중이에요') 없음", async ({ page }) => {
+  for (const key of Object.keys(B.names)) {
+    await page.goto(`/${key}/`); await expect(page.locator(".brand-round").first()).toBeVisible(); await page.waitForLoadState("networkidle");
+    await expect(page.locator("#view"), key).not.toContainText("준비 중이에요 ›");
+  }
+});
+test("@디자인 검색 화면: 하단 메뉴 '홈'에 불", async ({ page }) => {
+  await page.goto("/yuseong/#find/" + encodeURIComponent("영어")); await page.waitForLoadState("networkidle");
+  await expect(page.locator('nav.nav .navi[data-tab="home"]')).toHaveClass(/\bon\b/);
+  await expect(page.locator('nav.nav .navi[data-tab="my"]')).not.toHaveClass(/\bon\b/);
+});
+test("@디자인 하위 화면 위쪽 사진 띠: AI 표기가 화면 안쪽(오른쪽 끝에서 14px 이상)", async ({ page }) => {
+  for (const w of [1280, 1540, 1920, 820]) {
+    await page.setViewportSize({ width: w, height: 850 });
+    await page.goto("/yuseong/?w=" + w + "#find/" + encodeURIComponent("영어")); await page.waitForLoadState("networkidle");
+    const r = await page.evaluate(() => { const t = document.querySelector("#topscape .img-tag").getBoundingClientRect(); return { left: t.left, right: t.right, cw: document.documentElement.clientWidth, h: t.height }; });
+    expect(r.right, `${w}px: 표기 오른쪽 끝`).toBeLessThanOrEqual(r.cw - 14);
+    expect(r.h, `${w}px: 한 줄`).toBeLessThan(30);
+  }
+});
