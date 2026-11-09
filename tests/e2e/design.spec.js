@@ -147,3 +147,10 @@ for (const [key, name] of Object.entries(B.names)) {
     expect(r.boxRight, `받침 끝이 버튼(${r.firstBtnLeft})보다 왼쪽`).toBeLessThanOrEqual(r.firstBtnLeft);
   });
 }
+
+test("@디자인 입구: 앱 설치 안내(구를 고른 뒤 설치)", async ({ page }) => {
+  await page.goto("/entry/"); await page.waitForLoadState("networkidle");
+  await expect(page.locator(".install-note")).toContainText("우리 구를 고른 뒤");
+  const ok = await page.evaluate(() => { const n = document.querySelector(".install-note").getBoundingClientRect(); return n.width > 0 && n.right <= innerWidth; });
+  expect(ok, "안내가 화면 안에 보임").toBe(true);
+});

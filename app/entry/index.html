@@ -15,6 +15,7 @@ body{margin:0;background:radial-gradient(circle at 90% 0%,#E8EBFF,transparent 42
 .lift{background:#fff;border-radius:24px;box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(20,26,46,.05),0 14px 30px -12px rgba(43,52,120,.24)}
 .top{display:flex;align-items:center;gap:10px}
 .top img{width:40px;height:40px;border-radius:11px;box-shadow:0 4px 10px -4px rgba(0,0,0,.4)}
+.install-note{word-break:keep-all;margin:10px 2px 0;padding:10px 12px;border-radius:12px;background:var(--ivory-2,#F2EDE3);font-size:13px;color:var(--ink);line-height:1.5}.install-note span{color:var(--muted);font-size:12px}
 .ai-note{margin:8px 2px 0;font-size:12px;color:var(--muted);text-align:right}
 .top img.brandlogo{width:44px;height:39px;border-radius:0;box-shadow:none;object-fit:contain}   /* 2026-11-08 대표 확정 로고(주황 가족 하트) */
 .top b{font-size:18px;font-weight:800;letter-spacing:-.3px}.top small{display:block;font-size:11px;color:var(--muted);font-weight:600;margin-top:1px}
@@ -356,7 +357,7 @@ function render(near) {
     ? `<div class="lift other"><b>🌱 다른 지역은 준비 중이에요</b><p>아이랑은 지금 대전광역시에서 먼저 열고 있어요.<br>우리 지역도 열렸으면 좋겠다면 알려 주세요.</p>
         <div class="list">${["강원", "충북", "세종", "전북", "전남", "광주", "경북", "경남", "대구", "울산", "부산", "제주"].map(x => `<span>${x}</span>`).join("")}</div>
         <a class="ask" href="${ASK}">✉️ 우리 지역도 열어 주세요</a></div>`
-    : `<div class="grid">${CITIES.filter(x => x[6] === tab).map(card).join("")}</div><p class="ai-note">사진은 AI 생성 이미지예요 · 실제 기관·인물 아님</p>`;   // 2026-11-09: 카드 사진 위에 글씨를 얹지 않고 아래에 따로 표기
+    : `<div class="grid">${CITIES.filter(x => x[6] === tab).map(card).join("")}</div><p class="ai-note">사진은 AI 생성 이미지예요 · 실제 기관·인물 아님</p><p class="install-note">📲 <b>앱으로 설치</b>는 우리 구를 고른 뒤, 그 화면에서 할 수 있어요 <span>(크롬 ⋮ → 홈 화면에 추가)</span></p>`;   // 2026-11-09: 카드 사진 위에 글씨를 얹지 않고 아래에 따로 표기
   const last = CITIES.find(x => x[0] === store.get("airang.city"));
   document.getElementById("again").innerHTML = last ? `
     <a class="lift again" style="--c:${last[2]}" href="${url(last[0])}"><img src="img/tile-${last[0]}.png" alt="">
