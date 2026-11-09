@@ -62,7 +62,7 @@ def main(ids):
         if extra: md.append(f"| 그 밖의 원자료 필드 | {json.dumps(extra, ensure_ascii=False)[:600]} | |")
         md.append("")
     open("output/hosp_raw.md", "w", encoding="utf-8").write("\n".join(md) + "\n")
-    print("\n".join(md[:30]))
+    print("=====MD=====\n" + "\n".join(md) + "\n=====END=====")   # 결과물 내려받기가 막힌 환경을 위해 실행 기록에 전체를 남김
 
 if __name__ == "__main__":
     main(sys.argv[1:])
