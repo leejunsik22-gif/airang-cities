@@ -487,7 +487,7 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 .kidadd .kid-ic{width:62px;height:62px;border-radius:20px}.kidadd .kid-ic svg{width:46px;height:46px}
 .home-menu .hm .bi{width:42px!important;height:42px!important}.home-menu .hm .bi svg{width:42px;height:42px}
 @media (min-width:700px){   /* 2026-11-09 태블릿·PC: 사진 속 가족이 글씨 띠에 덮여 안 보이던 것 → 가족 중심 사진(home-pc) + 글씨는 사진 아래 */
-  .hero-v3 .ph{height:auto!important;aspect-ratio:2400/760;max-height:480px;object-position:center 45%!important}
+  .hero-v3 .ph{height:clamp(240px,calc(100vh - 470px),460px)!important;aspect-ratio:auto;object-fit:cover;object-position:center 42%!important}   /* 첫 화면에서 검색창이 하단 메뉴 위에 보이도록 화면 높이에 맞춰 사진 높이 조절 */
   .hero-v3 .t3{position:static!important;background:none!important;padding:18px 0 6px!important}
 }
 </style>
