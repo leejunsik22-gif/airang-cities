@@ -13,8 +13,8 @@
 <meta name="apple-mobile-web-app-title" content="아이랑{{name}}">
 <title>아이랑 {{name}}</title>
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icon-192.png?v=60">
-<link rel="apple-touch-icon" href="icon-192.png?v=60">
+<link rel="icon" href="icon-192.png?v=61">
+<link rel="apple-touch-icon" href="icon-192.png?v=61">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&family=Gothic+A1:wght@800&display=swap">
 <style>
@@ -3150,7 +3150,7 @@ function mock(k) {
     more: `<div style="display:flex;gap:4px"><div class="rb"><i>⧉</i>복사</div><div class="rb"><i>▭</i>기기로 보내기</div><div class="rb"><i>☰</i>읽기 목록</div><div class="rb"><i class="hl">⌄</i><b>더 보기</b></div></div>`,
     addHome: `<div style="border-radius:12px;overflow:hidden"><div class="li" style="opacity:.55">▦ QR 코드 만들기</div><div class="li hl" style="font-weight:800">${ICON_PLUS} 홈 화면에 추가</div><div class="li" style="opacity:.55">✎ 새로운 빠른 메모에 추가</div></div>`,
     addBtn: `<div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:12px;padding:8px 10px"><span style="color:#1a73e8">취소</span><b>홈 화면에 추가</b><span class="hl" style="color:#1a73e8;font-weight:800;padding:2px 8px">추가</span></div>
-      <div style="display:flex;align-items:center;gap:8px;margin-top:8px"><img src="icon-192.png?v=60" width="30" height="30" style="border-radius:8px" alt=""><span>아이랑 {{name}}</span></div>`,
+      <div style="display:flex;align-items:center;gap:8px;margin-top:8px"><img src="icon-192.png?v=61" width="30" height="30" style="border-radius:8px" alt=""><span>아이랑 {{name}}</span></div>`,
     safariBar: `<div class="bar" style="justify-content:space-between"><span>‹</span><span style="flex:1;text-align:center;opacity:.7">${esc(location.host)}</span><span class="hl" style="padding:2px 8px;font-weight:800">⋯</span></div><div style="font-size:11px;color:var(--muted);margin-top:6px;text-align:center">화면 맨 아래 주소창 오른쪽</div>`,
     safariShare: `<div style="border-radius:12px;overflow:hidden"><div class="li hl" style="font-weight:800">${sh} 공유</div><div class="li" style="opacity:.55">☆ 책갈피에 추가</div></div>`,
     kakao: `<div class="bar" style="justify-content:space-between"><span>✕</span><span style="flex:1;text-align:center;opacity:.7">${esc(location.host)}</span><span class="hl" style="padding:2px 8px;font-weight:800">⋮</span></div><div style="font-size:11px;color:var(--muted);margin-top:6px;text-align:center">카톡 화면 오른쪽 위 또는 아래</div>`,
@@ -3195,7 +3195,7 @@ function openInstall(auto) {
   el.style.cssText = "position:fixed;inset:0;z-index:50;background:rgba(20,26,46,.45);display:flex;align-items:flex-end;justify-content:center";
   el.innerHTML = `<div style="background:#fff;width:min(560px,100%);border-radius:26px 26px 0 0;padding:22px 20px calc(26px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(20,26,46,.25);max-height:88vh;overflow:auto">
       <div style="display:flex;align-items:center;gap:12px">
-        <img src="icon-192.png?v=60" alt="" width="44" height="44" style="border-radius:12px;box-shadow:0 3px 10px rgba(30,40,90,.15)">
+        <img src="icon-192.png?v=61" alt="" width="44" height="44" style="border-radius:12px;box-shadow:0 3px 10px rgba(30,40,90,.15)">
         <div style="flex:1;min-width:0"><div style="font-size:12px;color:var(--muted)">아이랑 {{name}} · 앱처럼 쓰기</div><div style="font-size:18px;font-weight:800;margin-top:2px">${esc(title)}</div></div>
         <button onclick="closeInstall()" aria-label="닫기" style="border:0;background:#EEF0F6;width:34px;height:34px;border-radius:17px;font-size:18px;color:var(--muted);cursor:pointer">×</button></div>
       ${MOCK_CSS}<div style="margin-top:6px">${body}</div>
