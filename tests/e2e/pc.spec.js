@@ -5,16 +5,17 @@
 const { test, expect } = require("@playwright/test");
 
 const SIZES = [[1280, 800], [1440, 900], [1920, 1080], [1024, 768], [820, 1180]];
+const GU = ["djdonggu", "djjunggu", "djseogu", "yuseong", "daedeok"];   // 2026-11-09 대표: 5개 구 모두 확인
 
 test.beforeEach(async ({ page }, info) => {
   test.skip(!info.project.name.startsWith("PC"), "PC 프로젝트에서만");
   await page.route(/goatcounter\.com|gc\.zgo\.at|raw\.githubusercontent\.com/, (r) => r.abort());
 });
 
-for (const [w, h] of SIZES) {
-  test(`${w}×${h}: 첫 화면 검색창·찾기 버튼이 하단 메뉴에 안 가림`, async ({ page }) => {
+for (const key of GU) for (const [w, h] of SIZES) {
+  test(`${key} ${w}×${h}: 첫 화면 검색창·찾기 버튼이 하단 메뉴에 안 가림`, async ({ page }) => {
     await page.setViewportSize({ width: w, height: h });
-    await page.goto("/yuseong/"); await expect(page.locator("form.search-v2")).toBeVisible();
+    await page.goto(`/${key}/`); await expect(page.locator("form.search-v2")).toBeVisible();
     await page.waitForLoadState("networkidle");
     const r = await page.evaluate(() => {
       const f = document.querySelector("form.search-v2").getBoundingClientRect();
@@ -30,10 +31,10 @@ for (const [w, h] of SIZES) {
   });
 }
 
-for (const how of ["클릭", "Enter"]) {
-  test(`PC 검색: '찾기' ${how}로 실행`, async ({ page }) => {
+for (const key of GU) for (const how of ["클릭", "Enter"]) {
+  test(`${key} PC 검색: '찾기' ${how}로 실행`, async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
-    await page.goto("/yuseong/"); await page.waitForLoadState("networkidle");
+    await page.goto(`/${key}/`); await page.waitForLoadState("networkidle");
     const box = page.locator('form.search-v2 input[name="q"]');
     await box.fill("수학");
     if (how === "클릭") await page.locator("form.search-v2 button[type=submit]").click();   // 가려져 있으면 클릭이 실패함
