@@ -1,0 +1,1518 @@
+{
+  "region": "군위군",
+  "updated_at": "2026-11-10 18:54:08",
+  "period": {
+    "from": "20261110",
+    "to": "20270109"
+  },
+  "school_count": 15,
+  "public_holidays": [
+    {
+      "date": "2026-12-25",
+      "name": "성탄절"
+    },
+    {
+      "date": "2027-01-01",
+      "name": "신정"
+    }
+  ],
+  "highlights": [
+    {
+      "school": "군위고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대학수학능력시험",
+      "holiday": true
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "군위고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-20",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-20",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-16",
+      "name": "진로체험의 날",
+      "holiday": false
+    },
+    {
+      "school": "부계중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-16",
+      "name": "창의융합교육원체험",
+      "holiday": false
+    },
+    {
+      "school": "군위고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-17",
+      "name": "진로체험학습",
+      "holiday": false
+    },
+    {
+      "school": "군위고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "느티나무축제",
+      "holiday": false
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "축제",
+      "holiday": false
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울 방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "군위고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "군위고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "부계중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "부계중학교효령캠퍼스",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "부계중학교효령캠퍼스",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "부계중학교효령캠퍼스",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "부계중학교효령캠퍼스",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "부계중학교효령캠퍼스",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "부계중학교효령캠퍼스",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "부계중학교효령캠퍼스",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "부계중학교효령캠퍼스",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "군위중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구군위초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울휴가",
+      "holiday": true
+    }
+  ],
+  "schools": [
+    {
+      "code": "8862008",
+      "name": "대구군위초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 군위군 군위읍 동서5길 28",
+      "gu": "",
+      "dong": "군위읍",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "8862032",
+      "name": "대구군위초등학교송원캠퍼스",
+      "level": "초등학교",
+      "address": "대구광역시 군위군 소보면 송백로 1394",
+      "gu": "",
+      "dong": "소보면",
+      "events": []
+    },
+    {
+      "code": "8862012",
+      "name": "대구부계초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 군위군 부계면 치산효령로 1376",
+      "gu": "",
+      "dong": "부계면",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "겨울 방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "8862034",
+      "name": "대구부계초등학교고매캠퍼스",
+      "level": "초등학교",
+      "address": "대구광역시 군위군 효령면 용매로 970",
+      "gu": "",
+      "dong": "효령면",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "8862036",
+      "name": "대구부계초등학교석산캠퍼스",
+      "level": "초등학교",
+      "address": "대구광역시 군위군 삼국유사면 삼국유사로 1314",
+      "gu": "",
+      "dong": "삼국유사면",
+      "events": []
+    },
+    {
+      "code": "8862035",
+      "name": "대구부계초등학교의흥캠퍼스",
+      "level": "초등학교",
+      "address": "대구광역시 군위군 의흥면 읍내길 67-17",
+      "gu": "",
+      "dong": "의흥면",
+      "events": [
+        {
+          "date": "2026-12-25",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울휴가",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "8862033",
+      "name": "대구부계초등학교효령캠퍼스",
+      "level": "초등학교",
+      "address": "대구광역시 군위군 효령면 치산효령로 2386",
+      "gu": "",
+      "dong": "효령면",
+      "events": []
+    },
+    {
+      "code": "8862013",
+      "name": "대구우보초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 군위군 우보면 이화길 95",
+      "gu": "",
+      "dong": "우보면",
+      "events": []
+    },
+    {
+      "code": "8862003",
+      "name": "군위중학교",
+      "level": "중학교",
+      "address": "대구광역시 군위군 군위읍 군청로 254-6",
+      "gu": "",
+      "dong": "군위읍",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-20",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-07",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "예술창작터",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "군위가족愛 공연채움",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "진로체험의 날",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "축제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "8862030",
+      "name": "군위중학교우보캠퍼스",
+      "level": "중학교",
+      "address": "대구광역시 군위군 우보면 솔밭길 74",
+      "gu": "",
+      "dong": "우보면",
+      "events": []
+    },
+    {
+      "code": "8862006",
+      "name": "부계중학교",
+      "level": "중학교",
+      "address": "대구광역시 군위군 부계면 춘산1길 16",
+      "gu": "",
+      "dong": "부계면",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "군위문화유산원정대",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-24",
+          "name": "학교장과 함께 하는 힐링 캠프",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-25",
+          "name": "학교장과 함께 하는 힐링 캠프",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "군위가족애공연채움리허설",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-14",
+          "name": "군위가족愛공연채움",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "창의융합교육원체험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학식",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "8862031",
+      "name": "부계중학교효령캠퍼스",
+      "level": "중학교",
+      "address": "대구광역시 군위군 효령면 중리길 6-25",
+      "gu": "",
+      "dong": "효령면",
+      "events": [
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "8862007",
+      "name": "의흥중학교",
+      "level": "중학교",
+      "address": "대구광역시 군위군 의흥면 읍내길 89-32",
+      "gu": "",
+      "dong": "의흥면",
+      "events": []
+    },
+    {
+      "code": "7240459",
+      "name": "군위고등학교",
+      "level": "고등학교",
+      "address": "대구광역시 군위군 군위읍 군청로 254-6",
+      "gu": "",
+      "dong": "군위읍",
+      "events": [
+        {
+          "date": "2026-11-18",
+          "name": "대구광역시교육청고3학력평가",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-20",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-07",
+          "name": "2학기 기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "2학기 기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "2학기 기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-17",
+          "name": "진로체험학습",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "느티나무축제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학식",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7240458",
+      "name": "효령고등학교",
+      "level": "고등학교",
+      "address": "대구광역시 군위군 효령면 중리길 6-25",
+      "gu": "",
+      "dong": "효령면",
+      "events": []
+    }
+  ],
+  "source": "나이스 교육정보 개방포털 (학교기본정보, 학사일정)"
+}

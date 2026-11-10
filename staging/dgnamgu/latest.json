@@ -1,0 +1,4650 @@
+{
+  "region": "남구",
+  "updated_at": "2026-11-10 18:48:34",
+  "period": {
+    "from": "20261110",
+    "to": "20270109"
+  },
+  "school_count": 24,
+  "public_holidays": [
+    {
+      "date": "2026-12-25",
+      "name": "성탄절"
+    },
+    {
+      "date": "2027-01-01",
+      "name": "신정"
+    }
+  ],
+  "highlights": [
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-11-10",
+      "name": "현장체험학습(2학년)",
+      "holiday": false
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-11",
+      "name": "인성체험학습",
+      "holiday": false
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-11-12",
+      "name": "현장체험학습(2학년)",
+      "holiday": false
+    },
+    {
+      "school": "협성경복중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-13",
+      "name": "예술문화체험학습",
+      "holiday": false
+    },
+    {
+      "school": "경북여자상업고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대입수학능력시험",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대학수학능력시험일",
+      "holiday": true
+    },
+    {
+      "school": "경상공업고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대입수능일",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "재량휴업일",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "진로체험활동",
+      "holiday": false
+    },
+    {
+      "school": "대명고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "수능시험일",
+      "holiday": true
+    },
+    {
+      "school": "협성경복중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대입수능일",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-11-19",
+      "name": "대입수능시험일",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-04",
+      "name": "현장체험학습(3학년)",
+      "holiday": false
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-07",
+      "name": "진로체험활동",
+      "holiday": false
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-16",
+      "name": "공동체프로젝트발표회",
+      "holiday": false
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-21",
+      "name": "졸업(진급)사정회",
+      "holiday": false
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-23",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "졸업",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-24",
+      "name": "겨울방학식",
+      "holiday": false
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-25",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-26",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-27",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "졸업",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-28",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "졸업",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-29",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "졸업",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "방학식",
+      "holiday": false
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대명중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-30",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "졸업",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대명고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "방학식",
+      "holiday": false
+    },
+    {
+      "school": "대명중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성경복중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2026-12-31",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대명중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-01",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대명중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-02",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대명중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-03",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "졸업",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대명고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대명중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성경복중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-04",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "졸업",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경혜여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대명고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대명중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성경복중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-05",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경상중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "졸업",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경혜여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "남대구초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "졸업식",
+      "holiday": false
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대명고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대명중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성경복중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-06",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경상중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "졸업",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경혜여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대명고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대명중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성경복중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-07",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경상중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "졸업",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경혜여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대명고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대명중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성경복중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-08",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경북예술고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "경상공업고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경상중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경일여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "경혜여자중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울휴가",
+      "holiday": true
+    },
+    {
+      "school": "대구고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남도초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구남명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구대봉초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구봉덕초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구성명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구영선초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대구효명초등학교",
+      "level": "초등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "대명중학교",
+      "level": "중학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    },
+    {
+      "school": "협성고등학교",
+      "level": "고등학교",
+      "gu": "",
+      "date": "2027-01-09",
+      "name": "겨울방학",
+      "holiday": true
+    }
+  ],
+  "schools": [
+    {
+      "code": "7271066",
+      "name": "남대구초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 남구 중앙대로47길 55",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2027-01-06",
+          "name": "졸업식",
+          "holiday": false
+        }
+      ]
+    },
+    {
+      "code": "7271075",
+      "name": "대구남덕초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 남구 앞산순환로93길 33",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271055",
+      "name": "대구남도초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 남구 현충동길 74",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271069",
+      "name": "대구남명초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 남구 큰골4길 41",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271058",
+      "name": "대구대덕초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 남구 대명서로 28",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271048",
+      "name": "대구대명초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 남구 대명로 100",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271049",
+      "name": "대구대봉초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 남구 대봉로26길 33",
+      "gu": "",
+      "dong": "이천동",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271052",
+      "name": "대구봉덕초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 남구 효성로 71",
+      "gu": "",
+      "dong": "봉덕동",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271056",
+      "name": "대구성명초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 남구 성당로30길 55",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-11-10",
+          "name": "현장체험학습(2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-12",
+          "name": "현장체험학습(2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "교과학습진단평가",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271051",
+      "name": "대구영선초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 남구 영선길 96",
+      "gu": "",
+      "dong": "이천동",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271065",
+      "name": "대구효명초등학교",
+      "level": "초등학교",
+      "address": "대구광역시 남구 앞산순환로 707",
+      "gu": "",
+      "dong": "봉덕동",
+      "events": [
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271010",
+      "name": "경상중학교",
+      "level": "중학교",
+      "address": "대구광역시 남구 현충로48길 33",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-12-07",
+          "name": "2학년 2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "2학년 2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "2학년 2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "웅비제",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-06",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-06",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271046",
+      "name": "경일여자중학교",
+      "level": "중학교",
+      "address": "대구광역시 남구 효성로 37",
+      "gu": "",
+      "dong": "봉덕동",
+      "events": [
+        {
+          "date": "2026-11-16",
+          "name": "1학년 수련활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-17",
+          "name": "1학년 수련활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-18",
+          "name": "1학년 수련활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-04",
+          "name": "현장체험학습(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271035",
+      "name": "경혜여자중학교",
+      "level": "중학교",
+      "address": "대구광역시 남구 성당로18길 20",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-12-02",
+          "name": "기말고사(2)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-03",
+          "name": "기말고사(2)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-04",
+          "name": "기말고사(2)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "백합제",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-05",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-05",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울휴가",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271009",
+      "name": "대구중학교",
+      "level": "중학교",
+      "address": "대구광역시 남구 대봉로 120",
+      "gu": "",
+      "dong": "이천동",
+      "events": [
+        {
+          "date": "2026-11-11",
+          "name": "인성체험학습",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "진로체험활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-01",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-02",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-03",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-07",
+          "name": "진로체험활동",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "공동체프로젝트발표회",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "백맥제",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-30",
+          "name": "방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271026",
+      "name": "대명중학교",
+      "level": "중학교",
+      "address": "대구광역시 남구 앞산순환로 477",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7271253",
+      "name": "협성경복중학교",
+      "level": "중학교",
+      "address": "대구광역시 남구 효성로 33",
+      "gu": "",
+      "dong": "봉덕동",
+      "events": [
+        {
+          "date": "2026-11-13",
+          "name": "예술문화체험학습",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대입수능일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-07",
+          "name": "2학년 2학기 기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "2학년 2학기 기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "2학년 2학기 기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7240296",
+      "name": "경북여자상업고등학교",
+      "level": "고등학교",
+      "address": "대구광역시 남구 효성로 35",
+      "gu": "",
+      "dong": "",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대입수학능력시험",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7240070",
+      "name": "경북예술고등학교",
+      "level": "고등학교",
+      "address": "대구광역시 남구 중앙대로47길 30",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험일",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-30",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-01",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-02",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-03",
+          "name": "2학기 기말고사",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울휴가식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울휴가",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7240126",
+      "name": "경상공업고등학교",
+      "level": "고등학교",
+      "address": "대구광역시 남구 대경길 151",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대입수능일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-21",
+          "name": "2학기 기말시험(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-22",
+          "name": "2학기 기말시험(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "2학기 기말시험(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "2학기 기말시험(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7240075",
+      "name": "경일여자고등학교",
+      "level": "고등학교",
+      "address": "대구광역시 남구 효성로 37",
+      "gu": "",
+      "dong": "봉덕동",
+      "events": [
+        {
+          "date": "2026-11-18",
+          "name": "대학수학능력시험예비소집",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험일",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-03",
+          "name": "기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-04",
+          "name": "기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-07",
+          "name": "기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-23",
+          "name": "졸업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "졸업",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-24",
+          "name": "종업식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "졸업",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "졸업",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "졸업",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "졸업",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "졸업",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "졸업",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "졸업",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "졸업",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "졸업",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7240059",
+      "name": "대구고등학교",
+      "level": "고등학교",
+      "address": "대구광역시 남구 중앙대로 171",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "재량휴업일",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-25",
+          "name": "수업나눔의 날",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "2학기 기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "2학기 기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "2학기 기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "2학기 기말시험",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-21",
+          "name": "졸업(진급)사정회",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-24",
+          "name": "겨울방학식",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7240516",
+      "name": "대명고등학교",
+      "level": "고등학교",
+      "address": "대구광역시 남구 현충로40길 50",
+      "gu": "",
+      "dong": "대명동",
+      "events": [
+        {
+          "date": "2026-11-17",
+          "name": "금요일수업",
+          "holiday": false
+        },
+        {
+          "date": "2026-11-19",
+          "name": "수능시험일",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-14",
+          "name": "기말시험(1학년,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-15",
+          "name": "기말시험(1학년,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-16",
+          "name": "기말시험(1학년,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-31",
+          "name": "방학식",
+          "holiday": false
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울휴가",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울휴가",
+          "holiday": true
+        }
+      ]
+    },
+    {
+      "code": "7240105",
+      "name": "협성고등학교",
+      "level": "고등학교",
+      "address": "대구광역시 남구 효성로 33",
+      "gu": "",
+      "dong": "봉덕동",
+      "events": [
+        {
+          "date": "2026-11-19",
+          "name": "대입수능시험일",
+          "holiday": true
+        },
+        {
+          "date": "2026-11-19",
+          "name": "대학수학능력시험(3학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-08",
+          "name": "기말시험(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-09",
+          "name": "기말시험(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-10",
+          "name": "기말시험(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-11",
+          "name": "기말시험(1,2학년)",
+          "holiday": false
+        },
+        {
+          "date": "2026-12-25",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-26",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-27",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-28",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-29",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-30",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2026-12-31",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-01",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-02",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-03",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-04",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-05",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-06",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-07",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-08",
+          "name": "겨울방학",
+          "holiday": true
+        },
+        {
+          "date": "2027-01-09",
+          "name": "겨울방학",
+          "holiday": true
+        }
+      ]
+    }
+  ],
+  "source": "나이스 교육정보 개방포털 (학교기본정보, 학사일정)"
+}

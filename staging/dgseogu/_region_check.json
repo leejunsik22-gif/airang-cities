@@ -3,6 +3,18 @@
  "sido": "대구광역시",
  "sgg": "서구",
  "files": {
+  "latest.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 30,
+    "other": 0,
+    "warn": 0,
+    "unknown": 0
+   },
+   "total": 30,
+   "samples": []
+  },
   "academies.json": {
    "result": "통과",
    "reason": "",

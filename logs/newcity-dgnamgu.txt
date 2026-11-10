@@ -1,14 +1,44 @@
-실행 허용 수집기: academies
+실행 허용 수집기: collect academies
+== collect
+남구 초등학교 11곳
+남구 중학교 6곳
+남구 고등학교 7곳
+  남대구초등학교: 학교 일정 1건
+  대구남덕초등학교: 학교 일정 17건
+  대구남도초등학교: 학교 일정 17건
+  대구남명초등학교: 학교 일정 17건
+  대구대덕초등학교: 학교 일정 17건
+  대구대명초등학교: 학교 일정 17건
+  대구대봉초등학교: 학교 일정 17건
+  대구봉덕초등학교: 학교 일정 17건
+  대구성명초등학교: 학교 일정 21건
+  대구영선초등학교: 학교 일정 17건
+  대구효명초등학교: 학교 일정 17건
+  경상중학교: 학교 일정 9건
+  경일여자중학교: 학교 일정 23건
+  경혜여자중학교: 학교 일정 10건
+  대구중학교: 학교 일정 19건
+  대명중학교: 학교 일정 11건
+  협성경복중학교: 학교 일정 12건
+  경북여자상업고등학교: 학교 일정 1건
+  경북예술고등학교: 학교 일정 22건
+  경상공업고등학교: 학교 일정 6건
+  경일여자고등학교: 학교 일정 28건
+  대구고등학교: 학교 일정 21건
+  대명고등학교: 학교 일정 11건
+  협성고등학교: 학교 일정 22건
+저장 완료: 주요 일정 317건, 공휴일 2건
 == academies
 1쪽: 261건 (전체 261)
 개원 학원·교습소 261곳 저장: {'구 미상': 261}
 동 모름: 3 곳
 수강료 공개: 113 곳
 == 지역 섞임 검사
+  ✅ latest.json      통과  {'ok': 24, 'other': 0, 'warn': 0, 'unknown': 0}
   ✅ academies.json   통과  {'ok': 261, 'other': 0, 'warn': 0, 'unknown': 0}
-대구남구(대구광역시 남구): 지역 검사 1파일, 실패 0 
+대구남구(대구광역시 남구): 지역 검사 2파일, 실패 0 
 == 형식 검사(검문 모의 실행 — 공개 폴더에 쓰지 않음)
-  ◻ latest.json      없음
+  ✅ latest.json      공개 (24건)
   ⏸ meals.json       보류 — 원문 미확인 / 자동 수집 없음
   ✅ academies.json   공개 (261건)
   ⏸ elite.json       보류 — 원문 미확인 / 자동 수집 없음
@@ -22,12 +52,13 @@
   ⛔ jobs.json        제외 — 대전 수집기 미검증(출처 빈칸) — 제외
   ⛔ sports.json      제외 — 대전 체육센터 수집기 미연결 — 제외
   ⛔ deals.json       제외 — 검색 결과(비공식). 타 지역·홈쇼핑 글 섞임 확인(2026-11-02) — 공개 금지
-dgnamgu: 공개 1개 / 제외·미공개 13개 / 검사 실패 0개 
-임시 수집 완료: 대구남구 dgnamgu ['academies.json']
+dgnamgu: 공개 2개 / 제외·미공개 12개 / 검사 실패 0개 
+임시 수집 완료: 대구남구 dgnamgu ['academies.json', 'latest.json']
 == 결과 파일
-total 100
-drwxr-xr-x 2 runner runner  4096 Nov 10 09:39 .
-drwxr-xr-x 6 runner runner  4096 Nov 10 09:39 ..
--rw-r--r-- 1 runner runner   419 Nov 10 09:39 _precheck.json
--rw-r--r-- 1 runner runner   273 Nov 10 09:39 _region_check.json
--rw-r--r-- 1 runner runner 83755 Nov 10 09:39 academies.json
+total 204
+drwxr-xr-x  2 runner runner   4096 Nov 10 09:49 .
+drwxr-xr-x 11 runner runner   4096 Nov 10 09:46 ..
+-rw-r--r--  1 runner runner    463 Nov 10 09:49 _precheck.json
+-rw-r--r--  1 runner runner    453 Nov 10 09:49 _region_check.json
+-rw-r--r--  1 runner runner  83755 Nov 10 09:49 academies.json
+-rw-r--r--  1 runner runner 106198 Nov 10 09:49 latest.json

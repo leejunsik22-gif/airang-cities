@@ -1,14 +1,35 @@
-실행 허용 수집기: academies
+실행 허용 수집기: collect academies
+== collect
+군위군 초등학교 8곳
+군위군 중학교 5곳
+군위군 고등학교 2곳
+  대구군위초등학교: 학교 일정 17건
+  대구군위초등학교송원캠퍼스: 학교 일정 0건
+  대구부계초등학교: 학교 일정 17건
+  대구부계초등학교고매캠퍼스: 학교 일정 16건
+  대구부계초등학교석산캠퍼스: 학교 일정 0건
+  대구부계초등학교의흥캠퍼스: 학교 일정 16건
+  대구부계초등학교효령캠퍼스: 학교 일정 0건
+  대구우보초등학교: 학교 일정 0건
+  군위중학교: 학교 일정 20건
+  군위중학교우보캠퍼스: 학교 일정 0건
+  부계중학교: 학교 일정 10건
+  부계중학교효령캠퍼스: 학교 일정 8건
+  의흥중학교: 학교 일정 0건
+  군위고등학교: 학교 일정 11건
+  효령고등학교: 학교 일정 0건
+저장 완료: 주요 일정 97건, 공휴일 2건
 == academies
 1쪽: 14건 (전체 14)
 개원 학원·교습소 14곳 저장: {'구 미상': 14}
 동 모름: 0 곳
 수강료 공개: 8 곳
 == 지역 섞임 검사
+  ✅ latest.json      통과  {'ok': 15, 'other': 0, 'warn': 0, 'unknown': 0}
   ✅ academies.json   통과  {'ok': 14, 'other': 0, 'warn': 0, 'unknown': 0}
-군위(대구광역시 군위군): 지역 검사 1파일, 실패 0 
+군위(대구광역시 군위군): 지역 검사 2파일, 실패 0 
 == 형식 검사(검문 모의 실행 — 공개 폴더에 쓰지 않음)
-  ◻ latest.json      없음
+  ✅ latest.json      공개 (15건)
   ⏸ meals.json       보류 — 원문 미확인 / 자동 수집 없음
   ❌ academies.json   실패 — 건수 부족: 14 < 50 → 미공개
   ⏸ elite.json       보류 — 원문 미확인 / 자동 수집 없음
@@ -22,13 +43,14 @@
   ⛔ jobs.json        제외 — 대전 수집기 미검증(출처 빈칸) — 제외
   ⛔ sports.json      제외 — 대전 체육센터 수집기 미연결 — 제외
   ⛔ deals.json       제외 — 검색 결과(비공식). 타 지역·홈쇼핑 글 섞임 확인(2026-11-02) — 공개 금지
-dggunwi: 공개 0개 / 제외·미공개 14개 / 검사 실패 1개 ['academies.json']
+dggunwi: 공개 1개 / 제외·미공개 13개 / 검사 실패 1개 ['academies.json']
 ::warning::dggunwi 검사 실패 ['academies.json'] — 직전 공개본 유지
-임시 수집 완료: 군위 dggunwi ['academies.json']
+임시 수집 완료: 군위 dggunwi ['academies.json', 'latest.json']
 == 결과 파일
-total 24
-drwxr-xr-x  2 runner runner 4096 Nov 10 09:39 .
-drwxr-xr-x 11 runner runner 4096 Nov 10 09:39 ..
--rw-r--r--  1 runner runner  413 Nov 10 09:39 _precheck.json
--rw-r--r--  1 runner runner  268 Nov 10 09:39 _region_check.json
--rw-r--r--  1 runner runner 4997 Nov 10 09:39 academies.json
+total 60
+drwxr-xr-x  2 runner runner  4096 Nov 10 09:54 .
+drwxr-xr-x 11 runner runner  4096 Nov 10 09:46 ..
+-rw-r--r--  1 runner runner   457 Nov 10 09:54 _precheck.json
+-rw-r--r--  1 runner runner   448 Nov 10 09:54 _region_check.json
+-rw-r--r--  1 runner runner  4997 Nov 10 09:54 academies.json
+-rw-r--r--  1 runner runner 35666 Nov 10 09:54 latest.json

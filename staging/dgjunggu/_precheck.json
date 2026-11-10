@@ -2,11 +2,13 @@
  "city": "대구중구",
  "dir": "dgjunggu",
  "stage": "임시 수집(비공개)",
- "collected_at": "2026-11-10 18:39 KST",
+ "collected_at": "2026-11-10 18:47 KST",
  "files": [
-  "academies.json"
+  "academies.json",
+  "latest.json"
  ],
  "region_check": {
+  "latest.json": "통과",
   "academies.json": "통과"
  },
  "next": "③ 공식 원문 표본 대조 → tools/data_rules.json 상태 갱신 → ④ 대표 승인 → ⑤ publish-city 실행",

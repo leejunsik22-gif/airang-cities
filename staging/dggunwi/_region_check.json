@@ -3,6 +3,18 @@
  "sido": "대구광역시",
  "sgg": "군위군",
  "files": {
+  "latest.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 15,
+    "other": 0,
+    "warn": 0,
+    "unknown": 0
+   },
+   "total": 15,
+   "samples": []
+  },
   "academies.json": {
    "result": "통과",
    "reason": "",

@@ -3,6 +3,18 @@
  "sido": "대구광역시",
  "sgg": "달서구",
  "files": {
+  "latest.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 105,
+    "other": 0,
+    "warn": 0,
+    "unknown": 0
+   },
+   "total": 105,
+   "samples": []
+  },
   "academies.json": {
    "result": "통과",
    "reason": "",

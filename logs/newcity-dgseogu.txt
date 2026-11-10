@@ -1,14 +1,50 @@
-실행 허용 수집기: academies
+실행 허용 수집기: collect academies
+== collect
+서구 초등학교 16곳
+서구 중학교 8곳
+서구 고등학교 6곳
+  대구경운초등학교: 학교 일정 18건
+  대구내서초등학교: 학교 일정 17건
+  대구달서초등학교: 학교 일정 4건
+  대구달성초등학교: 학교 일정 17건
+  대구대성초등학교: 학교 일정 10건
+  대구두류초등학교: 학교 일정 16건
+  대구북비산초등학교: 학교 일정 16건
+  대구비산초등학교: 학교 일정 0건
+  대구서도초등학교: 학교 일정 17건
+  대구서부초등학교: 학교 일정 10건
+  대구서평초등학교: 학교 일정 16건
+  대구이현초등학교: 학교 일정 17건
+  대구인지초등학교: 학교 일정 11건
+  대구중리초등학교: 학교 일정 17건
+  대구평리초등학교: 학교 일정 6건
+  서대구초등학교: 학교 일정 17건
+  경운중학교: 학교 일정 11건
+  경일중학교: 학교 일정 0건
+  대구청라중학교: 학교 일정 14건
+  대평중학교: 학교 일정 13건
+  서남중학교: 학교 일정 10건
+  서대구중학교: 학교 일정 16건
+  중리중학교: 학교 일정 14건
+  평리중학교: 학교 일정 3건
+  경덕여자고등학교: 학교 일정 25건
+  계성고등학교: 학교 일정 22건
+  달성고등학교: 학교 일정 11건
+  대구과학기술고등학교: 학교 일정 16건
+  대구서부고등학교: 학교 일정 25건
+  대구제일고등학교: 학교 일정 22건
+저장 완료: 주요 일정 343건, 공휴일 2건
 == academies
 1쪽: 249건 (전체 249)
 개원 학원·교습소 249곳 저장: {'구 미상': 249}
 동 모름: 2 곳
 수강료 공개: 77 곳
 == 지역 섞임 검사
+  ✅ latest.json      통과  {'ok': 30, 'other': 0, 'warn': 0, 'unknown': 0}
   ✅ academies.json   통과  {'ok': 249, 'other': 0, 'warn': 0, 'unknown': 0}
-대구서구(대구광역시 서구): 지역 검사 1파일, 실패 0 
+대구서구(대구광역시 서구): 지역 검사 2파일, 실패 0 
 == 형식 검사(검문 모의 실행 — 공개 폴더에 쓰지 않음)
-  ◻ latest.json      없음
+  ✅ latest.json      공개 (30건)
   ⏸ meals.json       보류 — 원문 미확인 / 자동 수집 없음
   ✅ academies.json   공개 (249건)
   ⏸ elite.json       보류 — 원문 미확인 / 자동 수집 없음
@@ -22,12 +58,13 @@
   ⛔ jobs.json        제외 — 대전 수집기 미검증(출처 빈칸) — 제외
   ⛔ sports.json      제외 — 대전 체육센터 수집기 미연결 — 제외
   ⛔ deals.json       제외 — 검색 결과(비공식). 타 지역·홈쇼핑 글 섞임 확인(2026-11-02) — 공개 금지
-dgseogu: 공개 1개 / 제외·미공개 13개 / 검사 실패 0개 
-임시 수집 완료: 대구서구 dgseogu ['academies.json']
+dgseogu: 공개 2개 / 제외·미공개 12개 / 검사 실패 0개 
+임시 수집 완료: 대구서구 dgseogu ['academies.json', 'latest.json']
 == 결과 파일
-total 92
-drwxr-xr-x 2 runner runner  4096 Nov 10 09:39 .
-drwxr-xr-x 5 runner runner  4096 Nov 10 09:39 ..
--rw-r--r-- 1 runner runner   419 Nov 10 09:39 _precheck.json
--rw-r--r-- 1 runner runner   273 Nov 10 09:39 _region_check.json
--rw-r--r-- 1 runner runner 74789 Nov 10 09:39 academies.json
+total 208
+drwxr-xr-x  2 runner runner   4096 Nov 10 09:48 .
+drwxr-xr-x 11 runner runner   4096 Nov 10 09:46 ..
+-rw-r--r--  1 runner runner    463 Nov 10 09:48 _precheck.json
+-rw-r--r--  1 runner runner    453 Nov 10 09:48 _region_check.json
+-rw-r--r--  1 runner runner  74789 Nov 10 09:48 academies.json
+-rw-r--r--  1 runner runner 117552 Nov 10 09:48 latest.json
