@@ -1,0 +1,50 @@
+{
+ "city": "수성",
+ "sido": "대구광역시",
+ "sgg": "수성구",
+ "files": {
+  "academies.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 2495,
+    "other": 0,
+    "warn": 8,
+    "unknown": 0
+   },
+   "total": 2503,
+   "samples": [
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "더스피치국어교습소",
+     "where": "대구광역시 동구 화랑로 33 상가 101동 114호(신천동,더샵디어엘로)"
+    },
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "비욘드영어교습소",
+     "where": "대구광역시 동구 팔공로51길 11 제1동 2층 205호 (봉무동)"
+    },
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "수학Academy수학교습소",
+     "where": "대구광역시 동구 동부로16길 28 2층 일부 (신천동)"
+    },
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "스마트해법영어수학학원",
+     "where": "대구광역시 중구 달성로 123 판매시설 507동 203호(달성동,달성파크푸르지오힐스테이트)"
+    },
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "아트프랑미술학원",
+     "where": "대구광역시 중구 달성로 123 507동, 303호 (달성동,달성파크푸르지오힐스테이트)"
+    }
+   ]
+  }
+ }
+}

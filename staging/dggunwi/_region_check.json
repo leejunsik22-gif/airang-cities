@@ -1,0 +1,19 @@
+{
+ "city": "군위",
+ "sido": "대구광역시",
+ "sgg": "군위군",
+ "files": {
+  "academies.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 14,
+    "other": 0,
+    "warn": 0,
+    "unknown": 0
+   },
+   "total": 14,
+   "samples": []
+  }
+ }
+}

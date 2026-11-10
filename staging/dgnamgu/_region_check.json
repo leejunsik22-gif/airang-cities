@@ -1,0 +1,19 @@
+{
+ "city": "대구남구",
+ "sido": "대구광역시",
+ "sgg": "남구",
+ "files": {
+  "academies.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 261,
+    "other": 0,
+    "warn": 0,
+    "unknown": 0
+   },
+   "total": 261,
+   "samples": []
+  }
+ }
+}

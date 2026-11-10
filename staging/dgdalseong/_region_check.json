@@ -1,0 +1,19 @@
+{
+ "city": "달성",
+ "sido": "대구광역시",
+ "sgg": "달성군",
+ "files": {
+  "academies.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 755,
+    "other": 0,
+    "warn": 0,
+    "unknown": 0
+   },
+   "total": 755,
+   "samples": []
+  }
+ }
+}

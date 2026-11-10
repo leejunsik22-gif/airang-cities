@@ -1,0 +1,50 @@
+{
+ "city": "대구동구",
+ "sido": "대구광역시",
+ "sgg": "동구",
+ "files": {
+  "academies.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 862,
+    "other": 0,
+    "warn": 7,
+    "unknown": 0
+   },
+   "total": 869,
+   "samples": [
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "반하다미술교습소",
+     "where": "대구광역시 수성구 청호로 418 상가 302동 104호 (범어동, 빌리브범어)"
+    },
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "쏠피아노음악교습소",
+     "where": "대구광역시 중구 달구벌대로 1955 상가 302동 203호 (대신동, 대신센트럴자이)"
+    },
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "아르떼모네(ARTEMONET)미술교습소",
+     "where": "대구광역시 중구 태평로 50 상가동 C-250호(도원동,힐스테이트 도원 센트럴)"
+    },
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "위드아트(With Art)미술교습소",
+     "where": "대구광역시 수성구 교학로 44 1층 일부(만촌동)"
+    },
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "이대라엘수학교습소",
+     "where": "대구광역시 중구 달구벌대로 1955 (대신동, 대신센트럴자이), 상가 301동 3층 303호 (대신동)"
+    }
+   ]
+  }
+ }
+}

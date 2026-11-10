@@ -1,0 +1,38 @@
+{
+ "city": "대구중구",
+ "sido": "대구광역시",
+ "sgg": "중구",
+ "files": {
+  "academies.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 446,
+    "other": 0,
+    "warn": 3,
+    "unknown": 0
+   },
+   "total": 449,
+   "samples": [
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "글로리아음악교습소",
+     "where": "대구광역시 수성구 동대구로57길 6-2 1층 일부 (범어동)"
+    },
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "씨앤씨(C&C)미술학원",
+     "where": "대구광역시 수성구 달구벌대로 2507 2층 202호(범어동)"
+    },
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "팝아트미술학원",
+     "where": "대구광역시 수성구 교학로 76 1층 (만촌동)"
+    }
+   ]
+  }
+ }
+}

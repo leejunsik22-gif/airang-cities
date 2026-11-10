@@ -1,0 +1,26 @@
+{
+ "city": "달서",
+ "sido": "대구광역시",
+ "sgg": "달서구",
+ "files": {
+  "academies.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 1720,
+    "other": 0,
+    "warn": 1,
+    "unknown": 0
+   },
+   "total": 1721,
+   "samples": [
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "동인간호학원",
+     "where": "대구광역시 남구 월배로 468 201호 (대명동, 한영유니죤빌딩)"
+    }
+   ]
+  }
+ }
+}

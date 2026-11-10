@@ -1,0 +1,19 @@
+{
+ "city": "대구서구",
+ "sido": "대구광역시",
+ "sgg": "서구",
+ "files": {
+  "academies.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 249,
+    "other": 0,
+    "warn": 0,
+    "unknown": 0
+   },
+   "total": 249,
+   "samples": []
+  }
+ }
+}

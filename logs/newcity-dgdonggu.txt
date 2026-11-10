@@ -1,0 +1,33 @@
+실행 허용 수집기: academies
+== academies
+1쪽: 869건 (전체 869)
+개원 학원·교습소 869곳 저장: {'구 미상': 869}
+동 모름: 15 곳
+수강료 공개: 271 곳
+== 지역 섞임 검사
+  ✅ academies.json   통과  {'ok': 862, 'other': 0, 'warn': 7, 'unknown': 0}
+대구동구(대구광역시 동구): 지역 검사 1파일, 실패 0 
+== 형식 검사(검문 모의 실행 — 공개 폴더에 쓰지 않음)
+  ◻ latest.json      없음
+  ⏸ meals.json       보류 — 원문 미확인 / 자동 수집 없음
+  ✅ academies.json   공개 (869건)
+  ⏸ elite.json       보류 — 원문 미확인 / 자동 수집 없음
+  ⏸ hospitals.json   보류 — 원문 부분 확인 / 자동 수집 없음
+  ⏸ benefits.json    보류 — 원문 부분 확인 / 자동 수집 없음
+  ⏸ weather.json     보류 — 원문 미확인 / 자동 수집 없음
+  ⛔ kinder.json      제외 — 키 승인 전 — 제외
+  ⛔ libs.json        제외 — 승인 대기 — 제외
+  ⛔ books.json       제외 — 승인 대기 — 제외
+  ⛔ events.json      제외 — 관광공사 키 미등록·KOPIS 미신청 — 제외
+  ⛔ jobs.json        제외 — 대전 수집기 미검증(출처 빈칸) — 제외
+  ⛔ sports.json      제외 — 대전 체육센터 수집기 미연결 — 제외
+  ⛔ deals.json       제외 — 검색 결과(비공식). 타 지역·홈쇼핑 글 섞임 확인(2026-11-02) — 공개 금지
+dgdonggu: 공개 1개 / 제외·미공개 13개 / 검사 실패 0개 
+임시 수집 완료: 대구동구 dgdonggu ['academies.json']
+== 결과 파일
+total 272
+drwxr-xr-x 2 runner runner   4096 Nov 10 09:39 .
+drwxr-xr-x 4 runner runner   4096 Nov 10 09:39 ..
+-rw-r--r-- 1 runner runner    420 Nov 10 09:39 _precheck.json
+-rw-r--r-- 1 runner runner   1371 Nov 10 09:39 _region_check.json
+-rw-r--r-- 1 runner runner 259030 Nov 10 09:39 academies.json

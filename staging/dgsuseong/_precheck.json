@@ -1,0 +1,16 @@
+{
+ "city": "수성",
+ "dir": "dgsuseong",
+ "stage": "임시 수집(비공개)",
+ "collected_at": "2026-11-10 18:39 KST",
+ "files": [
+  "academies.json"
+ ],
+ "region_check": {
+  "academies.json": "통과"
+ },
+ "next": "③ 공식 원문 표본 대조 → tools/data_rules.json 상태 갱신 → ④ 대표 승인 → ⑤ publish-city 실행",
+ "official_verify": "미확인",
+ "approved_by": "",
+ "approved_at": ""
+}

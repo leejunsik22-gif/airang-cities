@@ -1,0 +1,26 @@
+{
+ "city": "대구북구",
+ "sido": "대구광역시",
+ "sgg": "북구",
+ "files": {
+  "academies.json": {
+   "result": "통과",
+   "reason": "",
+   "counts": {
+    "ok": 1163,
+    "other": 0,
+    "warn": 1,
+    "unknown": 0
+   },
+   "total": 1164,
+   "samples": [
+    {
+     "list": "academies",
+     "judge": "warn",
+     "name": "일등수학교습소",
+     "where": "대구광역시 서구 당산로 446 361동 203호 (평리동,서대구영무예다음)"
+    }
+   ]
+  }
+ }
+}
