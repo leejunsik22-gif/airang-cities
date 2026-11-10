@@ -14,12 +14,13 @@ for f in f*; do if file -b $f | grep -qi zip; then mkdir -p z_$f && (cd z_$f && 
 python3 - <<'PY'
 import glob,io
 want=["광주","경주시","금산군","충주시","제천시","단양군","청주시","군위군","세종특별자치시","울산광역시","부산광역시","대구광역시","대전광역시"]
-for fn in glob.glob("z_*/*.txt")+glob.glob("z_*/*/*.txt"):
+import os
+for fn in [os.path.join(r,f) for r,_,fs in os.walk(".") for f in fs if r.startswith("./z_")]:
     raw=open(fn,"rb").read()
     for enc in ("cp949","utf-8"):
         try: s=raw.decode(enc); break
         except: pass
-    lines=s.splitlines(); print("FILE",fn,len(lines)); print(" HEAD",lines[0][:120])
+    lines=s.splitlines(); print("FILE",fn,len(lines)); print(" HEAD",lines[0][:160]); print(" L2",lines[1][:160] if len(lines)>1 else "")
     for L in lines:
         p=L.split("\t")
         if len(p)<2: continue
