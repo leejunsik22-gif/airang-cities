@@ -1,9 +1,9 @@
 {
  "region": "유성구",
- "updated_at": "2026-11-10 06:22:02",
+ "updated_at": "2026-11-11 06:16:08",
  "period": {
-  "from": "20261110",
-  "to": "20270109"
+  "from": "20261111",
+  "to": "20270110"
  },
  "school_count": 83,
  "public_holidays": [
@@ -4248,6 +4248,406 @@
    "date": "2027-01-09",
    "name": "겨울방학",
    "holiday": true
+  },
+  {
+   "school": "구즉초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "금성초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "남선초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대덕고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울 방학",
+   "holiday": true
+  },
+  {
+   "school": "대덕소프트웨어마이스터고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대덕중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대덕초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대덕초등학교도룡분교장",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전계산초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전과학고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전관평중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전관평초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전교촌초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전노은고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전노은초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "학년말방학",
+   "holiday": true
+  },
+  {
+   "school": "대전도시과학고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전도안고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전도안고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "1,2학년 겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전두리중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전두리초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전둔곡중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전둔곡초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "학년말방학",
+   "holiday": true
+  },
+  {
+   "school": "대전문지중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전반석고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학-1,2학년",
+   "holiday": true
+  },
+  {
+   "school": "대전반석초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전배울초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "학년말방학",
+   "holiday": true
+  },
+  {
+   "school": "대전복용초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전봉명초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전상원초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전상지초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전새미래중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전송강중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전송림초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전수정초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전어은중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전예술고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전예술고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "졸업",
+   "holiday": true
+  },
+  {
+   "school": "대전원신흥초등학교복용분교장",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전자운중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전전민초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전전자디자인고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전지족고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전지족초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전체육고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전체육중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "대전하기중학교",
+   "level": "중학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "덕송초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "유성고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "중일고등학교",
+   "level": "고등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
+  },
+  {
+   "school": "진잠초등학교",
+   "level": "초등학교",
+   "gu": "",
+   "date": "2027-01-10",
+   "name": "겨울방학",
+   "holiday": true
   }
  ],
  "schools": [
@@ -4285,6 +4685,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -4360,6 +4765,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -4452,6 +4862,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -4482,6 +4897,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -4510,6 +4930,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -4580,6 +5005,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -4682,6 +5112,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -4775,6 +5210,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -4942,6 +5382,11 @@
      "date": "2027-01-09",
      "name": "학년말방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "학년말방학",
+     "holiday": true
     }
    ]
   },
@@ -5060,6 +5505,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -5192,6 +5642,11 @@
      "date": "2027-01-09",
      "name": "학년말방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "학년말방학",
+     "holiday": true
     }
    ]
   },
@@ -5257,6 +5712,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -5287,6 +5747,11 @@
      "date": "2027-01-09",
      "name": "학년말방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "학년말방학",
+     "holiday": true
     }
    ]
   },
@@ -5315,6 +5780,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -5415,6 +5885,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -5524,6 +5999,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -5696,6 +6176,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -5806,6 +6291,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -5829,6 +6319,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -5988,6 +6483,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -6245,6 +6745,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -6293,6 +6798,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -6429,6 +6939,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -6495,6 +7010,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -6557,11 +7077,6 @@
    "dong": "가정동",
    "events": [
     {
-     "date": "2026-11-10",
-     "name": "3학년 2학기 기말고사",
-     "holiday": false
-    },
-    {
      "date": "2026-11-11",
      "name": "3학년 2학기 기말고사",
      "holiday": false
@@ -6623,6 +7138,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -6695,6 +7215,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -6757,11 +7282,6 @@
    "dong": "덕명동",
    "events": [
     {
-     "date": "2026-11-10",
-     "name": "2학기 기말고사(3학년)",
-     "holiday": false
-    },
-    {
      "date": "2026-11-11",
      "name": "2학기 기말고사(3학년)",
      "holiday": false
@@ -6793,12 +7313,12 @@
     },
     {
      "date": "2026-12-31",
-     "name": "졸업식",
+     "name": "종업식",
      "holiday": false
     },
     {
      "date": "2026-12-31",
-     "name": "종업식",
+     "name": "졸업식",
      "holiday": false
     },
     {
@@ -7065,6 +7585,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -7135,6 +7660,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -7146,11 +7676,6 @@
    "gu": "",
    "dong": "전민동",
    "events": [
-    {
-     "date": "2026-11-10",
-     "name": "2학기 3학년 기말고사",
-     "holiday": false
-    },
     {
      "date": "2026-11-11",
      "name": "2학기 3학년 기말고사",
@@ -7208,6 +7733,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -7277,11 +7807,6 @@
    "dong": "지족동",
    "events": [
     {
-     "date": "2026-11-10",
-     "name": "기말고사(3)",
-     "holiday": false
-    },
-    {
      "date": "2026-11-11",
      "name": "기말고사(3)",
      "holiday": false
@@ -7343,6 +7868,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -7430,6 +7960,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -7500,6 +8035,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -7520,11 +8060,6 @@
    "gu": "",
    "dong": "원신흥동",
    "events": [
-    {
-     "date": "2026-11-10",
-     "name": "기말고사",
-     "holiday": false
-    },
     {
      "date": "2026-11-11",
      "name": "기말고사",
@@ -7627,6 +8162,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -7756,11 +8296,6 @@
    "dong": "지족동",
    "events": [
     {
-     "date": "2026-11-10",
-     "name": "2학기 기말고사(3학년)",
-     "holiday": false
-    },
-    {
      "date": "2026-11-11",
      "name": "2학기 기말고사(3학년)",
      "holiday": false
@@ -7822,6 +8357,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -7904,6 +8444,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -7940,11 +8485,6 @@
    "gu": "",
    "dong": "상대동",
    "events": [
-    {
-     "date": "2026-11-10",
-     "name": "기말고사(3학년)",
-     "holiday": false
-    },
     {
      "date": "2026-11-11",
      "name": "기말고사(3학년)",
@@ -7990,11 +8530,6 @@
    "gu": "",
    "dong": "원내동",
    "events": [
-    {
-     "date": "2026-11-10",
-     "name": "3학년 기말고사",
-     "holiday": false
-    },
     {
      "date": "2026-11-11",
      "name": "3학년 기말고사",
@@ -8129,6 +8664,11 @@
      "date": "2027-01-09",
      "name": "겨울 방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울 방학",
+     "holiday": true
     }
    ]
   },
@@ -8140,16 +8680,6 @@
    "gu": "",
    "dong": "장동",
    "events": [
-    {
-     "date": "2026-11-10",
-     "name": "취업역량강화캠프",
-     "holiday": false
-    },
-    {
-     "date": "2026-11-10",
-     "name": "우수학생 글로벌 프로그램",
-     "holiday": false
-    },
     {
      "date": "2026-11-11",
      "name": "우수학생 글로벌 프로그램",
@@ -8222,6 +8752,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -8379,6 +8914,11 @@
      "date": "2027-01-09",
      "name": "졸업식",
      "holiday": false
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -8504,6 +9044,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -8552,6 +9097,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -8654,6 +9204,16 @@
      "date": "2027-01-09",
      "name": "1,2학년 겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "1,2학년 겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -8754,6 +9314,11 @@
      "date": "2027-01-09",
      "name": "겨울방학-1,2학년",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학-1,2학년",
+     "holiday": true
     }
    ]
   },
@@ -8792,6 +9357,16 @@
     },
     {
      "date": "2027-01-09",
+     "name": "졸업",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "졸업",
      "holiday": true
     }
@@ -8993,6 +9568,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -9118,6 +9698,11 @@
      "date": "2027-01-09",
      "name": "겨울방학",
      "holiday": true
+    },
+    {
+     "date": "2027-01-10",
+     "name": "겨울방학",
+     "holiday": true
     }
    ]
   },
@@ -9146,6 +9731,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -9221,6 +9811,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
@@ -9496,6 +10091,11 @@
     },
     {
      "date": "2027-01-09",
+     "name": "겨울방학",
+     "holiday": true
+    },
+    {
+     "date": "2027-01-10",
      "name": "겨울방학",
      "holiday": true
     }
