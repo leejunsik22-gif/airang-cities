@@ -49,7 +49,7 @@ jobs:
             export CITY="${CS[$i]}"; d="${DS[$i]}"; log=logs/newcity-$d.txt; : > $log
             rm -rf output; mkdir -p output staging/$d
             find staging/$d -maxdepth 1 -name '*.json' ! -name '_*' -exec cp {} output/ \;   # 지난 임시 수집본이 있으면 이어서(실패 수집기 보존)
-            LIST="academies"; [ -z "$LIST" ] && LIST="collect academies kinder meals libs books events jobs sports elite weather benefits hospitals"   # deals(비공식 검색)는 새 도시에서 모으지 않음
+            LIST="collect academies"; [ -z "$LIST" ] && LIST="collect academies kinder meals libs books events jobs sports elite weather benefits hospitals"   # deals(비공식 검색)는 새 도시에서 모으지 않음
             LIST=$(python3 tools/allowed_scripts.py $LIST); echo "실행 허용 수집기: $LIST" | tee -a $log   # 미확인 지역 코드를 쓰는 수집기는 자동 차단(tools/allowed_scripts.py)
             for s in $LIST; do
               f=$(python3 -c "import city;print(city.SCRIPTS.get('$s','$s'))")
