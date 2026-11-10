@@ -1,0 +1,93 @@
+name: daegu-staging (대구 9개 구·군 비공개 임시 수집 — newcity 와 같은 단계, 이 가지에만 저장)
+# 2026-11-10 대표 전달(피트 의견): "대구 9개 구·군 비공개 검수부터". 학원·교습소만 모음. 공개 폴더(data/)·main 변경 없음.
+on:
+  push:
+    branches: [daegu-staging]
+    paths: [".github/workflows/daegu-staging.yml"]
+permissions:
+  contents: write
+concurrency: { group: "daegu-staging", cancel-in-progress: false }
+jobs:
+  stage:
+    if: github.ref == 'refs/heads/daegu-staging'
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    env:
+      NEIS_KEY: ${{ secrets.NEIS_KEY }}
+      KINDER_KEY: ${{ secrets.KINDER_KEY }}
+      CULTURE_KEY: ${{ secrets.CULTURE_KEY }}
+      LIB_KEY: ${{ secrets.LIB_KEY }}
+      KOPIS_KEY: ${{ secrets.KOPIS_KEY }}
+      TOUR_KEY: ${{ secrets.TOUR_KEY || secrets.WEATHER_KEY }}
+      KAKAO_KEY: ${{ secrets.KAKAO_KEY }}
+      WEATHER_KEY: ${{ secrets.WEATHER_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: 입력 확인 (도시 키가 regions 에 있는지, 운영 도시는 거부)
+        run: |
+          [ -n "대구중구,대구동구,대구서구,대구남구,대구북구,수성,달서,달성,군위" ] && [ -n "dgjunggu,dgdonggu,dgseogu,dgnamgu,dgbukgu,dgsuseong,dgdalseo,dgdalseong,dggunwi" ] || { echo "::error::도시 키와 폴더 이름을 넣어 주세요"; exit 1; }
+          IFS=, read -ra CS <<< "대구중구,대구동구,대구서구,대구남구,대구북구,수성,달서,달성,군위"; IFS=, read -ra DS <<< "dgjunggu,dgdonggu,dgseogu,dgnamgu,dgbukgu,dgsuseong,dgdalseo,dgdalseong,dggunwi"
+          [ "${#CS[@]}" = "${#DS[@]}" ] || { echo "::error::도시 수(${#CS[@]})와 폴더 수(${#DS[@]})가 다릅니다"; exit 1; }
+          for i in "${!CS[@]}"; do
+            python3 - "${CS[$i]}" "${DS[$i]}" <<'PY'
+          import sys, re, city
+          k, d = sys.argv[1], sys.argv[2]
+          assert k in city.CITIES, f"regions/*.json 에 없는 도시 키: {k}"
+          assert re.fullmatch(r"[a-z][a-z0-9]{1,24}", d), f"폴더 이름은 영문 소문자·숫자만: {d}"
+          assert city.STAGE.get(k) != "운영", f"{k} 는 운영 중인 도시 — newcity 로 다시 모으지 않습니다(daily 사용)"
+          print("확인:", k, d, city.STAGE.get(k))
+          PY
+          done
+      - name: 임시 수집 (staging/ 에만 저장)
+        run: |
+          set -o pipefail
+          IFS=, read -ra CS <<< "대구중구,대구동구,대구서구,대구남구,대구북구,수성,달서,달성,군위"; IFS=, read -ra DS <<< "dgjunggu,dgdonggu,dgseogu,dgnamgu,dgbukgu,dgsuseong,dgdalseo,dgdalseong,dggunwi"
+          mkdir -p logs
+          for i in "${!CS[@]}"; do
+            export CITY="${CS[$i]}"; d="${DS[$i]}"; log=logs/newcity-$d.txt; : > $log
+            rm -rf output; mkdir -p output staging/$d
+            find staging/$d -maxdepth 1 -name '*.json' ! -name '_*' -exec cp {} output/ \;   # 지난 임시 수집본이 있으면 이어서(실패 수집기 보존)
+            LIST="academies"; [ -z "$LIST" ] && LIST="collect academies kinder meals libs books events jobs sports elite weather benefits hospitals"   # deals(비공식 검색)는 새 도시에서 모으지 않음
+            LIST=$(python3 tools/allowed_scripts.py $LIST); echo "실행 허용 수집기: $LIST" | tee -a $log   # 미확인 지역 코드를 쓰는 수집기는 자동 차단(tools/allowed_scripts.py)
+            for s in $LIST; do
+              f=$(python3 -c "import city;print(city.SCRIPTS.get('$s','$s'))")
+              echo "::group::$CITY $s"; echo "== $s" >> $log
+              timeout 1500 python -u $f.py 2>&1 | tee -a $log | tail -5 || echo "::warning::$CITY $s 실패"
+              echo "::endgroup::"
+            done
+            echo "== 지역 섞임 검사" | tee -a $log
+            python3 tools/check_region.py --dir output --quarantine --report output/_region_check.json 2>&1 | tee -a $log
+            echo "== 형식 검사(검문 모의 실행 — 공개 폴더에 쓰지 않음)" | tee -a $log
+            python3 tools/gate.py --city $d --in output --out output/_gate_preview --dry-run 2>&1 | tee -a $log || true
+            rm -rf staging/$d/*.json staging/$d/_rejected; mkdir -p staging/$d
+            cp output/*.json staging/$d/ 2>/dev/null || true
+            [ -d output/_rejected ] && cp -r output/_rejected staging/$d/ || true
+            python3 - "$CITY" "$d" <<'PY' | tee -a $log
+          import json, os, sys, glob
+          from datetime import datetime, timedelta, timezone
+          k, d = sys.argv[1], sys.argv[2]
+          files = sorted(os.path.basename(p) for p in glob.glob(f"staging/{d}/*.json") if not os.path.basename(p).startswith("_"))
+          rc = json.load(open(f"staging/{d}/_region_check.json", encoding="utf-8")) if os.path.exists(f"staging/{d}/_region_check.json") else {}
+          json.dump({"city": k, "dir": d, "stage": "임시 수집(비공개)", "collected_at": datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d %H:%M KST"),
+                     "files": files, "region_check": {f: v.get("result") for f, v in rc.get("files", {}).items()},
+                     "next": "③ 공식 원문 표본 대조 → tools/data_rules.json 상태 갱신 → ④ 대표 승인 → ⑤ publish-city 실행",
+                     "official_verify": "미확인", "approved_by": "", "approved_at": ""},
+                    open(f"staging/{d}/_precheck.json", "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+          print("임시 수집 완료:", k, d, files)
+          PY
+            echo "== 결과 파일" >> $log; ls -la staging/$d >> $log
+          done
+      - name: 저장 (staging/ 와 로그만 — data/ 변경 없음을 확인)
+        run: |
+          git status --porcelain data | grep . && { echo "::error::공개 폴더(data/)가 바뀌었습니다 — newcity 는 data/ 를 건드리면 안 됩니다. 저장 중단"; exit 1; } || true
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add staging logs; git diff --cached --quiet && { echo "변경 없음"; exit 0; }
+          git commit -m "임시 수집(비공개) 대구중구,대구동구,대구서구,대구남구,대구북구,수성,달서,달성,군위 → staging/"
+          ok=0; for k in 1 2 3 4 5; do git pull --rebase --autostash && git push && ok=1 && break; sleep $((k*7)); done
+          [ "$ok" = 1 ] || { echo "::error::올리기(push) 실패"; exit 1; }
+      - name: 요약
+        if: always()
+        run: |
+          { echo "## 새 도시 임시 수집(비공개) — 대구중구,대구동구,대구서구,대구남구,대구북구,수성,달서,달성,군위"; echo; echo "- 저장 위치: \`staging/<폴더>/\` (공개 폴더 data/ 에는 쓰지 않음)"; echo "- 다음 단계: 공식 원문 표본 대조 → data_rules 상태 갱신 → 대표 승인 → \`publish-city\` 실행(대표 계정만)"; echo; for f in logs/newcity-*.txt; do echo "<details><summary>$f</summary>"; echo; echo '```'; tail -60 $f; echo '```'; echo "</details>"; done; } >> $GITHUB_STEP_SUMMARY
