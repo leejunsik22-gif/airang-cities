@@ -1,0 +1,17 @@
+name: region-survey (지역 비교 조사 — 읽기만)
+on:
+  push:
+    branches: [region-survey]
+    paths: ["tools/region_survey.py", ".github/workflows/region_survey.yml"]
+permissions:
+  contents: read
+jobs:
+  survey:
+    if: github.ref == 'refs/heads/region-survey'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/region_survey.py
+        env:
+          NEIS_KEY: ${{ secrets.NEIS_KEY }}
+          DATA_KEY: ${{ secrets.WEATHER_KEY }}
