@@ -1,7 +1,7 @@
 {
  "_설명": "운영 감시 집계(tools/monitor.py, 매시간). 상태: 장애=지금 고쳐야 함 / 검증 필요=공개 중이거나 보류 중이지만 사람 확인 필요 / 공개 보류=원문 미확인으로 숨김 / 복구 완료=직전 집계에 있던 문제가 사라짐. 앱은 읽지 않음(관리자만)",
- "checked_at": "2026-11-10 22:05",
- "checked_at_utc": "2026-11-10T13:05:10Z",
+ "checked_at": "2026-11-11 04:56",
+ "checked_at_utc": "2026-11-10T19:56:47Z",
  "ok": true,
  "summary": {
   "장애": 0,
@@ -20,7 +20,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-10 22:05"
+   "last_seen": "2026-11-11 04:56"
   },
   {
    "id": "hold:djdonggu",
@@ -32,7 +32,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-10 22:05"
+   "last_seen": "2026-11-11 04:56"
   },
   {
    "id": "hold:djjunggu",
@@ -44,7 +44,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-10 22:05"
+   "last_seen": "2026-11-11 04:56"
   },
   {
    "id": "hold:djseogu",
@@ -56,7 +56,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-10 22:05"
+   "last_seen": "2026-11-11 04:56"
   },
   {
    "id": "hold:yuseong",
@@ -68,7 +68,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-10 22:05"
+   "last_seen": "2026-11-11 04:56"
   }
  ],
  "recovered": [
@@ -249,10 +249,10 @@
    "overdue": false
   },
   "cf-apps": {
-   "last_at": "2026-11-10T12:58:35Z",
+   "last_at": "2026-11-10T18:49:18Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/42820319753",
-   "last_success_at": "2026-11-10T12:58:35Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/42879049888",
+   "last_success_at": "2026-11-10T18:49:18Z",
    "overdue": false
   }
  },
@@ -261,7 +261,7 @@
   "app_branch": "main",
   "lag": false,
   "default_head_at": "2026-11-04T17:22:53Z",
-  "app_head_at": "2026-11-10T09:12:56Z"
+  "app_head_at": "2026-11-10T13:05:18Z"
  },
  "customer_view": {
   "app_branch": "main",
