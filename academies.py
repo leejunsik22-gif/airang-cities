@@ -131,6 +131,19 @@ def fill_dong(lst, city):
     return lst
 
 
+def rename_dong(lst):
+    """088(2026-11-11): 읍·면 승격으로 바뀐 동네 이름을 지금 이름으로 맞춤(tools/dong_rename.json). 주소 글자는 원문 그대로."""
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools", "dong_rename.json")
+    try:
+        table = json.load(open(p, encoding="utf-8")).get(AREA, {})
+    except (OSError, ValueError):
+        return lst
+    for a in lst:
+        if a["dong"] in table:
+            a["dong"] = table[a["dong"]]
+    return lst
+
+
 def main():
     if not KEY:
         raise SystemExit("NEIS_KEY가 없습니다. 저장소 Secrets에 NEIS_KEY를 넣어 주세요.")
@@ -174,6 +187,7 @@ def main():
             "tel": clean(r.get("FA_TELNO")),
         }
     lst = fill_dong(sorted(acas.values(), key=lambda a: a["n"]), AREA[:-1])
+    lst = rename_dong(lst)
     os.makedirs("output", exist_ok=True)
     result = {"updated_at": datetime.now(KST).strftime("%Y-%m-%d %H:%M:%S"),
               "source": "NEIS 교육정보 개방 포털 (학원교습소정보)", "count": len(lst), "academies": lst}

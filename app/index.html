@@ -2026,7 +2026,10 @@ const ACA_CATS = [
 ];
 function acaText(a) { return a.n + " " + (a.c || []).join(" ") + " " + a.r; }
 // 검색어로 찾기(홈 검색·학원 메뉴 공통, 077): 이름·교습과정·분야·동네 — 띄어쓰기·대소문자 무시
-function acaFind(a, q) { const n = _norm(q); return !n || _norm(acaText(a) + " " + (a.dong || "")).includes(n); }
+// 088(2026-11-11): 승격으로 이름이 바뀐 읍·면은 옛 이름·새 이름 어느 쪽으로 찾아도 같은 결과(tools/dong_rename.json 과 같은 표)
+const DONG_ALIAS = { "유가면": "유가읍", "옥포면": "옥포읍", "현풍면": "현풍읍" };
+const _dongNorm = s => { let t = _norm(s); for (const [o, n] of Object.entries(DONG_ALIAS)) t = t.split(o).join(n); return t; };
+function acaFind(a, q) { const n = _dongNorm(q); return !n || _dongNorm(acaText(a) + " " + (a.dong || "")).includes(n); }
 let acaF = null, acaShow = 40;
 function acaFilter() { if (!acaF) { const rg = region(); acaF = { gu: rg.gu || "", dong: rg.dong || "", cat: "전체", q: "" }; } return acaF; }
 function median(arr) { if (!arr.length) return 0; const s = [...arr].sort((x, y) => x - y); const m = s.length >> 1; return s.length % 2 ? s[m] : Math.round((s[m - 1] + s[m]) / 2); }
