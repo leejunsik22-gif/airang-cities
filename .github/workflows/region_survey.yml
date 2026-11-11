@@ -2,7 +2,7 @@ name: region-survey (지역 비교 조사 — 읽기만)
 on:
   push:
     branches: [region-survey]
-    paths: ["tools/region_codes.sh", ".github/workflows/region_survey.yml"]
+    paths: ["tools/region_codes.sh", "tools/gunwi_dalseong_check.py", ".github/workflows/region_survey.yml"]
 permissions:
   contents: read
 jobs:
@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: bash tools/region_codes.sh
+      - if: false
+        run: bash tools/region_codes.sh
+      - run: python3 tools/gunwi_dalseong_check.py
+        env:
+          NEIS_KEY: ${{ secrets.NEIS_KEY }}
       - if: false
         run: python3 tools/region_survey.py
         env:
