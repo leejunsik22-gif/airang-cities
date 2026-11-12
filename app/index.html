@@ -991,7 +991,7 @@ function viewHome() {
       <button class="btn btn-soft" style="width:100%;height:42px;margin-top:10px;font-size:13px;color:var(--indigo)" onclick="go('myev/new')">+ 내 일정 추가 (준비물·병원·생일 등)</button>
       ${evs.length > 3 ? `<button onclick="homeAllEv=!homeAllEv;render()" style="width:100%;border:0;background:none;padding:12px 0 4px;font:inherit;font-size:13px;font-weight:700;color:var(--indigo);cursor:pointer">${homeAllEv ? "접기 ▲" : `일정 더보기 (${Math.min(evs.length, 8) - 3}개 더) ▼`}</button>` : ""}</div></section>`;
   } else {
-    hero = heroV3(`<div class="eyebrow3">${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()}</div><h1>아이와 가족이<br><span style="color:var(--orange-ink)">더 행복한</span> {{name}}${HEART_DOODLE}</h1>${LEAF_DOODLE}<p>학교·학원·병원·혜택까지, 우리 동네의 믿을 수 있는 정보를 한곳에</p>`)
+    hero = heroV3(`<div class="eyebrow3">${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()}</div><h1>아이와 가족이<br><span style="color:var(--orange-ink)">더 행복한</span> {{name}}${HEART_DOODLE}</h1>${LEAF_DOODLE}<p>${homeTagline()}</p>`)
       + `<div class="lift" style="margin-top:12px;padding:4px 14px"><button class="kidadd" onclick="go('kid/new')"><span class="kid-ic">${KID_ICON}</span><span style="min-width:0"><b>우리 아이 추가</b><small>형제자매가 여러 명이어도 한 번에 볼 수 있어요</small></span><span class="plus" aria-hidden="true">+</span></button></div>`;
   }
 
@@ -1012,14 +1012,18 @@ function viewHome() {
 function homeSearch() {   // 026 홈5(고요한 검색): 그림 바로 아래, 크고 조용하게
   return `<form class="search-v2" role="search" style="margin-top:14px" onsubmit="event.preventDefault();const q=this.q.value.trim();if(q)go('find/'+encodeURIComponent(q))">
     ${ico("search", 20, "none")}
-    <input name="q" type="search" placeholder="소아과, 학원, 학교, 혜택 이름" autocomplete="off" aria-label="통합 검색">
+    <input name="q" type="search" placeholder="${searchHint()}" autocomplete="off" aria-label="통합 검색">
     <button class="btn btn-3d" type="submit" style="padding:0 16px">찾기</button></form>`;
 }
+// 2026-11-12 117: 공개 보류(준비 중) 메뉴는 홈 소개·검색 안내·바로가기 칩에서 앞세우지 않는다(_status.json 그대로 따름)
+function homeTagline() { const p = ["학교", "학원"]; if (!gated("hosp")) p.push("병원"); if (!gated("bene")) p.push("혜택"); return esc(p.join("·")) + "까지, 우리 동네의 믿을 수 있는 정보를 한곳에"; }
+function searchHint() { const p = []; if (!gated("hosp")) p.push("소아과"); p.push("학원", "학교"); if (!gated("bene")) p.push("혜택"); return esc(p.join(", ") + " 이름"); }
 function homeQuick() {   // 026: 핵심 질문 칩 3~4개 (홈5) — 눌러서 바로 그 조건으로
   const n = new Date(), h = n.getHours(), wk = n.getDay() === 0 || n.getDay() === 6;
   const kidsTxt = h >= 19 || h < 8 ? "밤에 여는 소아과" : wk ? "주말에 여는 소아과" : "지금 문 연 소아과";
   const chip = (label, fn, name) => `<button class="q-chip" onclick="${fn}">${ico(name, 16, "none")}${esc(label)}</button>`;
-  return `<div class="q-chips" aria-label="자주 찾는 것">${chip(kidsTxt, "hsOpenKids()", "stethoscope")}${chip("우리 동네 학원", "go('acas')", "pencil")}${chip("학교 일정", "go('schools')", "calendar")}${chip("받을 수 있는 혜택", "go('bene')", "gift")}${chip("약국", "hsTab='pharm';go('hosp')", "pill")}</div>`;
+  const hH = gated("hosp"), hB = gated("bene");   // 117: 준비 중 메뉴 칩은 숨김
+  return `<div class="q-chips" aria-label="자주 찾는 것">${hH ? "" : chip(kidsTxt, "hsOpenKids()", "stethoscope")}${chip("우리 동네 학원", "go('acas')", "pencil")}${chip("학교 일정", "go('schools')", "calendar")}${hB ? "" : chip("받을 수 있는 혜택", "go('bene')", "gift")}${hH ? "" : chip("약국", "hsTab='pharm';go('hosp')", "pill")}</div>`;
 }
 function homeMenu() {   // v3(2026-11-04): 핵심 메뉴 6개 3×2 큰 타일(PC 6칸) — 준비 중은 눌러도 준비 중 틀. 도서관·유치원은 '전체보기'와 아래 섹션에서
   const nSch = DATA && DATA.schools ? regionSchools().length : 0, nAca = ACAS && ACAS.academies ? ACAS.academies.length : 0;
