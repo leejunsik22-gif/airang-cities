@@ -504,6 +504,12 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 <div class="topscape" id="topscape" hidden><div><picture><source id="topscape-w" media="(min-width:700px)" srcset="assets/scenes/entry-w.webp 1600w, assets/scenes/entry-w2.webp 2400w"><img src="assets/scenes/entry-m.webp" srcset="assets/scenes/entry-m.webp 800w, assets/scenes/entry-m2.webp 1400w" sizes="100vw" width="1200" height="500" alt="" decoding="async"></picture><span class="img-tag">AI 생성 이미지 · 실제 기관·인물 아님</span></div></div>
 <main class="wrap" id="view"><div class="loading">불러오는 중…</div></main>
 
+<style>/* 2026-11-12 118: 크롬 '텍스트 크기 조절'(화면 확대 150~300%)에서 아래 메뉴 5칸이 잘려 1~4칸만 보이던 문제(대표 갤럭시 실기기 발견) */
+.navi{min-width:0!important;flex:1 1 0!important}
+@media (max-width:340px){.nav{width:calc(100% - 12px)!important;padding:0 2px!important}.navi{font-size:11px!important;letter-spacing:-.6px;white-space:nowrap}.navi .ic{width:30px!important}}
+@media (max-width:240px){.nav{height:52px!important;bottom:calc(6px + env(safe-area-inset-bottom))!important;border-radius:16px!important}.navi{height:50px!important;min-height:44px!important;font-size:0!important;gap:0!important}.navi .ic{width:26px!important;height:26px!important}.navi .ic svg,.navi .ic img{width:20px!important;height:20px!important}.wrap{padding-bottom:calc(76px + env(safe-area-inset-bottom))!important}.img-tag{font-size:0!important;padding:1px 6px!important;max-width:70%}.img-tag::before{content:"AI 이미지";font-size:10px;line-height:1.5}
+.wrap *{min-width:0}.wrap{overflow-wrap:anywhere}.home-menu,.mgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.search input,input[type=search]{width:100%;min-width:0}.kidadd{gap:6px}.kidadd .plus{width:28px!important;height:28px!important;flex:none}.kidadd .kid-ic{display:none}.inst-card{flex-wrap:wrap;padding:10px!important}.inst-card>.tile{display:none!important}.inst-card>div{flex:1 1 100%!important}.top3{padding:6px 6px 0!important;gap:4px!important}.top3 .brand3>div,.top3 button[onclick="shareApp()"]{display:none!important}.top3 .logo3{width:30px;height:auto}.top3 .topbar-region{flex:1 1 auto!important;min-width:0!important;padding:0 6px!important;font-size:11px!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;justify-content:center}.hero-v3 .img-tag{position:static!important;display:inline-block;margin:4px 0}.wrap{padding-left:8px!important;padding-right:8px!important}.lift{padding-left:8px!important;padding-right:8px!important}.mgrid3{grid-template-columns:repeat(2,minmax(0,1fr))!important}.kidadd{flex-wrap:wrap}.kidadd>span:not(.plus){flex:1 1 100%}.lift .bi{display:none!important}.lift .row{flex-wrap:wrap;row-gap:2px}.hero-v3 .t3{position:static!important;padding:8px 0 6px!important}.hero-v3 .t3 .in{display:flex;flex-direction:column}.hero-v3 .t3 .in>div:first-child{order:99;margin:6px 0 0!important;text-align:left!important}}
+</style>
 <nav class="nav glass" aria-label="주요 메뉴">
   <button class="navi" data-tab="home"><span class="ic">{{icon:home}}</span>홈</button>
   <button class="navi" data-tab="hosp"><span class="ic">{{icon:hospital}}</span>동네병원</button>
@@ -991,7 +997,7 @@ function viewHome() {
       <button class="btn btn-soft" style="width:100%;height:42px;margin-top:10px;font-size:13px;color:var(--indigo)" onclick="go('myev/new')">+ 내 일정 추가 (준비물·병원·생일 등)</button>
       ${evs.length > 3 ? `<button onclick="homeAllEv=!homeAllEv;render()" style="width:100%;border:0;background:none;padding:12px 0 4px;font:inherit;font-size:13px;font-weight:700;color:var(--indigo);cursor:pointer">${homeAllEv ? "접기 ▲" : `일정 더보기 (${Math.min(evs.length, 8) - 3}개 더) ▼`}</button>` : ""}</div></section>`;
   } else {
-    hero = heroV3(`<div class="eyebrow3">${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()}</div><h1>아이와 가족이<br><span style="color:var(--orange-ink)">더 행복한</span> {{name}}${HEART_DOODLE}</h1>${LEAF_DOODLE}<p>학교·학원·병원·혜택까지, 우리 동네의 믿을 수 있는 정보를 한곳에</p>`)
+    hero = heroV3(`<div class="eyebrow3">${esc(regionLabel().replace("{{f.sgg}} 전체", "{{name}}").replace("{{name}} ", ""))} · ${levelLabel()}</div><h1>아이와 가족이<br><span style="color:var(--orange-ink)">더 행복한</span> {{name}}${HEART_DOODLE}</h1>${LEAF_DOODLE}<p>${homeTagline()}</p>`)
       + `<div class="lift" style="margin-top:12px;padding:4px 14px"><button class="kidadd" onclick="go('kid/new')"><span class="kid-ic">${KID_ICON}</span><span style="min-width:0"><b>우리 아이 추가</b><small>형제자매가 여러 명이어도 한 번에 볼 수 있어요</small></span><span class="plus" aria-hidden="true">+</span></button></div>`;
   }
 
@@ -1012,14 +1018,18 @@ function viewHome() {
 function homeSearch() {   // 026 홈5(고요한 검색): 그림 바로 아래, 크고 조용하게
   return `<form class="search-v2" role="search" style="margin-top:14px" onsubmit="event.preventDefault();const q=this.q.value.trim();if(q)go('find/'+encodeURIComponent(q))">
     ${ico("search", 20, "none")}
-    <input name="q" type="search" placeholder="소아과, 학원, 학교, 혜택 이름" autocomplete="off" aria-label="통합 검색">
+    <input name="q" type="search" placeholder="${searchHint()}" autocomplete="off" aria-label="통합 검색">
     <button class="btn btn-3d" type="submit" style="padding:0 16px">찾기</button></form>`;
 }
+// 2026-11-12 117: 공개 보류(준비 중) 메뉴는 홈 소개·검색 안내·바로가기 칩에서 앞세우지 않는다(_status.json 그대로 따름)
+function homeTagline() { const p = ["학교", "학원"]; if (!gated("hosp")) p.push("병원"); if (!gated("bene")) p.push("혜택"); return esc(p.join("·")) + "까지, 우리 동네의 믿을 수 있는 정보를 한곳에"; }
+function searchHint() { const p = []; if (!gated("hosp")) p.push("소아과"); p.push("학원", "학교"); if (!gated("bene")) p.push("혜택"); return esc(p.join(", ") + " 이름"); }
 function homeQuick() {   // 026: 핵심 질문 칩 3~4개 (홈5) — 눌러서 바로 그 조건으로
   const n = new Date(), h = n.getHours(), wk = n.getDay() === 0 || n.getDay() === 6;
   const kidsTxt = h >= 19 || h < 8 ? "밤에 여는 소아과" : wk ? "주말에 여는 소아과" : "지금 문 연 소아과";
   const chip = (label, fn, name) => `<button class="q-chip" onclick="${fn}">${ico(name, 16, "none")}${esc(label)}</button>`;
-  return `<div class="q-chips" aria-label="자주 찾는 것">${chip(kidsTxt, "hsOpenKids()", "stethoscope")}${chip("우리 동네 학원", "go('acas')", "pencil")}${chip("학교 일정", "go('schools')", "calendar")}${chip("받을 수 있는 혜택", "go('bene')", "gift")}${chip("약국", "hsTab='pharm';go('hosp')", "pill")}</div>`;
+  const hH = gated("hosp"), hB = gated("bene");   // 117: 준비 중 메뉴 칩은 숨김
+  return `<div class="q-chips" aria-label="자주 찾는 것">${hH ? "" : chip(kidsTxt, "hsOpenKids()", "stethoscope")}${chip("우리 동네 학원", "go('acas')", "pencil")}${chip("학교 일정", "go('schools')", "calendar")}${hB ? "" : chip("받을 수 있는 혜택", "go('bene')", "gift")}${hH ? "" : chip("약국", "hsTab='pharm';go('hosp')", "pill")}</div>`;
 }
 function homeMenu() {   // v3(2026-11-04): 핵심 메뉴 6개 3×2 큰 타일(PC 6칸) — 준비 중은 눌러도 준비 중 틀. 도서관·유치원은 '전체보기'와 아래 섹션에서
   const nSch = DATA && DATA.schools ? regionSchools().length : 0, nAca = ACAS && ACAS.academies ? ACAS.academies.length : 0;
@@ -3319,7 +3329,7 @@ function homeInstall() {
   const d = devInfo();
   if (d.standalone) return moveCard();
   if (store("edu.installHide") === "1") return "";
-  return `<section class="section"><div class="lift" style="padding:14px 16px;display:flex;align-items:center;gap:12px">
+  return `<section class="section"><div class="lift inst-card" style="padding:14px 16px;display:flex;align-items:center;gap:12px">
     <span class="tile t-indigo" style="width:40px;height:40px;font-size:18px">📲</span>
     <div style="flex:1;min-width:0"><div style="font-weight:800;font-size:14px">앱처럼 쓰기</div><div style="font-size:12px;color:var(--muted);margin-top:2px">바탕화면 아이콘 하나로 바로 열려요</div></div>
     <button class="btn btn-3d" style="height:38px;font-size:13px;padding:0 14px;flex:0 0 auto" onclick="openInstall()">${d.inApp ? "크롬으로 열기" : "추가하기"}</button>

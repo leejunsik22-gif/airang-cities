@@ -133,6 +133,7 @@ def build_city(key, out, data):
     libs = (load(data, key, "libs") or {}).get("libraries") or []
     hos = load(data, key, "hospitals") or {}
     ev = load(data, key, "events") or {}
+    bene_ok = bool((load(data, key, "benefits") or {}).get("items"))   # 117: 혜택 자료가 공개돼 있을 때만 앱 혜택 메뉴로 안내
 
     # ── 학원: 과목별 · 동별
     subj_links, sub_pages = [], []
@@ -282,24 +283,29 @@ def build_city(key, out, data):
 <div class="card"><table>
 <tr><td><b>① 취학통지서 받기</b> <span class="sub">보통 12월</span><div class="sub">주소지 주민센터에서 받아요. 기간 안에는 정부24에서 온라인으로도 받고 낼 수 있어요. 배정된 학교가 여기에 적혀 있어요.</div></td></tr>
 <tr><td><b>② 예비소집 가기</b> <span class="sub">보통 1월</span><div class="sub">배정된 학교에 아이와 함께 가요. 못 가게 되면 꼭 미리 학교에 연락하세요.</div></td></tr>
-<tr><td><b>③ 예방접종 확인</b><div class="sub">입학 전에 DTaP 5차, 폴리오 4차, MMR 2차, 일본뇌염 접종을 마쳤는지 질병관리청 예방접종도우미에서 확인해요. 빠진 게 있으면 <a href="/guide/pediatrics.html">가까운 소아과</a>에서 맞혀요.</div></td></tr>
+<tr><td><b>③ 예방접종 확인</b><div class="sub">입학 전에 DTaP 5차, 폴리오 4차, MMR 2차, 일본뇌염 접종을 마쳤는지 질병관리청 예방접종도우미에서 확인해요. 빠진 게 있으면 {'<a href="/guide/pediatrics.html">가까운 소아과</a>' if peds else '가까운 소아과'}에서 맞혀요.</div></td></tr>
 <tr><td><b>④ 돌봄·방과후 신청</b><div class="sub">초등 돌봄교실·방과후 프로그램은 입학 전후로 학교에서 신청을 받아요. 학교 안내문을 놓치지 마세요.</div></td></tr>
-<tr><td><b>⑤ 받을 수 있는 혜택 확인</b><div class="sub">입학 축하금, 교복·체험비 지원 같은 혜택은 시·구마다 달라요. 아이랑 앱의 <a href="/#bene">혜택</a> 메뉴에서 우리 동네 것을 찾아보세요.</div></td></tr>
+<tr><td><b>⑤ 받을 수 있는 혜택 확인</b><div class="sub">입학 축하금, 교복·체험비 지원 같은 혜택은 시·구마다 달라요. {'아이랑 앱의 <a href="/#bene">혜택</a> 메뉴에서 우리 동네 것을 찾아보세요.' if bene_ok else '시·구청 누리집에서 우리 동네 것을 확인해 보세요.'}</div></td></tr>
 </table></div>
 <h2>{E(sgg)} 초등학교 {len(els)}곳</h2><div class="card"><table><tr><th>학교</th><th>동</th></tr>{rows}</table></div>""", [home, ("초등 입학 준비", None)])
 
-    # ── 도시 안내 (허브)
+    # ── 도시 안내 (허브) — 2026-11-12 117: 자료가 없는(0곳·공개 보류) 항목은 목록·제목·설명에서 뺀다
     links = [("학원·교습비", "/guide/academy/", f"{len(aca):,}곳"), ("유치원", "/guide/kinder.html", f"{len(kin)}곳"),
              ("도서관", "/guide/library.html", f"{len(libs)}곳"), ("소아과 진료 시간", "/guide/pediatrics.html", f"{len(peds)}곳"),
              ("아이와 갈 만한 곳", "/guide/events.html", f"{len(evs)}개")]
+    has = {"학원·교습비": len(aca), "유치원": len(kin), "도서관": len(libs), "소아과 진료 시간": len(peds), "아이와 갈 만한 곳": len(evs)}
+    links = [x for x in links if has.get(x[0], 1) > 0]
+    shown = [{"학원·교습비": "학원·교습비", "유치원": "유치원", "도서관": "도서관", "소아과 진료 시간": "소아과", "아이와 갈 만한 곳": "아이와 갈 만한 곳"}[t] for t, _, _ in links]
     if len(win) >= 3: links.append(("겨울방학 날짜 (학교별)", "/guide/winter.html", f"{len(win)}곳"))
     if els: links.append(("초등학교 입학 준비", "/guide/school-start.html", f"{len(els)}곳"))
     body = f"""<h1>{E(sgg)} 아이 키우는 집을 위한 동네 정보</h1>
-<p class="lead">학원·교습비, 유치원, 도서관, 소아과, 아이와 갈 만한 곳을 공공데이터로 모아 매일 새로 고쳐요.</p>
+<p class="lead">{E(", ".join(shown + (["학교 방학·입학 준비"] if len(win) >= 3 or els else [])))} 정보를 공공데이터로 모아 매일 새로 고쳐요.</p>
 <div class="card"><table>{''.join(f'<tr><td><a href="{u}"><b>{E(t)}</b></a></td><td class="num">{E(n)}</td></tr>' for t, u, n in links)}</table></div>
 <h2>과목별 학원</h2><div class="chips">{''.join(f'<a href="/guide/academy/{s}.html">{E(l)}학원 {n}</a>' for s, l, n in subj_links)}</div>"""
-    write("guide/index.html", f"{sgg} 학원·유치원·도서관·소아과 정보 | 아이랑 {nm}",
-          f"{sgg} 학원 교습비 비교, 유치원, 도서관 운영시간, 소아과 진료 시간, 아이와 갈 만한 곳을 한곳에서 보세요.", body, [home])
+    tparts = [t for t, k in (("학원", "학원·교습비"), ("유치원", "유치원"), ("도서관", "도서관"), ("소아과", "소아과")) if k in shown] + (["학교 일정"] if len(win) >= 3 or els else [])
+    dparts = [t for t, k in (("학원 교습비 비교", "학원·교습비"), ("유치원", "유치원"), ("도서관 운영시간", "도서관"), ("소아과 진료 시간", "소아과"), ("아이와 갈 만한 곳", "아이와 갈 만한 곳")) if k in shown] + (["겨울방학 날짜"] if len(win) >= 3 else []) + (["초등학교 입학 준비"] if els else [])
+    write("guide/index.html", f"{sgg} {'·'.join(tparts)} 정보 | 아이랑 {nm}",
+          f"{sgg} {', '.join(dparts)} 정보를 한곳에서 보세요.", body, [home])
 
     # ── 사이트맵·robots
     site = f"{BASE}/{key}"
