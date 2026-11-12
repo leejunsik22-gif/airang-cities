@@ -1,7 +1,7 @@
 {
  "_설명": "운영 감시 집계(tools/monitor.py, 매시간). 상태: 장애=지금 고쳐야 함 / 검증 필요=공개 중이거나 보류 중이지만 사람 확인 필요 / 공개 보류=원문 미확인으로 숨김 / 복구 완료=직전 집계에 있던 문제가 사라짐. 앱은 읽지 않음(관리자만)",
- "checked_at": "2026-11-12 20:08",
- "checked_at_utc": "2026-11-12T11:08:24Z",
+ "checked_at": "2026-11-13 02:56",
+ "checked_at_utc": "2026-11-12T17:56:56Z",
  "ok": true,
  "summary": {
   "장애": 0,
@@ -20,7 +20,7 @@
    "detail": "워크플로는 등록·활성 상태이나 아직 실행 이력이 없음 — 예정 간격 192시간 안에 첫 실행 확인(병원은 매주 월 04:50 KST)",
    "url": "",
    "since": "2026-11-11 12:58",
-   "last_seen": "2026-11-12 20:08"
+   "last_seen": "2026-11-13 02:56"
   },
   {
    "id": "hold:daedeok",
@@ -32,7 +32,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-12 20:08"
+   "last_seen": "2026-11-13 02:56"
   },
   {
    "id": "hold:djdonggu",
@@ -44,7 +44,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-12 20:08"
+   "last_seen": "2026-11-13 02:56"
   },
   {
    "id": "hold:djjunggu",
@@ -56,7 +56,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-12 20:08"
+   "last_seen": "2026-11-13 02:56"
   },
   {
    "id": "hold:djseogu",
@@ -68,7 +68,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-12 20:08"
+   "last_seen": "2026-11-13 02:56"
   },
   {
    "id": "hold:yuseong",
@@ -80,7 +80,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-12 20:08"
+   "last_seen": "2026-11-13 02:56"
   }
  ],
  "recovered": [
@@ -244,10 +244,10 @@
    "overdue": false
   },
   "cf-apps": {
-   "last_at": "2026-11-12T07:14:17Z",
+   "last_at": "2026-11-12T13:06:15Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/43173770185",
-   "last_success_at": "2026-11-12T07:14:17Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/43224087615",
+   "last_success_at": "2026-11-12T13:06:15Z",
    "overdue": false
   }
  },
@@ -256,7 +256,7 @@
   "app_branch": "main",
   "lag": false,
   "default_head_at": "2026-11-04T17:22:53Z",
-  "app_head_at": "2026-11-12T09:22:04Z"
+  "app_head_at": "2026-11-12T11:08:33Z"
  },
  "customer_view": {
   "app_branch": "main",
