@@ -504,6 +504,11 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 <div class="topscape" id="topscape" hidden><div><picture><source id="topscape-w" media="(min-width:700px)" srcset="assets/scenes/entry-w.webp 1600w, assets/scenes/entry-w2.webp 2400w"><img src="assets/scenes/entry-m.webp" srcset="assets/scenes/entry-m.webp 800w, assets/scenes/entry-m2.webp 1400w" sizes="100vw" width="1200" height="500" alt="" decoding="async"></picture><span class="img-tag">AI 생성 이미지 · 실제 기관·인물 아님</span></div></div>
 <main class="wrap" id="view"><div class="loading">불러오는 중…</div></main>
 
+<style>/* 2026-11-12 118: 크롬 '텍스트 크기 조절'(화면 확대 150~300%)에서 아래 메뉴 5칸이 잘려 1~4칸만 보이던 문제(대표 갤럭시 실기기 발견) */
+.navi{min-width:0!important;flex:1 1 0!important}
+@media (max-width:340px){.nav{width:calc(100% - 12px)!important;padding:0 2px!important}.navi{font-size:11px!important;letter-spacing:-.6px;white-space:nowrap}.navi .ic{width:30px!important}}
+@media (max-width:240px){.nav{height:52px!important;bottom:calc(6px + env(safe-area-inset-bottom))!important;border-radius:16px!important}.navi{height:50px!important;min-height:44px!important;font-size:0!important;gap:0!important}.navi .ic{width:26px!important;height:26px!important}.navi .ic svg,.navi .ic img{width:20px!important;height:20px!important}.wrap{padding-bottom:calc(76px + env(safe-area-inset-bottom))!important}.img-tag{font-size:9px!important;padding:1px 5px!important;max-width:70%}}
+</style>
 <nav class="nav glass" aria-label="주요 메뉴">
   <button class="navi" data-tab="home"><span class="ic">{{icon:home}}</span>홈</button>
   <button class="navi" data-tab="hosp"><span class="ic">{{icon:hospital}}</span>동네병원</button>
