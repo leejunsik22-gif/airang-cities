@@ -72,7 +72,7 @@ for (const [key, name] of Object.entries(B.names)) {
       { k: "소개 문구", ok: g.sub === B.texts.sub, want: B.texts.sub, got: g.sub },
       { k: "우리 아이 추가", ok: g.kid === B.texts.kid, want: B.texts.kid, got: g.kid },
       { k: "검색 안내", ok: g.ph === B.texts.placeholder, want: B.texts.placeholder, got: g.ph },
-      { k: "빠른 메뉴 앞 2개(첫 칸은 시간대에 따라 '밤에 여는'/'지금 문 연' 소아과)", ok: ["밤에 여는 소아과", "지금 문 연 소아과"].includes(g.chips[0]) && g.chips[1] === B.texts.chips_first[1], want: B.texts.chips_first, got: g.chips.slice(0, 2) },
+      { k: "빠른 메뉴 앞 2개(첫 칸은 시간대에 따라 '밤에 여는'/'지금 문 연' 소아과, 진료시간 숨김 중엔 '동네 소아과'(2026-11-09 피트·대표))", ok: ["밤에 여는 소아과", "지금 문 연 소아과", "동네 소아과"].includes(g.chips[0]) && g.chips[1] === B.texts.chips_first[1], want: B.texts.chips_first, got: g.chips.slice(0, 2) },
       { k: "하단 메뉴 5개", ok: JSON.stringify(g.nav) === JSON.stringify(B.texts.nav), want: B.texts.nav, got: g.nav },
       { k: "배치 순서(상단→제목→아이 추가→검색→빠른 메뉴→메뉴판)", ok: sorted(g.order), want: "위에서 아래로 차례", got: g.order },
     ]);
