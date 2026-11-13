@@ -508,7 +508,11 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 .navi{min-width:0!important;flex:1 1 0!important}
 @media (max-width:340px){.nav{width:calc(100% - 12px)!important;padding:0 2px!important}.navi{font-size:11px!important;letter-spacing:-.6px;white-space:nowrap}.navi .ic{width:30px!important}}
 @media (max-width:240px){.nav{height:52px!important;bottom:calc(6px + env(safe-area-inset-bottom))!important;border-radius:16px!important}.navi{height:50px!important;min-height:44px!important;font-size:0!important;gap:0!important}.navi .ic{width:26px!important;height:26px!important}.navi .ic svg,.navi .ic img{width:20px!important;height:20px!important}.wrap{padding-bottom:calc(76px + env(safe-area-inset-bottom))!important}.img-tag{font-size:0!important;padding:1px 6px!important;max-width:70%}.img-tag::before{content:"AI 이미지";font-size:10px;line-height:1.5}
-.wrap *{min-width:0}.wrap{overflow-wrap:anywhere}.home-menu,.mgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.search input,input[type=search]{width:100%;min-width:0}.kidadd{gap:6px}.kidadd .plus{width:28px!important;height:28px!important;flex:none}.kidadd .kid-ic{display:none}.inst-card{flex-wrap:wrap;padding:10px!important}.inst-card>.tile{display:none!important}.inst-card>div{flex:1 1 100%!important}.top3{padding:6px 6px 0!important;gap:4px!important}.top3 .brand3>div,.top3 button[onclick="shareApp()"]{display:none!important}.top3 .logo3{width:30px;height:auto}.top3 .topbar-region{flex:1 1 auto!important;min-width:0!important;padding:0 6px!important;font-size:11px!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;justify-content:center}.hero-v3 .img-tag{position:static!important;display:inline-block;margin:4px 0}.wrap{padding-left:8px!important;padding-right:8px!important}.lift{padding-left:8px!important;padding-right:8px!important}.mgrid3{grid-template-columns:repeat(2,minmax(0,1fr))!important}.kidadd{flex-wrap:wrap}.kidadd>span:not(.plus){flex:1 1 100%}.lift .bi{display:none!important}.lift .row{flex-wrap:wrap;row-gap:2px}.hero-v3 .t3{position:static!important;padding:8px 0 6px!important}.hero-v3 .t3 .in{display:flex;flex-direction:column}.hero-v3 .t3 .in>div:first-child{order:99;margin:6px 0 0!important;text-align:left!important}}
+.wrap *{min-width:0}.wrap{overflow-wrap:anywhere}.home-menu,.mgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.search input,input[type=search]{width:100%;min-width:0}.kidadd{gap:6px}.kidadd .plus{width:28px!important;height:28px!important;flex:none}.kidadd .kid-ic{display:none}.inst-card{flex-wrap:wrap;padding:10px!important}.inst-card>.tile{display:none!important}.inst-card>div{flex:1 1 100%!important}.top3{padding:6px 6px 0!important;gap:4px!important}.top3 .brand3>div,.top3 button[onclick="shareApp()"]{display:none!important}.top3 .logo3{width:30px;height:auto}.top3 .topbar-region{flex:1 1 auto!important;min-width:0!important;padding:0 6px!important;font-size:11px!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;justify-content:center}.hero-v3 .img-tag{position:static!important;display:inline-block;margin:4px 0}.wrap{padding-left:8px!important;padding-right:8px!important}.lift{padding-left:8px!important;padding-right:8px!important}.mgrid3{grid-template-columns:repeat(2,minmax(0,1fr))!important}.kidadd{flex-wrap:wrap}.kidadd>span:not(.plus){flex:1 1 100%}.lift .bi{display:none!important}.lift .row{flex-wrap:wrap;row-gap:2px}.hero-v3 .t3{position:static!important;padding:8px 0 6px!important}.hero-v3 .t3 .in{display:flex;flex-direction:column}.hero-v3 .t3 .in>div:first-child{order:99;margin:6px 0 0!important;text-align:left!important}
+/* 2026-11-13 갤럭시 글자 최대 실기기(090 v05) 보기 문제 3건: ① 행사 사진 띠 글자 잘림·AI 표시 겹침 ② 검색 결과 이름 "갑…" ③ 수강료 중간값 세로 쌓임 */
+.banner3{height:auto!important;min-height:132px}.banner3 picture{position:absolute;inset:0}.banner3 img{height:100%!important}.banner3::after{background:rgba(43,37,32,.66)!important}.banner3 .bt{position:relative!important;left:auto!important;top:auto!important;transform:none!important;max-width:none!important;padding:14px 12px 40px}.banner3 .ar{top:auto!important;bottom:10px;left:12px;right:auto!important;transform:none!important;font-size:16px!important}.banner3 .img-tag{bottom:8px!important;right:8px!important}
+.find-row{gap:6px!important;padding:10px!important}.find-row>span:first-child{display:none}.find-row div{white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+.aca-sum{flex-wrap:wrap;row-gap:10px}.aca-sum>div{flex:1 1 100%}.aca-sum>div:last-child{text-align:left!important}}
 </style>
 <nav class="nav glass" aria-label="주요 메뉴">
   <button class="navi" data-tab="home"><span class="ic">{{icon:home}}</span>홈</button>
@@ -682,6 +686,48 @@ const LEVELS = [["초등학교", "초등"], ["중학교", "중등"], ["고등학
 const IMPORTANT = /휴업|방학|개학|졸업|입학|체험|기념일|운동회|한마당|발표회|축제|상담|공개수업/;
 const WD = ["일","월","화","수","목","금","토"];
 const $view = document.getElementById("view");
+// 2026-11-13 갤럭시 천지인 입력 문제(대표 실기기 발견): 검색어를 치는 동안 화면을 통째로 다시 그리면 입력칸이 새로 만들어져
+// 한글 조합이 끊김('권' → 'ㄱㅡ··ㅣㄴ'). 지금 글자를 치고 있는 입력칸과 그 위 칸들은 그대로 두고, 나머지 부분만 새로 바꿔 그린다.
+(function keepTypingInput() {
+  const D = Object.getOwnPropertyDescriptor(Element.prototype, "innerHTML");
+  function morph(root, tmp, a, na) {
+    const op = [], np = [];
+    for (let e = a; e && e !== root; e = e.parentNode) op.unshift(e);
+    for (let e = na; e && e !== tmp; e = e.parentNode) np.unshift(e);
+    if (op.length !== np.length || op[0].parentNode !== root || np[0].parentNode !== tmp) return false;
+    for (let i = 0; i < op.length; i++) if (op[i].tagName !== np[i].tagName) return false;
+    let oP = root, nP = tmp;
+    for (let i = 0; i < op.length; i++) {
+      const o = op[i], n = np[i], before = [], after = [];
+      for (let s = nP.firstChild; s && s !== n; s = s.nextSibling) before.push(s);
+      for (let s = n.nextSibling; s; s = s.nextSibling) after.push(s);
+      while (o.previousSibling) oP.removeChild(o.previousSibling);
+      while (o.nextSibling) oP.removeChild(o.nextSibling);
+      before.forEach(s => oP.insertBefore(s, o)); after.forEach(s => oP.appendChild(s));
+      if (o !== a) {
+        [...o.attributes].forEach(x => { if (!n.hasAttribute(x.name)) o.removeAttribute(x.name); });
+        [...n.attributes].forEach(x => { if (o.getAttribute(x.name) !== x.value) o.setAttribute(x.name, x.value); });
+      }
+      oP = o; nP = n;
+    }
+    return true;
+  }
+  Object.defineProperty($view, "innerHTML", {
+    configurable: true,
+    get() { return D.get.call(this); },
+    set(html) {
+      const a = document.activeElement;
+      if (a && a.tagName === "INPUT" && a.id && this.contains(a)) {
+        const tmp = document.createElement("div"); D.set.call(tmp, html);
+        const na = tmp.querySelector("#" + CSS.escape(a.id));
+        if (na && morph(this, tmp, a, na)) return;
+      }
+      D.set.call(this, html);
+    }
+  });
+})();
+// 입력칸이 그대로 남은 경우에는 커서를 다시 옮기지 않음(옮기면 조합 중인 글자가 끊김)
+function refocus(n, pos) { if (!n || document.activeElement === n) return; n.focus(); try { n.setSelectionRange(pos, pos); } catch (e) {} }
 let DATA = null;
 let installEvt = null;
 
@@ -1058,7 +1104,7 @@ function viewFind(q) {
   if (gated("acas") && !ACAS) ACAS = { academies: [], held: 1 };
   if (!ACAS || !HOSP || !BENE) { Promise.all([loadAcas().catch(() => 0), loadHosp(), loadBene()]).then(() => { if (location.hash.startsWith("#find")) render(); }); $view.innerHTML = head + `<div class="lift empty" style="margin-top:14px">찾는 중이에요…</div>`; return; }
   const n = _norm(q), hit = v => _norm(v).includes(n);
-  const row = (icon, t, sub, href, onclick) => `<a class="lift" href="${href}" ${onclick ? `onclick="${onclick}"` : ""} style="display:flex;gap:12px;align-items:center;padding:12px 14px;margin-bottom:8px;color:inherit;text-decoration:none;min-height:56px"><span style="font-size:20px">${icon}</span><div style="min-width:0;flex:1"><div style="font-weight:800;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(t)}</div><div style="font-size:12.5px;color:var(--muted);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(sub)}</div></div><span style="color:var(--muted)">›</span></a>`;
+  const row = (icon, t, sub, href, onclick) => `<a class="lift find-row" href="${href}" ${onclick ? `onclick="${onclick}"` : ""} style="display:flex;gap:12px;align-items:center;padding:12px 14px;margin-bottom:8px;color:inherit;text-decoration:none;min-height:56px"><span style="font-size:20px">${icon}</span><div style="min-width:0;flex:1"><div style="font-weight:800;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(t)}</div><div style="font-size:12.5px;color:var(--muted);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(sub)}</div></div><span style="color:var(--muted)">›</span></a>`;
   const groups = [];
   const sc = ((DATA && DATA.schools) || []).filter(x => x.code && x.code.trim() && hit(x.name)).slice(0, 8);
   if (sc.length) groups.push(["학교", sc.map(x => row("🏫", x.name, x.address || "", "#school/" + x.code))]);
@@ -1322,7 +1368,7 @@ function viewSchools(q = "") {
     <div class="lift list" style="margin-top:16px">${rows || `<div class="empty">검색 결과가 없어요.</div>`}</div>
     <p class="foot">${sourceLine("latest.json") || "출처 나이스 교육정보 개방포털 · 학교 가정통신문을 함께 확인해 주세요."}</p>${footer()}`;
   const inp = document.getElementById("q");
-  inp.addEventListener("input", () => { const v = inp.value; viewSchools(v); const n = document.getElementById("q"); n.focus(); n.setSelectionRange(v.length, v.length); });
+  inp.oninput = () => { const v = inp.value; viewSchools(v); refocus(document.getElementById("q"), v.length); };
 }
 
 // ---------- 화면: 학교 상세 ----------
@@ -2071,7 +2117,7 @@ function viewAcaList() {
     <div style="display:flex;gap:8px;overflow-x:auto;padding:12px 2px 4px">${chip("{{name}} 전체", !f.gu, "pickAcaGu('')")}${GUS.map(g => chip(g, f.gu === g, `pickAcaGu('${g}')`)).join("")}</div>
     ${f.gu ? `<div style="padding:6px 2px 4px"><select id="acadong" class="lift" style="width:100%;height:44px;border:0;border-radius:14px;padding:0 14px;font:inherit;font-size:14px;background:#fff" aria-label="동·읍·면 선택"><option value="">${esc(f.gu)} 전체 동·읍·면</option>${dongs.map(d => `<option value="${esc(d)}" ${d === f.dong ? "selected" : ""}>${esc(d)}</option>`).join("")}</select></div>` : ""}
     <div style="display:flex;gap:8px;overflow-x:auto;padding:8px 2px 12px">${ACA_CATS.map(([c]) => chip(c, f.cat === c, `pickAcaCat('${c}')`)).join("")}</div>
-    <div class="lift" style="padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+    <div class="lift aca-sum" style="padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px">
       <div><div style="font-size:13px;color:var(--muted)">${esc(area)}</div><div style="font-size:24px;font-weight:800">${list.length.toLocaleString()}<span style="font-size:14px;color:var(--muted);font-weight:600">곳</span></div></div>
       <div style="text-align:right"><div style="font-size:12px;color:var(--muted)">월 수강료 중간값</div><div style="font-size:20px;font-weight:800;color:var(--indigo)">${feeVals.length ? won(median(feeVals)) : "-"}</div><div style="font-size:11px;color:var(--muted)">공개 ${feeCount}곳 기준</div></div></div>
     <button class="lift" onclick="trackEvent('학원-수강료비교');go('premium')" style="width:100%;border:0;cursor:pointer;margin-top:10px;padding:12px 16px;display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FFF6E0,#FFE7EE)">${e3d("📊", 30)}<span style="flex:1;text-align:left;min-width:0"><b style="display:block;font-size:14.5px">우리 동네 수강료 비교하기</b><span style="font-size:12px;color:var(--muted)">동네·과목별 중간값 · 가격대 분포</span></span><span style="color:var(--muted)">›</span></button>
@@ -2079,7 +2125,7 @@ function viewAcaList() {
     ${list.length > acaShow ? `<button class="btn btn-soft" style="width:100%;height:46px;margin-top:12px" onclick="acaMore()">더 보기 (${(list.length - acaShow).toLocaleString()}곳 더)</button>` : ""}
     <div class="foot">데이터 · 나이스 교육정보 개방포털 학원교습소정보 (매주 갱신)<br>수강료는 학원이 교육청에 신고한 금액이라 실제와 다를 수 있어요.</div>`;
   const qi = document.getElementById("acaq");
-  qi.addEventListener("input", e => { f.q = e.target.value; acaShow = 40; clearTimeout(qi._t); qi._t = setTimeout(() => { const pos = qi.selectionStart; render(); const n = document.getElementById("acaq"); n.focus(); try { n.setSelectionRange(pos, pos); } catch (er) {} }, 350); });
+  qi.oninput = e => { f.q = e.target.value; acaShow = 40; clearTimeout(qi._t); qi._t = setTimeout(() => { const pos = qi.selectionStart; render(); refocus(document.getElementById("acaq"), pos); }, 350); };
   const ds = document.getElementById("acadong");
   if (ds) ds.addEventListener("change", e => { f.dong = e.target.value; acaShow = 40; render(); });
 }
@@ -2149,7 +2195,7 @@ function viewKinders() {
     <a class="btn btn-soft" style="width:100%;height:46px;margin-top:16px;font-size:14px" href="https://www.go-firstschool.go.kr" target="_blank" rel="noopener">유치원 입학 신청 · 처음학교로 ↗</a>
     <div class="foot">데이터 · ${esc(KINDER.source || "유치원 알리미")} · ${esc(kTerm((KINDER.kinders[0] || {}).term))}<br>빈자리 = 정원 − 현원 (공시 시점 기준이라 지금과 다를 수 있어요)${f.age ? "<br>나이를 고르면 혼합반(만3~5세 함께) 자리도 같이 세요." : ""}</div>`;
   const qi = document.getElementById("kinq");
-  qi.addEventListener("input", e => { f.q = e.target.value; kinShow = 40; clearTimeout(qi._t); qi._t = setTimeout(() => { const pos = qi.selectionStart; render(); const n = document.getElementById("kinq"); n.focus(); try { n.setSelectionRange(pos, pos); } catch (er) {} }, 350); });
+  qi.oninput = e => { f.q = e.target.value; kinShow = 40; clearTimeout(qi._t); qi._t = setTimeout(() => { const pos = qi.selectionStart; render(); refocus(document.getElementById("kinq"), pos); }, 350); };
   const ds = document.getElementById("kindong");
   if (ds) ds.addEventListener("change", e => { f.dong = e.target.value; kinShow = 40; render(); });
 }
@@ -3025,8 +3071,8 @@ function viewHosp(keepFocus) {
       잘못된 정보는 <a href="mailto:leejunsik22@gmail.com?subject=${encodeURIComponent("[아이랑 " + city + "] 동네 병원 정보 수정 요청")}">메일로 알려 주세요</a>.<br>${sourceLine("hospitals.json")}</div>`;
   const inp = document.getElementById("hq");
   if (inp) {
-    inp.addEventListener("input", () => { hsQ = inp.value; hsMore = 40; viewHosp(true); });
-    if (keepFocus) { inp.focus(); inp.setSelectionRange(hsQ.length, hsQ.length); }
+    inp.oninput = () => { hsQ = inp.value; hsMore = 40; viewHosp(true); };
+    if (keepFocus) refocus(inp, hsQ.length);
   }
 }
 // ---------- 화면: 놓치기 쉬운 혜택 (복지로 · 나라 혜택 + 우리 시 혜택) ----------
@@ -3081,8 +3127,8 @@ function viewBene(keepFocus) {
     <div class="foot">출처: 한국사회보장정보원 복지서비스 정보 (복지로, 공공데이터포털)${BENE.updated ? `<br>${esc(BENE.updated)} 기준` : ""}<br>
       잘못된 정보는 <a href="mailto:leejunsik22@gmail.com?subject=${encodeURIComponent("[아이랑 " + city + "] 혜택 정보 수정 요청")}">메일로 알려 주세요</a>.<br>${sourceLine("benefits.json")}</div>`;
   const inp = document.getElementById("bq");
-  inp.addEventListener("input", () => { bnQ = inp.value; bnMore = 30; viewBene(true); });
-  if (keepFocus) { inp.focus(); inp.setSelectionRange(bnQ.length, bnQ.length); }
+  inp.oninput = () => { bnQ = inp.value; bnMore = 30; viewBene(true); };
+  if (keepFocus) refocus(inp, bnQ.length);
 }
 function render() {
   if (!DATA) return;
