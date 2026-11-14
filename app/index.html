@@ -515,6 +515,8 @@ h2{font-size:var(--fs-h2);font-weight:800;letter-spacing:-.3px}
 .aca-sum{flex-wrap:wrap;row-gap:10px}.aca-sum>div{flex:1 1 100%}.aca-sum>div:last-child{text-align:left!important}
 /* 2026-11-13 129: 글자 최대일 때 홈 통합 검색칸이 좁아지던 것 → 돋보기 숨김·여백·찾기 버튼 폭 줄여 입력칸 넓힘 */
 .search-v2{gap:6px!important;padding:6px 6px 6px 12px!important}.search-v2>.bi{display:none!important}.search-v2 .btn{padding:0 10px!important;flex:none}}
+/* 2026-11-14 129 v02: 갤럭시 실제 글자 최대(약 300%)에선 그래도 '소··'만 보임 → 아주 좁은 화면(폭 200 이하)은 입력칸 한 줄 + 찾기 버튼 아래 줄로 */
+@media (max-width:200px){.search-v2{flex-wrap:wrap!important;padding:8px!important}.search-v2 input{flex:1 1 100%!important;padding:0 6px}.search-v2 .btn{flex:1 1 100%!important;min-height:48px;justify-content:center}}
 </style>
 <nav class="nav glass" aria-label="주요 메뉴">
   <button class="navi" data-tab="home"><span class="ic">{{icon:home}}</span>홈</button>
