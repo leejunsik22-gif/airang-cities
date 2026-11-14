@@ -1,4 +1,4 @@
-// 131D 한글 조합 입력(IME) + 글자 크게(200·300%) 회귀시험 v01 (2026-11-14)
+// 131D 한글 조합 입력(IME) + 글자 크게(200·250·300%) 회귀시험 v02 (2026-11-14, 독립 QA 지적 반영)
 // 배경: 123/124 검색칸 한글 끊김, 129 실제 갤럭시 '글자 최대'(약 300%)에서 홈 검색칸이 '소··'만 보임.
 //       두 시험 모두 그동안 시험 주소 배포 확인(hosp-preview)에만 있었고 이 회귀시험에는 없었다.
 // IME: 크롬 개발자 도구(CDP)로 'ㄱ→구→궈→권' 처럼 조합 중 글자를 흉내 낸다(실제 갤럭시 키보드와 같지 않음 — 최종 판정은 실기기).
@@ -28,19 +28,22 @@ async function imeType(page, cdp, sel, word, wait = 300) {
 }
 
 test.describe("@IME 검색칸 한글 조합 입력", () => {
-  // [화면, 입력칸, 단어, 조합 간격(ms)] — 학원은 목록이 커서 일부러 느리게(124에서 끊기던 조건)
+  // [화면, 입력칸, 단어, 조합 간격(ms), 칸이 없을 때 건너뛸지] — 학원은 목록이 커서 일부러 느리게(124에서 끊기던 조건)
+  // 학교·학원 칸은 로컬 시험 서버에 항상 있어야 하므로 없으면 실패(id 변경·칸 사라짐을 숨기지 않음).
+  // 유치원은 로컬 시험 서버에 유치원 자료가 없어 '불러오는 중'에 머물 수 있음 → 그때만 건너뜀.
   const CASES = [
-    ["schools", "#q", "학교", 300],
-    ["acas", "#acaq", "수학", 450],
-    ["acas", "#acaq", "영어", 150],
-    ["kinders", "#kinq", "유치원", 300],
+    ["schools", "#q", "학교", 300, false],
+    ["acas", "#acaq", "수학", 450, false],
+    ["acas", "#acaq", "영어", 150, false],
+    ["kinders", "#kinq", "유치원", 300, true],
   ];
-  for (const [route, sel, word, wait] of CASES) {
+  for (const [route, sel, word, wait, mayMiss] of CASES) {
     test(`${route} ${sel} '${word}' 조합 중 끊김 없음 (간격 ${wait}ms)`, async ({ page, context }) => {
       await page.goto(`/yuseong/#${route}`);
       await page.waitForLoadState("networkidle");
       const box = page.locator(sel);
-      test.skip((await box.count()) === 0, `${sel} 없음(이 화면이 자료 보류 상태)`);
+      if (mayMiss) test.skip((await box.count()) === 0, `${sel} 없음 — 로컬 시험 서버에 유치원 자료 없음(운영·시험 주소에서 확인)`);
+      else await expect(box, `${sel} 입력칸이 있어야 함`).toHaveCount(1, { timeout: 8000 });
       const cdp = await context.newCDPSession(page);
       await imeType(page, cdp, sel, word, wait);
       expect(await box.inputValue(), "입력칸 글자").toBe(word);
@@ -57,14 +60,16 @@ test.describe("@IME 검색칸 한글 조합 입력", () => {
   });
 });
 
-test.describe("@글자크게 200·300%", () => {
-  for (const z of [2, 3]) {
+test.describe("@글자크게 200·250·300%", () => {
+  // 기준: 200% 입력 폭 ≥ 60%(129 수정본 실측 62% — 여유 작음), 250%·300% ≥ 80%(두 줄 배치, 실측 88%·85%)
+  for (const z of [2, 2.5, 3]) {
     test(`글자 ${z * 100}%: 홈 검색칸·행사 띠·학원 요약·가로 밀림·하단 메뉴`, async ({ browser }) => {
-      const ctx = await browser.newContext({ viewport: { width: Math.round(412 / z), height: Math.round(915 / z) }, deviceScaleFactor: 2.625 * z, isMobile: true, hasTouch: true, locale: "ko-KR" });
+      const baseURL = test.info().project.use.baseURL;
+      const ctx = await browser.newContext({ baseURL, viewport: { width: Math.round(412 / z), height: Math.round(915 / z) }, deviceScaleFactor: 2.625 * z, isMobile: true, hasTouch: true, locale: "ko-KR" });
       await ctx.route(/goatcounter\.com|gc\.zgo\.at|raw\.githubusercontent\.com/, (r) => r.abort());
       const page = await ctx.newPage();
       const problems = [];
-      await page.goto("http://127.0.0.1:8790/yuseong/#home");
+      await page.goto("/yuseong/#home");
       await page.waitForLoadState("networkidle");
       await page.evaluate(() => { try { closeInstall(); } catch (e) {} });
       // ① 홈 검색칸: 입력 폭이 칸의 60% 이상(300%는 두 줄 배치로 80% 이상), 찾기 버튼이 칸 안
@@ -76,7 +81,7 @@ test.describe("@글자크게 200·300%", () => {
       });
       if (!s) problems.push("홈 검색칸 없음");
       else {
-        const need = z >= 3 ? 0.8 : 0.6;
+        const need = z >= 2.5 ? 0.8 : 0.6;
         if (s.iw < s.fw * need) problems.push(`홈 검색 입력 폭 ${Math.round(s.iw)}/${Math.round(s.fw)} < ${need * 100}%`);
         if (!s.inside) problems.push("찾기 버튼이 검색칸 밖으로 나감");
       }
@@ -90,7 +95,7 @@ test.describe("@글자크게 200·300%", () => {
       if (b1 && (b1.cut || b1.over)) problems.push(`행사 띠 ${JSON.stringify(b1)}`);
       // ③ 화면별 가로 밀림 + ④ 학원·유치원 화면 하단 메뉴 '홈'(129)
       for (const r of ["home", "acas", "kinders", "schools", "my", "find/" + encodeURIComponent("영어")]) {
-        await page.goto(`http://127.0.0.1:8790/yuseong/?z=${z}&r=${encodeURIComponent(r)}#${r}`);
+        await page.goto(`/yuseong/?z=${z}&r=${encodeURIComponent(r)}#${r}`);
         await page.waitForLoadState("networkidle");
         if (await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 2)) problems.push(`#${decodeURIComponent(r)} 가로 밀림`);
         if (r === "acas" || r === "kinders") {
@@ -102,7 +107,7 @@ test.describe("@글자크게 200·300%", () => {
           if (!one) problems.push("학원 요약 수강료 중간값이 두 줄 이상");
         }
       }
-      await page.goto("http://127.0.0.1:8790/yuseong/?shot=1#home"); await page.waitForLoadState("networkidle");
+      await page.goto("/yuseong/?shot=1#home"); await page.waitForLoadState("networkidle");
       await test.info().attach(`홈-${z * 100}%`, { body: await page.screenshot(), contentType: "image/png" });
       await ctx.close();
       expect(problems, `글자 ${z * 100}% 문제`).toEqual([]);
