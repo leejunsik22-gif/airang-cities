@@ -1,7 +1,7 @@
 {
  "_설명": "운영 감시 집계(tools/monitor.py, 매시간). 상태: 장애=지금 고쳐야 함 / 검증 필요=공개 중이거나 보류 중이지만 사람 확인 필요 / 공개 보류=원문 미확인으로 숨김 / 복구 완료=직전 집계에 있던 문제가 사라짐. 앱은 읽지 않음(관리자만)",
- "checked_at": "2026-11-14 05:56",
- "checked_at_utc": "2026-11-13T20:56:41Z",
+ "checked_at": "2026-11-14 12:55",
+ "checked_at_utc": "2026-11-14T03:55:58Z",
  "ok": true,
  "summary": {
   "장애": 0,
@@ -20,7 +20,7 @@
    "detail": "워크플로는 등록·활성 상태이나 아직 실행 이력이 없음 — 예정 간격 192시간 안에 첫 실행 확인(병원은 매주 월 04:50 KST)",
    "url": "",
    "since": "2026-11-11 12:58",
-   "last_seen": "2026-11-14 05:56"
+   "last_seen": "2026-11-14 12:55"
   },
   {
    "id": "hold:daedeok",
@@ -32,7 +32,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-14 05:56"
+   "last_seen": "2026-11-14 12:55"
   },
   {
    "id": "hold:djdonggu",
@@ -44,7 +44,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-14 05:56"
+   "last_seen": "2026-11-14 12:55"
   },
   {
    "id": "hold:djjunggu",
@@ -56,7 +56,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-14 05:56"
+   "last_seen": "2026-11-14 12:55"
   },
   {
    "id": "hold:djseogu",
@@ -68,7 +68,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-14 05:56"
+   "last_seen": "2026-11-14 12:55"
   },
   {
    "id": "hold:yuseong",
@@ -80,7 +80,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-14 05:56"
+   "last_seen": "2026-11-14 12:55"
   }
  ],
  "recovered": [
@@ -111,7 +111,7 @@
    "name": "동구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-13",
+   "status_checked_at": "2026-11-14",
    "published": 2,
    "hold": [
     "급식",
@@ -135,7 +135,7 @@
    "name": "중구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-13",
+   "status_checked_at": "2026-11-14",
    "published": 2,
    "hold": [
     "급식",
@@ -159,7 +159,7 @@
    "name": "서구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-13",
+   "status_checked_at": "2026-11-14",
    "published": 2,
    "hold": [
     "급식",
@@ -183,7 +183,7 @@
    "name": "유성구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-13",
+   "status_checked_at": "2026-11-14",
    "published": 2,
    "hold": [
     "급식",
@@ -207,7 +207,7 @@
    "name": "대덕구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-13",
+   "status_checked_at": "2026-11-14",
    "published": 2,
    "hold": [
     "급식",
@@ -230,24 +230,24 @@
  },
  "runs": {
   "weather": {
-   "last_at": "2026-11-13T09:19:09Z",
+   "last_at": "2026-11-14T03:05:46Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/43400304531",
-   "last_success_at": "2026-11-13T09:19:09Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/43549808128",
+   "last_success_at": "2026-11-14T03:05:46Z",
    "overdue": false
   },
   "daily": {
-   "last_at": "2026-11-12T21:15:34Z",
+   "last_at": "2026-11-13T21:15:32Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/43308462275",
-   "last_success_at": "2026-11-12T21:15:34Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/43509058410",
+   "last_success_at": "2026-11-13T21:15:32Z",
    "overdue": false
   },
   "cf-apps": {
-   "last_at": "2026-11-13T18:51:37Z",
+   "last_at": "2026-11-14T00:56:52Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/43486672588",
-   "last_success_at": "2026-11-13T18:51:37Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/43537488347",
+   "last_success_at": "2026-11-14T00:56:52Z",
    "overdue": false
   }
  },
@@ -256,7 +256,7 @@
   "app_branch": "main",
   "lag": false,
   "default_head_at": "2026-11-04T17:22:53Z",
-  "app_head_at": "2026-11-13T14:23:26Z"
+  "app_head_at": "2026-11-14T03:06:18Z"
  },
  "customer_view": {
   "app_branch": "main",
