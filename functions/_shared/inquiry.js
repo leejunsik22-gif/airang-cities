@@ -48,12 +48,11 @@ export function validate(input) {
   const body = String(input.body || "").replace(/\r\n/g, "\n").trim();
   if (!body) return { ok: false, field: "body", msg: "문의 내용을 적어 주세요." };
   if ([...body].length > LIMITS.body) return { ok: false, field: "body", msg: `문의 내용은 ${LIMITS.body}자까지 쓸 수 있어요.` };
-  const reply = String(input.reply || "").trim();
-  if (reply && (reply.length > LIMITS.reply || !EMAIL.test(reply))) return { ok: false, field: "reply", msg: "회신 이메일 형식을 확인해 주세요. (비워 두어도 돼요)" };
   if (RRN.test(body)) return { ok: false, field: "body", msg: "주민등록번호처럼 보이는 숫자가 있어요. 지우고 보내 주세요." };
-  if (kindKey !== "ad" && PHONE.test(body)) return { ok: false, field: "body", msg: "전화번호는 지워 주세요. 답장이 필요하면 아래 회신 이메일 칸을 써 주세요." };
+  if (PHONE.test(body)) return { ok: false, field: "body", msg: "전화번호는 지워 주세요. 아이랑은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 132: 제휴 문의도 예외 없음 */
   const clip = (s, n) => String(s || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n);
-  return { ok: true, value: { kind: TYPES[kindKey], body, reply, gu: clip(input.gu, 20), screen: clip(input.screen, 40) } };
+  /* 132: 개인정보 최소화 — 회신 이메일은 받지 않는다. 예전 화면·직접 요청으로 와도 저장하지 않고 빈 값으로. (DB 칸은 기존 자료 보존 위해 그대로) */
+  return { ok: true, value: { kind: TYPES[kindKey], body, reply: "", gu: clip(input.gu, 20), screen: clip(input.screen, 40) } };
 }
 
 export async function ipHash(request, env) {
