@@ -7,6 +7,16 @@
    "state": "검증 필요",
    "city": "",
    "title": "'hospitals' 첫 예약 실행 대기",
+   "since": "2026-11-11 12:58",
+   "resolved_at": "2026-11-16 05:44",
+   "how": "자동(감시에서 사라짐)"
+  },
+  {
+   "id": "run_pending:-",
+   "kind": "run_pending",
+   "state": "검증 필요",
+   "city": "",
+   "title": "'hospitals' 첫 예약 실행 대기",
    "since": "2026-11-05 12:58",
    "resolved_at": "2026-11-09 05:42",
    "how": "자동(감시에서 사라짐)"
