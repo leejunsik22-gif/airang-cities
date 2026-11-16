@@ -242,9 +242,11 @@ test("134 v02 개인정보 안내: 저장 항목·90/180일·하루 보관(IP �
   await page.goto("/yuseong/#about");   /* 앱 화면은 기본 시험 서버(8790), 문의 화면은 8791 */
   await expect(page.locator("#view")).toContainText("개인정보를 묻지 않아요", { timeout: 10000 });
   const about = await page.locator("#view").innerText();
-  for (const w of ["문의 종류", "보낸 구와 화면 이름", "90일", "접수 180일", "하루가 지나면 지워요", "관리자가 접수함을 열 때", "조금 늦을 수 있어요"]) expect(about, `이용 안내에 '${w}'`).toContain(w);
+  for (const w of ["문의 종류", "보낸 구와 화면 이름", "90일", "접수 180일", "하루가 지나면 지울 대상", "관리자가 접수함을 열 때", "조금 늦을 수 있어요"]) expect(about, `이용 안내에 '${w}'`).toContain(w);
   expect(about, "옛 문구(글만 보관) 남지 않음").not.toContain("적은 글만 처리를 위해");
+  expect(about, "하루만·하루 동안 단정 표현 없음(피트 134 v02 재검수 4)").not.toMatch(/하루만|하루 동안/);
   await page.goto(`${B}/inquiry/`);
   const note = await page.locator(".note").first().innerText();
-  for (const w of ["문의 종류", "보낸 구와 화면", "90일", "접수 180일", "접속 주소(IP)", "하루 동안", "조금 늦을 수 있어요"]) expect(note, `문의 화면 안내에 '${w}'`).toContain(w);
+  for (const w of ["문의 종류", "보낸 구와 화면", "90일", "접수 180일", "접속 주소(IP)", "하루가 지나면 지울 대상", "조금 늦을 수 있어요"]) expect(note, `문의 화면 안내에 '${w}'`).toContain(w);
+  expect(note, "하루 동안 단정 표현 없음").not.toMatch(/하루만|하루 동안/);
 });
