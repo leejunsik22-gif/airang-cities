@@ -234,3 +234,17 @@ test("134: 132 이전에 접수된 '회신 이메일 있는' 옛 문의는 지�
   await expect(card.locator('.meta a[href^="mailto:old-parent@example.com"]'), "옛 회신 이메일 표시 유지(기존 자료 보존)").toHaveCount(1);
   await ctx.close();
 });
+
+// 134 v02: 이용 안내·문의 화면의 개인정보 문구가 서버가 실제 저장하는 항목·기간과 맞는지(피트 134 검수 4번)
+test("134 v02 개인정보 안내: 저장 항목·90/180일·하루 보관(IP 변환값)·삭제 시점 표시", async ({ page }, info) => {
+  only390(info);
+  await page.route(/goatcounter\.com|gc\.zgo\.at|raw\.githubusercontent\.com/, (r) => r.abort());
+  await page.goto("/yuseong/#about");   /* 앱 화면은 기본 시험 서버(8790), 문의 화면은 8791 */
+  await expect(page.locator("#view")).toContainText("개인정보를 묻지 않아요", { timeout: 10000 });
+  const about = await page.locator("#view").innerText();
+  for (const w of ["문의 종류", "보낸 구와 화면 이름", "90일", "접수 180일", "하루만", "관리자가 접수함을 열 때"]) expect(about, `이용 안내에 '${w}'`).toContain(w);
+  expect(about, "옛 문구(글만 보관) 남지 않음").not.toContain("적은 글만 처리를 위해");
+  await page.goto(`${B}/inquiry/`);
+  const note = await page.locator(".note").first().innerText();
+  for (const w of ["문의 종류", "90일", "접수 180일"]) expect(note, `문의 화면 안내에 '${w}'`).toContain(w);
+});
