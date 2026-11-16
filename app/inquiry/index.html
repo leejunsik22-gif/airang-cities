@@ -70,18 +70,14 @@ textarea:focus,input:focus{outline:3px solid rgba(184,146,62,.45);outline-offset
       <div class="f">
         <label class="lb" for="body">문의 내용</label>
         <textarea id="body" name="body" maxlength="2000" aria-describedby="body-hint" placeholder="문의 내용을 적어 주세요."></textarea>
-        <div class="hint" id="body-hint"><span id="guide">전화번호·주민등록번호는 적지 말아 주세요.</span><span class="cnt"><span id="cnt">0</span> / 2000자</span></div>
-      </div>
-      <div class="f">
-        <label class="lb" for="reply">회신 이메일 <small style="font-weight:600;color:var(--muted)">(선택)</small></label>
-        <input id="reply" name="reply" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="답장이 필요할 때만 적어 주세요">
+        <div class="hint" id="body-hint"><span id="guide">이름·전화번호·이메일 같은 개인정보는 적지 말아 주세요.</span><span class="cnt"><span id="cnt">0</span> / 2000자</span></div>
       </div>
       </div>
       <div class="hp" aria-hidden="true"><label>웹사이트<input name="website" tabindex="-1" autocomplete="off"></label></div>
       <div class="err" id="err" role="alert"></div>
       <button class="send" id="send" type="submit">문의 보내기</button>
       <p class="hint" id="pickfirst" style="justify-content:center">문의 유형을 고르면 적을 칸이 나와요.</p>
-      <p class="note">회신 이메일은 답장에만 쓰고 다른 곳에 쓰지 않아요. 문의는 처리 완료 90일 뒤 이메일과 함께 지워요(처리하지 못한 문의도 180일 뒤 지워요).<br>아이랑은 공공기관이 아닌 민간이 만든 무료 서비스예요.</p>
+      <p class="note">아이랑은 이름·전화번호·이메일을 묻지 않아서 <b>개별 답장은 드리지 못해요.</b> 고친 내용은 앱에서 확인해 주세요. 보내 주신 글은 처리 완료 90일 뒤 지워요(처리하지 못한 문의도 180일 뒤 지워요).<br>아이랑은 공공기관이 아닌 민간이 만든 무료 서비스예요.</p>
     </form>
   </main>
 </div>
@@ -90,7 +86,7 @@ textarea:focus,input:focus{outline:3px solid rgba(184,146,62,.45);outline-offset
 const GUIDE = {
   fix: ["구·화면:\n틀린 내용:\n맞는 내용(아시면):\n확인할 수 있는 공식 자료 주소(있으면):", "공식 자료 주소를 함께 주시면 더 빨리 고칠 수 있어요."],
   use: ["", "쓰는 방법이나 불편한 점을 편하게 적어 주세요."],
-  ad: ["업체명:\n담당자 이름·연락처:\n제안 내용:", "광고·제휴 문의에는 담당자 연락처를 적어도 돼요."],
+  ad: ["업체명:\n요청 내용:", "지금은 광고·제휴로 따로 연락드릴 방법이 없어요. 업체 정보 수정·삭제 요청은 적어 주시면 반영할게요. 담당자 이름·연락처는 적지 말아 주세요."],
 };
 const $ = (id) => document.getElementById(id);
 const f = $("f"), body = $("body"), err = $("err"), send = $("send");
@@ -101,8 +97,7 @@ let lastAuto = "";   // 자동으로 채운 양식 — 이용자가 고치지 �
 function pick(k, fill) {
   const g = GUIDE[k]; if (!g) return;
   $("more").hidden = false; $("pickfirst").hidden = true;
-  $("reply").placeholder = k === "ad" ? "회신받을 이메일(권장)" : "답장이 필요할 때만 적어 주세요";
-  $("guide").textContent = g[1] + (k === "ad" ? "" : " 전화번호·주민등록번호는 적지 말아 주세요.");
+  $("guide").textContent = g[1] + (k === "ad" ? "" : " 이름·전화번호·이메일 같은 개인정보는 적지 말아 주세요.");
   if (fill && (!body.value.trim() || body.value === lastAuto)) {
     const where = [ctx.gu, ctx.screen].filter(Boolean).join(" / ");
     body.value = lastAuto = k === "fix" && where ? g[0].replace("구·화면:", "구·화면: " + where) : g[0]; count();
@@ -118,15 +113,14 @@ f.addEventListener("submit", async (e) => {
   if (!kind) return fail("문의 유형을 골라 주세요.", "kind");
   if (!body.value.trim() || (lastAuto && body.value === lastAuto)) return fail("문의 내용을 적어 주세요.", "body");
   if ([...body.value].length > 2000) return fail("문의 내용은 2000자까지 쓸 수 있어요.", "body");
-  if ($("reply").value.trim() && !$("reply").checkValidity()) return fail("회신 이메일 형식을 확인해 주세요. (비워 두어도 돼요)", "reply");
   send.disabled = true; send.textContent = "보내는 중…";
   try {
     const r = await fetch("/api/inquiry", { method: "POST", headers: { "content-type": "application/json" },
-      body: JSON.stringify({ kind, body: body.value, reply: $("reply").value, gu: ctx.gu, screen: ctx.screen, website: f.website.value }) });
+      body: JSON.stringify({ kind, body: body.value, gu: ctx.gu, screen: ctx.screen, website: f.website.value }) });
     const d = await r.json().catch(() => ({}));
     if (!r.ok || !d.ok) throw Object.assign(new Error(d.msg || "지금은 보낼 수 없어요. 잠시 뒤 다시 시도해 주세요."), { field: d.field });
     $("main").innerHTML = `<div class="card done" role="status"><h1 style="margin:0">문의가 접수됐어요</h1><div class="num">접수 번호 ${Number(d.ticket) || "-"}</div>
-      <p>${$("reply").value.trim() ? "적어 주신 이메일로 답장을 드릴게요." : "회신 이메일이 없어서 답장은 드리지 못해요. 고친 내용은 앱에서 확인해 주세요."}</p><a href="../entry/">처음으로</a></div>`;
+      <p>개별 답장은 드리지 못해요. 고친 내용은 앱에서 확인해 주세요.</p><a href="../entry/">처음으로</a></div>`;
     window.scrollTo(0, 0); document.querySelector(".done h1").setAttribute("tabindex", "-1"); document.querySelector(".done h1").focus();
   } catch (x) {
     fail(x.message || "인터넷 연결을 확인하고 다시 보내 주세요.", x.field);

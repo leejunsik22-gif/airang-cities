@@ -53,7 +53,7 @@ test("오류 신고 주소로 열면 구·화면이 미리 채워짐", async ({ 
   await expect(page.locator("#err")).toHaveText("문의 내용을 적어 주세요.");
 });
 
-test("입력 오류 안내: 유형 없음 · 전화번호 · 회신 이메일 형식", async ({ page }) => {
+test("입력 오류 안내: 유형 없음 · 전화번호 · 이메일 칸 없음(132)", async ({ page }) => {
   await page.setExtraHTTPHeaders({ "x-test-ip": ip("err") });
   await page.goto(`${B}/inquiry/`);
   await expect(page.locator("#body"), "유형 고르기 전엔 칸이 접혀 있음").toBeHidden();
@@ -65,22 +65,21 @@ test("입력 오류 안내: 유형 없음 · 전화번호 · 회신 이메일 �
   await page.locator("#body").fill("[가상] 연락 주세요 010-0000-0000");
   await page.locator("#send").click();
   await expect(page.locator("#err")).toContainText("전화번호는 지워 주세요");
-  await page.locator("#body").fill("[가상] 사용법 문의");
-  await page.locator("#reply").fill("이메일아님");
-  await page.locator("#send").click();
-  await expect(page.locator("#err")).toContainText("회신 이메일 형식");
-  await expect(page.locator("#reply")).toBeFocused();
+  await expect(page.locator("#reply, input[type=email]"), "132: 회신 이메일 칸 없음").toHaveCount(0);
+  await expect(page.locator("#guide")).toContainText("개인정보는 적지 말아 주세요");
+  await page.locator("input[value=ad]").check();
+  expect(await page.locator("#body").inputValue(), "132: 제휴 양식에 연락처 칸 없음").not.toContain("연락처");
 });
 
 // ── 서버 검사(058 문제 보완 확인) ──
-test("서버: 한글 2000자 접수 · 2001자 거절 · 이메일 형식 · 주민번호 · 제휴 연락처 허용", async ({ request }, info) => {
+test("서버: 한글 2000자 접수 · 2001자 거절 · 이메일 무시 · 주민번호 · 제휴도 전화번호 거절(132)", async ({ request }, info) => {
   only390(info);
   expect((await post(request, { kind: "use", body: "가".repeat(2000) })).status, "한글 2000자").toBe(200);
   expect((await post(request, { kind: "use", body: "가".repeat(2001) })).status).toBe(400);
-  expect((await post(request, { kind: "use", body: "[가상]", reply: "이메일아님" })).body.field).toBe("reply");
+  expect((await post(request, { kind: "use", body: "[가상]", reply: "이메일아님" })).status, "132: 회신 칸 값은 검사 없이 버림").toBe(200);
   expect((await post(request, { kind: "use", body: "[가상]", reply: "test@example.com" })).status).toBe(200);
   expect((await post(request, { kind: "fix", body: "[가상] 900101-1234567" })).body.msg).toContain("주민등록번호");
-  expect((await post(request, { kind: "ad", body: "[가상] 담당 010-0000-0000" })).status, "제휴는 연락처 허용").toBe(200);
+  expect((await post(request, { kind: "ad", body: "[가상] 담당 010-0000-0000" })).status, "132: 제휴도 전화번호 거절").toBe(400);
   expect((await post(request, { kind: "기타", body: "x" })).status).toBe(400);
   expect((await post(request, { kind: "use", body: "   " })).status).toBe(400);
   expect((await post(request, { kind: "use", body: "x" }, { origin: "https://evil.example" })).status, "다른 사이트에서 보냄").toBe(403);
@@ -161,7 +160,7 @@ test("관리자: 새 문의 → 처리 중 → 완료, 필터·삭제·없는 �
   await expect(card).toContainText("<script>alert(1)</script>");        // 글자로만 보임
   expect(await card.locator("script").count()).toBe(0);
   await expect(card.locator(".meta")).toContainText("보낸 화면: 유성 / 학원 상세");
-  await expect(card.locator(".meta a")).toHaveAttribute("href", /^mailto:parent@example\.com\?subject=/);
+  await expect(card.locator('.meta a[href^="mailto:"]'), "132: 이메일을 보내도 저장 안 됨 → 답장 링크 없음").toHaveCount(0);
   for (const s of ["처리 중", "완료"]) {
     await card.locator("select").selectOption(s); await card.locator(".save").click();
     await expect(page.locator("#toast")).toContainText(`#${ticket} 상태를 저장했어요`);
