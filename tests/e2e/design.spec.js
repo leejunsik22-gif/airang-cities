@@ -46,7 +46,6 @@ for (const [key, name] of Object.entries(B.names)) {
         eyebrow: ey && ey.textContent.trim(), sub: q(".hero-v3 .t3 p") && q(".hero-v3 .t3 p").innerText.trim(), kid: q(".kidadd b") && q(".kidadd b").innerText.trim(),
         ph: q('form.search-v2 input[name="q"]').placeholder, chips: [...document.querySelectorAll(".q-chips .q-chip")].map((e) => e.innerText.trim()),
         nav: [...document.querySelectorAll("nav.nav .navi")].map((e) => e.innerText.trim()),
-        held: { hosp: typeof gated === "function" && !!gated("hosp"), bene: typeof gated === "function" && !!gated("bene") },
         order: tops([".top3", ".hero-v3 h1", ".kidadd", "form.search-v2", ".q-chips", ".home-menu"]),
         tagBetween: (() => { const t = q(".top3").getBoundingClientRect(), a = q(".hero-v3 .img-tag").getBoundingClientRect(), h = q(".hero-v3 h1").getBoundingClientRect(); return a.top >= t.bottom && a.bottom <= h.top + 2; })(),
       };
@@ -54,6 +53,9 @@ for (const [key, name] of Object.entries(B.names)) {
     const T = (s) => s.replaceAll("{name}", name);
     const sorted = (a) => a.every((v, i) => v !== null && (i === 0 || v > a[i - 1]));
     /* 134 v02: 117 F3 — 병원·혜택 공개 상태에 따라 문구 기준을 고른다(둘 다 보류 → texts_held, 둘 다 공개 → texts, 한쪽만 → 기준 없음). */
+    /* 134 v02 독립 QA 4: 앱의 gated() 대신 공개 상태 파일을 시험이 직접 읽는다(앱 판단이 깨져도 기준이 따라 바뀌지 않게). */
+    const st = await page.evaluate(() => fetch("./data/_status.json").then((r) => r.json()));
+    g.held = { hosp: st.files["hospitals.json"].published === false, bene: st.files["benefits.json"].published === false };
     const S = g.held.hosp && g.held.bene ? "held" : !g.held.hosp && !g.held.bene ? "open" : "mixed";
     const TX = S === "held" ? B.texts_held : B.texts, mixedMsg = "병원·혜택 중 한쪽만 공개 — 기준 없음(대표 확정 필요)";
     judge([
@@ -76,7 +78,7 @@ for (const [key, name] of Object.entries(B.names)) {
       { k: `소개 문구(${S})`, ok: S !== "mixed" && g.sub === TX.sub, want: S === "mixed" ? mixedMsg : TX.sub, got: g.sub },
       { k: "우리 아이 추가", ok: g.kid === B.texts.kid, want: B.texts.kid, got: g.kid },
       { k: `검색 안내(${S})`, ok: S !== "mixed" && g.ph === TX.placeholder, want: S === "mixed" ? mixedMsg : TX.placeholder, got: g.ph },
-      { k: `빠른 메뉴 앞 2개(${S}; 공개 시 첫 칸은 시간대에 따라 '밤에 여는'/'지금 문 연' 소아과)`, ok: S === "held" ? g.chips[0] === TX.chips_first[0] && g.chips[1] === TX.chips_first[1] : S === "open" && ["밤에 여는 소아과", "지금 문 연 소아과"].includes(g.chips[0]) && g.chips[1] === TX.chips_first[1], want: S === "mixed" ? mixedMsg : TX.chips_first, got: g.chips.slice(0, 2) },
+      { k: `빠른 메뉴 앞 2개(${S}; 공개 시 첫 칸은 시간대에 따라 '밤에 여는'/'지금 문 연' 소아과)`, ok: S === "held" ? g.chips[0] === TX.chips_first[0] && g.chips[1] === TX.chips_first[1] : S === "open" && ["밤에 여는 소아과", "주말에 여는 소아과", "지금 문 연 소아과"].includes(g.chips[0]) && g.chips[1] === TX.chips_first[1], want: S === "mixed" ? mixedMsg : TX.chips_first, got: g.chips.slice(0, 2) },
       { k: "하단 메뉴 5개", ok: JSON.stringify(g.nav) === JSON.stringify(B.texts.nav), want: B.texts.nav, got: g.nav },
       { k: "배치 순서(상단→제목→아이 추가→검색→빠른 메뉴→메뉴판)", ok: sorted(g.order), want: "위에서 아래로 차례", got: g.order },
     ]);
