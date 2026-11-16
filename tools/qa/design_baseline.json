@@ -37,6 +37,15 @@
     "mobile": "home-m2?\\.webp",
     "pc": "home-pc2?\\.webp"
   },
+  "texts_held": {
+    "_note": "134 v02: 117 F3(118 검수·119 운영 반영 승인) — 병원·혜택이 공개 보류(_status.json published=false)일 때 홈 문구. 병원·혜택이 공개되면 texts 의 원래 문구가 기준. 한쪽만 공개된 경우는 기준 없음(대표 확정 필요).",
+    "sub": "학교·학원까지, 우리 동네의 믿을 수 있는 정보를 한곳에",
+    "placeholder": "학원, 학교 이름",
+    "chips_first": [
+      "우리 동네 학원",
+      "학교 일정"
+    ]
+  },
   "texts": {
     "h1": "아이와 가족이\n더 행복한 {name}",
     "brand": "아이랑 {name}",
