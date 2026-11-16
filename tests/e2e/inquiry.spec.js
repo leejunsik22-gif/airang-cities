@@ -222,3 +222,15 @@ test("보관 기간: 완료 90일 뒤·미처리 180일 뒤 자동 삭제, 그 �
   await expect(page.locator(`.item[data-id="${ids.open170}"] .pill.dd`)).toHaveText("10일 뒤 삭제");
   await ctx.close();
 });
+
+test("134: 132 이전에 접수된 '회신 이메일 있는' 옛 문의는 지워지지 않고 관리자 접수함에 그대로 보임", async ({ browser, request }, info) => {
+  only390(info);
+  const id = await (await request.get(`${B}/__test/seed-old`)).text();   // 가상 옛 문의 1건(시험 서버 메모리)
+  const ctx = await adminCtx(browser); const page = await ctx.newPage();
+  await page.goto(`${B}/inquiry/admin/`);
+  const card = page.locator(`.item[data-id="${id}"]`);
+  await expect(card, "옛 문의 보존").toBeVisible();
+  await expect(card).toContainText("132 이전 옛 문의");
+  await expect(card.locator('.meta a[href^="mailto:old-parent@example.com"]'), "옛 회신 이메일 표시 유지(기존 자료 보존)").toHaveCount(1);
+  await ctx.close();
+});
