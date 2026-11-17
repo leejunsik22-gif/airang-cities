@@ -1,0 +1,17 @@
+name: check-137 (읽기 전용 NEIS 원문 대조 — 시험 가지 전용)
+# 2026-11-17 피트 137 지시서 · 대표 B·C 진행 승인: 학원 표본 15곳 + 전화 이상 24곳 원문 조회만. 키·비밀값 안 씀, data/ 변경 없음, 배포 없음.
+on:
+  push:
+    branches: [check-137]
+    paths: [".github/workflows/check-137.yml", "tools/qa/check137_*"]
+permissions:
+  contents: read
+jobs:
+  look:
+    if: github.ref == 'refs/heads/check-137'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/qa/check137_neis.py
+      - uses: actions/upload-artifact@v4
+        with: { name: check137_result, path: check137_result.json, retention-days: 30 }
