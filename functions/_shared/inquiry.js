@@ -39,7 +39,8 @@ export async function purge(db, now = Date.now()) {
 
 const EMAIL = /^[^\s@<>()"',;]{1,64}@[A-Za-z0-9.-]{1,190}\.[A-Za-z]{2,24}$/;
 const RRN = /\d{6}\s*-?\s*[1-8]\d{6}/;                       // 주민등록번호 형태
-const PHONE = /01[016789][\s.-]?\d{3,4}[\s.-]?\d{4}/;       // 휴대전화 형태
+const PHONE = /(?:\+\s?82[\s.-]?\(?0?\)?\s?|0)1[016789][\s.-]?\d{3,4}[\s.-]?\d{4}/;   /* 142: +82 국제 형식 포함 */
+const MAILBODY = /[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/;   /* 142: 글 속 이메일 주소 */       // 휴대전화 형태
 
 // 입력 검사 → { ok, value } 또는 { ok:false, field, msg }
 export function validate(input) {
@@ -50,6 +51,7 @@ export function validate(input) {
   if ([...body].length > LIMITS.body) return { ok: false, field: "body", msg: `문의 내용은 ${LIMITS.body}자까지 쓸 수 있어요.` };
   if (RRN.test(body)) return { ok: false, field: "body", msg: "주민등록번호처럼 보이는 숫자가 있어요. 지우고 보내 주세요." };
   if (PHONE.test(body)) return { ok: false, field: "body", msg: "전화번호는 지워 주세요. 아이랑은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 132: 제휴 문의도 예외 없음 */
+  if (MAILBODY.test(body)) return { ok: false, field: "body", msg: "이메일 주소는 지워 주세요. 아이랑은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 142 */
   const clip = (s, n) => String(s || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n);
   /* 132: 개인정보 최소화 — 회신 이메일은 받지 않는다. 예전 화면·직접 요청으로 와도 저장하지 않고 빈 값으로. (DB 칸은 기존 자료 보존 위해 그대로) */
   return { ok: true, value: { kind: TYPES[kindKey], body, reply: "", gu: clip(input.gu, 20), screen: clip(input.screen, 40) } };
