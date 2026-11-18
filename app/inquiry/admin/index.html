@@ -65,7 +65,7 @@ h1{font-size:22px;margin:18px 2px 10px}
   <div class="tabs" id="tabs" role="tablist" aria-label="처리 상태로 보기"></div>
   <div id="list" aria-live="polite"><p class="msg">불러오는 중…</p></div>
   <div class="pager" id="pager"></div>
-  <p class="note">완료된 문의는 90일 뒤, 처리하지 못한 문의도 180일 뒤 자동으로 지워져요(30일 전부터 위에 따로 알려 드려요). 답장은 회신 주소를 눌러 대표 메일 앱에서 보내 주세요.</p>
+  <p class="note">처리가 끝난 문의는 90일 뒤, 늦어도 접수 180일 뒤 자동으로 지워져요(현재 설정값, 30일 전부터 위에 따로 알려 드려요). 새 문의는 회신 주소를 받지 않아요. 회신 주소가 남아 있는 예전 문의만 주소를 눌러 메일 앱에서 답장할 수 있어요.</p>
 </div>
 <div class="toast" id="toast" role="status"></div>
 <script>
@@ -99,7 +99,7 @@ async function load() {
     <article class="item" data-id="${r.id}">
       <div class="h"><b>#${r.id}</b><span class="pill">${esc(r.kind)}</span><span class="pill s${STATES.indexOf(r.state)}">${esc(r.state)}</span>${r.delete_in_days != null && r.delete_in_days <= d.warnDays ? `<span class="pill dd">${r.delete_in_days}일 뒤 삭제</span>` : ""}<span class="when">${when(r.created_at)}</span></div>
       <pre>${esc(r.body)}</pre>
-      <div class="meta">${r.gu || r.screen ? `보낸 화면: ${esc([r.gu, r.screen].filter(Boolean).join(" / "))} · ` : ""}회신 주소: ${r.reply ? `<a href="mailto:${esc(encodeURIComponent(r.reply).replace(/%40/, "@"))}?subject=${encodeURIComponent(`[아이랑] 문의 #${r.id} 답변`)}">${esc(r.reply)}</a>` : "없음"}</div>
+      <div class="meta">${r.gu || r.screen ? `보낸 화면: ${esc([r.gu, r.screen].filter(Boolean).join(" / "))} · ` : ""}${r.reply ? `회신 주소(예전 문의): <a href="mailto:${esc(encodeURIComponent(r.reply).replace(/%40/, "@"))}?subject=${encodeURIComponent(`[아이랑] 문의 #${r.id} 답변`)}">${esc(r.reply)}</a>` : "회신 없음(개인정보 받지 않음)"}</div>
       <div class="acts"><label class="sr" for="st-${r.id}" style="font-weight:700;font-size:13.5px">처리 상태</label>
         <select id="st-${r.id}">${STATES.map((s) => `<option${s === r.state ? " selected" : ""}>${s}</option>`).join("")}</select>
         <button class="btn save" type="button">상태 저장</button><button class="btn del" type="button">삭제</button></div>

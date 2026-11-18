@@ -37,7 +37,7 @@ export async function purge(db, now = Date.now()) {
   await db.prepare(`DELETE FROM inquiry_rate WHERE at < ?`).bind(now - DAY).run();
 }
 
-const EMAIL = /^[^\s@<>()"',;]{1,64}@[A-Za-z0-9.-]{1,190}\.[A-Za-z]{2,24}$/;
+/* 132·140: 회신 이메일을 받지 않으므로 이메일 형식 검사(EMAIL)는 지웠다. */
 const RRN = /\d{6}\s*-?\s*[1-8]\d{6}/;                       // 주민등록번호 형태
 const PHONE = /01[016789][\s.-]?\d{3,4}[\s.-]?\d{4}/;       // 휴대전화 형태
 

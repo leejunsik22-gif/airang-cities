@@ -161,6 +161,8 @@ test("관리자: 새 문의 → 처리 중 → 완료, 필터·삭제·없는 �
   expect(await card.locator("script").count()).toBe(0);
   await expect(card.locator(".meta")).toContainText("보낸 화면: 유성 / 학원 상세");
   await expect(card.locator('.meta a[href^="mailto:"]'), "132: 이메일을 보내도 저장 안 됨 → 답장 링크 없음").toHaveCount(0);
+  await expect(card.locator(".meta"), "140: 새 문의는 '회신 없음(개인정보 받지 않음)'").toContainText("회신 없음(개인정보 받지 않음)");
+  await expect(card.locator(".meta"), "140: 옛 문구 '회신 주소: 없음' 안 씀").not.toContainText("회신 주소: 없음");
   for (const s of ["처리 중", "완료"]) {
     await card.locator("select").selectOption(s); await card.locator(".save").click();
     await expect(page.locator("#toast")).toContainText(`#${ticket} 상태를 저장했어요`);
@@ -232,6 +234,7 @@ test("134: 132 이전에 접수된 '회신 이메일 있는' 옛 문의는 지�
   await expect(card, "옛 문의 보존").toBeVisible();
   await expect(card).toContainText("132 이전 옛 문의");
   await expect(card.locator('.meta a[href^="mailto:old-parent@example.com"]'), "옛 회신 이메일 표시 유지(기존 자료 보존)").toHaveCount(1);
+  await expect(card.locator(".meta"), "140: 옛 문의는 '회신 주소(예전 문의)'로 표시").toContainText("회신 주소(예전 문의)");
   await ctx.close();
 });
 
