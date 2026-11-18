@@ -253,3 +253,13 @@ test("134 v02 개인정보 안내: 저장 항목·90/180일·하루 보관(IP �
   for (const w of ["문의 종류", "보낸 구와 화면", "90일", "접수 180일", "접속 주소(IP)", "하루가 지나면 지울 대상", "조금 늦을 수 있어요"]) expect(note, `문의 화면 안내에 '${w}'`).toContain(w);
   expect(note, "하루 동안 단정 표현 없음").not.toMatch(/하루만|하루 동안/);
 });
+
+// 141: 개인정보 거절 규칙 보강 시험 — 지금 막는 형태가 앞으로도 막히는지(가상 값만 사용)
+test("141 서버: 휴대전화·주민번호 여러 쓰기 형태 거절, 업체 유선번호는 허용", async ({ request }, info) => {
+  only390(info);
+  for (const b of ["연락 01000000000", "연락 010 0000 0000", "연락 010.0000.0000", "연락 011-000-0000"])
+    expect((await post(request, { kind: "use", body: `[가상] ${b}` })).status, `${b} 거절`).toBe(400);
+  for (const b of ["900101-1234567", "9001011234567", "900101 - 1234567"])
+    expect((await post(request, { kind: "fix", body: `[가상] ${b}` })).body.msg, `${b} 주민번호 거절`).toContain("주민등록번호");
+  expect((await post(request, { kind: "fix", body: "[가상] 학원 번호가 042-000-0000 으로 바뀌었어요" })).status, "업체 유선번호(정보 수정용)는 허용").toBe(200);
+});
