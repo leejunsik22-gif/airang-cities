@@ -810,6 +810,19 @@ function safeUrl(u) { u = String(u ?? "").trim(); return /^https?:\/\//i.test(u)
 // onclick="go('...')" 처럼 HTML 속성 안의 자바스크립트 문자열에 값을 넣을 때 쓰는 안전 처리
 function jsq(v) { return esc(String(v ?? "").replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/[\r\n]/g, " ")); }
 {{/if}}
+/* 137: 학원 전화번호 — 원자료(나이스) 번호를 바꾸지 않고, 걸리지 않을 번호는 숨기고(①), 하이픈 위치만 바로잡아 보여 준다(②). 전화 걸 때 쓰는 숫자는 원자료 숫자 그대로. */
+function acaTel(t) {
+  const d = String(t || "").replace(/\D/g, "");
+  if (!d) return "";
+  let f = "";
+  if (/^042\d{7,8}$/.test(d)) f = d.length === 10 ? `042-${d.slice(3, 6)}-${d.slice(6)}` : `042-${d.slice(3, 7)}-${d.slice(7)}`;
+  else if (/^0(10|70)\d{8}$/.test(d)) f = `${d.slice(0, 3)}-${d.slice(3, 7)}-${d.slice(7)}`;
+  else if (/^050\d{8,9}$/.test(d)) f = `${d.slice(0, 4)}-${d.slice(4, d.length - 4)}-${d.slice(-4)}`;
+  else if (/^080\d{7}$/.test(d)) f = `080-${d.slice(3, 6)}-${d.slice(6)}`;
+  else if (/^1[568]\d{6}$/.test(d)) f = `${d.slice(0, 4)}-${d.slice(4)}`;
+  if (!f) return "";   /* 9자리 이하·대전(042)이 아닌 지역번호 등: 원자료 오류일 수 있어 전화 칸을 숨김 */
+  return `<a href="tel:${d}">${f}</a>`;
+}
 function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c])); }
 function toast(msg) { const t = document.getElementById("toast"); t.textContent = msg; t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 1800); }
 
@@ -2022,7 +2035,7 @@ function viewAca(id) {
     <div style="display:flex;gap:14px;align-items:center;margin-top:14px"><span class="tile t-coral" style="width:54px;height:54px;font-size:22px;font-weight:800">${esc(a.n[0])}</span>
       <div style="min-width:0;flex:1"><h1 style="font-size:23px;font-weight:800;line-height:1.3">${esc(a.n)}</h1><p style="font-size:13px;color:var(--muted);margin-top:4px">${esc(a.t)} · ${esc(a.gu)} ${esc(a.dong)}</p></div>${favBtn({ t: "aca", id: a.id, n: a.n, sub: a.r || a.t || "", route: "aca/" + a.id })}</div>
     <div class="lift card-pad" style="margin-top:18px">
-      ${row("분야", esc(a.r))}${row("교습 과정", esc((a.c || []).join(", ")))}${row("정원", a.cap ? a.cap + "명" : "")}${row("주소", esc(a.a))}${row("전화", a.tel ? `<a href="tel:${esc(a.tel)}">${esc(a.tel)}</a>` : "")}
+      ${row("분야", esc(a.r))}${row("교습 과정", esc((a.c || []).join(", ")))}${row("정원", a.cap ? a.cap + "명" : "")}${row("주소", esc(a.a))}${row("전화", acaTel(a.tel))}
     </div>
     <section class="section"><div class="sec-head"><h2>수강료</h2><span style="font-size:12px;color:var(--muted)">1인 월 기준 (교육청 신고)</span></div>
       ${a.f && a.f.length ? `<div class="lift card-pad">${a.f.slice(0, 20).map(([k, v]) => row(esc(k), `<b>${won(v)}</b>`)).join("")}</div>` : `<div class="lift empty">공개된 수강료 정보가 없어요.</div>`}</section>
