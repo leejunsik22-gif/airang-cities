@@ -41,6 +41,8 @@ for (const [key, name] of Object.entries(GU)) {
     await openGu(page, key);
     await expect(page.locator(".brand-round").first()).toContainText(name.replace("대전 ", ""));
     // 확정 로고(주황 하트) — 실제 그림이 그려졌는지, 정해진 크기인지
+    /* 144: 그림이 다 올 때까지 최대 5초 기다린 뒤 판정(전체 시험 동시 실행 때 시험 서버가 1초 넘게 늦어 '불러오기 실패'로 잘못 나오던 문제). 진짜 깨진 그림은 여전히 실패 */
+    await expect.poll(() => page.locator(".brand3 .logo3").first().evaluate((i) => i.complete && i.naturalWidth > 0), { message: "로고 그림 불러오기", timeout: 5000 }).toBe(true);
     const logo = await page.locator(".brand3 .logo3").first().evaluate((i) => ({ ok: i.complete && i.naturalWidth > 0, w: i.getBoundingClientRect().width, src: i.getAttribute("src") }));
     expect(logo.ok, "로고 그림 불러오기").toBe(true);
     expect(logo.src).toContain("logo-symbol.png");
