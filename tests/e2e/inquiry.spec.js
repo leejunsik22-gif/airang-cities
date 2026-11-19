@@ -260,3 +260,12 @@ test("142 서버: 글 속 이메일·+82 휴대전화 거절, 정상 문의 통�
   for (const b of ["학원 번호가 042-000-0000 으로 바뀌었어요", "대표번호 1588-0000", "https://www.example.com 원문 확인했어요", "@아이랑 앱 좋아요", "C++ 코딩 학원 추가해 주세요", "82점 받았어요 010 버튼"])
     expect((await post(request, { kind: "fix", body: `[가상] ${b}` })).status, `${b} 정상 접수`).toBe(200);
 });
+
+// 143: 경계 사례(가상 값) — 변형된 전화·이메일 거절 + 긴 숫자(주문번호·버전)는 잘못 거절하지 않음
+test("143 서버: 변형 전화·이메일 거절, 긴 숫자·정상 문의 통과", async ({ request }, info) => {
+  only390(info);
+  for (const b of ["(010)0000-0000", "010–0000–0000", "82-10-0000-0000", "０１０-００００-００００", "test @ example.com", "test(at)example.com", "test＠example.com", "홍길동@학원.한국"])
+    expect((await post(request, { kind: "use", body: `[가상] ${b}` })).status, `${b} 거절`).toBe(400);
+  for (const b of ["주문번호 20010123456789", "버전 1.010.1234.5678", "사업자등록번호 123-45-67890", "+82 42-000-0000", "학생 82-10명 정도", "https://instagram.com/@academy_daejeon", "학원명 A@B 코딩"])
+    expect((await post(request, { kind: "fix", body: `[가상] ${b}` })).status, `${b} 정상 접수`).toBe(200);
+});
