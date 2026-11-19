@@ -250,3 +250,13 @@ test("134 v02 개인정보 안내: 저장 항목·90/180일·하루 보관(IP �
   for (const w of ["문의 종류", "보낸 구와 화면", "90일", "접수 180일", "접속 주소(IP)", "하루가 지나면 지울 대상", "조금 늦을 수 있어요"]) expect(note, `문의 화면 안내에 '${w}'`).toContain(w);
   expect(note, "하루 동안 단정 표현 없음").not.toMatch(/하루만|하루 동안/);
 });
+
+// 142: 글 속 이메일·+82 국제 형식 휴대전화 거절 + 정상 문의는 거절하지 않음(가상 값)
+test("142 서버: 글 속 이메일·+82 휴대전화 거절, 정상 문의 통과", async ({ request }, info) => {
+  only390(info);
+  for (const b of ["메일 test@example.com 으로", "a.b-c@mail.co.kr", "연락 +82 10-0000-0000", "연락 +821000000000", "연락 +82 (0)10 0000 0000"])
+    expect((await post(request, { kind: "use", body: `[가상] ${b}` })).status, `${b} 거절`).toBe(400);
+  expect((await post(request, { kind: "use", body: "[가상] 메일 test@example.com 으로" })).body.msg).toContain("이메일 주소는 지워 주세요");
+  for (const b of ["학원 번호가 042-000-0000 으로 바뀌었어요", "대표번호 1588-0000", "https://www.example.com 원문 확인했어요", "@아이랑 앱 좋아요", "C++ 코딩 학원 추가해 주세요", "82점 받았어요 010 버튼"])
+    expect((await post(request, { kind: "fix", body: `[가상] ${b}` })).status, `${b} 정상 접수`).toBe(200);
+});
