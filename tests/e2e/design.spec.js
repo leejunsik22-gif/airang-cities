@@ -30,6 +30,8 @@ for (const [key, name] of Object.entries(B.names)) {
     await expect(page.locator(".brand-round").first()).toBeVisible();
     await page.waitForLoadState("networkidle");
     await page.evaluate(() => document.fonts.ready);
+    /* 145: 로고가 '다 받음'(성공이든 실패든) 상태가 될 때까지 최대 5초 기다림 — 판정 기준(B 기준 파일)은 그대로 */
+    await expect.poll(() => page.evaluate((s) => { const e = document.querySelector(s); return !e || e.complete; }, ".brand3 .logo3"), { timeout: 5000 }).toBe(true).catch(() => {});
     const pc = test.info().project.name.startsWith("PC");
     const g = await page.evaluate(() => {
       const q = (s) => document.querySelector(s), cs = (e) => e && getComputedStyle(e);
@@ -89,6 +91,8 @@ for (const [key, name] of Object.entries(B.names)) {
 test("@디자인 입구: 확정 로고·안내 문구·글씨체", async ({ page }) => {
   await page.goto("/entry/");
   await page.waitForLoadState("networkidle");
+    /* 145: 로고가 '다 받음'(성공이든 실패든) 상태가 될 때까지 최대 5초 기다림 — 판정 기준(B 기준 파일)은 그대로 */
+    await expect.poll(() => page.evaluate((s) => { const e = document.querySelector(s); return !e || e.complete; }, ".top img"), { timeout: 5000 }).toBe(true).catch(() => {});
   const g = await page.evaluate(() => {
     const logo = document.querySelector(".top img");
     return { src: logo && logo.getAttribute("src"), ok: !!logo && logo.complete && logo.naturalWidth > 0,
