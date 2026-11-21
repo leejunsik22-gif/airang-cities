@@ -161,6 +161,8 @@ test("관리자: 새 문의 → 처리 중 → 완료, 필터·삭제·없는 �
   expect(await card.locator("script").count()).toBe(0);
   await expect(card.locator(".meta")).toContainText("보낸 화면: 유성 / 학원 상세");
   await expect(card.locator('.meta a[href^="mailto:"]'), "132: 이메일을 보내도 저장 안 됨 → 답장 링크 없음").toHaveCount(0);
+  await expect(card.locator(".meta"), "140: 새 문의는 '회신 없음(개인정보 받지 않음)'").toContainText("회신 없음(개인정보 받지 않음)");
+  await expect(card.locator(".meta"), "140: 옛 문구 '회신 주소: 없음' 안 씀").not.toContainText("회신 주소: 없음");
   for (const s of ["처리 중", "완료"]) {
     await card.locator("select").selectOption(s); await card.locator(".save").click();
     await expect(page.locator("#toast")).toContainText(`#${ticket} 상태를 저장했어요`);
@@ -232,6 +234,7 @@ test("134: 132 이전에 접수된 '회신 이메일 있는' 옛 문의는 지�
   await expect(card, "옛 문의 보존").toBeVisible();
   await expect(card).toContainText("132 이전 옛 문의");
   await expect(card.locator('.meta a[href^="mailto:old-parent@example.com"]'), "옛 회신 이메일 표시 유지(기존 자료 보존)").toHaveCount(1);
+  await expect(card.locator(".meta"), "140: 옛 문의는 '회신 주소(예전 문의)'로 표시").toContainText("회신 주소(예전 문의)");
   await ctx.close();
 });
 
@@ -283,4 +286,38 @@ test("144 규칙: 경계 98건 판정 일치 + 2,000자 글 검사 속도", asyn
     const t = performance.now(); for (let i = 0; i < 5; i++) validate({ kind: "fix", body: b }); const ms = (performance.now() - t) / 5;
     expect(ms, `2,000자 글 검사 ${ms.toFixed(1)}ms (Cloudflare 무료 요청당 계산 10ms 안쪽 목표, 시험 기계 차이 감안 30ms 기준)`).toBeLessThan(30);
   }
+});
+
+// 148: 글자 아주 크게(300·350·400%)에서 문의 화면 — 가로 밀림 0, 화면 밖으로 잘리는 글·칸 0, 입력칸 최소 폭
+for (const z of [3, 3.5, 4]) {
+  test(`148 문의 화면 글자 ${z * 100}%: 가로 밀림·잘림 없음`, async ({ browser }, info) => {
+    only390(info);
+    const ctx = await browser.newContext({ viewport: { width: Math.round(412 / z), height: Math.round(915 / z) }, deviceScaleFactor: 2.625 * z, isMobile: true, hasTouch: true });
+    const page = await ctx.newPage();
+    await page.goto(`${B}/inquiry/`);
+    await page.locator("input[name=kind][value=use]").check();
+    const m = await page.evaluate(() => {
+      const vw = document.documentElement.clientWidth;
+      const cut = [...document.querySelectorAll("label,button,a,textarea,h1,p,small,b,legend,.hint,.note,.warn,.cnt")]
+        .filter((e) => e.offsetParent !== null && e.getBoundingClientRect().width > 0 && e.getBoundingClientRect().right > vw + 1)
+        .map((e) => (e.innerText || e.tagName).trim().slice(0, 12));
+      const ta = document.querySelector("textarea");
+      return { sx: document.documentElement.scrollWidth - vw, cut, ta: Math.round(ta.clientWidth), vw };
+    });
+    expect(m.sx, `가로 밀림 ${m.sx}px`).toBeLessThanOrEqual(1);
+    expect(m.cut, "화면 밖으로 잘리는 글·칸").toEqual([]);
+    expect(m.ta, `입력칸 폭 ${m.ta}px (화면 ${m.vw}px)`).toBeGreaterThanOrEqual(m.vw * 0.45);
+    await ctx.close();
+  });
+}
+
+// 150: 관리자 비밀번호 상태 안내 — 비었을 때·12자 미만·12자 이상(가상 값)
+test("150 관리자 비밀번호: 빈 값·짧은 값·정상 구분", async ({}, info) => {
+  only390(info);
+  const { passwordReady, passwordProblemMsg } = await import("../../functions/_shared/inquiry.js");
+  expect(passwordReady({ ADMIN_PASSWORD: "" })).toBe(false);
+  expect(passwordProblemMsg({ ADMIN_PASSWORD: "" })).toContain("아직 설정되지 않았어요");
+  expect(passwordReady({ ADMIN_PASSWORD: "  short1234  " })).toBe(false);
+  expect(passwordProblemMsg({ ADMIN_PASSWORD: "short1234" })).toContain("12자 이상");
+  expect(passwordReady({ ADMIN_PASSWORD: " gasang12345678 " })).toBe(true);
 });

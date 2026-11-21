@@ -37,7 +37,7 @@ export async function purge(db, now = Date.now()) {
   await db.prepare(`DELETE FROM inquiry_rate WHERE at < ?`).bind(now - DAY).run();
 }
 
-const EMAIL = /^[^\s@<>()"',;]{1,64}@[A-Za-z0-9.-]{1,190}\.[A-Za-z]{2,24}$/;
+/* 132·140: 회신 이메일을 받지 않으므로 이메일 형식 검사(EMAIL)는 지웠다. */
 const RRN = /(?<!\d)\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])\s*-?\s*[1-8]\d{6}(?!\d)/;   /* 주민등록번호 형태. 143: 앞뒤가 숫자면 제외. 144: 앞 6자리가 날짜(월 01~12·일 01~31)일 때만 */
 const SEP = "[\\s./-]{0,3}";   /* 144: 숫자 묶음 사이 구분(빈칸·점·빗금·줄표) 최대 3글자 */
 const PHONE = new RegExp(`(?:\\+\\s?82|(?<![\\d.])00\\s?82|(?<![\\d.])82|(?<![\\d.])\\(?0)(?:[\\s.)/-]*\\(?0?\\)?[\\s./-]*)?1[016789]\\)?${SEP}\\d{3,4}${SEP}\\d{4}(?!\\d)`);   /* 휴대전화. 142: +82. 143: 82·(010)·숫자 경계. 144: 0082·빗금·구분 앞뒤 빈칸 */
@@ -83,6 +83,8 @@ async function hmac(keyText, msg) {
 // 2026-11-09 대표 실사용 중 발견: 메모장에서 복사할 때 앞뒤 빈칸이 붙어 로그인이 안 됨 → 저장값·입력값 모두 앞뒤 빈칸 무시
 const pw = (env) => (typeof env.ADMIN_PASSWORD === "string" ? env.ADMIN_PASSWORD.trim() : "");
 export function passwordReady(env) { return [...pw(env)].length >= 12; }
+/* 150: 비밀번호가 비었는지·짧은지(12자 미만) 구분해 알려 줌 — 11-21 재등록 때 "설정 안 됨"만 보여 원인을 헷갈렸던 일 */
+export function passwordProblemMsg(env) { return pw(env) ? "관리자 비밀번호가 너무 짧아요. 12자 이상으로 다시 등록해 주세요." : "관리자 비밀번호가 아직 설정되지 않았어요."; }
 // 같은 길이 비교(글자마다 시간 차이로 비밀번호를 알아내는 방법 차단): 둘 다 서명값으로 바꿔 비교
 export async function passwordMatches(env, given) {
   const a = await hmac("pw-check", String(given || "").trim()), b = await hmac("pw-check", pw(env));
@@ -100,7 +102,7 @@ export function clearCookie(request) {
   return `airang_admin=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0${secure}`;
 }
 export async function adminUser(request, env) {
-  if (!passwordReady(env)) return { status: 503, msg: pw(env) ? "관리자 비밀번호가 너무 짧아요. 12자 이상으로 다시 등록해 주세요." : "관리자 비밀번호가 아직 설정되지 않았어요." };
+  if (!passwordReady(env)) return { status: 503, msg: passwordProblemMsg(env) };
   const m = (request.headers.get("cookie") || "").match(/(?:^|;\s*)airang_admin=(\d+)\.([0-9a-f]{64})(?:;|$)/);
   if (!m || +m[1] < Date.now()) return { status: 401, msg: "관리자 로그인이 필요해요." };
   if ((await hmac("session|" + pw(env), m[1])) !== m[2]) return { status: 401, msg: "관리자 로그인이 필요해요." };

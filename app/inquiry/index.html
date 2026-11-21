@@ -49,6 +49,10 @@ textarea:focus,input:focus{outline:3px solid rgba(184,146,62,.45);outline-offset
 .done .num{display:inline-block;margin:10px 0 4px;font-size:22px;font-weight:800;color:var(--sage-ink);background:var(--sage-bg);border-radius:12px;padding:6px 14px}
 .done p{color:var(--muted);margin:6px 0 0;word-break:keep-all}
 .done a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:18px;padding:0 18px;border-radius:14px;background:var(--navy);color:#fff;font-weight:800;text-decoration:none}
+/* 148: 글자 아주 크게(약 300%↑)일 때 문의 종류 칸이 화면 밖으로 밀리던 문제 — 칸이 화면보다 넓어지지 않게, 좁을 때만 낱말 중간 줄바꿈 허용 */
+.kinds>.kind,.kind>span{min-width:0}
+@media (max-width:240px){.top{flex-wrap:wrap}.top>div{flex:1 1 0;min-width:0}.top .back{margin-left:0}.hint{flex-wrap:wrap}.hint .cnt{white-space:normal;margin-left:0}.card{padding:12px}.kind{padding:10px;gap:8px}.kind small,.kind b,.warn,.note,.hint,.lead,.done p{word-break:normal;overflow-wrap:anywhere}textarea{padding:10px}}
+@media (max-width:200px){.wrap{padding:12px 8px 40px}.kind{flex-direction:column;gap:6px}.card{padding:10px}textarea{padding:8px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head><body>
 <div class="wrap">
