@@ -41,6 +41,8 @@ for (const [key, name] of Object.entries(GU)) {
     await openGu(page, key);
     await expect(page.locator(".brand-round").first()).toContainText(name.replace("대전 ", ""));
     // 확정 로고(주황 하트) — 실제 그림이 그려졌는지, 정해진 크기인지
+    /* 144: 그림이 다 올 때까지 최대 5초 기다린 뒤 판정(전체 시험 동시 실행 때 시험 서버가 1초 넘게 늦어 '불러오기 실패'로 잘못 나오던 문제). 진짜 깨진 그림은 여전히 실패 */
+    await expect.poll(() => page.locator(".brand3 .logo3").first().evaluate((i) => i.complete && i.naturalWidth > 0), { message: "로고 그림 불러오기", timeout: 5000 }).toBe(true);
     const logo = await page.locator(".brand3 .logo3").first().evaluate((i) => ({ ok: i.complete && i.naturalWidth > 0, w: i.getBoundingClientRect().width, src: i.getAttribute("src") }));
     expect(logo.ok, "로고 그림 불러오기").toBe(true);
     expect(logo.src).toContain("logo-symbol.png");
@@ -72,6 +74,8 @@ test("사진: 깨짐 없음·화질 충분·AI 표기가 상단 바와 안 겹�
   // 아래까지 내려 지연 로딩 사진도 불러오기
   await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 400) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 60)); } window.scrollTo(0, 0); });
   await page.waitForTimeout(400);
+  /* 145: 사진이 '다 받음'(성공이든 실패든) 상태가 될 때까지 최대 5초 기다림 — 판정 기준은 그대로라 깨진 사진은 계속 실패 */
+  await expect.poll(() => page.evaluate(() => [...document.images].filter((i) => i.getBoundingClientRect().width > 40).every((i) => i.complete)), { timeout: 5000 }).toBe(true).catch(() => {});
   // naturalWidth 는 srcset 배율로 나눠진 값이라, 실제로 고른 파일을 다시 열어 진짜 가로 화소를 잰다
   const imgs = await page.evaluate(() => Promise.all([...document.images].filter((i) => i.getBoundingClientRect().width > 40).map((i) => new Promise((res) => {
     const src = i.currentSrc || i.src, base = { src: src.split("/").pop(), ok: i.complete && i.naturalWidth > 0, shown: Math.round(i.getBoundingClientRect().width) };

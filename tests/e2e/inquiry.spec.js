@@ -260,3 +260,27 @@ test("142 서버: 글 속 이메일·+82 휴대전화 거절, 정상 문의 통�
   for (const b of ["학원 번호가 042-000-0000 으로 바뀌었어요", "대표번호 1588-0000", "https://www.example.com 원문 확인했어요", "@아이랑 앱 좋아요", "C++ 코딩 학원 추가해 주세요", "82점 받았어요 010 버튼"])
     expect((await post(request, { kind: "fix", body: `[가상] ${b}` })).status, `${b} 정상 접수`).toBe(200);
 });
+
+// 143: 경계 사례(가상 값) — 변형된 전화·이메일 거절 + 긴 숫자(주문번호·버전)는 잘못 거절하지 않음
+test("143 서버: 변형 전화·이메일 거절, 긴 숫자·정상 문의 통과", async ({ request }, info) => {
+  only390(info);
+  for (const b of ["(010)0000-0000", "010–0000–0000", "82-10-0000-0000", "０１０-００００-００００", "test @ example.com", "test(at)example.com", "test＠example.com", "홍길동@학원.한국"])
+    expect((await post(request, { kind: "use", body: `[가상] ${b}` })).status, `${b} 거절`).toBe(400);
+  for (const b of ["주문번호 20010123456789", "버전 1.010.1234.5678", "사업자등록번호 123-45-67890", "+82 42-000-0000", "학생 82-10명 정도", "https://instagram.com/@academy_daejeon", "학원명 A@B 코딩"])
+    expect((await post(request, { kind: "fix", body: `[가상] ${b}` })).status, `${b} 정상 접수`).toBe(200);
+});
+
+// 144: 경계 사례 98건(tests/cases/inquiry_boundary_144.json, 가상 값)을 서버 검사 함수에 그대로 넣어 판정 + 긴 글 검사 속도
+test("144 규칙: 경계 98건 판정 일치 + 2,000자 글 검사 속도", async ({}, info) => {
+  only390(info);
+  const { validate } = await import("../../functions/_shared/inquiry.js");
+  const c = require("../cases/inquiry_boundary_144.json");
+  const strip = (b) => b.replace(/ \([^)]*\)$/, "");
+  const kind = (v) => (v.ok ? "" : v.msg.startsWith("전화") ? "전화" : v.msg.startsWith("이메일") ? "메일" : v.msg.startsWith("주민") ? "주민" : "기타");
+  for (const [b, k] of c.block) expect(kind(validate({ kind: "use", body: `[가상] ${strip(b)}` })), `${b} → ${k} 거절`).toBe(k);
+  for (const b of c.pass) expect(kind(validate({ kind: "fix", body: `[가상] ${b}` })), `${b} 접수`).toBe("");
+  for (const b of ["가1".repeat(999), "가".repeat(1999), "a.".repeat(999) + "@", "0".repeat(1999)]) {
+    const t = performance.now(); for (let i = 0; i < 5; i++) validate({ kind: "fix", body: b }); const ms = (performance.now() - t) / 5;
+    expect(ms, `2,000자 글 검사 ${ms.toFixed(1)}ms (Cloudflare 무료 요청당 계산 10ms 안쪽 목표, 시험 기계 차이 감안 30ms 기준)`).toBeLessThan(30);
+  }
+});
