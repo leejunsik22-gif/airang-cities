@@ -284,3 +284,26 @@ test("144 규칙: 경계 98건 판정 일치 + 2,000자 글 검사 속도", asyn
     expect(ms, `2,000자 글 검사 ${ms.toFixed(1)}ms (Cloudflare 무료 요청당 계산 10ms 안쪽 목표, 시험 기계 차이 감안 30ms 기준)`).toBeLessThan(30);
   }
 });
+
+// 148: 글자 아주 크게(300·350·400%)에서 문의 화면 — 가로 밀림 0, 화면 밖으로 잘리는 글·칸 0, 입력칸 최소 폭
+for (const z of [3, 3.5, 4]) {
+  test(`148 문의 화면 글자 ${z * 100}%: 가로 밀림·잘림 없음`, async ({ browser }, info) => {
+    only390(info);
+    const ctx = await browser.newContext({ viewport: { width: Math.round(412 / z), height: Math.round(915 / z) }, deviceScaleFactor: 2.625 * z, isMobile: true, hasTouch: true });
+    const page = await ctx.newPage();
+    await page.goto(`${B}/inquiry/`);
+    await page.locator("input[name=kind][value=use]").check();
+    const m = await page.evaluate(() => {
+      const vw = document.documentElement.clientWidth;
+      const cut = [...document.querySelectorAll("label,button,a,textarea,h1,p,small,b,legend,.hint,.note,.warn,.cnt")]
+        .filter((e) => e.offsetParent !== null && e.getBoundingClientRect().width > 0 && e.getBoundingClientRect().right > vw + 1)
+        .map((e) => (e.innerText || e.tagName).trim().slice(0, 12));
+      const ta = document.querySelector("textarea");
+      return { sx: document.documentElement.scrollWidth - vw, cut, ta: Math.round(ta.clientWidth), vw };
+    });
+    expect(m.sx, `가로 밀림 ${m.sx}px`).toBeLessThanOrEqual(1);
+    expect(m.cut, "화면 밖으로 잘리는 글·칸").toEqual([]);
+    expect(m.ta, `입력칸 폭 ${m.ta}px (화면 ${m.vw}px)`).toBeGreaterThanOrEqual(m.vw * 0.45);
+    await ctx.close();
+  });
+}
