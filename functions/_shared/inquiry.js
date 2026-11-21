@@ -38,8 +38,12 @@ export async function purge(db, now = Date.now()) {
 }
 
 const EMAIL = /^[^\s@<>()"',;]{1,64}@[A-Za-z0-9.-]{1,190}\.[A-Za-z]{2,24}$/;
-const RRN = /\d{6}\s*-?\s*[1-8]\d{6}/;                       // 주민등록번호 형태
-const PHONE = /01[016789][\s.-]?\d{3,4}[\s.-]?\d{4}/;       // 휴대전화 형태
+const RRN = /(?<!\d)\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])\s*-?\s*[1-8]\d{6}(?!\d)/;   /* 주민등록번호 형태. 143: 앞뒤가 숫자면 제외. 144: 앞 6자리가 날짜(월 01~12·일 01~31)일 때만 */
+const SEP = "[\\s./-]{0,3}";   /* 144: 숫자 묶음 사이 구분(빈칸·점·빗금·줄표) 최대 3글자 */
+const PHONE = new RegExp(`(?:\\+\\s?82|(?<![\\d.])00\\s?82|(?<![\\d.])82|(?<![\\d.])\\(?0)(?:[\\s.)/-]*\\(?0?\\)?[\\s./-]*)?1[016789]\\)?${SEP}\\d{3,4}${SEP}\\d{4}(?!\\d)`);   /* 휴대전화. 142: +82. 143: 82·(010)·숫자 경계. 144: 0082·빗금·구분 앞뒤 빈칸 */
+const MAILBODY = /[\p{L}\p{N}._%+-]{1,64}\s?(?:@|[(\[]at[)\]])\s?[\p{L}\p{N}-]{1,63}(?:(?:\.|[(\[]dot[)\]])[\p{L}\p{N}-]{1,63}){0,4}(?:\.|[(\[]dot[)\]])\p{L}{2,24}/u;   /* 글 속 이메일. 143: 한글 주소·@ 앞뒤 빈칸·(at). 144: (dot)·[dot], 길이 제한(긴 글에서 검사가 느려지지 않게) */
+/* 143: 검사할 때만 전각 글자(０１０·＠)를 보통 글자로, 여러 줄표(–—−)를 '-'로 바꿔 본다. 144: 보이지 않는 글자(폭 없는 빈칸) 빼고 본다. 저장되는 글은 그대로 */
+const forCheck = (t) => t.normalize("NFKC").replace(/[\u200b-\u200d\u2060\ufeff]/g, "").replace(/[\u2010-\u2015\u2212\u30FC\uFF0D]/g, "-");
 
 // 입력 검사 → { ok, value } 또는 { ok:false, field, msg }
 export function validate(input) {
@@ -48,12 +52,13 @@ export function validate(input) {
   const body = String(input.body || "").replace(/\r\n/g, "\n").trim();
   if (!body) return { ok: false, field: "body", msg: "문의 내용을 적어 주세요." };
   if ([...body].length > LIMITS.body) return { ok: false, field: "body", msg: `문의 내용은 ${LIMITS.body}자까지 쓸 수 있어요.` };
-  const reply = String(input.reply || "").trim();
-  if (reply && (reply.length > LIMITS.reply || !EMAIL.test(reply))) return { ok: false, field: "reply", msg: "회신 이메일 형식을 확인해 주세요. (비워 두어도 돼요)" };
-  if (RRN.test(body)) return { ok: false, field: "body", msg: "주민등록번호처럼 보이는 숫자가 있어요. 지우고 보내 주세요." };
-  if (kindKey !== "ad" && PHONE.test(body)) return { ok: false, field: "body", msg: "전화번호는 지워 주세요. 답장이 필요하면 아래 회신 이메일 칸을 써 주세요." };
+  const chk = forCheck(body);
+  if (RRN.test(chk)) return { ok: false, field: "body", msg: "주민등록번호처럼 보이는 숫자가 있어요. 지우고 보내 주세요." };
+  if (PHONE.test(chk)) return { ok: false, field: "body", msg: "전화번호는 지워 주세요. 아이랑은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 132: 제휴 문의도 예외 없음 */
+  if (MAILBODY.test(chk)) return { ok: false, field: "body", msg: "이메일 주소는 지워 주세요. 아이랑은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 142 */
   const clip = (s, n) => String(s || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n);
-  return { ok: true, value: { kind: TYPES[kindKey], body, reply, gu: clip(input.gu, 20), screen: clip(input.screen, 40) } };
+  /* 132: 개인정보 최소화 — 회신 이메일은 받지 않는다. 예전 화면·직접 요청으로 와도 저장하지 않고 빈 값으로. (DB 칸은 기존 자료 보존 위해 그대로) */
+  return { ok: true, value: { kind: TYPES[kindKey], body, reply: "", gu: clip(input.gu, 20), screen: clip(input.screen, 40) } };
 }
 
 export async function ipHash(request, env) {

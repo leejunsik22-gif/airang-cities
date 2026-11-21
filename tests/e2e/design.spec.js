@@ -30,6 +30,8 @@ for (const [key, name] of Object.entries(B.names)) {
     await expect(page.locator(".brand-round").first()).toBeVisible();
     await page.waitForLoadState("networkidle");
     await page.evaluate(() => document.fonts.ready);
+    /* 145: 로고가 '다 받음'(성공이든 실패든) 상태가 될 때까지 최대 5초 기다림 — 판정 기준(B 기준 파일)은 그대로 */
+    await expect.poll(() => page.evaluate((s) => { const e = document.querySelector(s); return !e || e.complete; }, ".brand3 .logo3"), { timeout: 5000 }).toBe(true).catch(() => {});
     const pc = test.info().project.name.startsWith("PC");
     const g = await page.evaluate(() => {
       const q = (s) => document.querySelector(s), cs = (e) => e && getComputedStyle(e);
@@ -52,6 +54,12 @@ for (const [key, name] of Object.entries(B.names)) {
     });
     const T = (s) => s.replaceAll("{name}", name);
     const sorted = (a) => a.every((v, i) => v !== null && (i === 0 || v > a[i - 1]));
+    /* 134 v02: 117 F3 — 병원·혜택 공개 상태에 따라 문구 기준을 고른다(둘 다 보류 → texts_held, 둘 다 공개 → texts, 한쪽만 → 기준 없음). */
+    /* 134 v02 독립 QA 4: 앱의 gated() 대신 공개 상태 파일을 시험이 직접 읽는다(앱 판단이 깨져도 기준이 따라 바뀌지 않게). */
+    const st = await page.evaluate(() => fetch("./data/_status.json").then((r) => r.json()));
+    g.held = { hosp: st.files["hospitals.json"].published === false, bene: st.files["benefits.json"].published === false };
+    const S = g.held.hosp && g.held.bene ? "held" : !g.held.hosp && !g.held.bene ? "open" : "mixed";
+    const TX = S === "held" ? B.texts_held : B.texts, mixedMsg = "병원·혜택 중 한쪽만 공개 — 기준 없음(대표 확정 필요)";
     judge([
       { k: "로고 파일(대표 확정 주황 가족 하트)", ok: g.logoSrc === B.logo.home_src && g.logoOk, want: B.logo.home_src, got: g.logoSrc },
       { k: "로고 크기", ok: g.logoW >= B.logo.min_width, want: `≥${B.logo.min_width}px`, got: g.logoW },
@@ -69,10 +77,10 @@ for (const [key, name] of Object.entries(B.names)) {
       { k: "AI 표기 문구", ok: g.tag === B.texts.ai_tag, want: B.texts.ai_tag, got: g.tag },
       { k: "AI 표기 위치(상단 바 아래·제목 위)", ok: g.tagBetween, want: true, got: g.tagBetween },
       { k: "지역·학교급 표시", ok: !!g.eyebrow && g.eyebrow.startsWith(name + " · "), want: `${name} · …`, got: g.eyebrow },
-      { k: "소개 문구", ok: g.sub === B.texts.sub, want: B.texts.sub, got: g.sub },
+      { k: `소개 문구(${S})`, ok: S !== "mixed" && g.sub === TX.sub, want: S === "mixed" ? mixedMsg : TX.sub, got: g.sub },
       { k: "우리 아이 추가", ok: g.kid === B.texts.kid, want: B.texts.kid, got: g.kid },
-      { k: "검색 안내", ok: g.ph === B.texts.placeholder, want: B.texts.placeholder, got: g.ph },
-      { k: "빠른 메뉴 앞 2개(첫 칸은 시간대에 따라 '밤에 여는'/'지금 문 연' 소아과)", ok: ["밤에 여는 소아과", "지금 문 연 소아과"].includes(g.chips[0]) && g.chips[1] === B.texts.chips_first[1], want: B.texts.chips_first, got: g.chips.slice(0, 2) },
+      { k: `검색 안내(${S})`, ok: S !== "mixed" && g.ph === TX.placeholder, want: S === "mixed" ? mixedMsg : TX.placeholder, got: g.ph },
+      { k: `빠른 메뉴 앞 2개(${S}; 공개 시 첫 칸은 시간대에 따라 '밤에 여는'/'지금 문 연' 소아과)`, ok: S === "held" ? g.chips[0] === TX.chips_first[0] && g.chips[1] === TX.chips_first[1] : S === "open" && ["밤에 여는 소아과", "주말에 여는 소아과", "지금 문 연 소아과"].includes(g.chips[0]) && g.chips[1] === TX.chips_first[1], want: S === "mixed" ? mixedMsg : TX.chips_first, got: g.chips.slice(0, 2) },
       { k: "하단 메뉴 5개", ok: JSON.stringify(g.nav) === JSON.stringify(B.texts.nav), want: B.texts.nav, got: g.nav },
       { k: "배치 순서(상단→제목→아이 추가→검색→빠른 메뉴→메뉴판)", ok: sorted(g.order), want: "위에서 아래로 차례", got: g.order },
     ]);
@@ -83,6 +91,8 @@ for (const [key, name] of Object.entries(B.names)) {
 test("@디자인 입구: 확정 로고·안내 문구·글씨체", async ({ page }) => {
   await page.goto("/entry/");
   await page.waitForLoadState("networkidle");
+    /* 145: 로고가 '다 받음'(성공이든 실패든) 상태가 될 때까지 최대 5초 기다림 — 판정 기준(B 기준 파일)은 그대로 */
+    await expect.poll(() => page.evaluate((s) => { const e = document.querySelector(s); return !e || e.complete; }, ".top img"), { timeout: 5000 }).toBe(true).catch(() => {});
   const g = await page.evaluate(() => {
     const logo = document.querySelector(".top img");
     return { src: logo && logo.getAttribute("src"), ok: !!logo && logo.complete && logo.naturalWidth > 0,

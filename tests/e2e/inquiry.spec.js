@@ -53,7 +53,7 @@ test("오류 신고 주소로 열면 구·화면이 미리 채워짐", async ({ 
   await expect(page.locator("#err")).toHaveText("문의 내용을 적어 주세요.");
 });
 
-test("입력 오류 안내: 유형 없음 · 전화번호 · 회신 이메일 형식", async ({ page }) => {
+test("입력 오류 안내: 유형 없음 · 전화번호 · 이메일 칸 없음(132)", async ({ page }) => {
   await page.setExtraHTTPHeaders({ "x-test-ip": ip("err") });
   await page.goto(`${B}/inquiry/`);
   await expect(page.locator("#body"), "유형 고르기 전엔 칸이 접혀 있음").toBeHidden();
@@ -65,22 +65,21 @@ test("입력 오류 안내: 유형 없음 · 전화번호 · 회신 이메일 �
   await page.locator("#body").fill("[가상] 연락 주세요 010-0000-0000");
   await page.locator("#send").click();
   await expect(page.locator("#err")).toContainText("전화번호는 지워 주세요");
-  await page.locator("#body").fill("[가상] 사용법 문의");
-  await page.locator("#reply").fill("이메일아님");
-  await page.locator("#send").click();
-  await expect(page.locator("#err")).toContainText("회신 이메일 형식");
-  await expect(page.locator("#reply")).toBeFocused();
+  await expect(page.locator("#reply, input[type=email]"), "132: 회신 이메일 칸 없음").toHaveCount(0);
+  await expect(page.locator("#guide")).toContainText("개인정보는 적지 말아 주세요");
+  await page.locator("input[value=ad]").check();
+  expect(await page.locator("#body").inputValue(), "132: 제휴 양식에 연락처 칸 없음").not.toContain("연락처");
 });
 
 // ── 서버 검사(058 문제 보완 확인) ──
-test("서버: 한글 2000자 접수 · 2001자 거절 · 이메일 형식 · 주민번호 · 제휴 연락처 허용", async ({ request }, info) => {
+test("서버: 한글 2000자 접수 · 2001자 거절 · 이메일 무시 · 주민번호 · 제휴도 전화번호 거절(132)", async ({ request }, info) => {
   only390(info);
   expect((await post(request, { kind: "use", body: "가".repeat(2000) })).status, "한글 2000자").toBe(200);
   expect((await post(request, { kind: "use", body: "가".repeat(2001) })).status).toBe(400);
-  expect((await post(request, { kind: "use", body: "[가상]", reply: "이메일아님" })).body.field).toBe("reply");
+  expect((await post(request, { kind: "use", body: "[가상]", reply: "이메일아님" })).status, "132: 회신 칸 값은 검사 없이 버림").toBe(200);
   expect((await post(request, { kind: "use", body: "[가상]", reply: "test@example.com" })).status).toBe(200);
   expect((await post(request, { kind: "fix", body: "[가상] 900101-1234567" })).body.msg).toContain("주민등록번호");
-  expect((await post(request, { kind: "ad", body: "[가상] 담당 010-0000-0000" })).status, "제휴는 연락처 허용").toBe(200);
+  expect((await post(request, { kind: "ad", body: "[가상] 담당 010-0000-0000" })).status, "132: 제휴도 전화번호 거절").toBe(400);
   expect((await post(request, { kind: "기타", body: "x" })).status).toBe(400);
   expect((await post(request, { kind: "use", body: "   " })).status).toBe(400);
   expect((await post(request, { kind: "use", body: "x" }, { origin: "https://evil.example" })).status, "다른 사이트에서 보냄").toBe(403);
@@ -161,7 +160,7 @@ test("관리자: 새 문의 → 처리 중 → 완료, 필터·삭제·없는 �
   await expect(card).toContainText("<script>alert(1)</script>");        // 글자로만 보임
   expect(await card.locator("script").count()).toBe(0);
   await expect(card.locator(".meta")).toContainText("보낸 화면: 유성 / 학원 상세");
-  await expect(card.locator(".meta a")).toHaveAttribute("href", /^mailto:parent@example\.com\?subject=/);
+  await expect(card.locator('.meta a[href^="mailto:"]'), "132: 이메일을 보내도 저장 안 됨 → 답장 링크 없음").toHaveCount(0);
   for (const s of ["처리 중", "완료"]) {
     await card.locator("select").selectOption(s); await card.locator(".save").click();
     await expect(page.locator("#toast")).toContainText(`#${ticket} 상태를 저장했어요`);
@@ -222,4 +221,66 @@ test("보관 기간: 완료 90일 뒤·미처리 180일 뒤 자동 삭제, 그 �
   await page.locator("#soonbar").click();
   await expect(page.locator(`.item[data-id="${ids.open170}"] .pill.dd`)).toHaveText("10일 뒤 삭제");
   await ctx.close();
+});
+
+test("134: 132 이전에 접수된 '회신 이메일 있는' 옛 문의는 지워지지 않고 관리자 접수함에 그대로 보임", async ({ browser, request }, info) => {
+  only390(info);
+  const id = await (await request.get(`${B}/__test/seed-old`)).text();   // 가상 옛 문의 1건(시험 서버 메모리)
+  const ctx = await adminCtx(browser); const page = await ctx.newPage();
+  await page.goto(`${B}/inquiry/admin/`);
+  const card = page.locator(`.item[data-id="${id}"]`);
+  await expect(card, "옛 문의 보존").toBeVisible();
+  await expect(card).toContainText("132 이전 옛 문의");
+  await expect(card.locator('.meta a[href^="mailto:old-parent@example.com"]'), "옛 회신 이메일 표시 유지(기존 자료 보존)").toHaveCount(1);
+  await ctx.close();
+});
+
+// 134 v02: 이용 안내·문의 화면의 개인정보 문구가 서버가 실제 저장하는 항목·기간과 맞는지(피트 134 검수 4번)
+test("134 v02 개인정보 안내: 저장 항목·90/180일·하루 보관(IP 변환값)·삭제 시점 표시", async ({ page }, info) => {
+  only390(info);
+  await page.route(/goatcounter\.com|gc\.zgo\.at|raw\.githubusercontent\.com/, (r) => r.abort());
+  await page.goto("/yuseong/#about");   /* 앱 화면은 기본 시험 서버(8790), 문의 화면은 8791 */
+  await expect(page.locator("#view")).toContainText("개인정보를 묻지 않아요", { timeout: 10000 });
+  const about = await page.locator("#view").innerText();
+  for (const w of ["문의 종류", "보낸 구와 화면 이름", "90일", "접수 180일", "하루가 지나면 지울 대상", "관리자가 접수함을 열 때", "조금 늦을 수 있어요"]) expect(about, `이용 안내에 '${w}'`).toContain(w);
+  expect(about, "옛 문구(글만 보관) 남지 않음").not.toContain("적은 글만 처리를 위해");
+  expect(about, "하루만·하루 동안 단정 표현 없음(피트 134 v02 재검수 4)").not.toMatch(/하루만|하루 동안/);
+  await page.goto(`${B}/inquiry/`);
+  const note = await page.locator(".note").first().innerText();
+  for (const w of ["문의 종류", "보낸 구와 화면", "90일", "접수 180일", "접속 주소(IP)", "하루가 지나면 지울 대상", "조금 늦을 수 있어요"]) expect(note, `문의 화면 안내에 '${w}'`).toContain(w);
+  expect(note, "하루 동안 단정 표현 없음").not.toMatch(/하루만|하루 동안/);
+});
+
+// 142: 글 속 이메일·+82 국제 형식 휴대전화 거절 + 정상 문의는 거절하지 않음(가상 값)
+test("142 서버: 글 속 이메일·+82 휴대전화 거절, 정상 문의 통과", async ({ request }, info) => {
+  only390(info);
+  for (const b of ["메일 test@example.com 으로", "a.b-c@mail.co.kr", "연락 +82 10-0000-0000", "연락 +821000000000", "연락 +82 (0)10 0000 0000"])
+    expect((await post(request, { kind: "use", body: `[가상] ${b}` })).status, `${b} 거절`).toBe(400);
+  expect((await post(request, { kind: "use", body: "[가상] 메일 test@example.com 으로" })).body.msg).toContain("이메일 주소는 지워 주세요");
+  for (const b of ["학원 번호가 042-000-0000 으로 바뀌었어요", "대표번호 1588-0000", "https://www.example.com 원문 확인했어요", "@아이랑 앱 좋아요", "C++ 코딩 학원 추가해 주세요", "82점 받았어요 010 버튼"])
+    expect((await post(request, { kind: "fix", body: `[가상] ${b}` })).status, `${b} 정상 접수`).toBe(200);
+});
+
+// 143: 경계 사례(가상 값) — 변형된 전화·이메일 거절 + 긴 숫자(주문번호·버전)는 잘못 거절하지 않음
+test("143 서버: 변형 전화·이메일 거절, 긴 숫자·정상 문의 통과", async ({ request }, info) => {
+  only390(info);
+  for (const b of ["(010)0000-0000", "010–0000–0000", "82-10-0000-0000", "０１０-００００-００００", "test @ example.com", "test(at)example.com", "test＠example.com", "홍길동@학원.한국"])
+    expect((await post(request, { kind: "use", body: `[가상] ${b}` })).status, `${b} 거절`).toBe(400);
+  for (const b of ["주문번호 20010123456789", "버전 1.010.1234.5678", "사업자등록번호 123-45-67890", "+82 42-000-0000", "학생 82-10명 정도", "https://instagram.com/@academy_daejeon", "학원명 A@B 코딩"])
+    expect((await post(request, { kind: "fix", body: `[가상] ${b}` })).status, `${b} 정상 접수`).toBe(200);
+});
+
+// 144: 경계 사례 98건(tests/cases/inquiry_boundary_144.json, 가상 값)을 서버 검사 함수에 그대로 넣어 판정 + 긴 글 검사 속도
+test("144 규칙: 경계 98건 판정 일치 + 2,000자 글 검사 속도", async ({}, info) => {
+  only390(info);
+  const { validate } = await import("../../functions/_shared/inquiry.js");
+  const c = require("../cases/inquiry_boundary_144.json");
+  const strip = (b) => b.replace(/ \([^)]*\)$/, "");
+  const kind = (v) => (v.ok ? "" : v.msg.startsWith("전화") ? "전화" : v.msg.startsWith("이메일") ? "메일" : v.msg.startsWith("주민") ? "주민" : "기타");
+  for (const [b, k] of c.block) expect(kind(validate({ kind: "use", body: `[가상] ${strip(b)}` })), `${b} → ${k} 거절`).toBe(k);
+  for (const b of c.pass) expect(kind(validate({ kind: "fix", body: `[가상] ${b}` })), `${b} 접수`).toBe("");
+  for (const b of ["가1".repeat(999), "가".repeat(1999), "a.".repeat(999) + "@", "0".repeat(1999)]) {
+    const t = performance.now(); for (let i = 0; i < 5; i++) validate({ kind: "fix", body: b }); const ms = (performance.now() - t) / 5;
+    expect(ms, `2,000자 글 검사 ${ms.toFixed(1)}ms (Cloudflare 무료 요청당 계산 10ms 안쪽 목표, 시험 기계 차이 감안 30ms 기준)`).toBeLessThan(30);
+  }
 });

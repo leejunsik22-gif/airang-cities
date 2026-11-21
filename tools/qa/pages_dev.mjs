@@ -47,6 +47,11 @@ http.createServer(async (req, res) => {
       sql.prepare("UPDATE inquiries SET created_at=created_at-?, done_at=CASE WHEN done_at IS NULL THEN NULL ELSE done_at-? END WHERE id=?").run(+url.searchParams.get("ms"), +url.searchParams.get("ms"), +url.searchParams.get("id"));
       res.writeHead(200); return res.end("ok");
     }
+    if (url.pathname === "/__test/seed-old") {   // 시험 전용(134): 132 이전 화면으로 접수된 '회신 이메일 있는' 옛 문의 1건을 가상으로 넣음 → 보존·표시 확인용
+      const t = Date.now();
+      const r = sql.prepare("INSERT INTO inquiries (kind,body,reply,gu,screen,state,created_at,updated_at) VALUES (?,?,?,?,?,'새 문의',?,?)").run("이용 문의", "[가상] 132 이전 옛 문의", "old-parent@example.com", "유성", "", t, t);
+      res.writeHead(200); return res.end(String(r.lastInsertRowid));
+    }
     const mod = ROUTES[url.pathname.replace(/\/$/, "")];
     if (mod) {
       const chunks = []; for await (const c of req) chunks.push(c);
