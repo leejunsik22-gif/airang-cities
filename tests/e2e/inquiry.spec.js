@@ -310,3 +310,14 @@ for (const z of [3, 3.5, 4]) {
     await ctx.close();
   });
 }
+
+// 150: 관리자 비밀번호 상태 안내 — 비었을 때·12자 미만·12자 이상(가상 값)
+test("150 관리자 비밀번호: 빈 값·짧은 값·정상 구분", async ({}, info) => {
+  only390(info);
+  const { passwordReady, passwordProblemMsg } = await import("../../functions/_shared/inquiry.js");
+  expect(passwordReady({ ADMIN_PASSWORD: "" })).toBe(false);
+  expect(passwordProblemMsg({ ADMIN_PASSWORD: "" })).toContain("아직 설정되지 않았어요");
+  expect(passwordReady({ ADMIN_PASSWORD: "  short1234  " })).toBe(false);
+  expect(passwordProblemMsg({ ADMIN_PASSWORD: "short1234" })).toContain("12자 이상");
+  expect(passwordReady({ ADMIN_PASSWORD: " gasang12345678 " })).toBe(true);
+});
