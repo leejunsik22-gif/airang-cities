@@ -165,7 +165,8 @@ def build_entry(out):
     for sd, label in ((k, k) for k in SIDO_ORDER):
         cs = sorted([(k, c) for k, c in CFG["cities"].items() if c.get("sido", "경기") == sd], key=lambda kc: kc[1]["name"])
         if cs:
-            g += f'<p>{label}</p>' + "".join(f'<a href="{BASE}/{k}/guide/">{c.get("sgg") or c["name"] + SIDOS[sd][2]} 학원·유치원·소아과</a>' for k, c in cs)
+            # 164: 링크 글자를 공개 중인 메뉴(학원·학교 일정)로 — 유치원(공개 전)·소아과(홍보 금지어) 뺌
+            g += f'<p>{label}</p>' + "".join(f'<a href="{BASE}/{k}/guide/">{c.get("sgg") or c["name"] + SIDOS[sd][2]} 학원·학교 일정</a>' for k, c in cs)
     src = src.replace("<!--GUIDES-->", f'<div class="lift guides"><h3>📍 동네 정보 모아보기</h3>{g}</div>')
     open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(src)
     for f in ("icon-192.png", "icon-512.png"):
