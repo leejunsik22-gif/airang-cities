@@ -39,3 +39,18 @@ for (const z of [3, 3.5, 4]) {
     await ctx.close();
   });
 }
+
+/* 159: 대표 갤럭시 글자 최대 사진 — 마이 '성범죄자 알림e' 칸의 아이콘 바탕이 칸 밖으로 삐져나옴 */
+for (const z of [3, 4]) {
+  test(`159 마이 메뉴 칸 글자 ${Math.round(z * 100)}%: 아이콘·글자가 칸 안에`, async ({ browser }, info) => {
+    test.skip(info.project.name !== "폰390", "모의 확대는 한 번만");
+    const ctx = await browser.newContext({ baseURL: info.project.use.baseURL, viewport: { width: Math.round(412 / z), height: Math.round(915 / z) }, deviceScaleFactor: 2.625 * z, isMobile: true, hasTouch: true, serviceWorkers: "block" });
+    const page = await ctx.newPage();
+    await page.route(/goatcounter\.com|gc\.zgo\.at|raw\.githubusercontent\.com/, (r) => r.abort());
+    await page.goto("/yuseong/#my"); await page.waitForTimeout(1200);
+    const bad = await page.evaluate(() => [...document.querySelectorAll("#view .mtile")].filter((t) => t.offsetParent).flatMap((t) => { const T = t.getBoundingClientRect(); return [...t.querySelectorAll(".bi, b")].filter((e) => { const r = e.getBoundingClientRect(); return r.left < T.left - 1 || r.right > T.right + 1; }).map(() => t.innerText.trim().slice(0, 10)); }));
+    expect(bad, "칸 밖으로 나간 아이콘·글자").toEqual([]);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBeLessThanOrEqual(1);
+    await ctx.close();
+  });
+}
