@@ -32,6 +32,7 @@ test("155 이용 안내에 '효숲 이야기'(효·숲 뜻, 세 세대), 입구 
   await expect(page.locator("#view")).toContainText("효숲 이야기", { timeout: 10000 });
   const t = await page.locator("#view").innerText();
   for (const w of ["효(孝)", "여러 그루가 함께 자라는", "세 세대", "Hyo Forest"]) expect(t).toContain(w);
+  expect(t, "코드 설명(주석)이 화면에 보이지 않음").not.toMatch(/\/\*|155:/);
   await page.goto("/entry/");
   await expect(page.locator(".foot")).toContainText("세 세대가 함께 자라는 숲");
 });
