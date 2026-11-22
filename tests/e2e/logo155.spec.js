@@ -36,3 +36,14 @@ test("155 이용 안내에 '효숲 이야기'(효·숲 뜻, 세 세대), 입구 
   await page.goto("/entry/");
   await expect(page.locator(".foot")).toContainText("세 세대가 함께 자라는 숲");
 });
+
+test("155 앱 설치 아이콘: manifest 아이콘 번호가 화면 아이콘 번호와 같음(휴대폰이 새 아이콘을 받게)", async ({ page, request }, info) => {
+  test.skip(info.project.name !== "폰390", "한 번만");
+  await page.route(/goatcounter\.com|gc\.zgo\.at|raw\.githubusercontent\.com/, (r) => r.abort());
+  await page.goto("/yuseong/");
+  const href = await page.locator('link[rel="icon"]').getAttribute("href");
+  const v = (href.match(/v=(\d+)/) || [])[1];
+  const m = await (await request.get("/yuseong/manifest.webmanifest")).json();
+  for (const i of m.icons) expect(i.src, "manifest 아이콘 번호").toContain("v=" + v);
+});
+
