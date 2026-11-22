@@ -10,8 +10,7 @@ export const LIMITS = {
   perIp10m: 5,            // 같은 기기(주소)에서 10분에 5건
   perIpDay: 20,           // 하루 20건
   globalDay: 300,         // 전체 하루 300건(도배 방어)
-  doneKeepDays: 90,       // 완료 후 90일 뒤 자동 삭제(대표 결정 대기 — 추천값)
-  maxKeepDays: 180,       // 처리 안 된 문의도 180일 지나면 삭제(11/9 피트 의견: 1년→180일)
+  maxKeepDays: 180,       /* 151 대표 결정(11-22): 모든 문의는 처리 여부와 상관없이 접수 180일 뒤 삭제(옛 '완료 90일' 규칙 없앰) */
   warnDays: 30,           // 삭제 30일 전부터 접수함에 '곧 삭제' 표시
 };
 const DAY = 86400000;
@@ -32,8 +31,7 @@ export async function schema(db) {
 
 // 보관 기간 지난 문의·접수 기록 지우기(관리자 화면 열 때마다 + 접수 때 실행 → 따로 예약 작업 불필요)
 export async function purge(db, now = Date.now()) {
-  await db.prepare(`DELETE FROM inquiries WHERE (state='완료' AND done_at < ?) OR created_at < ?`)
-    .bind(now - LIMITS.doneKeepDays * DAY, now - LIMITS.maxKeepDays * DAY).run();
+  await db.prepare(`DELETE FROM inquiries WHERE created_at < ?`).bind(now - LIMITS.maxKeepDays * DAY).run();
   await db.prepare(`DELETE FROM inquiry_rate WHERE at < ?`).bind(now - DAY).run();
 }
 
