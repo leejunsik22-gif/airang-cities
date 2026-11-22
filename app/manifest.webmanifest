@@ -1,10 +1,10 @@
 {
-  "name": "아이랑 {{name}}",
+  "name": "효숲 {{name}}",
 {{#if yongin}}
-  "short_name": "아이랑{{name}}",
+  "short_name": "효숲{{name}}",
   "description": "{{name}} 아이 키우는 집을 위한 급식·학교·도서관·유치원·학원·행사 정보",
 {{#else}}
-  "short_name": "아이랑 {{name}}",
+  "short_name": "효숲 {{name}}",
   "description": "{{name}} 학교·급식·도서관·유치원·학원·행사 정보를 한곳에서",
 {{/if}}
   "lang": "ko",
