@@ -13,8 +13,8 @@
 <meta name="apple-mobile-web-app-title" content="효숲{{name}}">
 <title>효숲 {{name}}</title>
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icon-192.png?v=61">
-<link rel="apple-touch-icon" href="icon-192.png?v=61">
+<link rel="icon" href="icon-192.png?v=62">
+<link rel="apple-touch-icon" href="icon-192.png?v=62">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&family=Gothic+A1:wght@800&display=swap">
 <style>
@@ -2531,6 +2531,7 @@ function viewAbout() {
 {{#else}}
     ${sec("이 서비스는", `{{name}}에 사는 학부모에게 꼭 필요한 정보를 한곳에서 볼 수 있으면 좋겠다는 생각으로, 효숲 팀이 직접 만든 <b>학부모 통합 정보 서비스</b>예요.<br>학교 일정, 도서관, 학원, 유치원, 아이와 갈 행사, 일자리 정보를 공공 자료에서 모아 보여 드려요.`)}
 {{/if}}
+    ${sec("효숲 이야기", `<b>효(孝)</b> — 부모와 어르신을 아끼고 섬기는 마음이에요.<br><b>숲</b> — 나무 한 그루가 아니라 여러 그루가 함께 자라는 곳이에요.<br>그래서 <b>효숲</b>은 어르신·부모·아이 세 세대가 서로 기대어 함께 자라는 숲이라는 뜻이에요. 로고의 세 그루 나무도 세 세대를 나타내요. 영문 이름은 Hyo Forest예요.`)}   /* 155: 03 전달 메모 v2의 이름 뜻(대표 확정). 소개 문구 초안은 대표 확정 전이라 넣지 않음 */
     ${sec("무료로 운영해요", li(["모든 기능을 <b>무료</b>로 제공해요. 회원가입이나 결제가 없어요.", "{{f.sgg}}청, 교육청 등 <b>공공기관이 운영하는 서비스가 아니에요.</b> 개인이 공공 자료를 모아 보여 드리는 서비스예요."]))}
     ${sec("개인정보를 묻지 않아요", `회원가입이 없고, 이름·전화번호·이메일·주소를 <b>묻지 않아요.</b><br>문의하기를 보내면 처리를 위해 <b>문의 종류·적은 글·보낸 구와 화면 이름·접수와 처리 시각</b>만 보관해요. 처리 여부와 상관없이 접수 180일 뒤에 지워요.<br>같은 곳에서 문의를 너무 많이 보내는 것을 막으려고, 접속 주소(IP)를 알아볼 수 없게 바꾼 값을 보관하고, 하루가 지나면 지울 대상이 돼요.<br>기한이 지난 기록은 다음 문의가 접수되거나 관리자가 접수함을 열 때 지워지므로, 실제로 지워지는 날은 조금 늦을 수 있어요. <b>문의 글에는 개인정보를 적지 말아 주세요.</b>`)}
     ${sec("어떤 정보를 어디에, 무엇에 쓰나요", [
@@ -3280,7 +3281,7 @@ function mock(k) {
     more: `<div style="display:flex;gap:4px"><div class="rb"><i>⧉</i>복사</div><div class="rb"><i>▭</i>기기로 보내기</div><div class="rb"><i>☰</i>읽기 목록</div><div class="rb"><i class="hl">⌄</i><b>더 보기</b></div></div>`,
     addHome: `<div style="border-radius:12px;overflow:hidden"><div class="li" style="opacity:.55">▦ QR 코드 만들기</div><div class="li hl" style="font-weight:800">${ICON_PLUS} 홈 화면에 추가</div><div class="li" style="opacity:.55">✎ 새로운 빠른 메모에 추가</div></div>`,
     addBtn: `<div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border-radius:12px;padding:8px 10px"><span style="color:#1a73e8">취소</span><b>홈 화면에 추가</b><span class="hl" style="color:#1a73e8;font-weight:800;padding:2px 8px">추가</span></div>
-      <div style="display:flex;align-items:center;gap:8px;margin-top:8px"><img src="icon-192.png?v=61" width="30" height="30" style="border-radius:8px" alt=""><span>효숲 {{name}}</span></div>`,
+      <div style="display:flex;align-items:center;gap:8px;margin-top:8px"><img src="icon-192.png?v=62" width="30" height="30" style="border-radius:8px" alt=""><span>효숲 {{name}}</span></div>`,
     safariBar: `<div class="bar" style="justify-content:space-between"><span>‹</span><span style="flex:1;text-align:center;opacity:.7">${esc(location.host)}</span><span class="hl" style="padding:2px 8px;font-weight:800">⋯</span></div><div style="font-size:11px;color:var(--muted);margin-top:6px;text-align:center">화면 맨 아래 주소창 오른쪽</div>`,
     safariShare: `<div style="border-radius:12px;overflow:hidden"><div class="li hl" style="font-weight:800">${sh} 공유</div><div class="li" style="opacity:.55">☆ 책갈피에 추가</div></div>`,
     kakao: `<div class="bar" style="justify-content:space-between"><span>✕</span><span style="flex:1;text-align:center;opacity:.7">${esc(location.host)}</span><span class="hl" style="padding:2px 8px;font-weight:800">⋮</span></div><div style="font-size:11px;color:var(--muted);margin-top:6px;text-align:center">카톡 화면 오른쪽 위 또는 아래</div>`,
@@ -3325,7 +3326,7 @@ function openInstall(auto) {
   el.style.cssText = "position:fixed;inset:0;z-index:50;background:rgba(20,26,46,.45);display:flex;align-items:flex-end;justify-content:center";
   el.innerHTML = `<div style="background:#fff;width:min(560px,100%);border-radius:26px 26px 0 0;padding:22px 20px calc(26px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(20,26,46,.25);max-height:88vh;overflow:auto">
       <div style="display:flex;align-items:center;gap:12px">
-        <img src="icon-192.png?v=61" alt="" width="44" height="44" style="border-radius:12px;box-shadow:0 3px 10px rgba(30,40,90,.15)">
+        <img src="icon-192.png?v=62" alt="" width="44" height="44" style="border-radius:12px;box-shadow:0 3px 10px rgba(30,40,90,.15)">
         <div style="flex:1;min-width:0"><div style="font-size:12px;color:var(--muted)">효숲 {{name}} · 앱처럼 쓰기</div><div style="font-size:18px;font-weight:800;margin-top:2px">${esc(title)}</div></div>
         <button onclick="closeInstall()" aria-label="닫기" style="border:0;background:#EEF0F6;width:34px;height:34px;border-radius:17px;font-size:18px;color:var(--muted);cursor:pointer">×</button></div>
       ${MOCK_CSS}<div style="margin-top:6px">${body}</div>
