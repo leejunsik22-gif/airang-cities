@@ -76,7 +76,8 @@ def tokens(city):
     t["f.sgg"] = c.get("sgg", c["name"] + SIDOS[sido][2])
     # 다른 도시 둘러보기: [이름, 주소, 시도] — 경기도 → 서울, 시도 안에서는 가나다순
     oc = sorted(CFG["cities"].items(), key=lambda kv: (SIDO_ORDER.index(kv[1].get("sido", "경기")), kv[1]["name"]))
-    oc = [f'["{v["name"]}", "{BASE}/{k}/", "{v.get("sido", "경기")}"]' for k, v in oc]
+    # 164: 같은 사이트 안 이동은 상대 주소(/구/) — 지금 보고 있는 주소(hyoforest.com·pages.dev) 그대로 넘어가 휴대폰 저장 정보(관심 학원 등)가 이어지게
+    oc = [f'["{v["name"]}", "/{k}/", "{v.get("sido", "경기")}"]' for k, v in oc]
     t["f.otherCities"] = "const OTHER_CITIES = [\n  " + ",\n  ".join(", ".join(oc[i:i + 6]) for i in range(0, len(oc), 6)) + "];"
     return t
 
