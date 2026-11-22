@@ -233,6 +233,22 @@ a.help-btn{display:inline-flex;align-items:center;justify-content:center;text-de
 .sheet a.pick{display:block;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:8px 0;text-decoration:none;color:var(--navy);background:var(--ivory-2)}
 .sheet a.pick b{display:block;font-size:15.5px}.sheet a.pick small{display:block;font-size:12.5px;color:var(--muted);margin-top:3px;word-break:keep-all}
 .sheet .x{float:right;border:0;background:none;font-size:22px;color:var(--muted);cursor:pointer}
+/* 153: 글자 크게(갤럭시 글자 최대) — 입구가 가로로 밀리고 글자가 한 자씩 세로로 쌓이던 문제. 글자 약 170% 이상(폭 240px 이하)·약 200% 이상(폭 200px 이하)에서만 적용, 보통 글자 크기는 그대로 */
+@media (max-width:240px){
+.top{flex-direction:column;align-items:flex-start;gap:6px}.top>div{min-width:0;max-width:100%}
+.top b,.top small,.fam h1,.fam .sub,.other p,.soon p,.foot,.note{word-break:keep-all;overflow-wrap:anywhere}
+.fam-pic{height:auto;min-height:96px;display:flex;align-items:flex-end;padding:8px}.fam-tag{position:relative;right:auto;bottom:auto;max-width:100%;overflow-wrap:anywhere}
+.fam-body{padding:6px 12px 14px}
+.tabs{flex-wrap:wrap}.tab{flex:1 1 100%;height:auto;min-height:48px;white-space:normal;padding:6px 8px}
+.grid{grid-template-columns:minmax(0,1fr)}
+.city .nm,.city .gu{white-space:normal;overflow-wrap:anywhere}
+.again{flex-wrap:wrap}.again .t{flex:1 1 100%;min-width:0}.again .t b{overflow-wrap:anywhere}
+.help-row{flex-direction:column;margin-top:0}.help-btn{white-space:normal;padding:8px 10px;min-width:0}
+.locate{height:auto;min-height:54px;padding:8px 10px;white-space:normal}
+.chips > span{max-width:100%;overflow-wrap:anywhere}
+}
+@media (max-width:300px){.help-row{flex-wrap:wrap}.help-btn,#btn-install{flex:1 1 100%}}   /* 153: 글자 약 140% 이상에서 '홈 화면에 추가'·'문의하기' 두 버튼을 위아래로 */
+@media (max-width:200px){.wrap{padding:12px 8px 40px}.fam-body{padding:6px 10px 12px}.again{padding:10px}.soon,.other{padding:12px 10px}}
 </style></head><body>
 <div class="wrap">
   <div class="top"><img class="brandlogo" src="img/logo-symbol.png" width="44" height="39" alt="효숲 로고"><div><b>효숲 대전</b><small>아이 키우는 집을 위한 동네 정보</small></div></div>
@@ -240,7 +256,7 @@ a.help-btn{display:inline-flex;align-items:center;justify-content:center;text-de
     <div class="fam-pic" style="background-image:image-set(url(img/entry-main-800.webp) 1x,url(img/entry-main-1600.webp) 2x)"><span class="fam-tag">AI 생성 이미지 · 실제 기관·인물 아님</span></div>
     <div class="fam-body">
       <h1>우리 동네를 골라 주세요</h1>
-      <p class="sub">학교·급식 · 도서관 · 학원 · 병원 · 혜택 — 무료·가입 없음</p>
+      <p class="sub">학교 일정 · 학원 — 무료·가입 없음</p>
       <div class="chips" id="chips"></div>
     </div>
   </section>
@@ -391,7 +407,7 @@ const q = new URLSearchParams(location.search).get("near");
 const qc = CITIES.find(x => x[0] === q); if (qc) tab = qc[6];
 render(q);
 </script>
-<script>document.getElementById("chips").innerHTML = [["school", "학교·급식"], ["pencil", "학원"], ["hospital", "병원"], ["gift", "혜택"]].map(([i, t]) => `<span>${ico(i, 16, "none")} ${t}</span>`).join("");
+<script>document.getElementById("chips").innerHTML = [["school", "학교 일정"], ["pencil", "학원"]].map(([i, t]) => `<span>${ico(i, 16, "none")} ${t}</span>`).join("");
 document.getElementById("loc-ic").innerHTML = ico("pin", 18, "none", "#fff");
 document.querySelectorAll(".ih").forEach(e => e.innerHTML = ico("city", 16, "none"));</script>
 <script>
