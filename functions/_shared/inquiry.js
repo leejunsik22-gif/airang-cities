@@ -52,8 +52,8 @@ export function validate(input) {
   if ([...body].length > LIMITS.body) return { ok: false, field: "body", msg: `문의 내용은 ${LIMITS.body}자까지 쓸 수 있어요.` };
   const chk = forCheck(body);
   if (RRN.test(chk)) return { ok: false, field: "body", msg: "주민등록번호처럼 보이는 숫자가 있어요. 지우고 보내 주세요." };
-  if (PHONE.test(chk)) return { ok: false, field: "body", msg: "전화번호는 지워 주세요. 아이랑은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 132: 제휴 문의도 예외 없음 */
-  if (MAILBODY.test(chk)) return { ok: false, field: "body", msg: "이메일 주소는 지워 주세요. 아이랑은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 142 */
+  if (PHONE.test(chk)) return { ok: false, field: "body", msg: "전화번호는 지워 주세요. 효숲은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 132: 제휴 문의도 예외 없음 */
+  if (MAILBODY.test(chk)) return { ok: false, field: "body", msg: "이메일 주소는 지워 주세요. 효숲은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 142 */
   const clip = (s, n) => String(s || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n);
   /* 132: 개인정보 최소화 — 회신 이메일은 받지 않는다. 예전 화면·직접 요청으로 와도 저장하지 않고 빈 값으로. (DB 칸은 기존 자료 보존 위해 그대로) */
   return { ok: true, value: { kind: TYPES[kindKey], body, reply: "", gu: clip(input.gu, 20), screen: clip(input.screen, 40) } };

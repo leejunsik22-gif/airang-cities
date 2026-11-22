@@ -92,11 +92,11 @@ table{{width:100%;border-collapse:collapse;font-size:14px}}td,th{{padding:8px 6p
 .num{{text-align:right;white-space:nowrap}}.sub{{color:#6B7280;font-size:12.5px}}.kpi{{display:flex;gap:10px;flex-wrap:wrap}}.kpi div{{flex:1;min-width:120px;background:var(--soft);border-radius:12px;padding:10px 12px}}.kpi b{{display:block;font-size:20px;color:var(--ink)}}
 footer{{margin-top:28px;font-size:12px;color:#6B7280;line-height:1.7}}
 </style></head><body><div class="w">
-<div class="top"><img src="/icon-192.png" alt=""><b>아이랑 <span>{E(c['name'])}</span></b></div>
+<div class="top"><img src="/icon-192.png" alt=""><b>효숲 <span>{E(c['name'])}</span></b></div>
 <div class="crumb">{nav}</div>
 {body}
-<a class="app" href="/">아이랑 {E(c['name'])} 앱으로 보기 — 우리 아이 학교·급식·학원 한곳에</a>
-<footer>아이랑은 공공기관이 아닌 송골랩이 만든 무료 서비스예요. 공공데이터(나이스 교육정보 개방포털, 유치원 알리미, 도서관 정보나루, 국립중앙의료원 등)를 모아 보여 드려요.
+<a class="app" href="/">효숲 {E(c['name'])} 앱으로 보기 — 우리 아이 학교·급식·학원 한곳에</a>
+<footer>효숲은 공공기관이 아닌 민간이 만든 무료 서비스예요. 공공데이터(나이스 교육정보 개방포털, 유치원 알리미, 도서관 정보나루, 국립중앙의료원 등)를 모아 보여 드려요.
 정보는 바뀔 수 있으니 방문 전 꼭 전화로 확인해 주세요. 마지막 갱신 {now}.</footer>
 </div></body></html>"""
 
@@ -127,7 +127,7 @@ def build_city(key, out, data):
         open(p, "w", encoding="utf-8").write(doc)
         pages.append(pretty)
 
-    home = ("아이랑 " + nm, "/guide/")
+    home = ("효숲 " + nm, "/guide/")
     aca = (load(data, key, "academies") or {}).get("academies") or []
     kin = (load(data, key, "kinder") or {}).get("kinders") or []
     libs = (load(data, key, "libs") or {}).get("libraries") or []
@@ -158,7 +158,7 @@ def build_city(key, out, data):
 <h2>동네별로 보기</h2><div class="chips">{dong_chips or '<span class="sub">동네별로 나눌 만큼 많지 않아요</span>'}</div>
 <h2>학원 목록</h2><div class="card"><table><tr><th>학원</th><th class="num">신고 교습비(최저)</th></tr>{rows}</table>
 {'<p class="sub">목록은 80곳까지 보여 드려요. 전체는 앱에서 볼 수 있어요.</p>' if len(lst) > 80 else ''}</div>"""
-        write(f"guide/academy/{slug}.html", f"{sgg} {label}학원 {len(lst)}곳 교습비 비교 | 아이랑 {nm}",
+        write(f"guide/academy/{slug}.html", f"{sgg} {label}학원 {len(lst)}곳 교습비 비교 | 효숲 {nm}",
               f"{sgg} {label}학원·교습소 {len(lst)}곳의 동네별 목록과 교육청 신고 교습비" + (f"(가운데값 {won(med)})" if med else "") + "를 한눈에 비교해 보세요.",
               body, [home, ("학원", "/guide/academy/"), (label, None)])
         for d, v in dongs:
@@ -171,7 +171,7 @@ def build_city(key, out, data):
 <p class="lead">{E(sgg)} {E(d)}의 {E(label)} 학원·교습소 {len(v)}곳이에요.{f' 교육청에 신고된 교습비 가운데값은 {won(m2)}이에요.' if m2 else ''}</p>
 <div class="card"><table><tr><th>학원</th><th class="num">신고 교습비</th></tr>{rows2}</table></div>
 <p class="sub"><a href="/guide/academy/{slug}.html">← {E(sgg)} {E(label)}학원 전체 보기</a></p>"""
-            write(f"guide/academy/{slug}/{d}.html", f"{d} {label}학원 {len(v)}곳 교습비 | 아이랑 {nm}",
+            write(f"guide/academy/{slug}/{d}.html", f"{d} {label}학원 {len(v)}곳 교습비 | 효숲 {nm}",
                   f"{sgg} {d} {label}학원·교습소 {len(v)}곳 목록과 교육청 신고 교습비" + (f"(가운데값 {won(m2)})" if m2 else "") + ".",
                   body2, [home, ("학원", "/guide/academy/"), (label, f"/guide/academy/{slug}.html"), (d, None)])
     if aca:
@@ -182,14 +182,14 @@ def build_city(key, out, data):
 <p class="lead">{E(sgg)}에 등록된 학원·교습소를 과목과 동네로 나눠 봤어요. 과목을 누르면 교습비도 비교할 수 있어요.</p>
 <h2>과목별</h2><div class="chips">{''.join(f'<a href="/guide/academy/{s}.html">{E(l)} {n}</a>' for s, l, n in subj_links)}</div>
 <h2>동네별 학원 수</h2><div class="card"><table>{''.join(f'<tr><td>{E(d)}</td><td class="num">{n:,}곳</td></tr>' for d, n in sorted(dc.items(), key=lambda kv: -kv[1])[:30])}</table></div>"""
-        write("guide/academy/index.html", f"{sgg} 학원 {len(aca):,}곳 · 과목별 교습비 | 아이랑 {nm}",
+        write("guide/academy/index.html", f"{sgg} 학원 {len(aca):,}곳 · 과목별 교습비 | 효숲 {nm}",
               f"{sgg} 학원·교습소 {len(aca):,}곳을 수학·영어·국어 등 과목별, 동네별로 정리하고 교육청 신고 교습비를 비교해요.", body, [home, ("학원", None)])
 
     # ── 유치원
     if kin:
         rows = "".join(f"<tr><td><b>{E(k['n'])}</b><div class='sub'>{E(k.get('type'))} · {E(k.get('dong'))} · {E(k.get('tel'))}</div></td><td class='num'>{k.get('cap') or ''}</td><td>{E(k.get('time'))}</td></tr>" for k in sorted(kin, key=lambda k: (k.get('type', '')[:2] != '공립', k.get('dong', ''), k['n'])))
         pub = sum(1 for k in kin if (k.get("type") or "").startswith("공립"))
-        write("guide/kinder.html", f"{sgg} 유치원 {len(kin)}곳 (공립 {pub}곳) 정원·운영시간 | 아이랑 {nm}",
+        write("guide/kinder.html", f"{sgg} 유치원 {len(kin)}곳 (공립 {pub}곳) 정원·운영시간 | 효숲 {nm}",
               f"{sgg} 유치원 {len(kin)}곳(공립 {pub}곳)의 정원, 운영시간, 연락처를 동네별로 정리했어요.",
               f"""<h1>{E(sgg)} 유치원 {len(kin)}곳</h1><p class="lead">공립 {pub}곳, 사립 {len(kin) - pub}곳이에요. 유치원 알리미 자료로 정원과 운영시간을 모았어요.</p>
 <div class="card"><table><tr><th>유치원</th><th class="num">정원</th><th>운영시간</th></tr>{rows}</table></div>""", [home, ("유치원", None)])
@@ -197,7 +197,7 @@ def build_city(key, out, data):
     # ── 도서관
     if libs:
         rows = "".join(f"<tr><td><b>{E(l['name'])}</b><div class='sub'>{E(l.get('addr'))}<br>{E(l.get('tel'))}</div></td><td>{E(l.get('hours'))}<div class='sub'>휴관 {E(l.get('closed'))}</div></td></tr>" for l in libs)
-        write("guide/library.html", f"{sgg} 도서관 {len(libs)}곳 운영시간·휴관일 | 아이랑 {nm}",
+        write("guide/library.html", f"{sgg} 도서관 {len(libs)}곳 운영시간·휴관일 | 효숲 {nm}",
               f"{sgg} 공공도서관·어린이도서관 {len(libs)}곳의 운영시간, 휴관일, 연락처를 한눈에 보세요.",
               f"""<h1>{E(sgg)} 도서관 {len(libs)}곳 운영시간·휴관일</h1><p class="lead">공공도서관과 어린이도서관의 운영시간과 휴관일이에요.</p>
 <div class="card"><table><tr><th>도서관</th><th>운영시간</th></tr>{rows}</table></div>""", [home, ("도서관", None)])
@@ -212,7 +212,7 @@ def build_city(key, out, data):
         late = [x for x in peds if any(s and len(s) == 8 and s[4:6] >= "20" for s in (x.get("h") or [])[:5])]
         sun = [x for x in peds if len(x.get("h") or []) > 6 and x["h"][6]]
         rows = "".join(f"<tr><td><b>{E(x['n'])}</b><div class='sub'>{E(x.get('a'))}</div></td><td>{hrs(x.get('h'))}</td></tr>" for x in sorted(peds, key=lambda x: (x not in late, x not in sun, x['n'])))
-        write("guide/pediatrics.html", f"{sgg} 소아과 {len(peds)}곳 · 야간·일요일 진료 | 아이랑 {nm}",
+        write("guide/pediatrics.html", f"{sgg} 소아과 {len(peds)}곳 · 야간·일요일 진료 | 효숲 {nm}",
               f"{sgg} 소아청소년과 {len(peds)}곳의 진료 시간. 저녁 8시 넘어 여는 곳 {len(late)}곳, 일요일에 여는 곳 {len(sun)}곳을 먼저 보여 드려요.",
               f"""<h1>{E(sgg)} 소아청소년과 {len(peds)}곳 진료 시간</h1>
 <p class="lead">저녁 8시 넘어 여는 곳 {len(late)}곳, 일요일에 여는 곳 {len(sun)}곳을 위에 보여 드려요. 위급하면 바로 <b>119</b>에 전화하세요.</p>
@@ -224,7 +224,7 @@ def build_city(key, out, data):
     evs = [e for e in (ev.get("city") or []) + (ev.get("lib") or []) if (e.get("end") or e.get("start") or "9") >= today]
     if evs:
         rows = "".join(f"<tr><td><b>{E(e['title'])}</b><div class='sub'>{E(e.get('place') or e.get('lib'))}</div></td><td class='num'>{E(e.get('start', '')[5:].replace('-', '/'))}{' ~ ' + E(e.get('end', '')[5:].replace('-', '/')) if e.get('end') and e.get('end') != e.get('start') else ''}</td></tr>" for e in evs[:60])
-        write("guide/events.html", f"{sgg} 아이와 갈 만한 곳 · 행사 {len(evs)}개 | 아이랑 {nm}",
+        write("guide/events.html", f"{sgg} 아이와 갈 만한 곳 · 행사 {len(evs)}개 | 효숲 {nm}",
               f"{sgg}에서 아이와 함께 갈 만한 공연·축제·체험 프로그램 {len(evs)}개를 날짜순으로 모았어요.",
               f"""<h1>{E(sgg)} 아이와 갈 만한 곳 · 행사</h1><p class="lead">앞으로 열리는 아이·가족 공연, 축제, 체험 프로그램 {len(evs)}개예요.</p>
 <div class="card"><table><tr><th>행사</th><th class="num">날짜</th></tr>{rows}</table></div>""", [home, ("행사", None)])
@@ -264,7 +264,7 @@ def build_city(key, out, data):
         evh = ("<h2>방학에 아이와 갈 만한 곳</h2><div class='card'><table>" + "".join(f"<tr><td><b>{E(e['title'])}</b><div class='sub'>{E(e.get('place') or e.get('lib'))}</div></td><td class='num'>{E(e.get('start', '')[5:].replace('-', '/'))}</td></tr>" for e in wev[:20]) + "</table></div><p class='sub'><a href='/guide/events.html'>행사 전체 보기 →</a></p>") if wev else ""
         sp = (load(data, key, "sports") or {}).get("centers") or []
         sph = ("<h2>방학 운동 교실 (공공 체육센터)</h2><div class='card'><table>" + "".join(f"<tr><td><b>{E(x.get('name'))}</b><div class='sub'>{E(x.get('area'))} · {E(tel(x.get('tel')))}</div></td><td>{E(' · '.join((x.get('tags') or [])[:4]))}</td></tr>" for x in sp[:20]) + "</table></div>") if sp else ""
-        write("guide/winter.html", f"{sgg} 겨울방학 언제? 학교별 방학 날짜·졸업식 | 아이랑 {nm}",
+        write("guide/winter.html", f"{sgg} 겨울방학 언제? 학교별 방학 날짜·졸업식 | 효숲 {nm}",
               f"{sgg} 초·중·고 {len(win)}곳의 겨울방학 시작일과 졸업식·종업식 날짜를 학교별로 정리했어요. 방학에 아이와 갈 만한 곳도 함께 보세요.",
               f"""<h1>{E(sgg)} 겨울방학 언제? 학교별 방학 날짜</h1>
 <p class="lead">학교가 나이스(NEIS)에 올린 학사일정으로 {len(win)}개 학교의 겨울방학 시작일을 모았어요. 학교 사정으로 바뀔 수 있으니 가정통신문도 꼭 확인해 주세요.</p>
@@ -276,7 +276,7 @@ def build_city(key, out, data):
     if els:
         yr = datetime.now(KST).year + (1 if datetime.now(KST).month >= 6 else 0)
         rows = "".join(f"<tr><td><b>{E(sc['name'])}</b><div class='sub'>{E(sc.get('address'))}</div></td><td>{E(sc.get('dong'))}</td></tr>" for sc in els)
-        write("guide/school-start.html", f"{yr} {sgg} 초등학교 입학 준비 · 취학통지서·예비소집 | 아이랑 {nm}",
+        write("guide/school-start.html", f"{yr} {sgg} 초등학교 입학 준비 · 취학통지서·예비소집 | 효숲 {nm}",
               f"{yr}년 3월 초등학교 입학 준비: 취학통지서, 예비소집, 예방접종 확인, 돌봄 신청 순서와 {sgg} 초등학교 {len(els)}곳 목록.",
               f"""<h1>{yr}년 {E(sgg)} 초등학교 입학 준비</h1>
 <p class="lead">처음 학교 가는 아이를 위해, 부모가 챙길 일을 순서대로 정리했어요. 정확한 날짜는 해마다 조금씩 달라요. 주민센터·학교 안내를 꼭 함께 확인해 주세요.</p>
@@ -285,7 +285,7 @@ def build_city(key, out, data):
 <tr><td><b>② 예비소집 가기</b> <span class="sub">보통 1월</span><div class="sub">배정된 학교에 아이와 함께 가요. 못 가게 되면 꼭 미리 학교에 연락하세요.</div></td></tr>
 <tr><td><b>③ 예방접종 확인</b><div class="sub">입학 전에 DTaP 5차, 폴리오 4차, MMR 2차, 일본뇌염 접종을 마쳤는지 질병관리청 예방접종도우미에서 확인해요. 빠진 게 있으면 {'<a href="/guide/pediatrics.html">가까운 소아과</a>' if peds else '가까운 소아과'}에서 맞혀요.</div></td></tr>
 <tr><td><b>④ 돌봄·방과후 신청</b><div class="sub">초등 돌봄교실·방과후 프로그램은 입학 전후로 학교에서 신청을 받아요. 학교 안내문을 놓치지 마세요.</div></td></tr>
-<tr><td><b>⑤ 받을 수 있는 혜택 확인</b><div class="sub">입학 축하금, 교복·체험비 지원 같은 혜택은 시·구마다 달라요. {'아이랑 앱의 <a href="/#bene">혜택</a> 메뉴에서 우리 동네 것을 찾아보세요.' if bene_ok else '시·구청 누리집에서 우리 동네 것을 확인해 보세요.'}</div></td></tr>
+<tr><td><b>⑤ 받을 수 있는 혜택 확인</b><div class="sub">입학 축하금, 교복·체험비 지원 같은 혜택은 시·구마다 달라요. {'효숲 앱의 <a href="/#bene">혜택</a> 메뉴에서 우리 동네 것을 찾아보세요.' if bene_ok else '시·구청 누리집에서 우리 동네 것을 확인해 보세요.'}</div></td></tr>
 </table></div>
 <h2>{E(sgg)} 초등학교 {len(els)}곳</h2><div class="card"><table><tr><th>학교</th><th>동</th></tr>{rows}</table></div>""", [home, ("초등 입학 준비", None)])
 
@@ -304,7 +304,7 @@ def build_city(key, out, data):
 <h2>과목별 학원</h2><div class="chips">{''.join(f'<a href="/guide/academy/{s}.html">{E(l)}학원 {n}</a>' for s, l, n in subj_links)}</div>"""
     tparts = [t for t, k in (("학원", "학원·교습비"), ("유치원", "유치원"), ("도서관", "도서관"), ("소아과", "소아과")) if k in shown] + (["학교 일정"] if len(win) >= 3 or els else [])
     dparts = [t for t, k in (("학원 교습비 비교", "학원·교습비"), ("유치원", "유치원"), ("도서관 운영시간", "도서관"), ("소아과 진료 시간", "소아과"), ("아이와 갈 만한 곳", "아이와 갈 만한 곳")) if k in shown] + (["겨울방학 날짜"] if len(win) >= 3 else []) + (["초등학교 입학 준비"] if els else [])
-    write("guide/index.html", f"{sgg} {'·'.join(tparts)} 정보 | 아이랑 {nm}",
+    write("guide/index.html", f"{sgg} {'·'.join(tparts)} 정보 | 효숲 {nm}",
           f"{sgg} {', '.join(dparts)} 정보를 한곳에서 보세요.", body, [home])
 
     # ── 사이트맵·robots
