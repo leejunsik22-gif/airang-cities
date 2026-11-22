@@ -22,3 +22,20 @@ for (const path of ["/entry/", "/yuseong/", "/djdonggu/"]) {
     expect(r.orange).toBeLessThan(50);
   });
 }
+
+/* 157: 대표 갤럭시 글자 최대 사진 — 마이 '관심 지역' 버튼 글이 버튼 밖으로 넘쳐 위 글자와 겹침 */
+for (const z of [3, 3.5, 4]) {
+  test(`157 마이 '관심 지역' 버튼 글자 ${Math.round(z * 100)}%: 버튼 안에 다 들어가고 위 글자와 안 겹침`, async ({ browser }, info) => {
+    test.skip(info.project.name !== "폰390", "모의 확대는 한 번만");
+    const ctx = await browser.newContext({ baseURL: info.project.use.baseURL, viewport: { width: Math.round(412 / z), height: Math.round(915 / z) }, deviceScaleFactor: 2.625 * z, isMobile: true, hasTouch: true, serviceWorkers: "block" });
+    const page = await ctx.newPage();
+    await page.route(/goatcounter\.com|gc\.zgo\.at|raw\.githubusercontent\.com/, (r) => r.abort());
+    await page.goto("/yuseong/#my"); await page.waitForTimeout(1200);
+    const m = await page.evaluate(() => { const row = [...document.querySelectorAll("#view .row")].find((r) => r.innerText.includes("관심 지역")); const s = row.querySelector("span").getBoundingClientRect(), b = row.querySelector("button"), br = b.getBoundingClientRect();
+      return { overflow: b.scrollHeight - b.clientHeight, overlap: Math.min(s.bottom, br.bottom) - Math.max(s.top, br.top) > 1 && Math.min(s.right, br.right) - Math.max(s.left, br.left) > 1, sx: document.documentElement.scrollWidth - innerWidth }; });
+    expect(m.overflow, "버튼 글 넘침(px)").toBeLessThanOrEqual(2);
+    expect(m.overlap, "'관심 지역' 글자와 겹침").toBe(false);
+    expect(m.sx).toBeLessThanOrEqual(1);
+    await ctx.close();
+  });
+}
