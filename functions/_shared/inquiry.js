@@ -10,8 +10,7 @@ export const LIMITS = {
   perIp10m: 5,            // 같은 기기(주소)에서 10분에 5건
   perIpDay: 20,           // 하루 20건
   globalDay: 300,         // 전체 하루 300건(도배 방어)
-  doneKeepDays: 90,       // 완료 후 90일 뒤 자동 삭제(대표 결정 대기 — 추천값)
-  maxKeepDays: 180,       // 처리 안 된 문의도 180일 지나면 삭제(11/9 피트 의견: 1년→180일)
+  maxKeepDays: 180,       /* 151 대표 결정(11-22): 모든 문의는 처리 여부와 상관없이 접수 180일 뒤 삭제(옛 '완료 90일' 규칙 없앰) */
   warnDays: 30,           // 삭제 30일 전부터 접수함에 '곧 삭제' 표시
 };
 const DAY = 86400000;
@@ -32,12 +31,11 @@ export async function schema(db) {
 
 // 보관 기간 지난 문의·접수 기록 지우기(관리자 화면 열 때마다 + 접수 때 실행 → 따로 예약 작업 불필요)
 export async function purge(db, now = Date.now()) {
-  await db.prepare(`DELETE FROM inquiries WHERE (state='완료' AND done_at < ?) OR created_at < ?`)
-    .bind(now - LIMITS.doneKeepDays * DAY, now - LIMITS.maxKeepDays * DAY).run();
+  await db.prepare(`DELETE FROM inquiries WHERE created_at < ?`).bind(now - LIMITS.maxKeepDays * DAY).run();
   await db.prepare(`DELETE FROM inquiry_rate WHERE at < ?`).bind(now - DAY).run();
 }
 
-const EMAIL = /^[^\s@<>()"',;]{1,64}@[A-Za-z0-9.-]{1,190}\.[A-Za-z]{2,24}$/;
+/* 132·140: 회신 이메일을 받지 않으므로 이메일 형식 검사(EMAIL)는 지웠다. */
 const RRN = /(?<!\d)\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])\s*-?\s*[1-8]\d{6}(?!\d)/;   /* 주민등록번호 형태. 143: 앞뒤가 숫자면 제외. 144: 앞 6자리가 날짜(월 01~12·일 01~31)일 때만 */
 const SEP = "[\\s./-]{0,3}";   /* 144: 숫자 묶음 사이 구분(빈칸·점·빗금·줄표) 최대 3글자 */
 const PHONE = new RegExp(`(?:\\+\\s?82|(?<![\\d.])00\\s?82|(?<![\\d.])82|(?<![\\d.])\\(?0)(?:[\\s.)/-]*\\(?0?\\)?[\\s./-]*)?1[016789]\\)?${SEP}\\d{3,4}${SEP}\\d{4}(?!\\d)`);   /* 휴대전화. 142: +82. 143: 82·(010)·숫자 경계. 144: 0082·빗금·구분 앞뒤 빈칸 */
@@ -54,8 +52,8 @@ export function validate(input) {
   if ([...body].length > LIMITS.body) return { ok: false, field: "body", msg: `문의 내용은 ${LIMITS.body}자까지 쓸 수 있어요.` };
   const chk = forCheck(body);
   if (RRN.test(chk)) return { ok: false, field: "body", msg: "주민등록번호처럼 보이는 숫자가 있어요. 지우고 보내 주세요." };
-  if (PHONE.test(chk)) return { ok: false, field: "body", msg: "전화번호는 지워 주세요. 아이랑은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 132: 제휴 문의도 예외 없음 */
-  if (MAILBODY.test(chk)) return { ok: false, field: "body", msg: "이메일 주소는 지워 주세요. 아이랑은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 142 */
+  if (PHONE.test(chk)) return { ok: false, field: "body", msg: "전화번호는 지워 주세요. 효숲은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 132: 제휴 문의도 예외 없음 */
+  if (MAILBODY.test(chk)) return { ok: false, field: "body", msg: "이메일 주소는 지워 주세요. 효숲은 이름·전화번호·이메일 같은 개인정보를 받지 않아요." };   /* 142 */
   const clip = (s, n) => String(s || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, n);
   /* 132: 개인정보 최소화 — 회신 이메일은 받지 않는다. 예전 화면·직접 요청으로 와도 저장하지 않고 빈 값으로. (DB 칸은 기존 자료 보존 위해 그대로) */
   return { ok: true, value: { kind: TYPES[kindKey], body, reply: "", gu: clip(input.gu, 20), screen: clip(input.screen, 40) } };
@@ -83,6 +81,8 @@ async function hmac(keyText, msg) {
 // 2026-11-09 대표 실사용 중 발견: 메모장에서 복사할 때 앞뒤 빈칸이 붙어 로그인이 안 됨 → 저장값·입력값 모두 앞뒤 빈칸 무시
 const pw = (env) => (typeof env.ADMIN_PASSWORD === "string" ? env.ADMIN_PASSWORD.trim() : "");
 export function passwordReady(env) { return [...pw(env)].length >= 12; }
+/* 150: 비밀번호가 비었는지·짧은지(12자 미만) 구분해 알려 줌 — 11-21 재등록 때 "설정 안 됨"만 보여 원인을 헷갈렸던 일 */
+export function passwordProblemMsg(env) { return pw(env) ? "관리자 비밀번호가 너무 짧아요. 12자 이상으로 다시 등록해 주세요." : "관리자 비밀번호가 아직 설정되지 않았어요."; }
 // 같은 길이 비교(글자마다 시간 차이로 비밀번호를 알아내는 방법 차단): 둘 다 서명값으로 바꿔 비교
 export async function passwordMatches(env, given) {
   const a = await hmac("pw-check", String(given || "").trim()), b = await hmac("pw-check", pw(env));
@@ -100,7 +100,7 @@ export function clearCookie(request) {
   return `airang_admin=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0${secure}`;
 }
 export async function adminUser(request, env) {
-  if (!passwordReady(env)) return { status: 503, msg: pw(env) ? "관리자 비밀번호가 너무 짧아요. 12자 이상으로 다시 등록해 주세요." : "관리자 비밀번호가 아직 설정되지 않았어요." };
+  if (!passwordReady(env)) return { status: 503, msg: passwordProblemMsg(env) };
   const m = (request.headers.get("cookie") || "").match(/(?:^|;\s*)airang_admin=(\d+)\.([0-9a-f]{64})(?:;|$)/);
   if (!m || +m[1] < Date.now()) return { status: 401, msg: "관리자 로그인이 필요해요." };
   if ((await hmac("session|" + pw(env), m[1])) !== m[2]) return { status: 401, msg: "관리자 로그인이 필요해요." };

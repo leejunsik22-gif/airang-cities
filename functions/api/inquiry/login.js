@@ -1,8 +1,8 @@
 // /api/inquiry/login — 관리자 로그인(POST)·로그아웃(DELETE) v02 (2026-11-09, 카드 없는 무료 방식)
-import { json, schema, ipHash, sameOrigin, passwordReady, passwordMatches, sessionCookie, clearCookie, LOGIN_LIMIT } from "../../_shared/inquiry.js";
+import { json, schema, ipHash, sameOrigin, passwordReady, passwordProblemMsg, passwordMatches, sessionCookie, clearCookie, LOGIN_LIMIT } from "../../_shared/inquiry.js";
 
 export async function onRequestPost({ request, env }) {
-  if (!passwordReady(env)) return json({ ok: false, msg: "관리자 비밀번호가 아직 설정되지 않았어요." }, 503);
+  if (!passwordReady(env)) return json({ ok: false, msg: passwordProblemMsg(env) }, 503);   /* 150 */
   if (!env.INQ_DB) return json({ ok: false, msg: "저장소가 연결되지 않았어요." }, 503);
   if (!sameOrigin(request)) return json({ ok: false, msg: "이 화면에서만 로그인할 수 있어요." }, 403);
   let a; try { a = JSON.parse(await request.text()); } catch (e) { return json({ ok: false, msg: "요청을 읽을 수 없어요." }, 400); }

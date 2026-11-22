@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
 <meta name="referrer" content="no-referrer">
-<title>문의하기 · 아이랑 대전</title>
+<title>문의하기 · 효숲 대전</title>
 <meta name="theme-color" content="#1F2A44">
 <link rel="icon" href="../entry/icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -49,10 +49,14 @@ textarea:focus,input:focus{outline:3px solid rgba(184,146,62,.45);outline-offset
 .done .num{display:inline-block;margin:10px 0 4px;font-size:22px;font-weight:800;color:var(--sage-ink);background:var(--sage-bg);border-radius:12px;padding:6px 14px}
 .done p{color:var(--muted);margin:6px 0 0;word-break:keep-all}
 .done a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:18px;padding:0 18px;border-radius:14px;background:var(--navy);color:#fff;font-weight:800;text-decoration:none}
+/* 148: 글자 아주 크게(약 300%↑)일 때 문의 종류 칸이 화면 밖으로 밀리던 문제 — 칸이 화면보다 넓어지지 않게, 좁을 때만 낱말 중간 줄바꿈 허용 */
+.kinds>.kind,.kind>span{min-width:0}
+@media (max-width:240px){.top{flex-wrap:wrap}.top>div{flex:1 1 0;min-width:0}.top .back{margin-left:0}.hint{flex-wrap:wrap}.hint .cnt{white-space:normal;margin-left:0}.card{padding:12px}.kind{padding:10px;gap:8px}.kind small,.kind b,.warn,.note,.hint,.lead,.done p{word-break:normal;overflow-wrap:anywhere}textarea{padding:10px}}
+@media (max-width:200px){.wrap{padding:12px 8px 40px}.kind{flex-direction:column;gap:6px}.card{padding:10px}textarea{padding:8px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style></head><body>
 <div class="wrap">
-  <div class="top"><img src="../entry/img/logo-symbol.png" width="44" height="39" alt="아이랑 로고"><div><b>아이랑 대전</b><small>아이 키우는 집을 위한 동네 정보</small></div><a class="back" href="../entry/">처음으로</a></div>
+  <div class="top"><img src="../entry/img/logo-symbol.png" width="44" height="39" alt="효숲 로고"><div><b>효숲 대전</b><small>아이 키우는 집을 위한 동네 정보</small></div><a class="back" href="../entry/">처음으로</a></div>
   <main id="main">
     <h1>문의하기</h1>
     <p class="lead">고를 수 있는 문의는 세 가지예요. 메일 앱 없이 여기서 바로 보내져요.</p>
@@ -77,7 +81,7 @@ textarea:focus,input:focus{outline:3px solid rgba(184,146,62,.45);outline-offset
       <div class="err" id="err" role="alert"></div>
       <button class="send" id="send" type="submit">문의 보내기</button>
       <p class="hint" id="pickfirst" style="justify-content:center">문의 유형을 고르면 적을 칸이 나와요.</p>
-      <p class="note">아이랑은 이름·전화번호·이메일을 묻지 않아서 <b>개별 답장은 드리지 못해요.</b> 고친 내용은 앱에서 확인해 주세요. 보내 주신 글(문의 종류·내용·보낸 구와 화면·시각)은 처리가 끝나면 90일 뒤, 늦어도 접수 180일 뒤에는 지워요. 도배를 막으려고 접속 주소(IP)를 알아볼 수 없게 바꾼 값을 보관하고, 하루가 지나면 지울 대상이 돼요. 기한이 지난 기록은 다음 문의 접수나 관리자 확인 때 지워져 조금 늦을 수 있어요.<br>아이랑은 공공기관이 아닌 민간이 만든 무료 서비스예요.</p>
+      <p class="note">효숲은 이름·전화번호·이메일을 묻지 않아서 <b>개별 답장은 드리지 못해요.</b> 고친 내용은 앱에서 확인해 주세요. 보내 주신 글(문의 종류·내용·보낸 구와 화면·시각)은 처리 여부와 상관없이 접수 180일 뒤에 지워요. 도배를 막으려고 접속 주소(IP)를 알아볼 수 없게 바꾼 값을 보관하고, 하루가 지나면 지울 대상이 돼요. 기한이 지난 기록은 다음 문의 접수나 관리자 확인 때 지워져 조금 늦을 수 있어요.<br>효숲은 공공기관이 아닌 민간이 만든 무료 서비스예요.</p>
     </form>
   </main>
 </div>
