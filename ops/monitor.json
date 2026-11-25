@@ -1,7 +1,7 @@
 {
  "_설명": "운영 감시 집계(tools/monitor.py, 매시간). 상태: 장애=지금 고쳐야 함 / 검증 필요=공개 중이거나 보류 중이지만 사람 확인 필요 / 공개 보류=원문 미확인으로 숨김 / 복구 완료=직전 집계에 있던 문제가 사라짐. 앱은 읽지 않음(관리자만)",
- "checked_at": "2026-11-25 00:48",
- "checked_at_utc": "2026-11-24T15:48:41Z",
+ "checked_at": "2026-11-25 09:38",
+ "checked_at_utc": "2026-11-25T00:38:28Z",
  "ok": true,
  "summary": {
   "장애": 0,
@@ -20,7 +20,7 @@
    "detail": "직전 공개본 값으로 공개 중 — 원문 대조 뒤 approvals/reverify.json 승인",
    "url": "https://github.com/leejunsik22-gif/airang-cities/blob/daejeon-setup/review/daedeok/_reverify.json",
    "since": "2026-11-15 06:41",
-   "last_seen": "2026-11-25 00:48"
+   "last_seen": "2026-11-25 09:38"
   },
   {
    "id": "reverify_pending:djjunggu",
@@ -32,7 +32,7 @@
    "detail": "직전 공개본 값으로 공개 중 — 원문 대조 뒤 approvals/reverify.json 승인",
    "url": "https://github.com/leejunsik22-gif/airang-cities/blob/daejeon-setup/review/djjunggu/_reverify.json",
    "since": "2026-11-15 06:41",
-   "last_seen": "2026-11-25 00:48"
+   "last_seen": "2026-11-25 09:38"
   },
   {
    "id": "reverify_pending:djseogu",
@@ -44,7 +44,7 @@
    "detail": "직전 공개본 값으로 공개 중 — 원문 대조 뒤 approvals/reverify.json 승인",
    "url": "https://github.com/leejunsik22-gif/airang-cities/blob/daejeon-setup/review/djseogu/_reverify.json",
    "since": "2026-11-15 06:41",
-   "last_seen": "2026-11-25 00:48"
+   "last_seen": "2026-11-25 09:38"
   },
   {
    "id": "hold:daedeok",
@@ -56,7 +56,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-25 00:48"
+   "last_seen": "2026-11-25 09:38"
   },
   {
    "id": "hold:djdonggu",
@@ -68,7 +68,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-25 00:48"
+   "last_seen": "2026-11-25 09:38"
   },
   {
    "id": "hold:djjunggu",
@@ -80,7 +80,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-25 00:48"
+   "last_seen": "2026-11-25 09:38"
   },
   {
    "id": "hold:djseogu",
@@ -92,7 +92,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-25 00:48"
+   "last_seen": "2026-11-25 09:38"
   },
   {
    "id": "hold:yuseong",
@@ -104,7 +104,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-25 00:48"
+   "last_seen": "2026-11-25 09:38"
   }
  ],
  "recovered": [
@@ -159,24 +159,13 @@
    "how": "자동(감시에서 사라짐)"
   }
  ],
- "resolved_now": [
-  {
-   "id": "run_missing:-",
-   "kind": "run_missing",
-   "state": "장애",
-   "city": "",
-   "title": "'daily' 자동 작업이 28시간째 돌지 않음",
-   "since": "2026-11-24 05:07",
-   "resolved_at": "2026-11-25 00:48",
-   "how": "자동(감시에서 사라짐)"
-  }
- ],
+ "resolved_now": [],
  "cities": {
   "djdonggu": {
    "name": "동구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-24",
+   "status_checked_at": "2026-11-25",
    "published": 2,
    "hold": [
     "급식",
@@ -200,7 +189,7 @@
    "name": "중구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-24",
+   "status_checked_at": "2026-11-25",
    "published": 2,
    "hold": [
     "급식",
@@ -224,7 +213,7 @@
    "name": "서구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-24",
+   "status_checked_at": "2026-11-25",
    "published": 2,
    "hold": [
     "급식",
@@ -248,7 +237,7 @@
    "name": "유성구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-24",
+   "status_checked_at": "2026-11-25",
    "published": 2,
    "hold": [
     "급식",
@@ -272,7 +261,7 @@
    "name": "대덕구",
    "sido": "대전",
    "site": 200,
-   "status_checked_at": "2026-11-24",
+   "status_checked_at": "2026-11-25",
    "published": 2,
    "hold": [
     "급식",
@@ -295,10 +284,10 @@
  },
  "runs": {
   "weather": {
-   "last_at": "2026-11-24T12:36:00Z",
+   "last_at": "2026-11-24T19:33:45Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/45395068289",
-   "last_success_at": "2026-11-24T12:36:00Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/45471517313",
+   "last_success_at": "2026-11-24T19:33:45Z",
    "overdue": false
   },
   "daily": {
@@ -316,10 +305,10 @@
    "overdue": false
   },
   "cf-apps": {
-   "last_at": "2026-11-24T09:42:28Z",
+   "last_at": "2026-11-24T22:17:21Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/45367733220",
-   "last_success_at": "2026-11-24T09:42:28Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/45499502816",
+   "last_success_at": "2026-11-24T22:17:21Z",
    "overdue": false
   }
  },
@@ -328,7 +317,7 @@
   "app_branch": "main",
   "lag": false,
   "default_head_at": "2026-11-04T17:22:53Z",
-  "app_head_at": "2026-11-24T12:36:34Z"
+  "app_head_at": "2026-11-24T19:34:14Z"
  },
  "customer_view": {
   "app_branch": "main",
