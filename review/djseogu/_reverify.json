@@ -1,7 +1,7 @@
 {
  "_설명": "재검증 대기 — 의미가 바뀌거나 사라진 기록(변경 전후·출처·감지일·기한·사유). 앱은 읽지 않음. 원문 대조 뒤 approvals/reverify.json 에 승인(result 승인/기각)을 넣으면 다음 수집부터 반영",
  "city": "djseogu",
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "pending": [
   {
    "file": "academies.json",
@@ -31,7 +31,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "djseogu",
-   "last_seen": "2026-11-24",
+   "last_seen": "2026-11-25",
    "orig": {
     "id": "3000012027",
     "n": "SBS아카데미AIX학원",
@@ -76,7 +76,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "djseogu",
-   "last_seen": "2026-11-24",
+   "last_seen": "2026-11-25",
    "orig": {
     "id": "9801",
     "n": "프렌잉글리시내동학원",
@@ -121,7 +121,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "djseogu",
-   "last_seen": "2026-11-24",
+   "last_seen": "2026-11-25",
    "orig": {
     "id": "3000011083",
     "n": "대전비전21학원",
@@ -166,7 +166,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "djseogu",
-   "last_seen": "2026-11-24",
+   "last_seen": "2026-11-25",
    "orig": {
     "id": "3000010248",
     "n": "대치학원",
@@ -212,7 +212,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "djseogu",
-   "last_seen": "2026-11-24",
+   "last_seen": "2026-11-25",
    "orig": {
     "id": "2959",
     "n": "관저공감학원",
@@ -257,7 +257,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "djseogu",
-   "last_seen": "2026-11-24",
+   "last_seen": "2026-11-25",
    "orig": {
     "id": "3000013924",
     "n": "오르고수학학원",
@@ -302,7 +302,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "djseogu",
-   "last_seen": "2026-11-24",
+   "last_seen": "2026-11-25",
    "orig": {
     "id": "3000012242",
     "n": "대치깊은생각2관학원",
@@ -347,7 +347,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "djseogu",
-   "last_seen": "2026-11-24",
+   "last_seen": "2026-11-25",
    "orig": {
     "id": "3000022855",
     "n": "하이영어교습소",
@@ -390,7 +390,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "djseogu",
-   "last_seen": "2026-11-24",
+   "last_seen": "2026-11-25",
    "orig": {
     "id": "3000013155",
     "n": "대치명인2관학원",
