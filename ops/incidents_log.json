@@ -6,6 +6,16 @@
    "kind": "run_missing",
    "state": "장애",
    "city": "",
+   "title": "'cf-apps' 자동 작업이 12시간째 돌지 않음",
+   "since": "2026-11-26 04:54",
+   "resolved_at": "2026-11-26 11:48",
+   "how": "자동(감시에서 사라짐)"
+  },
+  {
+   "id": "run_missing:-",
+   "kind": "run_missing",
+   "state": "장애",
+   "city": "",
    "title": "'daily' 자동 작업이 28시간째 돌지 않음",
    "since": "2026-11-24 05:07",
    "resolved_at": "2026-11-25 00:48",
