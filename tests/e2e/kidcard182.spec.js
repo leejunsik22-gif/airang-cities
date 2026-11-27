@@ -42,3 +42,17 @@ test("알레르기 없는 아이는 카드를 만들지 않고, 수정 화면 �
   await page.goto("/yuseong/#kid/k1"); await settle(page);
   await expect(page.getByRole("button", { name: "알레르기 확인 카드 만들기" })).toHaveCount(1);
 });
+
+/* 182: 글자 약 400%(폭 103px)에서 카드 화면 가로 넘침 없음 */
+test.describe("글자 400%", () => {
+  test.use({ viewport: { width: 103, height: 229 }, deviceScaleFactor: 10.5, isMobile: true, hasTouch: true });
+  test("카드 확인창·카드 가로 넘침 없음", async ({ page }) => {
+    await page.goto("/yuseong/"); await settle(page);
+    await page.evaluate((k) => { localStorage.setItem(NS + "edu.kids", k); localStorage.setItem(NS + "edu.installDone", "1"); }, KIDS);
+    await page.goto("/yuseong/#kid/k1/card"); await page.reload(); await settle(page);
+    const a = await page.evaluate(() => document.scrollingElement.scrollWidth - document.scrollingElement.clientWidth);
+    await page.getByRole("button", { name: "확인하고 카드 보기" }).click(); await page.waitForTimeout(500);
+    const b = await page.evaluate(() => document.scrollingElement.scrollWidth - document.scrollingElement.clientWidth);
+    expect([a, b].every((x) => x <= 2), JSON.stringify([a, b])).toBe(true);
+  });
+});
