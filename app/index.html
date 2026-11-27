@@ -635,7 +635,7 @@ const NOCOUNT = /[?&]nocount=1/.test(location.search);   // 관리자 화면(앱
 function gc(fn, tries = 0) { if (store("edu.admin") || NOCOUNT) return; if (window.goatcounter && window.goatcounter.count) fn(window.goatcounter); else if (tries < 20) setTimeout(() => gc(fn, tries + 1), 500); }
 function trackView(route) {
   // 2026-11-08 자동검사 발견: 검색 화면 주소(#find/검색어)가 그대로 통계로 나갔음 → 검색어·내 일정 번호는 빼고 화면 이름만 집계
-  const path = "/" + route.replace(/^kid\/(?!new).*/, "kid/edit").replace(/^kid\/new\/.*/, "kid/new").replace(/^find(\/.*)?$/, "find").replace(/^myev\/.*/, "myev");
+  const path = "/" + (/^kid\/[^/]+\/card$/.test(route) ? "kid/card" : route).replace(/^kid\/(?!new|card$).*/, "kid/edit").replace(/^kid\/new\/.*/, "kid/new").replace(/^find(\/.*)?$/, "find").replace(/^myev\/.*/, "myev");
   if (path === lastTracked) return; lastTracked = path;
   trackUnique();
   gc(g => g.count({ path, title: document.title }));
@@ -1933,6 +1933,64 @@ function kidWipe(kind) {
   if (kind === "al") { wipeAllergy(); toast("알레르기 정보를 지웠어요"); } else { wipeKidData(); toast("이 휴대폰의 아이 정보를 지웠어요"); }
   kidWipeArm = ""; render();
 }
+// ---------- 182: 부모·선생님 알레르기 확인 카드(가안) ----------
+/* 설계: 2026-11-27_효숲대전_180_알레르기확인카드_부모·선생님_설계초안_v01 가안.
+   이 기기 안에서만 만들고 저장하지 않음. 서버·통계로 보내지 않음(trackEvent 없음, 화면 이름은 'kid/card'로 가림).
+   카드에는 별명·알레르기 이름·만든 날짜만. 학교·학년·사진·연락처 넣지 않음. 보내는 것은 보호자가 직접. */
+let kidCardOk = "";
+function kidCardText(k) {
+  const al = (k.al || []).filter(n => ALLERGY[n]).map(n => ALLERGY[n]);
+  return { name: k.name || "아이", al, date: todayYmd() };
+}
+function viewKidCard(id) {
+  const k = kids().find(x => x.id === id);
+  if (!k || !(k.al || []).length) { toast("알레르기를 고른 아이만 카드를 만들 수 있어요"); return go("my"); }
+  const c = kidCardText(k);
+  const back = `<button class="back glass" onclick="history.back()" aria-label="뒤로">${icon.back}</button>
+    <h1 style="font-size:25px;font-weight:800;margin-top:14px">알레르기 확인 카드</h1>`;
+  if (kidCardOk !== id) {
+    $view.innerHTML = back + `<section class="section"><div class="lift" style="padding:16px;font-size:14px;line-height:1.7">
+      <b>이 카드는 건강 관련 정보예요.</b><br>· 보여 주거나 보내면 받는 사람이 볼 수 있어요. 단체방에 보내지 않도록 조심해 주세요.<br>· 카드는 이 휴대폰 안에서만 만들고, 앱은 어디에도 저장하거나 보내지 않아요.<br>· 보호자가 직접 만든 참고 카드예요. 학교의 알레르기 관리 절차를 대신하지 않아요.
+      <button class="btn btn-3d" style="display:block;width:100%;height:48px;margin-top:12px" onclick="kidCardOk='${jsq(id)}';render()">확인하고 카드 보기</button></div></section>`;
+    return;
+  }
+  $view.innerHTML = back + `<section class="section"><div id="kidCard" class="lift" style="padding:22px 20px;border:2px solid #F2A3A3;border-radius:20px;background:#FFF9F9">
+      <div style="font-size:13px;color:var(--muted)">알레르기 확인 카드</div>
+      <div style="font-size:26px;font-weight:800;margin-top:4px">${esc(c.name)}</div>
+      <div style="margin-top:14px;font-size:13px;color:#B42318;font-weight:700">먹으면 안 되는 급식 알레르기 성분</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">${c.al.map(a => `<span style="padding:8px 14px;border-radius:14px;background:#FFECEC;color:#B42318;font-size:18px;font-weight:800">⚠️ ${esc(a)}</span>`).join("")}</div>
+      <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.6">만든 날: ${esc(c.date)}<br>보호자가 직접 만든 참고 카드입니다. 학교 공식 절차를 대신하지 않습니다.</div></div>
+    <button class="btn btn-3d" style="width:100%;height:50px;margin-top:14px" onclick="kidCardSave('${jsq(id)}')">그림으로 저장</button>
+    <button class="btn btn-soft" style="width:100%;height:46px;margin-top:10px" onclick="window.print()">인쇄하기</button>
+    <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px">저장한 그림은 이 휴대폰 사진첩·다운로드에 남아요. 다 쓰면 직접 지워 주세요.</p></section>`;
+}
+function kidCardSave(id) {
+  const k = kids().find(x => x.id === id); if (!k) return;
+  const c = kidCardText(k), W = 720, pad = 40, cv = document.createElement("canvas");
+  const lines = []; let line = "";
+  const ctx0 = cv.getContext("2d"); ctx0.font = "bold 34px sans-serif";
+  c.al.map(a => "⚠️ " + a).forEach(t => { const nx = line ? line + "   " + t : t; if (ctx0.measureText(nx).width > W - pad * 2 && line) { lines.push(line); line = t; } else line = nx; });
+  if (line) lines.push(line);
+  cv.width = W; cv.height = 330 + lines.length * 52;
+  const g = cv.getContext("2d");
+  g.fillStyle = "#FFF9F9"; g.fillRect(0, 0, cv.width, cv.height);
+  g.strokeStyle = "#F2A3A3"; g.lineWidth = 6; g.strokeRect(3, 3, cv.width - 6, cv.height - 6);
+  g.fillStyle = "#666"; g.font = "24px sans-serif"; g.fillText("알레르기 확인 카드", pad, 60);
+  g.fillStyle = "#111"; g.font = "bold 46px sans-serif"; g.fillText(c.name, pad, 118);
+  g.fillStyle = "#B42318"; g.font = "bold 24px sans-serif"; g.fillText("먹으면 안 되는 급식 알레르기 성분", pad, 168);
+  g.font = "bold 34px sans-serif"; lines.forEach((t, i) => g.fillText(t, pad, 218 + i * 52));
+  g.fillStyle = "#666"; g.font = "20px sans-serif";
+  g.fillText("만든 날: " + c.date, pad, cv.height - 92);
+  g.fillText("보호자가 직접 만든 참고 카드입니다.", pad, cv.height - 60);
+  g.fillText("학교 공식 절차를 대신하지 않습니다.", pad, cv.height - 30);
+  cv.toBlob(b => {   /* 이 기기 안에서 만든 그림 주소(blob) — 서버로 가지 않음, 받은 뒤 바로 지움 */
+    if (!b) { toast("그림을 만들지 못했어요. 인쇄하기를 써 주세요"); return; }
+    const u = URL.createObjectURL(b), a = document.createElement("a");
+    a.download = "hyoforest_allergy_card_" + c.date + ".png";   /* 한글 파일 이름은 일부 브라우저에서 "download"로 바뀜 → 영문 */ a.href = u;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 10000);
+    toast("그림으로 저장했어요");
+  }, "image/png");
+}
 // ---------- 화면: 아이 추가 / 수정 ----------
 function viewKid(arg, pre) {
   const list = kids();
@@ -1974,11 +2032,13 @@ function viewKid(arg, pre) {
       <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px">교육청에 등록된 {{f.sgg}} 학원·교습소 목록에서 골라요. 요일·시간을 넣고 <b>📅 캘린더에 추가</b>를 누르면 휴대폰 캘린더가 수업 시작·끝 10분 전에 알려 줘요. 시간이 바뀌면 캘린더에서 예전 일정을 지우고 다시 추가해 주세요.<br>학원 정보는 접속한 본인 휴대폰에만 저장돼요.</p></section>
     <label style="display:flex;gap:10px;align-items:flex-start;margin-top:22px;font-size:14px;line-height:1.5;cursor:pointer"><input type="checkbox" id="kguard" ${kidForm.guard ? "checked" : ""} onchange="kidForm.guard=this.checked" style="width:22px;height:22px;flex:0 0 auto;margin:0"><span>저는 이 아이의 보호자예요.</span></label>
     <button class="btn btn-3d" style="width:100%;height:54px;margin-top:12px;font-size:15px" onclick="saveKid('${editing ? editing.id : ""}')">${editing ? "저장하기" : "등록하기"}</button>
+    ${editing && (editing.al || []).length ? `<button class="btn btn-soft" style="width:100%;height:46px;margin-top:12px" onclick="go('kid/${esc(editing.id)}/card')">알레르기 확인 카드 만들기</button>` : ""}
     ${editing ? `<button class="btn btn-soft" style="width:100%;height:46px;margin-top:12px;color:var(--coral-ink)" onclick="deleteKid('${editing.id}')">${kidForm.arm ? "한 번 더 누르면 삭제돼요" : "이 아이 삭제"}</button>` : ""}`;
 {{#else}}
       <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px">교육청에 등록된 {{f.sgg}} 학원·교습소 목록에서 골라요. 요일·시간을 넣고 <b>📅 캘린더에 추가</b>를 누르면 휴대폰 캘린더가 수업 시작·끝 10분 전에 알려 줘요. 시간이 바뀌면 캘린더에서 예전 일정을 지우고 다시 추가해 주세요.<br>학원 정보는 접속한 본인 휴대폰에만 저장돼요.</p></section>
     <label style="display:flex;gap:10px;align-items:flex-start;margin-top:22px;font-size:14px;line-height:1.5;cursor:pointer"><input type="checkbox" id="kguard" ${kidForm.guard ? "checked" : ""} onchange="kidForm.guard=this.checked" style="width:22px;height:22px;flex:0 0 auto;margin:0"><span>저는 이 아이의 보호자예요.</span></label>
     <button class="btn btn-3d" style="width:100%;height:54px;margin-top:12px;font-size:15px" onclick="saveKid('${jsq(editing ? editing.id : "")}')">${editing ? "저장하기" : "등록하기"}</button>
+    ${editing && (editing.al || []).length ? `<button class="btn btn-soft" style="width:100%;height:46px;margin-top:12px" onclick="go('kid/${esc(editing.id)}/card')">알레르기 확인 카드 만들기</button>` : ""}
     ${editing ? `<button class="btn btn-soft" style="width:100%;height:46px;margin-top:12px;color:var(--coral-ink)" onclick="deleteKid('${jsq(editing.id)}')">${kidForm.arm ? "한 번 더 누르면 삭제돼요" : "이 아이 삭제"}</button>` : ""}`;
 {{/if}}
   document.getElementById("kname").addEventListener("input", e => { kidForm.name = e.target.value; });
@@ -3200,7 +3260,7 @@ function render() {
   if (r !== "admin") { adminOpen = false; ADMIN = null; ADMIN_SESS = null; adminMonths = null; adminViaTap = false; }
 {{/if}}
   if (r !== "events") evVisit = false;
-  if (r.startsWith("kid/")) { const p = r.split("/"); if (p[1] === "new") viewKid("", p[2] || ""); else viewKid(p[1]); }
+  if (r.startsWith("kid/")) { const p = r.split("/"); if (p[1] === "new") viewKid("", p[2] || ""); else if (p[2] === "card") viewKidCard(p[1]); else viewKid(p[1]); }   /* 182: 알레르기 확인 카드 */
   else if (gated(r)) viewSoon(r);   // 026: 공식 자료 확인 전 메뉴는 '준비 중' 틀로(빈 화면·오류 문구 대신)
   else if (r === "saved") viewSaved();
   else if (r === "region") viewRegion();
