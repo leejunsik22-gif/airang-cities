@@ -1925,8 +1925,8 @@ function kidWipeBox() {
   const hasAl = kids().some(k => (k.al || []).length);
   return `<div style="margin-top:10px;font-size:12px;color:var(--muted);line-height:1.6">아이 정보는 이 휴대폰 안에만 있어요. 같은 휴대폰을 쓰는 사람은 볼 수 있어요.</div>
     <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
-      ${hasAl ? `<button class="btn btn-soft" style="flex:1;min-width:140px;height:44px;font-size:13px" onclick="kidWipe('al')">${kidWipeArm === "al" ? "한 번 더 누르면 지워요" : "알레르기만 지우기"}</button>` : ""}
-      <button class="btn btn-soft" style="flex:1;min-width:140px;height:44px;font-size:13px;color:var(--coral-ink)" onclick="kidWipe('all')">${kidWipeArm === "all" ? "한 번 더 누르면 지워요" : "아이 정보 모두 지우기"}</button></div>`;
+      ${hasAl ? `<button class="btn btn-soft" style="flex:1 1 140px;min-width:0;height:auto;min-height:44px;white-space:normal;font-size:13px" onclick="kidWipe('al')">${kidWipeArm === "al" ? "한 번 더 누르면 지워요" : "알레르기만 지우기"}</button>` : ""}
+      <button class="btn btn-soft" style="flex:1 1 140px;min-width:0;height:auto;min-height:44px;white-space:normal;font-size:13px;color:var(--coral-ink)" onclick="kidWipe('all')">${kidWipeArm === "all" ? "한 번 더 누르면 지워요" : "아이 정보 모두 지우기"}</button></div>`;
 }
 function kidWipe(kind) {
   if (kidWipeArm !== kind) { kidWipeArm = kind; render(); return; }
