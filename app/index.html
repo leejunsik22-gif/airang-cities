@@ -2612,6 +2612,35 @@ function viewNews() {
     <div class="foot">바라는 기능이나 불편한 점은 <a href="${inqUrl('use', '업데이트 소식')}">문의하기</a>로 알려 주세요.</div>`;
 }
 
+/* ---------- 184: 개인정보 처리방침(초안) — 곁나루(운영 주체) · 효숲(서비스 이름) ----------
+   근거: 대표 결정 2026-11-28 00:14 4항. 〔확인 필요〕 칸은 사업자 정보·법률 상담 뒤 채움. 확정 전까지 '초안' 띠를 보임.
+   내용은 문서 2026-11-28_효숲대전_184_개인정보처리방침_초안_v01 과 같게 유지. */
+const PRIVACY_DRAFT = true;
+function viewPrivacy() {
+  const T = (h, body) => `<section class="section"><h2 style="font-size:17px;font-weight:800;margin:0 0 8px">${h}</h2><div style="font-size:14px;line-height:1.7">${body}</div></section>`;
+  const L = a => `<ul style="margin:0;padding-left:18px">${a.map(x => `<li style="margin:4px 0">${x}</li>`).join("")}</ul>`;
+  const need = t => `<span style="background:#FFF3C4;padding:0 4px;border-radius:4px">〔${t}〕</span>`;
+  $view.innerHTML = `<button class="back glass" onclick="history.back()" aria-label="뒤로">${icon.back}</button>
+    <h1 style="font-size:24px;font-weight:800;margin-top:14px">개인정보 처리방침</h1>
+    ${PRIVACY_DRAFT ? `<div style="margin-top:10px;padding:10px 12px;border-radius:12px;background:#FFF3C4;font-size:13px;line-height:1.6"><b>초안</b> — 운영 주체 정보와 법률 확인이 끝나면 확정해요. 노란 칸은 아직 확인 중이에요.</div>` : ""}
+    ${T("들어가며", `${need("사업자 등록상 상호")}(이하 '곁나루')는 학부모 정보 서비스 <b>'효숲'</b>을 운영하면서 이용자의 개인정보를 보호하고 고충을 처리하기 위해 이 처리방침을 둡니다. 효숲은 곁나루가 운영하는 서비스 이름이며, 개인정보에 관한 책임은 운영 주체인 곁나루가 집니다.`)}
+    ${T("1. 한눈에 보기", L(["회원가입이 없어요. 보호자의 이름·전화번호·이메일·주소를 묻지 않아요.", "아이 정보는 보호자가 고른 것만(별명·학교·학년·급식 알레르기 번호·학원 시간), <b>이 기기 안에만</b> 저장해요. 운영자 서버·통계로 보내지 않아요.", "운영자 서버에는 '문의하기'에 직접 쓴 글(접수 180일 뒤 삭제 대상)과 도배 방지용으로 바꾼 접속 값(하루 뒤 삭제 대상)만 남아요.", "방문 통계는 화면 이름과 횟수만 세요(해외 서비스 GoatCounter)."]))}
+    ${T("2. 처리하는 정보·목적·보유 기간", L([
+      "<b>기기 안 정보</b> — 아이 별명, 학교, 학년, 급식 알레르기 번호(건강 정보), 학원·수업 시간, 관심 지역, 내 일정. 우리 아이 일정·학원·알레르기 메뉴 표시에만 써요. 지울 때까지 보관(마이 → 우리 아이 → 지우기).",
+      "<b>문의하기</b> — 적은 글, 문의 종류, 고른 구, 문의를 연 화면 이름, 접수 시각. 문의 확인·답변에 써요. 접수 180일 뒤 삭제 대상.",
+      "<b>도배 방지</b> — 접속 주소(IP)를 그날의 값과 섞어 되돌릴 수 없게 바꾼 값과 시각. 하루 뒤 삭제 대상(관리자 로그인 실패 기록은 1시간).",
+      "<b>방문 통계</b> — 연 화면 이름과 횟수 등. 검색어·아이 정보·학원 번호는 보내지 않아요."]) + `<p style="font-size:13px;color:var(--muted);margin-top:8px">기기 안 정보는 운영자가 받지도 볼 수도 없어요. 이때 법정대리인 동의가 필요한지는 ${need("법률 확인 중")}이에요. 확인 전까지 입력 전에 보호자 확인을 받아요(보호자 확인은 법이 정한 법정대리인 동의 확인 방법이 아니에요).</p>`)}
+    ${T("3. 만 14세 미만 아동의 정보", L(["아동에게 직접 정보를 받지 않아요. 보호자가 입력하고, 보호자 기기 안에만 저장돼요.", "알레르기는 건강 정보라 고르기 전에 따로 확인을 받고, 서버·통계로 보내지 않아요.", "아이 정보를 서버에 저장하는 기능을 만들 때는 법정대리인 동의와 확인, 민감정보 별도 동의, 안전조치를 갖추고 이 처리방침을 먼저 고쳐요."]))}
+    ${T("4. 제3자 제공", L(["이용자의 개인정보를 제3자에게 제공하지 않아요.", "보호자가 만든 '알레르기 확인 카드'를 보여 주거나 보내는 것은 보호자가 직접 하는 일이에요. 앱은 카드를 저장하거나 보내지 않아요. " + need("법률 확인 중")]))}
+    ${T("5. 처리 위탁·국외 이전 " + need("법률 확인 중"), L(["Cloudflare, Inc.(미국 회사) — 화면 전달, 문의 서버·저장소. " + need("저장 지역"), "GoatCounter — 방문 통계(해외). " + need("운영 회사·국가"), "GitHub, Inc.(미국 회사) — 학교·학원 등 공공 자료 파일 전달"]))}
+    ${T("6. 파기", "기한이 지난 문의·접속 값은 다음 문의가 접수되거나 관리자가 접수함을 열 때 서버가 다시 살릴 수 없게 지워요(실제로 지워지는 날은 조금 늦을 수 있어요). 기기 안 정보는 앱 안 지우기 단추나 브라우저 데이터 삭제로 지워요.")}
+    ${T("7. 보호자의 권리", L(["기기 안 정보는 언제든 직접 보고, 고치고, 지울 수 있어요.", "문의 글의 열람·정정·삭제·처리정지는 '문의하기'로 요청해 주세요. 이름·연락처를 받지 않으니 보낸 날짜·화면·글 일부를 적어 주세요."]))}
+    ${T("8. 쿠키 등", "광고용 쿠키를 쓰지 않아요. 브라우저 저장 공간은 기기 안 정보를 저장하는 데만 써요. 관리자 로그인에만 12시간 쿠키를 써요.")}
+    ${T("9. 안전성 확보 조치", L(["아이 정보를 서버로 보내지 않는 구조, 바깥 연결 제한(화면 보안 규칙)", "문의 서버 관리자 비밀번호 12자 이상·로그인 시도 제한, 접속 주소는 바꾼 값만 하루 보관", "아이 정보 옮기기는 기본으로 빼고, 고르면 암호로 잠근 코드 + 따로 전하는 비밀 문구 + 24시간 기한", "시험에는 가상 자료만 써요"]))}
+    ${T("10. 보호책임자·문의", L(["운영 주체: " + need("상호 / 대표자 / 사업자등록번호 / 주소"), "개인정보 보호책임자: " + need("직책"), `연락: <a href="${inqUrl("use", "privacy")}">문의하기</a> ` + need("전화·전자우편 공개 범위")]))}
+    ${T("11. 권익 침해 구제", L(["개인정보침해 신고센터 118", "개인정보 분쟁조정위원회 " + need("번호 확인"), "대검찰청 1301 · 경찰청 182"]))}
+    ${T("12. 변경", "이 처리방침은 " + need("시행일") + "부터 적용해요. 바뀌면 이용 안내로 알리고 이전 판을 함께 볼 수 있게 둬요.")}`;
+}
 function viewAbout() {
   const sec = (t, body) => `<section class="section"><div class="sec-head"><h2 style="font-size:17px">${t}</h2></div><div class="lift card-pad" style="font-size:14px;line-height:1.75;color:var(--ink)">${body}</div></section>`;
   const li = a => `<ul style="margin:0;padding-left:18px">${a.map(x => `<li style="margin:4px 0">${x}</li>`).join("")}</ul>`;
@@ -2631,7 +2660,8 @@ function viewAbout() {
       ["방문 통계(어느 화면을 몇 번 열었는지)", "GoatCounter(해외 방문 통계 서비스)", "화면 이름과 횟수만 보내요. <b>검색어·아이 정보·학원 번호는 보내지 않아요.</b> 그 서비스는 접속 주소(IP)를 저장하지 않는다고 밝히고 있어요.", "그 서비스의 보관 기준에 따름"]
     ].map(([what, where, why, keep]) => `<div style="padding:10px 0;border-bottom:1px solid var(--line)"><div style="font-weight:800;margin-bottom:6px">${what}</div>
       <div style="display:grid;grid-template-columns:64px 1fr;gap:4px 10px;font-size:13px"><span style="color:var(--muted)">저장 위치</span><span>${where}</span><span style="color:var(--muted)">쓰는 곳</span><span>${why}</span><span style="color:var(--muted)">보관</span><span>${keep}</span></div></div>`).join("")
-      + `<div style="padding-top:10px;font-size:13px">${li(["광고에 쓰지 않아요.", "앱 안의 링크(학교 홈페이지, 공고 원문 등)를 누르면 그 사이트의 개인정보 정책이 적용돼요."])}</div>`)}
+      + `<div style="padding-top:10px;font-size:13px">${li(["광고에 쓰지 않아요.", "앱 안의 링크(학교 홈페이지, 공고 원문 등)를 누르면 그 사이트의 개인정보 정책이 적용돼요."])}</div>
+      <button class="btn btn-soft" style="width:100%;height:auto;min-height:46px;margin-top:10px;white-space:normal" onclick="go('privacy')">개인정보 처리방침 전체 보기</button>`)}
     ${sec("정보의 출처와 정확성", li([
 {{#if yongin}}
       "나이스 교육정보 개방포털, 유치원 알리미, {{f.sgg}}도서관, {{f.sgg}}청 문화달력, 경기도교육청 구인구직, 경기육아종합지원센터 등 <b>공공 자료</b>를 하루에 한두 번 자동으로 가져와요.",
@@ -3291,6 +3321,7 @@ function render() {
   else if (r === "jobs") viewJobs();
   else if (r === "elite") viewElite();
   else if (r === "about") viewAbout();
+  else if (r === "privacy") viewPrivacy();   /* 184: 개인정보 처리방침(초안) */
   else if (r === "news") viewNews();
   else if (r === "ad") viewAdInfo();
   else if (r.startsWith("myev/")) viewMyEv(r.slice(5));
