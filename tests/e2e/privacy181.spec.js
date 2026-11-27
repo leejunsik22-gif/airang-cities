@@ -116,3 +116,15 @@ test("C9 이용 안내: 알레르기 항목·방문 통계·지우는 법, '개�
   expect(body).toContain("아이 정보 모두 지우기");
   expect(body).not.toContain("개인정보를 묻지 않아요");
 });
+
+/* 181 보완: 글자 약 400%(폭 103px)에서 아이 화면·마이(지우기 버튼) 가로 넘침 없음 — 시험 주소 46000784300 에서 마이 45px 넘침 발견 후 고침 */
+test.describe("글자 400%", () => {
+  test.use({ viewport: { width: 103, height: 229 }, deviceScaleFactor: 10.5, isMobile: true, hasTouch: true });
+  test("아이 화면·마이 가로 넘침 없음", async ({ page }) => {
+    await page.goto("/yuseong/"); await settle(page);
+    await seed(page, { "edu.installDone": "1" });
+    const over = {};
+    for (const r of ["kid/k1", "kid/new", "my"]) { await page.goto(`/yuseong/#${r}`); await page.reload(); await settle(page); over[r] = await page.evaluate(() => document.scrollingElement.scrollWidth - document.scrollingElement.clientWidth); }
+    expect(Object.values(over).every((x) => x <= 2), JSON.stringify(over)).toBe(true);
+  });
+});
