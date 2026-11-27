@@ -1,7 +1,7 @@
 {
  "_설명": "재검증 대기 — 의미가 바뀌거나 사라진 기록(변경 전후·출처·감지일·기한·사유). 앱은 읽지 않음. 원문 대조 뒤 approvals/reverify.json 에 승인(result 승인/기각)을 넣으면 다음 수집부터 반영",
  "city": "daedeok",
- "updated": "2026-11-26",
+ "updated": "2026-11-27",
  "pending": [
   {
    "file": "academies.json",
@@ -32,7 +32,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "daedeok",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "orig": {
     "id": "3000013684",
     "n": "송촌스포츠댄스학원",
@@ -78,7 +78,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "daedeok",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "orig": {
     "id": "3000012315",
     "n": "잉글리쉬볼케이노어학원",
@@ -123,7 +123,7 @@
    "source_org": "나이스 교육정보 개방포털",
    "source_url": "https://open.neis.go.kr",
    "city": "daedeok",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "orig": {
     "id": "3000014232",
     "n": "솔루션수학교습소",
