@@ -244,7 +244,7 @@ test("134 v02·151 개인정보 안내: 저장 항목·접수 180일·하루 보
   only390(info);
   await page.route(/goatcounter\.com|gc\.zgo\.at|raw\.githubusercontent\.com/, (r) => r.abort());
   await page.goto("/yuseong/#about");   /* 앱 화면은 기본 시험 서버(8790), 문의 화면은 8791 */
-  await expect(page.locator("#view")).toContainText("개인정보를 묻지 않아요", { timeout: 10000 });
+  await expect(page.locator("#view")).toContainText("개인정보는 꼭 필요한 만큼만", { timeout: 10000 });   /* 181(C9): 제목 '개인정보를 묻지 않아요' → 실제와 맞게 바꿈 */
   const about = await page.locator("#view").innerText();
   for (const w of ["문의 종류", "보낸 구와 화면 이름", "처리 여부와 상관없이 접수 180일", "하루가 지나면 지울 대상", "관리자가 접수함을 열 때", "조금 늦을 수 있어요"]) expect(about, `이용 안내에 '${w}'`).toContain(w);
   expect(about, "옛 문구(글만 보관) 남지 않음").not.toContain("적은 글만 처리를 위해");
