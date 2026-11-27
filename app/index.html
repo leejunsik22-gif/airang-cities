@@ -751,12 +751,14 @@ function store(k, v) { try { if (v === undefined) return localStorage.getItem(NS
   localStorage.setItem("airang.nsMigrated", NS + new Date().toISOString().slice(0, 10));
 } catch (e) {} })();
 // ---------- 아이 정보 옮기기: 아이폰은 홈 화면 앱이 사파리와 저장 공간을 따로 써서, 추가할 때 등록 정보를 같이 실어 보냄 ----------
-const MOVE_KEYS = ["edu.kids", "edu.myEv", "edu.region", "edu.level", "edu.school", "edu.seenEv", "edu.newsSeen", "edu.appVer", "edu.first", "edu.uDay", "edu.uMon", "edu.installHide"];
+/* 181(C7-M1): 아이 정보(edu.kids)·예전 우리 아이 학교(edu.school)는 기본 이동 코드에서 뺌. 옮기려면 kidMove…(암호로 잠근 코드)를 따로 씀 */
+const MOVE_KEYS = ["edu.myEv", "edu.region", "edu.level", "edu.seenEv", "edu.newsSeen", "edu.appVer", "edu.first", "edu.uDay", "edu.uMon", "edu.installHide"];
 function moveIsStandalone() { return (window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone === true; }
-function moveHasData() { try { return (JSON.parse(store("edu.kids") || "[]") || []).length > 0; } catch (e) { return false; } }
+function moveHasData() { try { return (JSON.parse(store("edu.kids") || "[]") || []).length > 0 || (JSON.parse(store("edu.myEv") || "[]") || []).length > 0; } catch (e) { return false; } }
 function moveCode() {
   const o = {};
   try { for (let i = 0; i < localStorage.length; i++) { const kk = localStorage.key(i); if (!kk.startsWith(NS)) continue; const k = kk.slice(NS.length); if (MOVE_KEYS.includes(k) || /^edu\.want\.[\w-]+$/.test(k)) o[k] = localStorage.getItem(kk); } } catch (e) {}
+  try { if (o["edu.myEv"]) o["edu.myEv"] = JSON.stringify(JSON.parse(o["edu.myEv"]).map(e => (e && typeof e === "object") ? { ...e, kid: "all" } : e)); } catch (e) { delete o["edu.myEv"]; }   /* 181: 내 일정의 아이 연결은 빼고 보냄 */
   let bin = ""; new TextEncoder().encode(JSON.stringify(o)).forEach(b => { bin += String.fromCharCode(b); });
   return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
@@ -777,7 +779,7 @@ function moveApply(code) {
     let kidsOk = false;
     for (let [k, v] of Object.entries(o)) {
       if (!(MOVE_KEYS.includes(k) || /^edu\.want\.[\w-]+$/.test(k)) || typeof v !== "string" || v.length > 30000) continue;
-      if (k === "edu.kids" || k === "edu.myEv") { v = moveSafeList(v); if (v === null) continue; if (k === "edu.kids") kidsOk = JSON.parse(v).length > 0; }
+      if (k === "edu.myEv") { v = moveSafeList(v); if (v === null) continue; v = JSON.stringify(JSON.parse(v).map(e => (e && typeof e === "object") ? { ...e, kid: "all" } : e)); kidsOk = JSON.parse(v).length > 0; }   /* 181: edu.kids 는 MOVE_KEYS 에 없어 위 줄에서 버려짐(평문 아이 정보 받지 않음) */
       else if (/[<>`\\']/.test(v)) continue;
       store(k, v);
     }
@@ -1470,6 +1472,7 @@ function viewMy() {
     <section class="section" style="margin-top:0"><div class="sec-head"><h2>우리 아이</h2><span style="font-size:12px;color:var(--muted)">${ks.length}/${MAX_KIDS}명</span></div>
       <div class="lift list">${kidRows || `<div class="empty">아직 등록한 아이가 없어요.</div>`}</div>
       ${ks.length < MAX_KIDS ? `<button class="btn btn-soft" style="width:100%;height:50px" onclick="go('kid/new')">+ 아이 추가</button>` : ""}
+      ${kidWipeBox()}
     </section>
     ${otherCities()}
     <section class="section"><div class="sec-head"><h2>설정</h2></div>
@@ -1908,6 +1911,28 @@ function viewEvents() {
 {{/if}}
 }
 
+// ---------- 181(C8): 이 기기의 아이 정보 지우기 ----------
+let kidWipeArm = "";
+function kidDataLeft() { const a = store(KEY_KIDS), b = store(KEY_SCHOOL); return !!((a && a !== "[]") || b); }
+function wipeKidData() {
+  try { localStorage.removeItem(NS + KEY_KIDS); localStorage.removeItem(NS + KEY_SCHOOL); localStorage.removeItem(NS + "edu.acaReported"); } catch (e) {}
+  try { const l = JSON.parse(store(KEY_MYEV) || "[]"); if (Array.isArray(l) && l.some(e => e && e.kid && e.kid !== "all")) store(KEY_MYEV, JSON.stringify(l.map(e => (e && typeof e === "object") ? { ...e, kid: "all" } : e))); } catch (e) {}   /* 내 일정 글은 남기고 아이 연결만 뗌 */
+  homeKid = "all"; kidForm = null;
+}
+function wipeAllergy() { const l = kids(); l.forEach(k => { k.al = []; }); saveKids(l); }
+function kidWipeBox() {
+  if (!kidDataLeft()) return "";
+  const hasAl = kids().some(k => (k.al || []).length);
+  return `<div style="margin-top:10px;font-size:12px;color:var(--muted);line-height:1.6">아이 정보는 이 휴대폰 안에만 있어요. 같은 휴대폰을 쓰는 사람은 볼 수 있어요.</div>
+    <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+      ${hasAl ? `<button class="btn btn-soft" style="flex:1;min-width:140px;height:44px;font-size:13px" onclick="kidWipe('al')">${kidWipeArm === "al" ? "한 번 더 누르면 지워요" : "알레르기만 지우기"}</button>` : ""}
+      <button class="btn btn-soft" style="flex:1;min-width:140px;height:44px;font-size:13px;color:var(--coral-ink)" onclick="kidWipe('all')">${kidWipeArm === "all" ? "한 번 더 누르면 지워요" : "아이 정보 모두 지우기"}</button></div>`;
+}
+function kidWipe(kind) {
+  if (kidWipeArm !== kind) { kidWipeArm = kind; render(); return; }
+  if (kind === "al") { wipeAllergy(); toast("알레르기 정보를 지웠어요"); } else { wipeKidData(); toast("이 휴대폰의 아이 정보를 지웠어요"); }
+  kidWipeArm = ""; render();
+}
 // ---------- 화면: 아이 추가 / 수정 ----------
 function viewKid(arg, pre) {
   const list = kids();
@@ -1917,7 +1942,7 @@ function viewKid(arg, pre) {
   const sc = kidForm.code && DATA.schools.find(s => s.code === kidForm.code);
   $view.innerHTML = `<button class="back glass" onclick="history.back()" aria-label="뒤로">${icon.back}</button>
     <h1 style="font-size:25px;font-weight:800;margin-top:14px">${editing ? "아이 정보 수정" : "아이 추가"}</h1>
-    <p style="font-size:13px;color:var(--muted);margin:6px 0 0">이름 대신 첫째·둘째 같은 별명도 괜찮아요. 접속한 본인 휴대폰에만 저장돼요.</p>
+    <p style="font-size:13px;color:var(--muted);margin:6px 0 0">보호자가 입력해 주세요. 이름 대신 첫째·둘째 같은 별명이면 충분해요. 이 휴대폰 안에만 저장되고, <b>같은 휴대폰을 쓰는 사람은 볼 수 있어요.</b></p>
     <section class="section"><div class="sec-head"><h2>이름(별명)</h2></div>
       <label class="search lift"><input id="kname" maxlength="10" value="${esc(kidForm.name)}" aria-label="아이 이름 또는 별명"></label></section>
     <section class="section"><div class="sec-head"><h2>학교</h2></div>
@@ -1929,8 +1954,11 @@ function viewKid(arg, pre) {
       <div style="display:grid;grid-template-columns:repeat(${maxGrade(sc)},1fr);gap:8px">${Array.from({ length: maxGrade(sc) }, (_, i) => i + 1).map(g => `<button class="btn ${kidForm.grade === g ? "btn-3d" : "btn-soft"}" style="height:44px;font-size:15px;padding:0" onclick="pickGrade(${g})">${g}</button>`).join("")}</div>
       <p style="font-size:12px;color:var(--muted);margin-top:8px">매년 3월에 자동으로 한 학년씩 올라가요.</p></section>` : ""}
     <section class="section"><div class="sec-head"><h2>알레르기 <span style="font-size:12px;color:var(--muted);font-weight:600">선택</span></h2>${kidForm.al.length ? `<span style="font-size:12px;color:#B42318;font-weight:700">${kidForm.al.length}개 선택</span>` : ""}</div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px">${ALLERGY.slice(1).map((a, i) => { const on = kidForm.al.includes(i + 1); return `<button class="btn ${on ? "" : "btn-soft"}" style="height:36px;padding:0 12px;font-size:13px;${on ? "background:#FFECEC;color:#B42318;box-shadow:inset 0 0 0 1.5px #F2A3A3;font-weight:800" : ""}" onclick="pickAl(${i + 1})">${on ? "⚠️ " : ""}${a}</button>`; }).join("")}</div>
-      <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:8px">고르면 급식에서 그 성분이 든 메뉴를 ⚠️로 알려 드려요. 이 휴대폰에만 저장되고 어디에도 보내지 않아요. 정확한 성분은 학교 식단표로 한 번 더 확인해 주세요.</p></section>
+      ${kidForm.al.length || kidForm.alOk ? "" : `<div class="lift" style="padding:14px 16px;font-size:13px;line-height:1.65;margin-bottom:8px"><b>알레르기는 건강 정보예요.</b><br>· 이 휴대폰 안에만 저장돼요. 어디에도 보내지 않아요.<br>· 같은 휴대폰을 쓰는 사람은 볼 수 있어요.<br>· 이 화면이나 마이 화면에서 언제든 지울 수 있어요.
+        <button class="btn btn-soft" style="display:block;width:100%;height:44px;margin-top:10px" onclick="kidForm.alOk=true;render()">확인하고 고르기</button></div>`}
+      ${kidForm.al.length || kidForm.alOk ? `<div style="display:flex;flex-wrap:wrap;gap:6px">${ALLERGY.slice(1).map((a, i) => { const on = kidForm.al.includes(i + 1); return `<button class="btn ${on ? "" : "btn-soft"}" style="height:36px;padding:0 12px;font-size:13px;${on ? "background:#FFECEC;color:#B42318;box-shadow:inset 0 0 0 1.5px #F2A3A3;font-weight:800" : ""}" onclick="pickAl(${i + 1})">${on ? "⚠️ " : ""}${a}</button>`; }).join("")}</div>
+      ${kidForm.al.length ? `<button class="btn btn-soft" style="height:36px;padding:0 12px;font-size:12px;margin-top:8px" onclick="kidForm.al=[];render()">알레르기 선택 모두 빼기</button>` : ""}` : ""}
+      <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:8px">고르면 급식에서 그 성분이 든 메뉴를 ⚠️로 알려 드려요. 급식 표기는 학교가 공개한 자료 기준이고, 앱 표시는 참고용이에요. <b>학교의 알레르기 관리 절차와 의료진 안내를 대신하지 않아요.</b> 정확한 성분은 학교 식단표로 한 번 더 확인해 주세요.</p></section>
     <section class="section"><div class="sec-head"><h2>다니는 학원 <span style="font-size:12px;color:var(--muted);font-weight:600">선택</span></h2><span style="font-size:12px;color:var(--muted)">${kidForm.acas.length}/10곳</span></div>
       ${kidForm.acas.length ? `<div class="lift list">${kidForm.acas.map((a, i) => `<div class="school" style="border-bottom:0"><span class="tile t-coral" style="width:40px;height:40px;font-weight:800">${esc((a.n || "학")[0])}</span>
 {{#if yongin}}
@@ -1944,11 +1972,13 @@ function viewKid(arg, pre) {
       <div class="lift list" id="ares"></div>` : ""}
 {{#if yongin}}
       <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px">교육청에 등록된 {{f.sgg}} 학원·교습소 목록에서 골라요. 요일·시간을 넣고 <b>📅 캘린더에 추가</b>를 누르면 휴대폰 캘린더가 수업 시작·끝 10분 전에 알려 줘요. 시간이 바뀌면 캘린더에서 예전 일정을 지우고 다시 추가해 주세요.<br>학원 정보는 접속한 본인 휴대폰에만 저장돼요.</p></section>
-    <button class="btn btn-3d" style="width:100%;height:54px;margin-top:24px;font-size:15px" onclick="saveKid('${editing ? editing.id : ""}')">${editing ? "저장하기" : "등록하기"}</button>
+    <label style="display:flex;gap:10px;align-items:flex-start;margin-top:22px;font-size:14px;line-height:1.5;cursor:pointer"><input type="checkbox" id="kguard" ${kidForm.guard ? "checked" : ""} onchange="kidForm.guard=this.checked" style="width:22px;height:22px;flex:0 0 auto;margin:0"><span>저는 이 아이의 보호자예요.</span></label>
+    <button class="btn btn-3d" style="width:100%;height:54px;margin-top:12px;font-size:15px" onclick="saveKid('${editing ? editing.id : ""}')">${editing ? "저장하기" : "등록하기"}</button>
     ${editing ? `<button class="btn btn-soft" style="width:100%;height:46px;margin-top:12px;color:var(--coral-ink)" onclick="deleteKid('${editing.id}')">${kidForm.arm ? "한 번 더 누르면 삭제돼요" : "이 아이 삭제"}</button>` : ""}`;
 {{#else}}
-      <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px">교육청에 등록된 {{f.sgg}} 학원·교습소 목록에서 골라요. 요일·시간을 넣고 <b>📅 캘린더에 추가</b>를 누르면 휴대폰 캘린더가 수업 시작·끝 10분 전에 알려 줘요. 시간이 바뀌면 캘린더에서 예전 일정을 지우고 다시 추가해 주세요.<br>학원 정보는 접속한 본인 휴대폰에만 저장돼요.<br>앞으로 동의한 분들의 학원 정보만 <b>이름 없이</b> 모아 "우리 동네 인기 학원"을 보여 드릴 예정이에요.</p></section>
-    <button class="btn btn-3d" style="width:100%;height:54px;margin-top:24px;font-size:15px" onclick="saveKid('${jsq(editing ? editing.id : "")}')">${editing ? "저장하기" : "등록하기"}</button>
+      <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px">교육청에 등록된 {{f.sgg}} 학원·교습소 목록에서 골라요. 요일·시간을 넣고 <b>📅 캘린더에 추가</b>를 누르면 휴대폰 캘린더가 수업 시작·끝 10분 전에 알려 줘요. 시간이 바뀌면 캘린더에서 예전 일정을 지우고 다시 추가해 주세요.<br>학원 정보는 접속한 본인 휴대폰에만 저장돼요.</p></section>
+    <label style="display:flex;gap:10px;align-items:flex-start;margin-top:22px;font-size:14px;line-height:1.5;cursor:pointer"><input type="checkbox" id="kguard" ${kidForm.guard ? "checked" : ""} onchange="kidForm.guard=this.checked" style="width:22px;height:22px;flex:0 0 auto;margin:0"><span>저는 이 아이의 보호자예요.</span></label>
+    <button class="btn btn-3d" style="width:100%;height:54px;margin-top:12px;font-size:15px" onclick="saveKid('${jsq(editing ? editing.id : "")}')">${editing ? "저장하기" : "등록하기"}</button>
     ${editing ? `<button class="btn btn-soft" style="width:100%;height:46px;margin-top:12px;color:var(--coral-ink)" onclick="deleteKid('${jsq(editing.id)}')">${kidForm.arm ? "한 번 더 누르면 삭제돼요" : "이 아이 삭제"}</button>` : ""}`;
 {{/if}}
   document.getElementById("kname").addEventListener("input", e => { kidForm.name = e.target.value; });
@@ -2068,6 +2098,7 @@ function kidResults() {
 function pickKidSchool(code) { const sc = DATA.schools.find(s => s.code === code); kidForm.code = code; kidForm.q = ""; if (sc && kidForm.grade > maxGrade(sc)) kidForm.grade = 0; render(); }
 function pickGrade(g) { const y = window.scrollY; kidForm.grade = g; render(); window.scrollTo(0, y); }
 function saveKid(id) {
+  if (!kidForm.guard) { toast("보호자 확인에 체크해 주세요"); return; }   /* 181(C3): 보호자 확인 — 법정대리인 동의 절차가 아님 */
   if (!kidForm.code) { toast("학교를 골라 주세요"); return; }
   const scSel = DATA.schools.find(s => s.code === kidForm.code);
   if (!kidForm.grade || (scSel && kidForm.grade > maxGrade(scSel))) { toast("학년을 골라 주세요"); return; }
@@ -2075,7 +2106,7 @@ function saveKid(id) {
   const name = (kidForm.name || "").trim() || ORD[list.length] || "아이";
   const k = list.find(x => x.id === id);
   const before = new Set(((k && k.acas) || []).map(a => a.id));
-  (kidForm.acas || []).filter(a => !before.has(a.id)).forEach(a => trackEvent("학원등록/" + a.id));
+  /* 181(C6): 아이에게 등록한 학원 번호를 통계로 보내지 않음 — 예전: trackEvent("학원등록/" + 학원번호) */
   if (k) { k.name = name; k.code = kidForm.code; k.acas = kidForm.acas; k.grade = kidForm.grade; k.gy = schoolYear(); k.al = kidForm.al; }
   else list.push({ id: "k" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), name, code: kidForm.code, acas: kidForm.acas, grade: kidForm.grade, gy: schoolYear(), al: kidForm.al, color: nextColor(list) });
   saveKids(list); kidForm = null; homeKid = "all"; trackEvent(k ? "아이-수정" : "아이-등록");
@@ -2534,9 +2565,10 @@ function viewAbout() {
 {{/if}}
     ${sec("효숲 이야기", `<b>효(孝)</b> — 부모와 어르신을 아끼고 섬기는 마음이에요.<br><b>숲</b> — 나무 한 그루가 아니라 여러 그루가 함께 자라는 곳이에요.<br>그래서 <b>효숲</b>은 어르신·부모·아이 세 세대가 서로 기대어 함께 자라는 숲이라는 뜻이에요. 로고의 세 그루 나무도 세 세대를 나타내요. 영문 이름은 Hyo Forest예요.`)}${"" /* 155: 03 전달 메모 v2의 이름 뜻(대표 확정). 소개 문구 초안은 대표 확정 전이라 넣지 않음 */}
     ${sec("무료로 운영해요", li(["모든 기능을 <b>무료</b>로 제공해요. 회원가입이나 결제가 없어요.", "{{f.sgg}}청, 교육청 등 <b>공공기관이 운영하는 서비스가 아니에요.</b> 개인이 공공 자료를 모아 보여 드리는 서비스예요."]))}
-    ${sec("개인정보를 묻지 않아요", `회원가입이 없고, 이름·전화번호·이메일·주소를 <b>묻지 않아요.</b><br>문의하기를 보내면 처리를 위해 <b>문의 종류·적은 글·보낸 구와 화면 이름·접수와 처리 시각</b>만 보관해요. 처리 여부와 상관없이 접수 180일 뒤에 지워요.<br>같은 곳에서 문의를 너무 많이 보내는 것을 막으려고, 접속 주소(IP)를 알아볼 수 없게 바꾼 값을 보관하고, 하루가 지나면 지울 대상이 돼요.<br>기한이 지난 기록은 다음 문의가 접수되거나 관리자가 접수함을 열 때 지워지므로, 실제로 지워지는 날은 조금 늦을 수 있어요. <b>문의 글에는 개인정보를 적지 말아 주세요.</b>`)}
+    ${sec("개인정보는 꼭 필요한 만큼만", `회원가입이 없고, 보호자의 이름·전화번호·이메일·주소를 <b>묻지 않아요.</b> 아이 정보는 보호자가 고른 것만, 이 휴대폰 안에만 저장해요(아래 표).<br>문의하기를 보내면 처리를 위해 <b>문의 종류·적은 글·보낸 구와 화면 이름·접수와 처리 시각</b>만 보관해요. 처리 여부와 상관없이 접수 180일 뒤에 지워요.<br>같은 곳에서 문의를 너무 많이 보내는 것을 막으려고, 접속 주소(IP)를 알아볼 수 없게 바꾼 값을 보관하고, 하루가 지나면 지울 대상이 돼요.<br>기한이 지난 기록은 다음 문의가 접수되거나 관리자가 접수함을 열 때 지워지므로, 실제로 지워지는 날은 조금 늦을 수 있어요. <b>문의 글에는 개인정보를 적지 말아 주세요.</b>`)}
     ${sec("어떤 정보를 어디에, 무엇에 쓰나요", [
-      ["아이 별명 · 학교 · 학년 · 학원(수업 요일·시간), 관심 지역", "<b>사용하시는 분 본인의 휴대폰(또는 컴퓨터)</b> 브라우저 안. 다른 기기나 다른 브라우저에서는 보이지 않아요.", "홈 화면에 우리 아이 학교 일정, 학원, 고입 시기를 보여 주는 데만 써요. 서버로 보내지 않아서 <b>개발자도 볼 수 없어요.</b>", "직접 지우거나 앱·브라우저 데이터를 지울 때까지"]
+      ["아이 별명 · 학교 · 학년 · <b>알레르기(건강 정보)</b> · 학원(수업 요일·시간), 관심 지역", "<b>사용하시는 분 본인의 휴대폰(또는 컴퓨터)</b> 브라우저 안. 다른 기기나 다른 브라우저에서는 보이지 않아요. 같은 기기를 쓰는 사람은 볼 수 있어요.", "홈 화면에 우리 아이 학교 일정, 학원, 고입 시기, 급식 알레르기 표시를 보여 주는 데만 써요. 서버나 통계로 보내지 않아서 <b>개발자도 볼 수 없어요.</b>", "마이 → 우리 아이 → <b>아이 정보 모두 지우기</b>(알레르기만 지우기도 가능)로 지우거나, 앱·브라우저 데이터를 지울 때까지"],
+      ["방문 통계(어느 화면을 몇 번 열었는지)", "GoatCounter(해외 방문 통계 서비스)", "화면 이름과 횟수만 보내요. <b>검색어·아이 정보·학원 번호는 보내지 않아요.</b> 그 서비스는 접속 주소(IP)를 저장하지 않는다고 밝히고 있어요.", "그 서비스의 보관 기준에 따름"]
     ].map(([what, where, why, keep]) => `<div style="padding:10px 0;border-bottom:1px solid var(--line)"><div style="font-weight:800;margin-bottom:6px">${what}</div>
       <div style="display:grid;grid-template-columns:64px 1fr;gap:4px 10px;font-size:13px"><span style="color:var(--muted)">저장 위치</span><span>${where}</span><span style="color:var(--muted)">쓰는 곳</span><span>${why}</span><span style="color:var(--muted)">보관</span><span>${keep}</span></div></div>`).join("")
       + `<div style="padding-top:10px;font-size:13px">${li(["광고에 쓰지 않아요.", "앱 안의 링크(학교 홈페이지, 공고 원문 등)를 누르면 그 사이트의 개인정보 정책이 적용돼요."])}</div>`)}
@@ -3331,7 +3363,8 @@ function openInstall(auto) {
     document.querySelectorAll('link[rel="manifest"]').forEach(m => m.remove());
     if (!document.querySelector('meta[name="apple-mobile-web-app-capable"]')) document.head.insertAdjacentHTML("beforeend", '<meta name="apple-mobile-web-app-capable" content="yes">');
     history.replaceState(null, "", location.pathname + location.search + "#move=" + moveCode());
-    box.insertAdjacentHTML("beforeend", `<div style="margin-top:12px;padding:12px 14px;border-radius:14px;background:#EEF7F1;font-size:13px;line-height:1.6;color:#1F6B45">✓ 등록한 아이·학원 정보도 홈 화면 앱으로 <b>같이 옮겨져요</b>.
+    box.insertAdjacentHTML("beforeend", `<div style="margin-top:12px;padding:12px 14px;border-radius:14px;background:#EEF7F1;font-size:13px;line-height:1.6;color:#1F6B45">✓ 내 일정·관심 지역은 홈 화면 앱으로 <b>같이 옮겨져요</b>. 아이 정보는 안전을 위해 기본으로 옮기지 않아요.
+      ${kids().length ? `<button onclick="openKidMove()" style="display:block;margin-top:6px;border:0;background:none;padding:0;font:inherit;font-size:12px;color:#1F6B45;text-decoration:underline;cursor:pointer">아이 정보도 옮기기(암호로 잠금)</button>` : ""}
       <button onclick="copyMoveCode()" style="display:block;margin-top:6px;border:0;background:none;padding:0;font:inherit;font-size:12px;color:#1F6B45;text-decoration:underline;cursor:pointer">혹시 안 옮겨졌다면: 옮기기 코드 복사</button></div>`);
   }
   if (auto) box.insertAdjacentHTML("beforeend", `<button onclick="closeInstall()" style="display:block;width:100%;margin-top:12px;border:0;background:none;padding:10px;font:inherit;font-size:14px;color:var(--muted);cursor:pointer">나중에 할게요</button>`);
@@ -3378,17 +3411,70 @@ function openMovePaste() {
       <button onclick="closeInstall()" aria-label="닫기" style="border:0;background:#EEF0F6;width:34px;height:34px;border-radius:17px;font-size:18px;color:var(--muted);cursor:pointer">×</button></div>
     <div style="margin-top:10px;font-size:14px;line-height:1.7;color:var(--muted)">① 사파리(또는 크롬)에서 이 사이트를 열고 <b>앱처럼 쓰기</b>를 눌러요<br>② 초록색 칸의 <b>옮기기 코드 복사</b>를 눌러요<br>③ 여기로 돌아와 아래 칸에 붙여 넣어요</div>
     <textarea id="moveIn" rows="3" placeholder="여기에 코드를 붙여 넣어 주세요" style="width:100%;margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit;font-size:13px;resize:none"></textarea>
+    <input id="movePass" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="아이 정보 코드라면: 비밀 문구 12자" aria-label="아이 정보 옮기기 비밀 문구" style="width:100%;margin-top:8px;border:1px solid var(--line);border-radius:12px;padding:10px;font:inherit;font-size:14px;letter-spacing:1px">
     <button class="btn btn-3d" style="width:100%;height:50px;margin-top:10px;font-size:15px" onclick="doMovePaste()">가져오기</button></div>`;
   el.addEventListener("click", e => { if (e.target === el) closeInstall(); });
   document.body.appendChild(el);
 }
-function doMovePaste() {
+async function doMovePaste() {
   const v = (document.getElementById("moveIn") || {}).value || "";
+  const kt = (v.match(/K1_[\w-]{20,}/) || [])[0];   /* 181(C7): 암호로 잠근 아이 정보 코드 */
+  if (kt) {
+    if (kids().length && !confirmMove) { confirmMove = true; toast("지금 등록된 아이 정보가 바뀌어요. 한 번 더 누르면 가져와요"); return; }
+    const r = await kidMoveOpen(kt, (document.getElementById("movePass") || {}).value || "");
+    if (r === "ok") { closeInstall(); toast("아이 정보를 가져왔어요. 보낸 코드는 지워 주세요"); go("home"); render(); }
+    else toast(r === "old" ? "24시간이 지난 코드예요. 새로 만들어 주세요" : "비밀 문구나 코드를 확인해 주세요");
+    return;
+  }
   if (moveHasData() && !confirmMove) { confirmMove = true; toast("지금 등록된 아이 정보가 바뀌어요. 한 번 더 누르면 가져와요"); return; }
   if (moveApply(v)) { store("edu.moved", "1"); closeInstall(); trackEvent("정보-옮기기"); toast("아이 정보를 가져왔어요"); go("home"); render(); }
   else toast("코드를 확인해 주세요. 처음부터 끝까지 그대로 붙여 넣어야 해요");
 }
 let confirmMove = false;
+/* ---------- 181(C7 M2–M7): 아이 정보 옮기기 — 이 기기 안에서 암호로 잠근 코드 ----------
+   AES-GCM 256 · PBKDF2-SHA256 60만 회 · 소금값 16바이트 · 초기값 12바이트(브라우저 내장 Web Crypto, 외부 라이브러리·서버 없음).
+   비밀 문구는 앱이 무작위로 만든 12자, 코드 안에 넣지 않고 저장하지 않음. 24시간 지난 코드는 거절. 실패하면 아무것도 저장하지 않음. */
+const KM_ITER = 600000, KM_TTL = 864e5, KM_ABC = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+const kmB64 = u => { let b = ""; u.forEach(x => { b += String.fromCharCode(x); }); return btoa(b).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); };
+const kmU8 = t => Uint8Array.from(atob(t.replace(/-/g, "+").replace(/_/g, "/")), c => c.charCodeAt(0));
+async function kmKey(pass, salt) {
+  const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey({ name: "PBKDF2", salt, iterations: KM_ITER, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
+}
+function kmPass() { const r = crypto.getRandomValues(new Uint8Array(12)); return Array.from(r, x => KM_ABC[x % 32]).join(""); }
+async function kidMoveMake(now) {
+  const pass = kmPass(), salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12));
+  const body = new TextEncoder().encode(JSON.stringify({ t: now || Date.now(), kids: kids() }));
+  const ct = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, await kmKey(pass, salt), body));
+  return { code: "K1_" + kmB64(salt) + "_" + kmB64(iv) + "_" + kmB64(ct), pass };
+}
+async function kidMoveOpen(code, pass, now) {
+  try {
+    const m = String(code).match(/^K1_([\w-]{22})_([\w-]{16})_([\w-]{20,})$/); if (!m) return "bad";
+    pass = String(pass || "").toUpperCase().replace(/[^0-9A-Z]/g, ""); if (pass.length !== 12) return "bad";
+    const plain = await crypto.subtle.decrypt({ name: "AES-GCM", iv: kmU8(m[2]) }, await kmKey(pass, kmU8(m[1])), kmU8(m[3]));
+    const o = JSON.parse(new TextDecoder().decode(plain));
+    if (!o || typeof o.t !== "number" || !Array.isArray(o.kids)) return "bad";
+    const t = now || Date.now(); if (t - o.t > KM_TTL || o.t - t > 6e5) return "old";
+    const safe = moveSafeList(JSON.stringify(o.kids)); if (safe === null) return "bad";
+    store(KEY_KIDS, safe); return "ok";
+  } catch (e) { return "bad"; }
+}
+async function openKidMove() {
+  closeInstall();
+  const el = document.createElement("div");
+  el.id = "installSheet"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true"); el.setAttribute("aria-label", "아이 정보 옮기기");
+  el.style.cssText = "position:fixed;inset:0;z-index:50;background:rgba(20,26,46,.45);display:flex;align-items:flex-end;justify-content:center";
+  el.innerHTML = `<div style="background:#fff;width:min(560px,100%);border-radius:26px 26px 0 0;padding:22px 20px calc(26px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto"><div style="font-size:18px;font-weight:800">아이 정보 옮기기</div><div id="kmBody" style="margin-top:10px;font-size:14px;color:var(--muted)">암호로 잠그는 중이에요…</div></div>`;
+  el.addEventListener("click", e => { if (e.target === el) closeInstall(); });
+  document.body.appendChild(el);
+  const r = await kidMoveMake(), b = document.getElementById("kmBody"); if (!b) return;
+  b.innerHTML = `<div style="line-height:1.7">① 아래 <b>코드</b>를 복사해 새 기기(홈 화면 앱)의 '정보 가져오기'에 붙여 넣어요.<br>② <b>비밀 문구</b>는 새 기기에서 직접 입력해요. 코드와 같은 메신저로 보내지 마세요.<br>③ 24시간이 지나면 이 코드는 열리지 않아요. 옮긴 뒤 코드는 지워 주세요.</div>
+    <textarea id="kmCode" rows="3" readonly style="width:100%;margin-top:10px;border:1px solid var(--line);border-radius:12px;padding:10px;font-size:12px;resize:none">${esc(r.code)}</textarea>
+    <button class="btn btn-soft" style="width:100%;height:44px;margin-top:6px" onclick="navigator.clipboard&&navigator.clipboard.writeText(document.getElementById('kmCode').value).then(()=>toast('코드를 복사했어요'))">코드 복사</button>
+    <div style="margin-top:12px;padding:14px;border-radius:14px;background:#FFF6E5;text-align:center"><div style="font-size:12px">비밀 문구(직접 입력)</div><div id="kmPass" style="font-size:24px;font-weight:800;letter-spacing:3px;margin-top:4px;color:var(--ink)">${r.pass.replace(/(.{4})/g, "$1 ").trim()}</div></div>
+    <button class="btn btn-3d" style="width:100%;height:48px;margin-top:12px" onclick="closeInstall()">닫기</button>`;
+}
 // 전체 메뉴 안의 안내 칸
 function installGuide() {
   const d = devInfo();
@@ -3469,10 +3555,8 @@ async function load() {
 }
 // 이 기능 전에 등록해 둔 아이 학원도 한 번만 집계 (학원 번호만 보내고, 아이·기기 정보는 보내지 않음)
 function reportKidAcas() {
-  if (store("edu.acaReported")) return;
-  const ids = new Set(); kids().forEach(k => (k.acas || []).forEach(a => ids.add(a.id)));
-  ids.forEach(id => trackEvent("학원등록/" + id));
-  store("edu.acaReported", "1");
+  /* 181(C6): 아이 정보에서 나온 학원 번호는 통계로 보내지 않음. 함수 이름만 남겨 둠 */
+  return;
 }
 load();
 if ("serviceWorker" in navigator) {
