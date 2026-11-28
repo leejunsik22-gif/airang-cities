@@ -522,6 +522,8 @@ body:has(.aca-head) .topscape .img-tag{top:12px;bottom:auto;max-width:calc(100% 
 @media (max-width:200px){.acarow{flex-wrap:wrap}.search-v2{flex-wrap:wrap!important;padding:8px!important}.search-v2 input{flex:1 1 100%!important;padding:0 6px}.search-v2 .btn{flex:1 1 100%!important;min-height:48px;justify-content:center}}
 /* 187: 알레르기 카드 인쇄 — 카드만 찍고 색은 화면과 같게. pcard 는 kidCardPrint() 가 인쇄하는 동안만 붙인다 */
 @media print{body.pcard *{visibility:hidden!important}body.pcard #kidCard,body.pcard #kidCard *{visibility:visible!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}body.pcard #kidCard{position:absolute;left:0;top:0;width:100%;max-width:170mm;box-shadow:none!important}body.pcard,html:has(body.pcard){background:#fff!important}}
+/* 188: 학원 수업 요일 — 넓으면 한 줄 7칸 그대로, 칸이 44px보다 좁아지면(폭 338 미만) 두 줄(4+3), 더 좁으면 칸 44px 이상 유지하며 줄 늘림. 컨테이너 질의를 모르는 옛 브라우저는 예전처럼 7칸 */
+.acadays-w{container-type:inline-size}.acadays{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}@container (max-width:337px){.acadays{grid-template-columns:repeat(auto-fill,minmax(max(44px,22%),1fr))}}
 </style>
 <nav class="nav glass" aria-label="주요 메뉴">
   <button class="navi" data-tab="home"><span class="ic">{{icon:home}}</span>홈</button>
@@ -2085,7 +2087,7 @@ function acaTimeBox(a, i) {
   return `<div style="margin:0 12px 14px;padding:12px;border-radius:16px;background:${empty ? "#FFF6E8" : "#F3F5FF"};border:1px solid ${empty ? "#FFD9A8" : "#E1E6FF"}">
     ${empty ? `<div style="font-size:12.5px;font-weight:700;color:#8A5300;margin-bottom:10px">⏰ 요일·시간을 넣으면 홈 '오늘 학원'에 떠요</div>` : ""}
     <div style="font-size:12px;font-weight:800;margin:0 0 6px 2px">📅 수업 요일 <span style="font-weight:600;color:var(--muted)">(여러 개 고를 수 있어요)</span></div>
-    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px">${WEEK.map(([d], j) => `<button class="btn ${days.includes(j) ? "btn-3d" : "btn-soft"}" style="height:36px;padding:0;font-size:13px" onclick="toggleAcaDay(${i},${j})">${d}</button>`).join("")}</div>
+    <div class="acadays-w"><div class="acadays">${WEEK.map(([d], j) => `<button class="btn ${days.includes(j) ? "btn-3d" : "btn-soft"}" style="height:36px;padding:0;font-size:13px" onclick="toggleAcaDay(${i},${j})">${d}</button>`).join("")}</div></div>
     <div style="font-size:12px;font-weight:800;margin:12px 0 6px 2px">⏰ 수업 시간</div>
     <div style="display:flex;gap:8px;align-items:flex-end">${tin("s", "시작")}<span style="padding-bottom:12px;color:var(--muted)">~</span>${tin("e", "끝")}</div>
     <button class="btn btn-soft" style="width:100%;height:42px;margin-top:10px;font-size:13px;color:var(--indigo)" onclick="acaToCalendar(${i})">📅 휴대폰 캘린더에도 넣기 (10분 전 알림)</button>
