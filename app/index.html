@@ -91,7 +91,7 @@ a.ev{color:inherit;text-decoration:none}
 .soon{display:flex;gap:14px;align-items:center;padding:16px 18px}
 .soon p{margin:2px 0 0;font-size:13px;color:var(--muted);line-height:1.5}
 .search{display:flex;align-items:center;gap:10px;height:52px;padding:0 18px;border-radius:18px}
-.search input{flex:1;border:none;outline:none;background:transparent;font-size:15px;color:var(--ink)}
+.search input{flex:1;min-width:0;border:none;outline:none;background:transparent;font-size:15px;color:var(--ink)}
 .school{display:flex;gap:14px;align-items:center;padding:14px 16px;width:100%;text-align:left;border:none;background:#fff;cursor:pointer;border-bottom:1px solid var(--line);color:var(--ink)}
 .school:last-child{border-bottom:none}
 .school .nm{font-size:15px;font-weight:700}
@@ -519,7 +519,9 @@ body:has(.aca-head) .topscape .img-tag{top:12px;bottom:auto;max-width:calc(100% 
 /* 2026-11-13 129: 글자 최대일 때 홈 통합 검색칸이 좁아지던 것 → 돋보기 숨김·여백·찾기 버튼 폭 줄여 입력칸 넓힘 */
 .search-v2{gap:6px!important;padding:6px 6px 6px 12px!important}.search-v2>.bi{display:none!important}.search-v2 .btn{padding:0 10px!important;flex:none}}
 /* 2026-11-14 129 v02: 갤럭시 실제 글자 최대(약 300%)에선 그래도 '소··'만 보임 → 아주 좁은 화면(폭 200 이하)은 입력칸 한 줄 + 찾기 버튼 아래 줄로 */
-@media (max-width:200px){.search-v2{flex-wrap:wrap!important;padding:8px!important}.search-v2 input{flex:1 1 100%!important;padding:0 6px}.search-v2 .btn{flex:1 1 100%!important;min-height:48px;justify-content:center}}
+@media (max-width:200px){.acarow{flex-wrap:wrap}.search-v2{flex-wrap:wrap!important;padding:8px!important}.search-v2 input{flex:1 1 100%!important;padding:0 6px}.search-v2 .btn{flex:1 1 100%!important;min-height:48px;justify-content:center}}
+/* 187: 알레르기 카드 인쇄 — 카드만 찍고 색은 화면과 같게. pcard 는 kidCardPrint() 가 인쇄하는 동안만 붙인다 */
+@media print{body.pcard *{visibility:hidden!important}body.pcard #kidCard,body.pcard #kidCard *{visibility:visible!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}body.pcard #kidCard{position:absolute;left:0;top:0;width:100%;max-width:170mm;box-shadow:none!important}body.pcard,html:has(body.pcard){background:#fff!important}}
 </style>
 <nav class="nav glass" aria-label="주요 메뉴">
   <button class="navi" data-tab="home"><span class="ic">{{icon:home}}</span>홈</button>
@@ -1961,8 +1963,16 @@ function viewKidCard(id) {
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">${c.al.map(a => `<span style="padding:8px 14px;border-radius:14px;background:#FFECEC;color:#B42318;font-size:18px;font-weight:800">⚠️ ${esc(a)}</span>`).join("")}</div>
       <div style="margin-top:16px;font-size:12px;color:var(--muted);line-height:1.6">만든 날: ${esc(c.date)}<br>보호자가 직접 만든 참고 카드입니다. 학교 공식 절차를 대신하지 않습니다.</div></div>
     <button class="btn btn-3d" style="width:100%;height:50px;margin-top:14px" onclick="kidCardSave('${jsq(id)}')">그림으로 저장</button>
-    <button class="btn btn-soft" style="width:100%;height:46px;margin-top:10px" onclick="window.print()">인쇄하기</button>
+    <button class="btn btn-soft" style="width:100%;height:46px;margin-top:10px" onclick="kidCardPrint()">인쇄하기</button>
     <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px">저장한 그림은 이 휴대폰 사진첩·다운로드에 남아요. 다 쓰면 직접 지워 주세요.</p></section>`;
+}
+/* 187: 인쇄하기 — 카드만 찍히게(뒤 사진·버튼·안내 글 빼기). 인쇄창이 닫히면 원래대로 */
+function kidCardPrint() {
+  document.body.classList.add("pcard");
+  const off = () => { document.body.classList.remove("pcard"); window.removeEventListener("afterprint", off); };
+  window.addEventListener("afterprint", off);
+  window.print();
+  setTimeout(off, 60000);
 }
 function kidCardSave(id) {
   const k = kids().find(x => x.id === id); if (!k) return;
@@ -2014,11 +2024,11 @@ function viewKid(arg, pre) {
     <section class="section"><div class="sec-head"><h2>알레르기 <span style="font-size:12px;color:var(--muted);font-weight:600">선택</span></h2>${kidForm.al.length ? `<span style="font-size:12px;color:#B42318;font-weight:700">${kidForm.al.length}개 선택</span>` : ""}</div>
       ${kidForm.al.length || kidForm.alOk ? "" : `<div class="lift" style="padding:14px 16px;font-size:13px;line-height:1.65;margin-bottom:8px"><b>알레르기는 건강 정보예요.</b><br>· 이 휴대폰 안에만 저장돼요. 어디에도 보내지 않아요.<br>· 같은 휴대폰을 쓰는 사람은 볼 수 있어요.<br>· 이 화면이나 마이 화면에서 언제든 지울 수 있어요.
         <button class="btn btn-soft" style="display:block;width:100%;height:44px;margin-top:10px" onclick="kidForm.alOk=true;render()">확인하고 고르기</button></div>`}
-      ${kidForm.al.length || kidForm.alOk ? `<div style="display:flex;flex-wrap:wrap;gap:6px">${ALLERGY.slice(1).map((a, i) => { const on = kidForm.al.includes(i + 1); return `<button class="btn ${on ? "" : "btn-soft"}" style="height:36px;padding:0 12px;font-size:13px;${on ? "background:#FFECEC;color:#B42318;box-shadow:inset 0 0 0 1.5px #F2A3A3;font-weight:800" : ""}" onclick="pickAl(${i + 1})">${on ? "⚠️ " : ""}${a}</button>`; }).join("")}</div>
+      ${kidForm.al.length || kidForm.alOk ? `<div style="display:flex;flex-wrap:wrap;gap:6px">${ALLERGY.slice(1).map((a, i) => { const on = kidForm.al.includes(i + 1); return `<button class="btn ${on ? "" : "btn-soft"}" style="height:36px;min-width:44px;padding:0 12px;font-size:13px;${on ? "background:#FFECEC;color:#B42318;box-shadow:inset 0 0 0 1.5px #F2A3A3;font-weight:800" : ""}" onclick="pickAl(${i + 1})">${on ? "⚠️ " : ""}${a}</button>`; }).join("")}</div>
       ${kidForm.al.length ? `<button class="btn btn-soft" style="height:36px;padding:0 12px;font-size:12px;margin-top:8px" onclick="kidForm.al=[];render()">알레르기 선택 모두 빼기</button>` : ""}` : ""}
       <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:8px">고르면 급식에서 그 성분이 든 메뉴를 ⚠️로 알려 드려요. 급식 표기는 학교가 공개한 자료 기준이고, 앱 표시는 참고용이에요. <b>학교의 알레르기 관리 절차와 의료진 안내를 대신하지 않아요.</b> 정확한 성분은 학교 식단표로 한 번 더 확인해 주세요.</p></section>
     <section class="section"><div class="sec-head"><h2>다니는 학원 <span style="font-size:12px;color:var(--muted);font-weight:600">선택</span></h2><span style="font-size:12px;color:var(--muted)">${kidForm.acas.length}/10곳</span></div>
-      ${kidForm.acas.length ? `<div class="lift list">${kidForm.acas.map((a, i) => `<div class="school" style="border-bottom:0"><span class="tile t-coral" style="width:40px;height:40px;font-weight:800">${esc((a.n || "학")[0])}</span>
+      ${kidForm.acas.length ? `<div class="lift list">${kidForm.acas.map((a, i) => `<div class="school acarow" style="border-bottom:0"><span class="tile t-coral" style="width:40px;height:40px;font-weight:800">${esc((a.n || "학")[0])}</span>
 {{#if yongin}}
         <div style="flex:1;min-width:0;cursor:pointer" onclick="go('aca/${esc(a.id)}')"><div class="nm">${esc(a.n)}</div><div class="ad">${esc(a.r || "")} · 정보 보기 ›</div></div>
         <button class="btn btn-soft" style="height:34px;padding:0 12px;font-size:12px" onclick="removeAca('${esc(a.id)}')" aria-label="${esc(a.n)} 빼기">빼기</button></div>${acaTimeBox(a, i)}`).join("")}</div>` : ""}
@@ -2030,13 +2040,13 @@ function viewKid(arg, pre) {
       <div class="lift list" id="ares"></div>` : ""}
 {{#if yongin}}
       <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px">교육청에 등록된 {{f.sgg}} 학원·교습소 목록에서 골라요. 요일·시간을 넣고 <b>📅 캘린더에 추가</b>를 누르면 휴대폰 캘린더가 수업 시작·끝 10분 전에 알려 줘요. 시간이 바뀌면 캘린더에서 예전 일정을 지우고 다시 추가해 주세요.<br>학원 정보는 접속한 본인 휴대폰에만 저장돼요.</p></section>
-    <label style="display:flex;gap:10px;align-items:flex-start;margin-top:22px;font-size:14px;line-height:1.5;cursor:pointer"><input type="checkbox" id="kguard" ${kidForm.guard ? "checked" : ""} onchange="kidForm.guard=this.checked" style="width:22px;height:22px;flex:0 0 auto;margin:0"><span>저는 이 아이의 보호자예요.</span></label>
+    <label style="display:flex;gap:10px;align-items:center;min-height:48px;margin-top:14px;font-size:14px;line-height:1.5;cursor:pointer"><input type="checkbox" id="kguard" ${kidForm.guard ? "checked" : ""} onchange="kidForm.guard=this.checked" style="width:22px;height:22px;flex:0 0 auto;margin:0"><span>저는 이 아이의 보호자예요.</span></label>
     <button class="btn btn-3d" style="width:100%;height:54px;margin-top:12px;font-size:15px" onclick="saveKid('${editing ? editing.id : ""}')">${editing ? "저장하기" : "등록하기"}</button>
     ${editing && (editing.al || []).length ? `<button class="btn btn-soft" style="width:100%;height:46px;margin-top:12px" onclick="go('kid/${esc(editing.id)}/card')">알레르기 확인 카드 만들기</button>` : ""}
     ${editing ? `<button class="btn btn-soft" style="width:100%;height:46px;margin-top:12px;color:var(--coral-ink)" onclick="deleteKid('${editing.id}')">${kidForm.arm ? "한 번 더 누르면 삭제돼요" : "이 아이 삭제"}</button>` : ""}`;
 {{#else}}
       <p style="font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px">교육청에 등록된 {{f.sgg}} 학원·교습소 목록에서 골라요. 요일·시간을 넣고 <b>📅 캘린더에 추가</b>를 누르면 휴대폰 캘린더가 수업 시작·끝 10분 전에 알려 줘요. 시간이 바뀌면 캘린더에서 예전 일정을 지우고 다시 추가해 주세요.<br>학원 정보는 접속한 본인 휴대폰에만 저장돼요.</p></section>
-    <label style="display:flex;gap:10px;align-items:flex-start;margin-top:22px;font-size:14px;line-height:1.5;cursor:pointer"><input type="checkbox" id="kguard" ${kidForm.guard ? "checked" : ""} onchange="kidForm.guard=this.checked" style="width:22px;height:22px;flex:0 0 auto;margin:0"><span>저는 이 아이의 보호자예요.</span></label>
+    <label style="display:flex;gap:10px;align-items:center;min-height:48px;margin-top:14px;font-size:14px;line-height:1.5;cursor:pointer"><input type="checkbox" id="kguard" ${kidForm.guard ? "checked" : ""} onchange="kidForm.guard=this.checked" style="width:22px;height:22px;flex:0 0 auto;margin:0"><span>저는 이 아이의 보호자예요.</span></label>
     <button class="btn btn-3d" style="width:100%;height:54px;margin-top:12px;font-size:15px" onclick="saveKid('${jsq(editing ? editing.id : "")}')">${editing ? "저장하기" : "등록하기"}</button>
     ${editing && (editing.al || []).length ? `<button class="btn btn-soft" style="width:100%;height:46px;margin-top:12px" onclick="go('kid/${esc(editing.id)}/card')">알레르기 확인 카드 만들기</button>` : ""}
     ${editing ? `<button class="btn btn-soft" style="width:100%;height:46px;margin-top:12px;color:var(--coral-ink)" onclick="deleteKid('${jsq(editing.id)}')">${kidForm.arm ? "한 번 더 누르면 삭제돼요" : "이 아이 삭제"}</button>` : ""}`;
