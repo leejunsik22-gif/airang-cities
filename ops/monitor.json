@@ -1,13 +1,13 @@
 {
  "_설명": "운영 감시 집계(tools/monitor.py, 매시간). 상태: 장애=지금 고쳐야 함 / 검증 필요=공개 중이거나 보류 중이지만 사람 확인 필요 / 공개 보류=원문 미확인으로 숨김 / 복구 완료=직전 집계에 있던 문제가 사라짐. 앱은 읽지 않음(관리자만)",
- "checked_at": "2026-11-28 08:24",
- "checked_at_utc": "2026-11-27T23:24:46Z",
+ "checked_at": "2026-11-28 16:39",
+ "checked_at_utc": "2026-11-28T07:39:40Z",
  "ok": true,
  "summary": {
   "장애": 0,
   "검증 필요": 3,
   "공개 보류": 5,
-  "복구 완료(7일)": 6
+  "복구 완료(7일)": 5
  },
  "incidents": [
   {
@@ -20,7 +20,7 @@
    "detail": "직전 공개본 값으로 공개 중 — 원문 대조 뒤 approvals/reverify.json 승인",
    "url": "https://github.com/leejunsik22-gif/airang-cities/blob/daejeon-setup/review/daedeok/_reverify.json",
    "since": "2026-11-15 06:41",
-   "last_seen": "2026-11-28 08:24"
+   "last_seen": "2026-11-28 16:39"
   },
   {
    "id": "reverify_pending:djjunggu",
@@ -32,7 +32,7 @@
    "detail": "직전 공개본 값으로 공개 중 — 원문 대조 뒤 approvals/reverify.json 승인",
    "url": "https://github.com/leejunsik22-gif/airang-cities/blob/daejeon-setup/review/djjunggu/_reverify.json",
    "since": "2026-11-15 06:41",
-   "last_seen": "2026-11-28 08:24"
+   "last_seen": "2026-11-28 16:39"
   },
   {
    "id": "reverify_pending:djseogu",
@@ -44,7 +44,7 @@
    "detail": "직전 공개본 값으로 공개 중 — 원문 대조 뒤 approvals/reverify.json 승인",
    "url": "https://github.com/leejunsik22-gif/airang-cities/blob/daejeon-setup/review/djseogu/_reverify.json",
    "since": "2026-11-15 06:41",
-   "last_seen": "2026-11-28 08:24"
+   "last_seen": "2026-11-28 16:39"
   },
   {
    "id": "hold:daedeok",
@@ -56,7 +56,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-28 08:24"
+   "last_seen": "2026-11-28 16:39"
   },
   {
    "id": "hold:djdonggu",
@@ -68,7 +68,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-28 08:24"
+   "last_seen": "2026-11-28 16:39"
   },
   {
    "id": "hold:djjunggu",
@@ -80,7 +80,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-28 08:24"
+   "last_seen": "2026-11-28 16:39"
   },
   {
    "id": "hold:djseogu",
@@ -92,7 +92,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-28 08:24"
+   "last_seen": "2026-11-28 16:39"
   },
   {
    "id": "hold:yuseong",
@@ -104,7 +104,7 @@
    "detail": "표본 대조 뒤 data_rules.json official_verify 갱신 필요",
    "url": "",
    "since": "2026-11-05 02:41",
-   "last_seen": "2026-11-28 08:24"
+   "last_seen": "2026-11-28 16:39"
   }
  ],
  "recovered": [
@@ -156,16 +156,6 @@
    "title": "'cf-apps' 자동 작업이 7시간째 돌지 않음",
    "since": "2026-11-22 11:10",
    "resolved_at": "2026-11-22 18:43",
-   "how": "자동(감시에서 사라짐)"
-  },
-  {
-   "id": "run_missing:-",
-   "kind": "run_missing",
-   "state": "장애",
-   "city": "",
-   "title": "'daily' 자동 작업이 27시간째 돌지 않음",
-   "since": "2026-11-21 08:58",
-   "resolved_at": "2026-11-21 15:58",
    "how": "자동(감시에서 사라짐)"
   }
  ],
@@ -294,17 +284,17 @@
  },
  "runs": {
   "weather": {
-   "last_at": "2026-11-27T18:16:54Z",
+   "last_at": "2026-11-28T04:18:52Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/46048270246",
-   "last_success_at": "2026-11-27T18:16:54Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/46106950938",
+   "last_success_at": "2026-11-28T04:18:52Z",
    "overdue": false
   },
   "daily": {
-   "last_at": "2026-11-27T03:03:29Z",
+   "last_at": "2026-11-28T02:52:24Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/45931918901",
-   "last_success_at": "2026-11-27T03:03:29Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-cities/actions/runs/46100157525",
+   "last_success_at": "2026-11-28T02:52:24Z",
    "overdue": false
   },
   "hospitals": {
@@ -315,10 +305,10 @@
    "overdue": false
   },
   "cf-apps": {
-   "last_at": "2026-11-27T21:03:33Z",
+   "last_at": "2026-11-28T07:33:04Z",
    "last_conclusion": "success",
-   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/46067757716",
-   "last_success_at": "2026-11-27T21:03:33Z",
+   "last_url": "https://github.com/leejunsik22-gif/airang-stats/actions/runs/46121722570",
+   "last_success_at": "2026-11-28T07:33:04Z",
    "overdue": false
   }
  },
@@ -327,7 +317,7 @@
   "app_branch": "main",
   "lag": false,
   "default_head_at": "2026-11-04T17:22:53Z",
-  "app_head_at": "2026-11-27T18:17:21Z"
+  "app_head_at": "2026-11-28T04:19:25Z"
  },
  "customer_view": {
   "app_branch": "main",
